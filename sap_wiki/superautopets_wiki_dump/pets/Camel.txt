@@ -1,0 +1,63 @@
+Title: Camel
+Category: Pet
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Camel.png
+|attack/health=3/3
+|tier=3
+|level_1='''Hurt''': Give the nearest friend behind +1 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''Hurt''': Give the nearest friend behind +2 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''Hurt''': Give the nearest friend behind +3 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Camel''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the Camel [[Hurt (Trigger)|is hurt]], it gives a buff to the nearest friend behind it. Levelling up the Camel increases the size of the buff given. 
+
+
+==Strategy==
+The Camel is best when paired with animals that cause damage to the player's own team, like {{IconSAP|Elephant}} and {{IconSAP|Rat}} (via {{IconSAP|Dirty Rat}}) that can do small amounts of damage. The stats it offers during battle when synergizing with them can quickly overwhelm an opponent's board through raw stats.
+
+Camel can look to buff a unit that synergizes with the during-battle stats to sweep, such as {{IconSAP|Ox}} with its {{IconSAP|Melon}}.
+
+==Game Sound==
+[[File:Camel.wav]]
+
+==Trivia==
+* The Camel's sprite is a [https://en.wikipedia.org/wiki/Bactrian_camel Bactrian], or a two-humped camel, named after a historical region in Central Asia. This is as opposed to the single-humped camel, known as a {{IconSAP|Dromedary}}.
+** Unlike the Dromedary, which lives in the hot deserts of Arabia and North Africa, the Bactrian lives in cold steppes and mountains, and is therefore much fuzzier.
+** The Camel’s sprite has long eyelashes because real camels do, to protect their eyes from the harsh sunlight of the desert.
+
+==Gallery==
+<gallery>
+Camel.png|The standard sprite of the Camel
+Camel Classic.png|The classic sprite of the Camel
+CamelBonk.png|The "CamelBonk" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+{{History
+|0.40:
+*Changed the Camel's base stats from 3/4 to 3/3
+|0.30: 
+*Changed the Camel's base stats from 2/4 to 3/4.
+*Changed the Camel's ability from "'''Hurt''': Give the nearest friend behind +2/+2, +4/+4, +6/+6." to "'''Hurt''': Give the nearest friend behind +1/+2, +2/+4, +3/+6."
+|0.27:
+*Changed the Camel's base stats from 2/6 to 2/4.
+*Changed Hurt abilities to also trigger if the pet fainted.
+|0.18:
+*Changed the Camel's base stats from 2/5 to 2/6.
+*Changed the Camel's ability from "'''Hurt''': Give the nearest friend behind +1/+2, +2/+4, +3/+6." to "'''Hurt''': Give the nearest friend behind +2/+2, +4/+4, +6/+6."
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:Hurt ability]]
+[[Category:Buffing based abilities]]
+[[Category:Friend buffing abilities]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]

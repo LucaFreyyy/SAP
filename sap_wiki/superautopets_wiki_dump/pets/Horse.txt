@@ -1,0 +1,59 @@
+Title: Horse
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|tier= 1
+|attack/health= 2/1
+|ID= 39
+|level_1='''Friend summoned''': Give it +1 {{IconSAP|attack|nolink=yes}} until next turn.
+|level_2='''Friend summoned''': Give it +2 {{IconSAP|attack|nolink=yes}} until next turn.
+|level_3='''Friend summoned''': Give it +3 {{IconSAP|attack|nolink=yes}} until next turn.
+}}
+The '''Horse''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Whenever a friendly pet fills an empty slot, either by buying them or via an ability, Horse will give them a small amount of attack until next turn. Leveling up the Horse increases the amount of attack it gives to summoned friends.
+
+Horse has a hidden interaction: It can be merged with {{IconSAP|Eagle}} to transform into a 5/5 level 1 {{IconSAP|Hippogriff}}.
+
+==Strategy==
+Horse strengthens any pet newly added to the team, improves the battle capabilities of summoners such as {{IconSAP|Cricket}}, {{IconSAP|Honey}} perk, {{IconSAP|Spider}}, {{IconSAP|Sheep}}, and can easily dominate the first few turns. Keeping a Horse on the team also makes it easier to pivot later; you don't lose too much stats when selling existing pets since the replacement will receive some attack from Horse, albeit only for one turn.
+
+If you're planning to buy a Horse, it should be bought before other pets so it can give them extra attack for the next battle. When paired with summoners, it should be put behind them to buff the summoned pets in battle. Although, with 1 health at base stats, Horse is very vulnerable to snipers such as {{IconSAP|Mosquito}} and {{IconSAP|Dolphin}} that will knock it out before it can contribute anything to the battle.
+
+For summon teams, you can find a direct upgrade at tier 5: {{IconSAP|Turkey}}, which not only gives more stats but also permanently instead of temporarily. For other scaling focused teams, Horse's ability quickly becomes useless with no targets to give buffs to, and should be replaced ASAP.
+
+==Trivia==
+
+==Game Sound==
+[[File:Horse.wav]]
+
+== Gallery==
+<gallery>
+Horse.png|The standard sprite of the Horse
+Horse Classic.png|The classic sprite of the Horse
+</gallery>
+
+==History==
+WIP
+'''18th August 2022'''
+*Changed the Horse's base stats from 3/1 to 2/1.
+'''15th August 2022'''
+*Changed the Horse's base stats from 2/1 to 3/1.
+'''29th November 2021'''
+*Changed the Horse's base stats from 1/1 to 2/1.
+*Changed the Horse's ability from "Friend summoned: give it +2/+4/+6 attack until end of battle." to "'''Friend summoned''': give it +1/+2/+3 attack until end of battle."
+'''23rd November 2021'''
+*Changed the Horses's ability from "'''Friend summoned''': give it +1/+2/+3 attack until end of battle" to "Friend summoned: give it +2/+4/+6 attack until end of battle."
+*Changed the Horse's base stats from 2/1 to 1/1.
+'''26th July 2021'''
+*Changed the Horse's ability to: "'''Friend summoned''': give it +1 attack until end of battle".
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Summoning based abilities]]
+[[Category:Friend summoned abilities]]
+[[Category:Buffing based abilities]]
+[[Category:Friend buffing abilities]]

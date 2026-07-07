@@ -1,0 +1,47 @@
+Title: Crocodile
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=8/4
+|tier=5
+|level_1=Start of battle: Deal 8 {{IconSAP|damage|nolink=yes}} to the last enemy.
+|level_2=Start of battle: Deal 8 {{IconSAP|damage|nolink=yes}} to the last enemy. Triggers 2 times.
+|level_3=Start of battle: Deal 8 {{IconSAP|damage|nolink=yes}} to the last enemy. Triggers 3 times.
+}}
+
+The '''Crocodile''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of each battle, the Crocodile deals 8 {{IconSAP|damage|nolink=yes}} to the Pet at the back of the enemy team. Levelling up the Crocodile will increase the amount of times it deals 8 damage to the backmost enemy pet.
+
+==Strategy==
+Crocodile is a simple-yet-effective anti-backline pet. Enemies in backmost positions tend to have low stats and abilities that will become troublesome during battle such as {{IconSAP|Shark}}, {{IconSAP|Turkey}}, and {{IconSAP|Fly}}. In any cases, Crocodile will deal a substantial amount of damage to them, then repeat the snipe at higher levels to either break through their defensive perks to ensure a knockout, or if they have already been knocked out, damage the next enemies in the back.
+
+While Crocodile ability stands on its own with no obvious combos, it can be very effective when paired with other '''Start of battle''' snipers and repeaters such as {{IconSAP|Dolphin}}, {{IconSAP|Parrot}}, other Crocodiles, and {{IconSAP|Tiger}}. Crocodile is exceptionally powerful against most summon teams, and more snipes means knocking out more pets to really crush these builds.
+
+==Trivia==
+*The classic sprite of crocodile is the same as the emoji in Discord.
+
+==Gallery==
+<gallery>
+Crocodile.png|The standard sprite of the Crocodile
+Crocodile Classic.png|The classic sprite of the Crocodile
+</gallery>
+
+==History==
+{{History
+|0.18: Changed the Crocodile's ability from: "'''Start of battle''': Deal 8/16/24 damage to the last enemy." to: "'''Start of battle''': Deal 8 damage to the last enemy. Triggers 1/2/3 times."
+|0.14: 
+*Changed the Crocodile's ability from: "'''Start of battle''': Deal 7/14/21 damage to the last enemy." to: "'''Start of battle''': Deal 8/16/24 damage to the last enemy."
+*Changed the Crocodile's base stats from (?) to 8/4. 
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Start of battle abilities]]
+[[Category:Damage dealing abilities]]

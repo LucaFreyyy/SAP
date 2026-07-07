@@ -1,0 +1,56 @@
+Title: Rat
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=3/6
+|tier=2
+|level_1='''Faint''': Summon one 1/1 {{IconSAP|Dirty Rat}} up front for the opponent.
+|level_2='''Faint''': Summon two 1/1 {{IconSAP|Dirty Rat|name=Dirty Rats}} up front for the opponent.
+|level_3='''Faint''': Summon three 1/1 {{IconSAP|Dirty Rat|name=Dirty Rats}} up front for the opponent.
+}}
+The '''Rat''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Rat faints, it summons a level 1 {{IconSAP|Dirty Rat}} at the front of ''the enemy's team''. Leveling up the Rat will increase the amount of Dirty Rats summoned.
+
+==Strategy==
+Rat will summon pets for the enemy, which is almost always a detriment. It's a risky buy that is often only used for its high stats in early turns. You should not overvalue its potential synergies with other pets. Never put Rat in front of {{IconSAP|Ox}}. And '''never''' put Rat in the last position.
+
+With all that said, since Dirty Rats are weak and can be easily knocked out, they can be used to give additional triggers to certain types of ability: '''Hurt''' pets ({{IconSAP|Peacock}}, {{IconSAP|Camel}}), '''Knock out''' pets ({{IconSAP|Hippo}}, {{IconSAP|Rhino}}), and '''After attack''' pets ({{IconSAP|Elephant}}). By putting Rat directly in front of pets with these abilities, it will summon Dirty Rats for the opponent which when attacked will trigger the ability at the cost of only 1 damage per Dirty Rat. These synergies can be further amplified with supporters like {{IconSAP|Kangaroo}}, {{IconSAP|Snake}}, or {{IconSAP|Tiger}} behind the pet that will be facing the Dirty Rats.
+
+Another use for Rat is body blocking the enemy's summons. For example, when Rat trades with a {{IconSAP|Deer}} and they knock each other out, if the Rat has higher attack, the Dirty Rats will be summoned first, blocking the {{IconSAP|Bus}} from being summoned. Though this is rather niche and rarely happens on purpose.
+
+To avoid less or no Dirty Rats being spawned, some enemies must first be knocked out to create space. This often means Rat has to be scaled and act as a tank or else it will waste the ability. Although, not triggering the ability might actually be a positive.
+
+==Game Sound==
+[[File:Rat.wav]]
+
+==Gallery==
+<gallery>
+Rat.png|The standard sprite of the Rat
+Rat Classic.png|The classic sprite of the Rat
+</gallery>
+
+==History==
+{{History
+|0.27:
+*Changed the Rat's base from 4/5 to 3/6.
+*Removed from the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''.
+|0.16:
+*{{IconSAP|Dirty Rat}} is now summoned to the front (was summoned to the back)
+*The number of {{IconSAP|Dirty Rat}}  summoned now depend on the Level of the Rat.
+|0.14:
+*Changed the Rat's base stats from 5/4 to 4/5.
+*{{IconSAP|Dirty Rat}} no longer has ability "Friend ahead attacks: Deal it 1 damage."
+|0.12:
+*Fixed Rat {{IconSAP|Sleeping Pill}} bug.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Summoning based abilities]]
+[[Category:Enemy summoning abilities]]

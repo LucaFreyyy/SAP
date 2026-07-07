@@ -1,0 +1,48 @@
+Title: Peanut
+Category: Token
+Tier: Token
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox|image=Peanuts.png
+|tier=7
+|effect=Knock out any pet attacked and hurt by this.
+}}
+
+The '''Peanut''' is a {{IconSAP|Tier 7}} [[Food Perks|Perk]], not normally available in the shop and only capable of being obtained through abilities. Whenever a pet with the Peanut perk attacks and hurts an enemy, the enemy will be instantly knocked out.
+
+== Strategy ==
+Peanut acts as a special counter against scalers. Once hurt, regardless of how beefy the enemies are, they will be instantly knocked out by Peanut.
+
+The pet with Peanut perk only really has to care about health. The longer it survives, the more likely it is to knock out more enemies. However, the enemy needs to be considered "hurt" in order to be knocked out. So against {{IconSAP|Melon}}, the pet with Peanut needs to have 21 attack or higher to break through the Melon and knock them out. Peanut will always lose against {{IconSAP|Coconut}}.
+
+An ideal Peanut pet stays at 21 attack, and does not need to be scaled any further. The more stats it receives, the less effective Peanut is. At certain point, it won't be any more useful than other food perks.
+
+A special interaction is against 1 health enemies with {{IconSAP|Pepper}}. The pepper will keep the enemy at 1 health, so they will receive 0 damage and won't be knocked out by Peanut.
+
+==Obtaining Peanut==
+
+{{IconSAP|Scorpion}} comes with Peanut and is the most common Peanut pet.
+
+{{IconSAP|Terror Bird}} gives out Peanuts to friends with the {{IconSAP|Strawberry}} perk, but only at start of battle.
+
+==Trivia==
+Peanut is one of only three foods or pets in the game to be classified as {{IconSAP|Tier 7}}, alongside {{IconSAP|Peanut Butter}} and {{IconSAP|Coconut}}. Long considered by the community to be Tier 7 perks because of their extremely powerful nature that far exceeded the abilities of comparable Tier 6 perks like {{IconSAP|Steak}} or {{IconSAP|Melon}}, they were officially moved to a new tier in [[Version 0.41|Update 0.41]] (largely because of the ease of obtaining them with {{IconSAP|Cardinal}}). If you hover over Peanut, it will show a die with 7 dots, exceeding the maximum possible to reach via the shop and in fact the maximum possible on a normal 6-sided die.
+
+== Gallery ==
+<gallery>
+Peanut.png|The standard sprite of the Peanut
+</gallery>
+
+==History==
+{{History
+|0.41:
+*Moved from Tier 6 to Tier 7.
+|0.37:
+*Removed from the abilities of {{IconSAP|Mongoose}} and {{IconSAP|Walrus}}, which used the new and weaker {{IconSAP|Peanut Butter}} perk instead. {{IconSAP|Scorpion}} kept Peanut, as did the new {{IconSAP|Terror Bird}}.
+|0.27:
+*Effectively added to '''{{IconSAP|Puppy Pack}}''' via the introduction of the {{IconSAP|Mongoose}}, whose {{IconSAP|Peanut Jar}} toy gave the Peanut perk to the front-most friend on start of battle.
+}}
+
+[[Category:Food]]
+[[Category:Tier 7]]

@@ -1,0 +1,54 @@
+Title: Worm
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Worm.png
+|attack/health=1/4
+|tier=2
+|level_1='''Start of turn''': Stock one 2-gold {{IconSAP|Apple}}.
+|level_2='''Start of turn''': Stock one 2-gold {{IconSAP|Apple|name=Better Apple|image=Better Apple.png}}.
+|level_3='''Start of turn''': Stock one 2-gold {{IconSAP|Apple|name=Best Apple|image=Best Apple.png}}.
+}}
+The '''Worm''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the start of turn the Worm will stock the food shop with a 2-gold {{IconSAP|Apple}}. Levelling up the Worm increases the stats given by the stocked Apple.
+
+==Strategy==
+Worm's ability to stock apples makes it great synergy with food-related scaling pets, such as {{IconSAP|Rabbit}} or {{IconSAP|Seal}}. Even without those two pets, Worm is a great scaling pet that can fit into most teams, providing convenient stat buffs, especially when levelled.
+
+You can freeze Apples at the start of the turn to stockpile them for a big turn, such as waiting for a {{IconSAP|Bison}} on {{IconSAP|Tier 4}} or a Seal on {{IconSAP|Tier 5}}. You can freeze upwards of 4 Apples before the stocked food overtakes pet slots in the Shop.
+
+In '''{{IconSAP|Custom Packs}}''', the Worm's Apple can be used to reliably trigger the {{IconSAP|Jerboa|name=Jerboa's}} ability, quickly scaling the whole team.
+
+==Game Sound==
+[[File:Worm.wav]]
+
+==Trivia==
+* The Worm stocking apples is likely a reference to the trope of worms inhabiting apples in school settings.
+
+==Gallery==
+<gallery>
+Worm.png|The standard sprite of the Worm
+Worm Classic.png|The classic sprite of the Worm
+</gallery>
+
+==History==
+{{History
+|0.43: Changed the Worm's base stats from 1/3 to 1/4.
+|0.27:
+*Changed the Worm's base stats from 3/3 to 1/3.
+*Changed the Worm's ability from: "'''Eats food''': Gain +1/+1, +2/+2, +3/+3." to "'''Start of turn''': Stock one 2-gold Apple/Better Apple/Best Apple." 
+*Changed tier from {{IconSAP|Tier 4}} to {{IconSAP|Tier 2}}.
+*Removed from the '''{{IconSAP|Puppy Pack}}'''.
+|0.18: Changed the Worm's base stats from 2/2 to 3/3.
+|0.14: Changed the Worm's base stats to 2/2.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Start of turn abilities]]
+[[Category:Food based abilities]]

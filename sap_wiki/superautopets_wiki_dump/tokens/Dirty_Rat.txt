@@ -1,0 +1,27 @@
+Title: Dirty Rat
+Category: Token
+Tier: Token
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Dirty Rat.png
+|attack/health=1/1
+|tier=1}}
+The Dirty Rat is a [[Tokens|Token]] that is summoned when {{IconSAP|Rat}} faints. Rather than joining the player's team, it will join the enemy team in the front-most space. If the enemy team is full, it will not be summoned. As with all tokens, it is considered a {{IconSAP|Tier 1}} for the sake of certain abilities like {{IconSAP|Poodle|name=Poodle's}} and {{IconSAP|Rhino|name=Rhino's}}.
+
+==Strategy==
+==Version History==
+===10/02/2022===
+
+* Dirty Rat(s) now summon at the front of the opponents team (was summoned at the back).
+
+==Gallery==
+<gallery>
+Dirty Rat.png|The standard sprite of the Dirty Rat
+Dirty Rat Classic.png|The classic sprite of the Dirty Rat
+</gallery>
+==Trivia==
+
+[[Category:Token]]
+{{Navbox Pets}}

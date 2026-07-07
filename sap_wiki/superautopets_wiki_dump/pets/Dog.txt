@@ -1,0 +1,55 @@
+Title: Dog
+Category: Pet
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Dog.png
+|attack/health=3/2
+|tier=3
+|level_1='''Friend summoned''': Gain +2 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}} until end of battle.
+|level_2='''Friend summoned''': Gain +4 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}} until end of battle.
+|level_3='''Friend summoned''': Gain +6 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}} health until end of battle.
+}}
+The '''Dog''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. Whenever a friend is summoned, the Dog will gain a stat buff. However, the stats will only last until end of battle. Levelling up the Dog will increase the amount of stats gained for each friend summoned.  
+
+==Strategy ==
+The Dog has mediocre stats. It can be a heavy hitter for a few turns early on if you're buying and selling lots of pets, but tends to fall off quickly unless supported by a summoning team featuring units like the {{IconSAP|Sheep}} and the {{IconSAP|Fly}}. Even then, its ability is weak compared to that of pets like the {{IconSAP|Hippo}} and the {{IconSAP|Kangaroo}}. The dog pairs very well with the {{IconSAP|Dragon}} in the {{IconSAP|Turtle Pack|image=Turtle Icon.png}}, but gets overshadowed by other buy/sell pets in customs like the {{IconSAP|Buffalo}}.
+
+==Game Sound==
+[[File:Dog.wav]]
+
+==Gallery==
+<gallery>
+Dog.png|The standard sprite of the Dog
+Dog Classic.png|The classic sprite of the Dog
+DogPat.png|The "DogPat" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+
+==History==
+{{History
+|0.31: Changed the Dog's base stats from 2/3 to 3/2.
+|0.26:
+*Changed the Dog's base stats from 3/4 to 2/3.
+*Changed the Dog's ability from: "'''Friend summoned''': Gain +1/+1, +2/+2, +3/+3 until end of battle." to "'''Friend summoned''': Gain +2/+1, +4/+2, +6/+3 until end of battle." .
+*Removed from the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}
+|0.12:
+* Changed the Dog's base stats from 3/3 to 3/4.
+*Changed the Dog's ability from: '''Friend summoned''': Gain +1/+2/+3 attack or +1/+2/+3 health." to "'''Friend summoned''': Gain +1/+1, +2/+2, +3/+3 until end of battle."
+|0.18: Changed the Dog's base stats from 2/2 to 3/3.
+|0.14:Changed Dog to tier 3.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:Summoning based abilities]]
+[[Category:Friend summoned abilities]]
+[[Category:Buffing based abilities]]
+[[Category:Self buffing abilities]]

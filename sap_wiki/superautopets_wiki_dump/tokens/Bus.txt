@@ -1,0 +1,41 @@
+Title: Bus
+Category: Token
+Tier: Token
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Bus.png
+|attack/health=5/3
+|tier=1}}
+The '''Bus''' is a [[Tokens|Token]] that is summoned when a {{IconSAP|Deer}} faints. As with all tokens, it is considered a {{IconSAP|Tier 1}} for the sake of certain abilities like {{IconSAP|Poodle|name=Poodle's}} and {{IconSAP|Rhino|name=Rhino's}}.
+
+== Strategy ==
+
+== Gallery ==
+<gallery>
+Bus.png|The standard sprite of the Bus
+Bus Classic.png|The classic sprite of the Bus
+</gallery>
+
+== Trivia ==
+
+== Version History ==
+
+{{History
+|0.37: Changed Bus's stats from 5/5 to 5/3
+|}}
+
+=== 5/5/2021 ===
+
+* Level 2 and 3 deer now spawn a 14/14 and 21/21 bus
+
+=== Initial patch ===
+
+* 7/7
+
+
+
+{{Navbox Pets}}
+
+[[Category:Token]]

@@ -1,0 +1,50 @@
+Title: Dolphin
+Category: Pet
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=4/3
+|tier=3
+|level_1='''Start of battle''': Deal 4 {{IconSAP|damage|nolink=yes}} to the lowest health enemy.
+|level_2='''Start of battle''': Deal 4 {{IconSAP|damage|nolink=yes}} to the lowest health enemy. Triggers 2 times.
+|level_3='''Start of battle''': Deal 4 {{IconSAP|damage|nolink=yes}} to the lowest health enemy. Triggers 3 times.
+}}
+The '''Dolphin''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}''' . At the start of battle, the Dolphin will deal 4 damage to the enemy with the lowest health. Levelling up the Dolphin will increase the amount of times its ability triggers.
+
+==Strategy==
+Dolphin is designed to immediately disarm low health enemies and prevent them from triggering their abilities later into the battle. Its targets are often problematic pets that give stats or gain stats as the battle progresses such as {{IconSAP|Horse}}, {{IconSAP|Kangaroo}}, {{IconSAP|Dog}}, or just generally strong abilities with low health like {{IconSAP|Scorpion}} and {{IconSAP|Snake}} from later tiers. Its damage output is good enough for early game and almost guarantees that it will instantly knock something out at Start of battle.
+
+At higher levels, it will be able to break through {{IconSAP|Melon}} to make sure its target is eliminated, or sniping multiple enemies at once. It has a superb synergy with {{IconSAP|Skunk}}: a level 3 Skunk with higher attack than Dolphin will put a strong enemy down to 1 health, then the Dolphin will target that enemy and likely knock it out.
+
+==Trivia==
+
+==Game Sound==
+[[File:Dolphin.wav]]
+
+==Gallery==
+<gallery>
+Dolphin.png|The standard sprite of the Dolphin
+Dolphin Classic.png|The classic sprite of the Dolphin
+</gallery>
+
+==History==
+{{History
+|0.31: Changed the Dolphin's ability from "'''Start of battle''': Deal 3 damage to the lowest health enemy. Triggers 1/2/3 times." to "'''Start of battle''': Deal 4 damage to the lowest health enemy. Triggers 1/2/3 times."
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+|0.22:
+*Changed the Dolphin from {{IconSAP|Tier 4}} to {{IconSAP|Tier 3}}.
+*Changed the base stats of the dolphin from 4/6 to 4/3.
+*Changed the Dolphin's ability from: "'''Start of battle''': Deal 5/10/15 damage to the lowest health pet." to "'''Start of battle''': Deal 3 damage to the lowest health pet, repeat 1/2/3 times." 
+|0.14: Added Dolphin to '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:Start of battle abilities]]
+[[Category:Damage dealing abilities]]

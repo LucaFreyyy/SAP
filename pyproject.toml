@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sap-engine"
+version = "0.1.0"
+description = "Super Auto Pets engine scaffolding"
+requires-python = ">=3.10"
+dependencies = ["pygame>=2.5"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

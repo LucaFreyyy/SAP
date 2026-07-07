@@ -1,0 +1,54 @@
+Title: Fly
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=4/4
+|tier=6
+|level_1='''Friend faints''': Summon one 4/4 {{IconSAP|Zombie Fly|name=fly}} in its place. Works 3 times per turn.
+|level_2='''Friend faints''': Summon one 8/8 {{IconSAP|Zombie Fly|name=fly}} in its place. Works 3 times per turn.
+|level_3='''Friend faints''': Summon one 12/12 {{IconSAP|Zombie Fly|name=fly}} in its place. Works 3 times per turn.
+}}
+The '''Fly''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When a friend faints, it will summon a {{IconSAP|Zombie Fly}} where that pet fainted. This ability can only activate 3 times per turn. Levelling up the Fly increases the stats and level of the summoned Zombie Fly
+
+Fly's ability will not trigger until there are spaces for the Zombie Flies to spawn in. When used with other Faint abilities such as {{IconSAP|Rooster}} or {{IconSAP|Deer}}, it will "wait" until the tokens have been cleared before summoning Zombie Flies.
+
+When a Zombie Fly faints, it will not trigger Fly's ability.
+
+==Strategy==
+Fly is a good value buy since it's almost guaranteed to give 3 summons, something that other summoners can accidentally waste by running out of space. It can be thought of as 3 gold for a 16/16, and can sometimes be used just for the pure stats it can provide.
+
+Fly pairs well with summoning pets such as {{IconSAP|Turkey}} as well as {{IconSAP|Shark}}, since one Fly is equal to 4 faint triggers in battle. It also combos nicely with {{IconSAP|Snake}}: whatever that's in front of Snake will turn into a Zombie Fly after fainting and give Snake an extra snipe. Fly tends to be positioned at the last 2 spaces to make sure enough faints occur for it to use up all of its triggers, which often makes it vulnerable to {{IconSAP|Crocodile}}.
+
+===Custom packs===
+A niche synergy the Fly has is with Faint Scaling teams ({{IconSAP|Shark}}, {{IconSAP|Praying Mantis}} and {{IconSAP|Spinosaurus}}), in which it will summon a Zombie Fly that can be sold for 1, 2 or 3 gold (depending on level) everytime a friendly pet faints in the shop from a {{IconSAP|Sleeping Pill}} or the Praying Mantis' ability.
+
+==Version History==
+{{History
+|0.35: Changed the Fly's base stats from 5/5 to 4/4
+|}}
+'''10th May 2022'''
+*Changed the level 1 Zombie Fly's base stats from 5/5 to 4/4.
+
+'''12th August 2021'''
+*Changed the Fly's base stats to 5/5. 
+*Changed the level 1 Zombie Fly's base stats from 2/2 to 5/5.
+*Changed the Fly's ability from an unlimited number of times to only triggers 3 times per turn.
+
+'''5th May 2021'''
+*Level 2 and 3 Fly now summons 4/4 and 6/6 respectively.
+
+==Gallery==
+<gallery>
+Fly.png|The standard sprite of the Fly
+Fly Classic.png|The classic sprite of the Fly
+</gallery>
+
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]
+[[Category:Friend faints ability]]
+[[Category:Summoning based abilities]]
+[[Category:Friend summoning abilities]]

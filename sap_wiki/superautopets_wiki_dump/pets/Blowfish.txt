@@ -1,0 +1,52 @@
+Title: Blowfish
+Category: Pet
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Blowfish.png
+|attack/health=3/6
+|tier=4
+|level_1='''Hurt''': Deal 3 {{IconSAP|damage|nolink=yes}} to one random enemy.
+|level_2='''Hurt''': Deal 6 {{IconSAP|damage|nolink=yes}} to one random enemy. 
+|level_3='''Hurt''': Deal 9 {{IconSAP|damage|nolink=yes}} to one random enemy.
+}}
+
+The '''Blowfish''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Blowfish takes damage, it will damage a random enemy. Levelling up the Blowfish increases the amount of damage dealt when hurt. 
+
+==Strategy==
+Abilities that deal direct damage can be stronger than what it might look at first glance as you are dealing damage without taking damage back. 
+
+The best synergies for Blowfish include having an {{IconSAP|Elephant}} in the front. While less viable, {{IconSAP|Hedgehog}} might also work in the early game. This, however, will result in a weaker team in the late game, and most likely a streak of draws or losses.
+
+It is highly recommended to give Blowfish {{IconSAP|Garlic}}, {{IconSAP|Lemon}} or {{IconSAP|Pineapple}} as it can survive more hits and deal more damage to the enemy team.
+
+==Trivia==
+The Blowfish also known as Fugu or Pufferfish.
+
+==Gallery==
+<gallery>
+Blowfish.png|The standard sprite of the Blowfish 
+Blowfish Classic.png|The classic sprite of the Blowfish 
+BlowfishBible.png|The "BlowfishBible" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+{{History
+|0.27:
+*Changed the Blowfish's base stats from 3/5 to 3/6.
+*Changed the Blowfish's ability from: "'''Hurt''': Deal 2/4/6 damage to one random enemy." to "'''Hurt''': Deal 3/6/9 damage to one random enemy.".
+*Changed the Blowfish's tier from {{IconSAP|Tier 3}} to {{IconSAP|Tier 4}}.
+*Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:Hurt ability]]
+[[Category:Damage dealing abilities]]

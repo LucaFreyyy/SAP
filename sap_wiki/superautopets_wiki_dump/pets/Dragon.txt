@@ -1,0 +1,50 @@
+Title: Dragon
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=3/8
+|tier=6
+|level_1='''Tier 1 friend bought''': Give friends +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}. Works 4 times per turn.
+|level_2='''Tier 1 friend bought''': Give friends +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}. Works 4 times per turn.
+|level_3='''Tier 1 friend bought''': Give friends +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}. Works 4 times per turn.
+}}
+The '''Dragon''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. Every time a Tier 1 pet is bought, the Dragon scales all pets (excluding the Dragon), up to four times per turn. Leveling up the Dragon will increase the amount of stats it gives to other pets when its ability is triggered. 
+
+==Strategy==
+Providing team-wide scaling (excluding itself), Dragon is a strong end-game scaler. Dragon is a solid choice for a pet in teams that do not mind having a free slot open and are looking to scale their 3 other pets.
+
+Dragon's net stat gain per ability proc is +3/+3, +6/+6 and +9/+9 due to the fact you are only buffing 3 pets, as Dragon does not buff itself and you are ideally looking to sell the Tier 1 you bought. Due to this massive stat gain, one will find big value in levelling their Dragon as soon as possible.
+
+Dragon has good synergy with pets that grant you gold or have abilities that work when pets are sold, notable examples being {{IconSAP|Swan}} and {{IconSAP|Buffalo}}. Dragon is very similar to {{IconSAP|Bird of Paradise}}, but it triggers off of buying pets as opposed to spending gold and also will buff your whole, team including the pet you just summoned as opposed to the {{IconSAP|Bird of Paradise}} which only buffs 3 pets. Dragon is more helpful when using a build full of [[Buy-sell Pets]] as opposed to [[Gold Pets]].
+
+It is very hard to trigger Dragon's ability since Dragon is a {{IconSAP|Tier 6}} pet and the ability will be activated when a {{IconSAP|Tier 1}} pet is bought. The dragon can also be seen at {{IconSAP|Tier 5}} when a pet levels up.
+
+==Trivia==
+The Dragon is not included in the {{IconSAP|Unicorn Pack}} even though the Dragon is mythical.
+
+== Gallery ==
+<gallery>
+Dragon.png|The standard sprite of the Dragon
+Dragon Classic.png|The classic sprite of the Dragon
+</gallery>
+
+== History ==
+{{History|0.44:
+*Changed the Dragon's ability from "Tier 1 friend bought: Give friends +1/2/3 attack and +1/2/3 health. Works 5 times per turn." to "Tier 1 friend bought: Give friends +1/2/3 attack and +1/2/3 health. Works 4 times per turn."
+|0.40:
+*Changed the Dragon's ability from "Tier 1 friend bought: Give friends +1/2/3 attack and +1/2/3 health." to "Tier 1 friend bought: Give friends +1/2/3 attack and +1/2/3 health. Works 5 times per turn."
+|0.36: Changed Dragon's base stats from 6/8 to 3/8
+|0.16: Changed ability to not affect itself.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]
+[[Category:Puppy Pack]]
+[[Category:Buy abilities]]
+[[Category:Tier 1 friend bought abilities]]

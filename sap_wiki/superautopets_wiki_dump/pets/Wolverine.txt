@@ -1,0 +1,44 @@
+Title: Wolverine
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{Stub}}
+{{AnimalInfoBox
+|tier= 6
+|attack/health= 5/7
+|level_1='''Four friends hurt''': Remove 3 health {{IconSAP|health|nolink=yes}} from all enemies.
+|level_2='''Four friends hurt''': Remove 6 health {{IconSAP|health|nolink=yes}} from all enemies.
+|level_3='''Four friends hurt''': Remove 9 health {{IconSAP|health|nolink=yes}} from all enemies.
+}}
+
+The '''Wolverine''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. The Wolverine removes health from all enemies when enough friends are hurt. Leveling the Wolverine up increases the health removed. Removing health is distinct from damage, will not trigger hurt abilities or be reduced by garlic, and cannot remove health past 1.
+
+==Strategy==
+Wolverine synergizes extremely well with [[Elephant]], as each Elephant trigger will count towards the Wolverine countdown. It can also work with summon builds, as there are many pets to be hurt to count for the countdown.
+
+==Trivia==
+
+==Gallery==
+<gallery>
+Wolverine.png|The sprite of the Wolverine
+Wolverine Classic.png|The classic sprite of the Wolverine
+Wolverine Old.png|The old classic sprite of the Wolverine
+</gallery>
+
+==History==
+{{History
+|0.37: Changed Wolverine's stats from 5/4 to 5/7
+|0.35: Ability changed from "'''Four friends hurt''': Remove 2/4/6 health from all enemies" to "'''Four friends hurt''': Remove 3/6/9 health from all enemies"
+|0.34: Ability changed from "Adjacent friend abilities deal 3/6/9 damage extra." to "'''Four friends hurt''': Remove 2/4/6 health from all enemies"
+|0.27: The Wolverine is added to the game as part of the '''Turtle Pack'''.
+}}
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Friend hurt ablity]]
+[[Category:Turtle Pack]]

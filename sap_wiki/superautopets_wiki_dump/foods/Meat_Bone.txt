@@ -1,0 +1,39 @@
+Title: Meat Bone
+Category: Food
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Meat Bone.png
+|tier=2
+|effect=Give one pet the Meat Bone [[Food Perks|perk]].
+Attack with +3 {{IconSAP|damage|nolink=yes}}.
+}}
+The '''Meat Bone''' is a {{IconSAP|Tier 2}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a pet a Meat Bone will give them the Meat Bone [[Food Perks|perk]]. A pet with the Meat Bone perk attacks with +3 extra damage. 
+
+This attack bonus does not affect abilities that are dependent on attack: Like {{IconSAP|Dodo}} or {{IconSAP|Leopard}}.
+
+==Strategy==
+
+==Trivia==
+==Gallery==
+<gallery>
+Meat Bone.png|The standard sprite of the Meat Bone
+Meat Bone Classic.png|The classic sprite of the Meat Bone
+</gallery>
+
+==History==
+{{History
+|0.40: Removed form '''Puppy pack'''
+|0.27: Changed the Meat Bone Perk's bonus damage from 4 to 3.
+|0.18: Changed the Meat Bone Perk's bonus damage from 5 to 4.
+}}
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Food Perk]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Stubs]]

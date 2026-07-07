@@ -1,0 +1,44 @@
+Title: Bread
+Category: Food
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|tier=4
+|effect=Give one pet the Bread [[Food Perks|perk]]. '''End turn''': Gain +7 {{IconSAP|health|nolink=yes}} until next turn
+|image=Bread.png}}
+
+'''Bread''' is a {{IconSAP|Tier 4}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|pet]] Bread will give them the Bread [[Food Perks|perk]]. At the end of turn, a pet with the Bread perk will gain +7 {{IconSAP|health|nolink=yes}} until next turn.
+
+== Strategy ==
+Bread is a mid-game defensive perk. It works for the usual purposes of extending pets' lifespan, giving them more chances to attack and trigger their abilities. Although, Bread has unique strengths that make it stand out compared to {{IconSAP|Garlic}} and {{IconSAP|Melon}} that can be found earlier.
+
+7 health is ''at least'' 3.5 times the amount of damage Garlic can reduce per hit. Meaning at bare minimum, if the pet isn't gonna be attacked by more than 3 hits, Bread is a direct upgrade to Garlic. It's especially useful against big bursts of damage like from {{IconSAP|Crocodile}}, 7 health is the exact amount needed to escape the 8 damage breakpoint, making it an efficient counter to put on backliners such as {{IconSAP|Shark}} and {{IconSAP|Turkey}}.
+
+The health is gained before battle, making it "immune" to chip damage snipers or ailments from other packs that can break or override perks and disable their defensive capabilities. This also allows for synergies with {{IconSAP|Turtle}} for an effective total of +27 health, or {{IconSAP|Whale}} that will release the pet still with +7 health intact.
+
+Bread should be swapped for other perks as the pet gets scaled closer to 50 health, since it will be entirely useless once it reaches that point.
+
+== Trivia ==
+* With Bread's addition in [[Version 0.46]],  '''Turtle Pack''' currently has the most foods out of all the non-custom packs (18 different foods).
+* Bread is one of five bread-related foods in '''Super Auto Pets''', the other four being {{IconSAP|Baguette}}, {{IconSAP|Bread Crumbs}}, {{IconSAP|Faint Bread}}, and {{IconSAP|Pita Bread}}.
+* Before Bread's removal and reintroduction, Bread was a functionless perk given to the {{IconSAP|Dolphin}}(s) summoned by {{IconSAP|Beluga Sturgeon}}.
+
+== Gallery ==
+<gallery>
+File:Bread.png|The standard sprite of the Bread
+File:Bread_Classic.png|The classic sprite of the Bread]]
+</gallery>
+
+== History ==
+{{History
+|0.46: The Bread is added into the game as part of the '''Turtle Pack'''.
+}}
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Food Perk]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]

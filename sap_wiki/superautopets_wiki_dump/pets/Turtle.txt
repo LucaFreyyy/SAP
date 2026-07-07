@@ -1,0 +1,60 @@
+Title: Turtle
+Category: Pet
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Turtle.png
+|attack/health=2/5
+|tier=4
+|level_1='''Faint''': Give {{IconSAP|Melon}} [[Food Perks|perk]] to the nearest friend behind.
+|level_2='''Faint''': Give {{IconSAP|Melon}} [[Food Perks|perk]] to the two nearest friends behind.
+|level_3='''Faint''': Give {{IconSAP|Melon}} [[Food Perks|perk]] to the three nearest friends behind.
+}}
+The '''Turtle''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When Turtle faints, it gives the nearest friend behind it {{IconSAP|Melon}} [[Food Perks|perk]], overriding other [[Food Perks|Food Perk]] or [[Ailments|Ailment]] they had previously. When leveled up, Turtle will give Melon perk to more friends behind.
+
+==Strategy==
+Turtle is most commonly bought and {{IconSAP|Sleeping Pill|name=Pilled}} to gain early access to Melon. When kept on the team, it combos best with scaling teams that benefit more from the protection of Melon than the attack stats from {{IconSAP|Steak}} or synergies with {{IconSAP|Mushroom}}. It's commonly put directly ahead of the pet with the highest attack/health in the team, which usually means it'll be the front-most pet while the strongest pet is in the second position. This accomplishes 3 things:
+
+#'''Refreshing the team's Melon''': Snipers like {{IconSAP|Mosquito}}, {{IconSAP|Blowfish}}, {{IconSAP|Leopard}} or Ailment pets from other packs like {{IconSAP|Bat}} or {{IconSAP|Toad}} can strip the team off Melons. Turtle can counter this by giving Melon afterward.
+#'''Breaking the enemy's Melon''': A common strategy is having a strong pet in front with a defensive food perk. If that perk was Melon, Turtle will pop it and allows our strong pet now with Melon to face against one without Melon.
+#'''Countering {{IconSAP|Scorpion}}''': Similarly, Scorpion is usually in front and will be knocked out by our Turtle.
+
+Turtle also "synergizes" with Melon itself: It will skip over friends that already have Melons, so putting more Melons on your team simply ensure they will always have protections both at Start of battle and during battle.
+
+===Custom packs===
+By combining all of this with a pet like the {{IconSAP|Elephant Seal}} or the {{IconSAP|Axolotl}}, you can gain massive amounts of stats whenever your turtle faints. Another strategy would be to combine the Turtle with {{IconSAP|Microbe}} or {{IconSAP|Pandoras Box}} from {{IconSAP|Bad Dog}}. Pandoras Box will give your whole team perks/ailments, but none of them will matter because the Turtle will replace all of those bad perks/ailments with {{IconSAP|Melon}}.
+
+==Trivia== 
+*The Turtle is the mascot of Super Auto Pets (and this wiki).
+**It appears on the game's desktop and mobile icons.
+***The turtle sprite is actually a green tortoise.
+****There has appeared to be a humanoid version of the turtle called “Turtle Tyranny” when the turtle is overpowered, (clip appears in the official youtube channel).
+
+==Gallery==
+<gallery>
+Turtle.png|The standard sprite of the Turtle
+Turtle2.png|A previous version of the standard sprite of the Turtle
+Turtle Classic.png|The classic sprite of the Turtle
+TurtleMonkaS.png|The "TurtleMonkaS" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+{{History
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+|0.22:
+*Changed the Turtle's base stats from 1/2 to 2/5. 
+*Changed the Turtle's tier from {{IconSAP|Tier 3}} to {{IconSAP|Tier 4}}.
+|0.14: Changed the Turtle's base from 2/4 to 1/2.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Food perk abilities]]

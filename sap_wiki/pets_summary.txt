@@ -1,0 +1,530 @@
+Duck:2/2
+level_1='''Sell''': Give shop pets +1 {{IconSAP|health|nolink=yes
+.
+|level_2='''Sell''': Give shop pets +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''Sell''': Give shop pets +3 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Duck''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}''' and the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''. When sold, it will increase the health of all pets currently in the shop. When levelled up, the amount of health given is increased. This health buff will not apply to future animals if the shop is rolled.
+
+Beaver:3/2
+level_1=Sell: Give two random friends +1 {{IconSAP|attack|nolink=yes
+.
+|level_2= Sell: Give two random friends +2 {{IconSAP|attack|nolink=yes}}.
+|level_3= Sell: Give two random friends +3 {{IconSAP|attack|nolink=yes}}.
+}}
+
+The '''Beaver''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}''' and the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''. When the Beaver is sold, it will give buff the attack of 2 friends. The friends buffed by the Beaver are chosen at random; however, the same friend will never be buffed twice. If there is only one friend left after selling the Beaver, it will buff the remaining friend only once. Levelling up the Beaver increases the amount of attack given to each of the 2 friends.
+
+Pigeon:3/2
+level_1='''Sell''': Stock one free {{IconSAP|Bread Crumbs
+. 
+|level_2='''Sell''': Stock two free {{IconSAP|Bread Crumbs}}.
+|level_3='''Sell''': Stock three free {{IconSAP|Bread Crumbs}}.
+}}
+
+The '''Pigeon''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Selling Pigeon stocks a free {{IconSAP|Bread Crumbs}} in the shop, which when bought will give +1 {{IconSAP|attack|nolink=yes}} to a pet. Leveling up the Pigeon increases the amount of Bread Crumbs stocked when Pigeon is sold.
+
+Otter:1/4
+level_1='''Buy''': Give one random friend +1 {{IconSAP|health|nolink=yes
+.
+|level_2='''Buy''': Give two random friends +1 {{IconSAP|health|nolink=yes}}.
+|level_3='''Buy''': Give three random friends +1 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Otter''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When bought, the Otter will increase the stats of a random friend by +1 health. Levelling up the Otter will increase the amount of friends that it gives the +1 health buff to.
+
+Like all Buy pets, the Otter's ability will also activate when an Otter from the shop is merged with an existing Otter, which is the only way to activate the Level 2 and Level 3 effects. If there is only one other pet on the team and the Otter's level 2 or 3 ability is triggered it will still only buff the pet for 1 health once and the extra stats will go to waste.
+
+Pig:4/1
+level_1='''Sell''': Gain +1 {{IconSAP|Gold
+.
+|level_2='''Sell''': Gain +2 {{IconSAP|Gold}}.
+|level_3='''Sell''': Gain +3 {{IconSAP|Gold}}.
+}}
+The '''Pig''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When sold it will grant the player extra {{IconSAP|Gold}} ''(referring to the piggy bank). Levelling up the Pig increases the amount of gold granted upon being sold.
+
+Selling a level 1 pig will reward you with 1 gold for the pet, and 1 extra from the ability, but a level 2 pet will sell for 4 gold because it is level 2, but 2 extra from the ability, and in the same way, selling a level 3 pet will give you 6 gold in total.
+
+Ant:2/2
+level_1='''[[Faint (Trigger)|Faint]]''': Give a random friend +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''[[Faint (Trigger)|Faint]]''': Give a random friend +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''[[Faint (Trigger)|Faint]]''': Give a random friend +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Ant''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the Ant [[Faint (Trigger)|faints]], it buffs the stats of one random friend. Levelling up the Ant increases the stats given by its ability.
+
+Mosquito:2/2
+level_1='''Start of battle''': Deal 1 {{IconSAP|damage|nolink=yes
+to one random enemy.
+|level_2='''Start of battle''': Deal 1 {{IconSAP|damage|nolink=yes}} to two random enemies.
+|level_3='''Start of battle''': Deal 1 {{IconSAP|damage|nolink=yes}} to three random enemies.
+}}
+The '''Mosquito''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. It has subpar stats, and at the start of battle, the Mosquito will deal 1 damage to a random enemy. Levelling up the Mosquito will increase the amount of enemies its ability will target.
+
+Fish:2/3
+level_1='''Level-up''': Give two friends +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Level-up''': Give two friends +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3=No ability.
+}}
+
+The '''Fish''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Upon levelling up the Fish will give 2 random friends a buff to their stats. Levelling up the Fish increases the amount of stats given.
+
+Cricket:1/3
+level_1='''[[Faint (Trigger)|Faint]]''': Summon one 1/1 {{IconSAP|Zombie Cricket|name=Cricket
+.
+|level_2='''[[Faint (Trigger)|Faint]]''': Summon one 2/2 {{IconSAP|Zombie Cricket|name=Cricket}}.
+|level_3='''[[Faint (Trigger)|Faint]]''': Summon one 3/3 {{IconSAP|Zombie Cricket|name=Cricket}}.
+}}
+The '''Cricket''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Cricket faints, it summons a weak {{IconSAP|Zombie Cricket}} in its place. Levelling up the Cricket increases the stats and level of the summoned Zombie Cricket.
+
+Horse:2/1
+level_1='''Friend summoned''': Give it +1 {{IconSAP|attack|nolink=yes
+until next turn.
+|level_2='''Friend summoned''': Give it +2 {{IconSAP|attack|nolink=yes}} until next turn.
+|level_3='''Friend summoned''': Give it +3 {{IconSAP|attack|nolink=yes}} until next turn.
+}}
+The '''Horse''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Whenever a friendly pet fills an empty slot, either by buying them or via an ability, Horse will give them a small amount of attack until next turn. Leveling up the Horse increases the amount of attack it gives to summoned friends.
+
+Horse has a hidden interaction: It can be merged with {{IconSAP|Eagle}} to transform into a 5/5 level 1 {{IconSAP|Hippogriff}}.
+
+Snail:2/3
+level_1='''End turn''': If you lost last battle, give the three nearest friends ahead +1 {{IconSAP|attack|nolink=yes
+.
+|level_2='''End turn''': If you lost last battle, give the three nearest friends ahead +2 {{IconSAP|attack|nolink=yes}}.
+|level_3='''End turn''': If you lost last battle, give the three nearest friends ahead +3 {{IconSAP|attack|nolink=yes}}.
+}}
+'''Snail''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the end of turn, if the player lost the last battle, Snail will give the three nearest friends ahead {{IconSAP|attack|nolink=yes}}. Leveling up Snail increases the amount of attack it gives.
+
+Snail's ability will only trigger if the player ''lost'' the last battle, not if it was a draw. This is indicated by a sparkling effect on the Snail while it's in the shop.
+
+If Snail is bought on turn 1, the "last battle" will be considered a draw.
+
+Crab:4/1
+level_1='''Start of battle''': Gain {{IconSAP|health|nolink=yes
+equal to 25% of the most healthy friend.
+|level_2='''Start of battle''': Gain {{IconSAP|health|nolink=yes}} equal to 50% of the most healthy friend.
+|level_3='''Start of battle''': Gain {{IconSAP|health|nolink=yes}} equal to 75% of the most healthy friend.
+}}
+The '''Crab''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the start of battle the Crab will gain a percentage of health from the healthiest friend. The percentage of health it gain increases as it levels up.
+
+Swan:1/2
+level_1='''Start of turn''': Gain +1 {{IconSAP|gold
+.
+|level_2='''Start of turn''': Gain +2 {{IconSAP|gold}}.
+|level_3='''Start of turn''': Gain +3 {{IconSAP|gold}}.
+}}
+The '''Swan''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. The Swan grants the player extra {{IconSAP|Gold}} at the start of every turn. Levelling up the Swan will increase the amount of Gold that it will grant you. It is basically an upgrade for the '''{{IconSAP|Pig|name=Pigs}}'''
+.
+
+Rat:3/6
+level_1='''Faint''': Summon one 1/1 {{IconSAP|Dirty Rat
+up front for the opponent.
+|level_2='''Faint''': Summon two 1/1 {{IconSAP|Dirty Rat|name=Dirty Rats}} up front for the opponent.
+|level_3='''Faint''': Summon three 1/1 {{IconSAP|Dirty Rat|name=Dirty Rats}} up front for the opponent.
+}}
+The '''Rat''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Rat faints, it summons a level 1 {{IconSAP|Dirty Rat}} at the front of ''the enemy's team''. Leveling up the Rat will increase the amount of Dirty Rats summoned.
+
+Hedgehog:4/2
+level_1='''Faint''': Deal 2 {{IconSAP|damage|nolink=yes
+to ALL pets.
+|level_2='''Faint''': Deal 4 {{IconSAP|damage|nolink=yes}} to ALL pets.
+|level_3='''Faint''': Deal 6 {{IconSAP|damage|nolink=yes}} to ALL pets.
+}}
+The '''Hedgehog''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the Hedgehog faints, it deals damage to all pets in play, regardless of whether they are on the player's or the enemy's team. When leveled up, the Hedgehog will deal more damage with its ability.
+
+Peacock:2/5
+level_1='''Hurt''': Gain +3 {{IconSAP|attack|nolink=yes
+.
+|level_2='''Hurt''': Gain +6 {{IconSAP|attack|nolink=yes}}.
+|level_3='''Hurt''': Gain +9 {{IconSAP|attack|nolink=yes}}.
+}}
+The '''Peacock''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Peacock takes damage, it gains attack. Leveling up the Peacock will increase the amount of attack it gains when hurt.
+
+Flamingo:3/2
+level_1='''Faint''': Give the two nearest friends behind +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Faint''': Give the two nearest friends behind +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''Faint''': Give the two nearest friends behind +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Flamingo''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Flamingo faints it buffs the stats of the two friends directly behind it. Leveling up the Flamingo will increase the strength of the buffs given. The Flamingo will never buff itself, nor will it buff any friend twice. If there are less than 2 friends behind it when it faints, its ability will be wasted.
+
+The {{IconSAP|Mammoth}} is a direct upgrade to the Flamingo, targeting all friends with twice the buff amount upon faint.
+
+Worm:1/4
+level_1='''Start of turn''': Stock one 2-gold {{IconSAP|Apple
+.
+|level_2='''Start of turn''': Stock one 2-gold {{IconSAP|Apple|name=Better Apple|image=Better Apple.png}}.
+|level_3='''Start of turn''': Stock one 2-gold {{IconSAP|Apple|name=Best Apple|image=Best Apple.png}}.
+}}
+The '''Worm''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the start of turn the Worm will stock the food shop with a 2-gold {{IconSAP|Apple}}. Levelling up the Worm increases the stats given by the stocked Apple.
+
+Kangaroo:2/2
+level_1='''Friend ahead attacks''': Gain +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Friend ahead attacks''': Gain +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''Friend ahead attacks''': Gain +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Kangaroo''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the friend ahead of the Kangaroo attacks, the Kangaroo gains a buff to its stats. Leveling up the Kangaroo increases the buff it receives each time its ability is triggered.
+
+Spider:2/2
+level_1='''Faint''': Summon one level 1 [[tier 3]] pet as a 2/2.
+level_2='''Faint''': Summon one level 2 [[tier 3]] pet as a 4/4.
+level_3='''Faint''': Summon one level 3 [[tier 3]] pet as a 6/6.
+The '''Spider''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Spider faints, it summons a random tier 3 pet with set stats. Leveling up the Spider will increase the stats and level of the summoned pet.
+
+Dodo:4/2
+level_1='''Start of battle''': Give 50% of {{IconSAP|Attack|name=attack|nolink=yes
+to nearest friend ahead.
+|level_2='''Start of battle''': Give 100% of {{IconSAP|Attack|name=attack|nolink=yes}} to nearest friend ahead.
+|level_3='''Start of battle''': Give 150% of {{IconSAP|Attack|name=attack|nolink=yes}} to nearest friend ahead.
+}}
+
+The '''Dodo''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of each battle, the Dodo gives the nearest friend in front of it a buff to its attack, equal to a percentage of the Dodo's attack. The percentage of the Dodo's own attack given is increased when the Dodo is leveled up.
+
+Badger:6/3
+level_1='''Faint''': Deal 50% attack {{IconSAP|damage|nolink=yes
+to adjacent pets.
+|level_2='''Faint''': Deal 100% attack {{IconSAP|damage|nolink=yes}} to adjacent pets.
+|level_3='''Faint''': Deal 150% attack {{IconSAP|damage|nolink=yes}} to adjacent pets.
+}}
+
+The '''Badger''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Badger faints, it will deal a percentage of its attack to the pet in front of and behind it, regardless of what team they are on. Levelling up the Badger increases the percentage of attack its ability will deal as damage.
+
+Dolphin:4/3
+level_1='''Start of battle''': Deal 4 {{IconSAP|damage|nolink=yes
+to the lowest health enemy.
+|level_2='''Start of battle''': Deal 4 {{IconSAP|damage|nolink=yes}} to the lowest health enemy. Triggers 2 times.
+|level_3='''Start of battle''': Deal 4 {{IconSAP|damage|nolink=yes}} to the lowest health enemy. Triggers 3 times.
+}}
+The '''Dolphin''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}''' . At the start of battle, the Dolphin will deal 4 damage to the enemy with the lowest health. Levelling up the Dolphin will increase the amount of times its ability triggers.
+
+Giraffe:1/2
+level_1='''Start of turn''': Give the nearest friend ahead +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Start of turn''': Give the nearest two friends ahead +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+|level_3='''Start of turn''': Give the nearest three friends ahead +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Giraffe''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}''' . At the start of every turn, the Giraffe will buff the stats of the friend(s) ahead of it. Levelling up the Giraffe will increase the amount of friends it can target with its ability.
+
+Elephant:3/7
+level_1='''After attack''': Deal 1 {{IconSAP|damage|nolink=yes
+to the nearest friend behind.
+|level_2='''After attack''': Deal 1 {{IconSAP|damage|nolink=yes}} to the nearest friend behind. Triggers 2 times.
+|level_3='''After attack''': Deal 1 {{IconSAP|damage|nolink=yes}} to the nearest friend behind. Triggers 3 times.
+}}
+
+The '''Elephant''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. After the Elephant attacks, it will deal 1 damage to the friend behind it. Levelling up the Elephant will increase the amount of times it hits the friend behind it after attacking.
+
+Camel:3/3
+level_1='''Hurt''': Give the nearest friend behind +1 {{IconSAP|attack|nolink=yes
+and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''Hurt''': Give the nearest friend behind +2 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''Hurt''': Give the nearest friend behind +3 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Camel''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the Camel [[Hurt (Trigger)|is hurt]], it gives a buff to the nearest friend behind it. Levelling up the Camel increases the size of the buff given.
+
+Rabbit:1/2
+level_1='''Friendly ate food''': Give them +1 {{IconSAP|health|nolink=yes
+. Works 3 times per turn.
+|level_2='''Friendly ate food''': Give them +2 {{IconSAP|health|nolink=yes}}. Works 3 times per turn.
+|level_3='''Friendly ate food''': Give them +3 {{IconSAP|health|nolink=yes}}. Works 3 times per turn.
+}}
+
+'''Rabbit''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When a friendly pet eats any [[Food]], including Rabbit itself, Rabbit will give that pet additional health, up to three times per turn. Leveling up Rabbit increases the amount of health given.
+
+Ox:1/3
+level_1='''Friend ahead faints''': Gain {{IconSAP|Melon
+perk and +1 {{IconSAP|attack|nolink=yes}}. Works 1 time per turn.
+|level_2='''Friend ahead faints''': Gain {{IconSAP|Melon}} perk and +1 {{IconSAP|attack|nolink=yes}}. Works 2 times per turn.
+|level_3='''Friend ahead faints''': Gain {{IconSAP|Melon}} perk and +1 {{IconSAP|attack|nolink=yes}}. Works 3 times per turn.
+}}
+The '''Ox''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the nearest friend ahead of Ox faints, Ox will gain {{IconSAP|Melon}} [[Food Perks|Food perk]] and +1 attack. Leveling up Ox will increase the amount of times its ability can trigger per turn.
+
+Dog:3/2
+level_1='''Friend summoned''': Gain +2 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}} until end of battle.
+|level_2='''Friend summoned''': Gain +4 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}} until end of battle.
+|level_3='''Friend summoned''': Gain +6 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}} health until end of battle.
+}}
+The '''Dog''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. Whenever a friend is summoned, the Dog will gain a stat buff. However, the stats will only last until end of battle. Levelling up the Dog will increase the amount of stats gained for each friend summoned.
+
+Sheep:2/2
+level_1='''Faint''': Summon two 2/2 {{IconSAP|Ram|name=Rams
+.
+|level_2='''Faint''': Summon two 4/4 {{IconSAP|Ram|name=Rams}}.
+|level_3='''Faint''': Summon two 6/6 {{IconSAP|Ram|name=Rams}}.
+}}
+The '''Sheep''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Sheep faints, it summons two {{IconSAP|Ram|name=Rams}} with the same level as the Sheep. Levelling up the Sheep increases the stats of the summoned Rams.
+
+Skunk:3/5
+level_1='''Start of battle''': Reduce the highest health enemy by 33% {{IconSAP|health|nolink=yes
+.
+|level_2='''Start of battle''': Reduce the highest health enemy by 66% {{IconSAP|health|nolink=yes}}.
+|level_3='''Start of battle''': Reduce the highest health enemy by 99% {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Skunk''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of battle, the Skunk will reduce the health of the highest health enemy by a percentage of its total health, rounded up. Leveling up the Skunk will increase the percentage number that the enemy's health is reduced by.
+
+Hippo:4/7
+level_1='''Knock out''': Gain +3 {{IconSAP|attack|nolink=yes
+and +3 {{IconSAP|health|nolink=yes}}. Works 3 times per battle.
+|level_2='''Knock out''': Gain +6 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}. Works 3 times per battle.
+|level_3='''Knock out''': Gain +9 {{IconSAP|attack|nolink=yes}} and +9 {{IconSAP|health|nolink=yes}}. Works 3 times per battle.
+}}
+
+The '''Hippo''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Whenever Hippo knocks out an enemy, it gains a hefty amount of attack and health, up to 3 times per battle. Leveling up the Hippo will increase the amount of stats it gains upon a successful knock out.
+
+Bison:4/4
+level_1='''End turn''': If this has a level 3 friend, gain +1 {{IconSAP|attack|nolink=yes
+and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''End turn''': If this has a level 3 friend, gain +2 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''End turn''': If this has a level 3 friend, gain +3 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Bison''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the end of turn, the Bison gains a boost to its stats, but only if there is at least one other level 3 pet on the team. Leveling up the Bison will increase the amount of stats it gains.
+
+A level 3 Bison will '''not''' scale itself.
+
+Blowfish:3/6
+level_1='''Hurt''': Deal 3 {{IconSAP|damage|nolink=yes
+to one random enemy.
+|level_2='''Hurt''': Deal 6 {{IconSAP|damage|nolink=yes}} to one random enemy. 
+|level_3='''Hurt''': Deal 9 {{IconSAP|damage|nolink=yes}} to one random enemy.
+}}
+
+The '''Blowfish''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Blowfish takes damage, it will damage a random enemy. Levelling up the Blowfish increases the amount of damage dealt when hurt.
+
+Turtle:2/5
+level_1='''Faint''': Give {{IconSAP|Melon
+[[Food Perks|perk]] to the nearest friend behind.
+|level_2='''Faint''': Give {{IconSAP|Melon}} [[Food Perks|perk]] to the two nearest friends behind.
+|level_3='''Faint''': Give {{IconSAP|Melon}} [[Food Perks|perk]] to the three nearest friends behind.
+}}
+The '''Turtle''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When Turtle faints, it gives the nearest friend behind it {{IconSAP|Melon}} [[Food Perks|perk]], overriding other [[Food Perks|Food Perk]] or [[Ailments|Ailment]] they had previously. When leveled up, Turtle will give Melon perk to more friends behind.
+
+Squirrel:2/5
+level_1='''Start of turn''': Discount all shop food by 1 {{IconSAP|gold
+.
+|level_2='''Start of turn''': Discount all shop food by 2 {{IconSAP|gold}}.
+|level_3='''Start of turn''': Discount all shop food by 3 {{IconSAP|gold}}.
+}}
+The '''Squirrel''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of each turn, Squirrel will reduce the {{IconSAP|gold}} cost of all [[Foods]] that are currently in the shop. Leveling up the Squirrel will further reduce the costs of the foods.
+
+Penguin:2/3
+level_1='''Start of turn''': Give two level 2 and level 3 friends +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Start of turn''': Give two level 2 and level 3 friends +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''Start of turn''': Give two level 2 and level 3 friends +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Penguin''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of every turn, the Penguin will give a stat buff to two random level 2 or 3 friends. Leveling up the Penguin will increase the amount of stats that are given.
+
+Deer:2/2
+level_1='''Faint''': Summon one 5/3 {{IconSAP|Bus
+with {{IconSAP|Chili}}.
+|level_2='''Faint''': Summon one 10/6 {{IconSAP|Bus}} with {{IconSAP|Chili}}.
+|level_3='''Faint''': Summon one 15/9 {{IconSAP|Bus}} with {{IconSAP|Chili}}.
+}}
+The '''Deer''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Deer faints, it summons a {{IconSAP|Bus}} with {{IconSAP|Chili}}. Levelling up the Deer increases the level and stats of the summoned Bus.
+
+Whale:3/7
+level_1='''Start of battle''': Swallow the nearest friend ahead and release it as level 1 on faint.
+level_2='''Start of battle''': Swallow the nearest friend ahead and release it as level 2 on faint.
+level_3='''Start of battle''': Swallow the nearest friend ahead and release it as level 3 on faint.
+The '''Whale''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the Start of battle, Whale will swallow (knock out) the nearest friend ahead. Then when Whale faints, it will summon that friend at level 1, with identical stats as before it was swallowed, but without any perks. Leveling up the Whale will increase the level of the summoned friend.
+
+Summoned friends are considered "new" pets, with no memory of their old selves before being swallowed. For example if a {{IconSAP|Parrot}} was swallowed, it will not keep the copied abilities when summoned.
+
+Whale is ''not'' considered a '''Faint''' pet, and does not synergize with pets that call for Faint abilities.
+
+Parrot:4/2
+level_1='''End turn''': Copy ability from the nearest pet ahead as level 1 until next turn.
+level_2='''End turn''': Copy ability from the nearest pet ahead as level 2 until next turn.
+level_3='''End turn''': Copy ability from the nearest pet ahead as level 3 until next turn.
+The '''Parrot''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the end of turn, Parrot copies the ability from the nearest friend ahead and reverts back to its original ability when the battle ends. The level of the ability copied is the same as the Parrot's level, regardless of the level of the friend it copied from.
+
+Due to being an '''End turn''' ability, copying another End turn pet will not trigger Parrot again. For example, copying a {{IconSAP|Bison}} won't make the Parrot buff itself.
+
+Scorpion:1/3
+level_1='''Summoned''': Gain {{IconSAP|Peanut
+[[Food Perks|perk]].
+|level_2='''Summoned''': Gain {{IconSAP|Peanut}} [[Food Perks|perk]].
+|level_3='''Summoned''': Gain {{IconSAP|Peanut}} [[Food Perks|perk]].
+}}
+The '''Scorpion''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When summoned, it will gain {{IconSAP|Peanut}} perk, which instantly knocks out any enemy that's hurt by Scorpion. Scorpion's ability does not change on level up.
+
+Crocodile:8/4
+level_1=Start of battle: Deal 8 {{IconSAP|damage|nolink=yes
+to the last enemy.
+|level_2=Start of battle: Deal 8 {{IconSAP|damage|nolink=yes}} to the last enemy. Triggers 2 times.
+|level_3=Start of battle: Deal 8 {{IconSAP|damage|nolink=yes}} to the last enemy. Triggers 3 times.
+}}
+
+The '''Crocodile''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of each battle, the Crocodile deals 8 {{IconSAP|damage|nolink=yes}} to the Pet at the back of the enemy team. Levelling up the Crocodile will increase the amount of times it deals 8 damage to the backmost enemy pet.
+
+Rhino:6/7
+level_1='''Knock out''': Deal 4 {{IconSAP|damage|nolink=yes
+to the first enemy. Double against Tier 1 Pets.
+|level_2='''Knock out''': Deal 8 {{IconSAP|damage|nolink=yes}} to the first enemy. Double against Tier 1 Pets.
+|level_3='''Knock out''': Deal 12 {{IconSAP|damage|nolink=yes}}e to the first enemy. Double against Tier 1 Pets.
+}}
+
+The '''Rhino''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Rhino Knocks out an opponent, the Rhino will deal damage to the first enemy (dealing double damage to Tier 1 Pets). If an enemy is knocked out by the Rhino's ability, the Rhino's ability will trigger again. Levelling up the Rhino will increase the amount of damage its ability deals.
+
+Monkey:1/2
+level_1='''End turn''': Give front-most friendly pet +2 {{IconSAP|attack|nolink=yes
+and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''End turn''': Give front-most friendly pet +4 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''End turn''': Give front-most friendly pet +6 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Monkey''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the end of turn, the Monkey will provide a big stat buff to the front-most friendly pet. Leveling up the Monkey will increase the amount of stats it gives.
+
+Armadillo:4/8
+level_1='''Start of battle''': Give ALL pets +8 {{IconSAP|health|nolink=yes
+.
+|level_2='''Start of battle''': Give ALL pets +16 {{IconSAP|health|nolink=yes}}.
+|level_3='''Start of battle''': Give ALL pets +24 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Armadillo''' is a {{IconSAP|Tier 5}} pet, available in the '''{{IconSAP|Turtle Pack}}'''. At the start of battle, the Armadillo will give a health buff to its friends ''and'' enemies, including itself. Leveling up the Armadillo increases the amount of health it gives.
+
+Cow:4/6
+level_1='''Buy''': Replace shop food with two free {{IconSAP|Milk
+.
+|level_2='''Buy''': Replace shop food with two free {{IconSAP|Better Milk}}.
+|level_3='''Buy''': Replace shop food with two free {{IconSAP|Best Milk}}.
+}}
+
+The '''Cow''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When Cow is bought, it removes all foods from the shop and adds 2 free {{IconSAP|Milk}} that each gives +1 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}. Leveling up the Cow will spawn {{IconSAP|Better Milk}} and then {{IconSAP|Best Milk}}, with increasingly improved stat buffs.
+
+Cow has an additional hidden ability: When given {{IconSAP|Chocolate}}, it will spawn 2 free {{IconSAP|Chocolate Milk}} that only gives +1 {{IconSAP|attack|nolink=yes}} and no health. This ability also improves upon leveling up and spawns Better Chocolate Milk and Best Chocolate Milk.
+
+Seal:3/8
+level_1='''Eats food''': Give three random friends +1 {{IconSAP|attack|nolink=yes
+.
+|level_2='''Eats food''': Give three random friends +2 {{IconSAP|attack|nolink=yes}}.
+|level_3='''Eats food''': Give three random friends +3 {{IconSAP|attack|nolink=yes}}.
+}}
+The '''Seal''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Seal eats [[Food]], it buffs the stats of two random friends. Levelling up the Seal will increase the amount of stats the two random friends will receive.
+
+Rooster:6/4
+level_1='''Faint''': Summon one {{IconSAP|Chick
+with 1 {{IconSAP|health|nolink=yes}} and 50% {{IconSAP|attack|nolink=yes}} of this.
+|level_2='''Faint''': Summon two {{IconSAP|Chick|name=Chicks}} with 1 {{IconSAP|health|nolink=yes}} and 50% {{IconSAP|attack|nolink=yes}} of this.
+|level_3='''Faint''': Summon three {{IconSAP|Chick|name=Chicks}} with 1 {{IconSAP|health|nolink=yes}} and 50% {{IconSAP|attack|nolink=yes}} of this.
+}}
+The '''Rooster''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Rooster faints, it summons a {{IconSAP|Chick}} with the same level as the Rooster, 1 {{IconSAP|health|nolink=yes}} and half the {{IconSAP|attack|nolink=yes}} that the Rooster had when it fainted. Levelling up the Rooster increases the amount of Chicks summoned.
+
+Shark:2/2
+level_1='''Friend faints''': Gain +2 {{IconSAP|attack|nolink=yes
+and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''Friend faints''': Gain +4 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''Friend faints''': Gain +6 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Shark''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Each time one of its friends faints, the Shark gains a moderate amount of stats. Leveling up the Shark will increase the amount of stats it gains.
+
+Turkey:3/4
+level_1='''Friend summoned''': Give it +3 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Friend summoned''': Give it +6 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''Friend summoned''': Give it +9 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Turkey''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When a friend is summoned, the Turkey gives it a buff to its stats. Leveling up the Turkey increases the amount of stats it gives to the summoned friends.
+
+Leopard:10/4
+level_1='''Start of battle''': Deal 50% attack {{IconSAP|damage|nolink=yes
+to one random enemy.
+|level_2='''Start of battle''': Deal 50% attack {{IconSAP|damage|nolink=yes}} to two random enemies.
+|level_3='''Start of battle''': Deal 50% attack {{IconSAP|damage|nolink=yes}} to three random enemies.
+}}
+The '''Leopard''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of battle, the Leopard will deal {{IconSAP|damage|nolink=yes}} to a random enemy, equal to 50% of the Leopard's current {{IconSAP|attack|nolink=yes}}. Leveling up the Leopard will increase the amount of random enemies it will hit with its ability.
+
+Boar:10/6
+level_1=Before attack: Gain +4 [[File:Attack.png|20x20px]] attack and +2 [[File:Health.png|20x20px]] health.
+level_2=Before attack: Gain +8 [[File:Attack.png|20x20px]] attack and +4 [[File:Health.png|20x20px]] health.
+level_3=Before attack: Gain +12 [[File:Attack.png|20x20px]] attack and +6 [[File:Health.png|20x20px]] health.
+The '''Boar''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. Before every attack, the Boar will gain a buff to its stats. Leveling up the Boar will increase the size of the buff.  
+
+The stats the Boar gains through its ability are not permanent, and are not retained outside of battle.
+
+Tiger:6/4
+level_1=The friend ahead repeats their ability in battle as if they were level 1.
+level_2=The friend ahead repeats their ability in battle as if they were level 2.
+level_3=The friend ahead repeats their ability in battle as if they were level 3.
+The '''Tiger''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. While in battle, whenever the nearest pet ahead of the Tiger triggers their ability, they will immediately trigger it again but this time at the same level as the Tiger.
+
+That bad boy works with '''bold texts''', say, '''Hurt''', '''Faint''', '''Friend summoned''', yeah you know the deal. It doesn't work with '''End Turn''' or '''Start of turn''' abilities like {{IconSAP|Giraffe}},{{IconSAP|Monkey}}, or, well, another Tiger.
+
+Friends repeating their abilities won't deplete additional triggers. For example: Each time a friend faints, {{IconSAP|Fly}} would summon 2 {{IconSAP|Zombie Fly|name=Zombie Flies}} but only lose 1 trigger.
+
+Wolverine:5/7
+level_1='''Four friends hurt''': Remove 3 health {{IconSAP|health|nolink=yes
+from all enemies.
+|level_2='''Four friends hurt''': Remove 6 health {{IconSAP|health|nolink=yes}} from all enemies.
+|level_3='''Four friends hurt''': Remove 9 health {{IconSAP|health|nolink=yes}} from all enemies.
+}}
+
+The '''Wolverine''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. The Wolverine removes health from all enemies when enough friends are hurt. Leveling the Wolverine up increases the health removed. Removing health is distinct from damage, will not trigger hurt abilities or be reduced by garlic, and cannot remove health past 1.
+
+Gorilla:7/10
+level_1='''[[Hurt (Trigger)|Hurt]]''': Gain {{IconSAP|Coconut|Coconut perk
+. Works 1 times per turn.
+|level_2='''[[Hurt (Trigger)|Hurt]]''': Gain {{IconSAP|Coconut|Coconut perk}}. Works 2 times per turn.
+|level_3='''[[Hurt (Trigger)|Hurt]]''': Gain {{IconSAP|Coconut|Coconut perk}}. Works 3 times per turn.
+}}
+The '''Gorilla''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the Gorilla [[Hurt (Trigger)|is hurt]], it will gain the {{IconSAP|Coconut}} [[Food Perks|perk]], which completely blocks a single instance of damage. However, this ability only triggers a limited number of times per battle. Levelling up the Gorilla increases the amount of times the Coconut perk can be gained.
+
+Dragon:3/8
+level_1='''Tier 1 friend bought''': Give friends +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}. Works 4 times per turn.
+|level_2='''Tier 1 friend bought''': Give friends +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}. Works 4 times per turn.
+|level_3='''Tier 1 friend bought''': Give friends +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}. Works 4 times per turn.
+}}
+The '''Dragon''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. Every time a Tier 1 pet is bought, the Dragon scales all pets (excluding the Dragon), up to four times per turn. Leveling up the Dragon will increase the amount of stats it gives to other pets when its ability is triggered.
+
+Mammoth:4/12
+level_1='''Faint''': Give all friends +2 {{IconSAP|attack|nolink=yes
+and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''Faint''': Give all friends +4 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''Faint''': Give all friends +6 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Mammoth''' is a [[Tier 6]] [[Pets|Pet]] in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Mammoth faints, it gives all of its friends an increased stat boost. Levelling up the Mammoth will increase the stat boost it provides to all friends.
+
+Cat:4/5
+level_1=Shop food gives two times more attack and health. Works 2 times per turn.
+level_2=Shop food gives three times more attack and health. Works 2 times per turn.
+level_3=Shop food gives four times more attack and health. Works 2 times per turn.
+The '''Cat''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When Cat is on the team, stat effects from [[Food]] such as {{IconSAP|Pear}} and {{IconSAP|Sushi}} will be multiplied up to two times per turn. This multiplication amount will increase when the Cat is leveled up.
+
+Each level 1 Cat will increase stat effects by 100%, level 2 by 200%, and level 3 by 300%. For example, if there are a level 1 Cat and a level 3 Cat on the team, stat effects will be increased by 400%, and buying an {{IconSAP|Apple}} to one pet will give it 1 + 1*400% = +5 attack and +5 health.
+
+Cat will also affect foods that decrease stats such as {{IconSAP|Broccoli}}. With one level 1 Cat, buying a Broccoli will give -2 attack and +6 health.
+
+Cat does not affect {{IconSAP|Chocolate}} and food perks. For example, it will not increase the extra damage granted from a {{IconSAP|Meat Bone}} food perk.
+
+Snake:8/3
+level_1='''Friend ahead attacks''': Deal 5 {{IconSAP|damage|nolink=yes|size=20x20px
+to one random enemy. Works 5 times per turn.
+|level_2='''Friend ahead attacks''': Deal 10 {{IconSAP|damage|nolink=yes|size=20x20px}} to one random enemy. Works 5 times per turn.
+|level_3='''Friend ahead attacks''': Deal 15 {{IconSAP|damage|nolink=yes|size=20x20px}} to one random enemy. Works 5 times per turn.
+}}
+{{distinguish|{{IconSAP|Snake (Chimera)}}|a [[Tokens|Token]] summoned by the '''{{IconSAP|Chimera}}'''.}}
+
+The '''Snake''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the nearest friend ahead of the Snake attacks, it will damage a random enemy. Leveling up the Snake will increase the amount of damage it deals.
+
+Fly:4/4
+level_1='''Friend faints''': Summon one 4/4 {{IconSAP|Zombie Fly|name=fly
+in its place. Works 3 times per turn.
+|level_2='''Friend faints''': Summon one 8/8 {{IconSAP|Zombie Fly|name=fly}} in its place. Works 3 times per turn.
+|level_3='''Friend faints''': Summon one 12/12 {{IconSAP|Zombie Fly|name=fly}} in its place. Works 3 times per turn.
+}}
+The '''Fly''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When a friend faints, it will summon a {{IconSAP|Zombie Fly}} where that pet fainted. This ability can only activate 3 times per turn. Levelling up the Fly increases the stats and level of the summoned Zombie Fly
+
+Fly's ability will not trigger until there are spaces for the Zombie Flies to spawn in. When used with other Faint abilities such as {{IconSAP|Rooster}} or {{IconSAP|Deer}}, it will "wait" until the tokens have been cleared before summoning Zombie Flies.
+
+When a Zombie Fly faints, it will not trigger Fly's ability.

@@ -1,0 +1,56 @@
+Title: Seal
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Seal.png
+|attack/health=3/8
+|tier=5
+|level_1='''Eats food''': Give three random friends +1 {{IconSAP|attack|nolink=yes}}.
+|level_2='''Eats food''': Give three random friends +2 {{IconSAP|attack|nolink=yes}}.
+|level_3='''Eats food''': Give three random friends +3 {{IconSAP|attack|nolink=yes}}.
+}}
+The '''Seal''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Seal eats [[Food]], it buffs the stats of two random friends. Levelling up the Seal will increase the amount of stats the two random friends will receive. 
+
+==Strategy==
+Seal is a Pet that fits in into [[Food Pets|Food teams]] perfectly.
+
+Seal synergizes with {{IconSAP|Cat}} as it'll gain a multiplicative buff from Food while buffing other animals, allowing it to get stronger faster. 
+
+Seal also synergizes with {{IconSAP|Rabbit}}, at it will gain extra health from the Food. 
+
+Some other Pets that can be effectively run with a Seal are the {{IconSAP|Squirrel}} and the {{IconSAP|Sauropod}}. These pets decrease the effective cost of shop food and can even create a net gain of {{IconSAP|Gold}} if both are run on the same team and with enough experience.  
+
+===Tips and Tricks===
+* You could feed your Seal the same [[Food Perks|Food perk]] so it buffs your pets while still keeping the perk you would like (i.e. feeding your Seal with {{IconSAP|Garlic}} perk more Garlic.)
+*It is recommended feeding {{IconSAP|Chocolate}} to your Seal when it is '''1 experience away''' from leveling up. This is because the buff your Seal would give is based on the level it would be at post Chocolate.
+*Though risky, it might sometimes be better to buy Food that has random targeting (e.g. {{IconSAP|Pizza}}), as it has a chance to buff '''the Seal and other Pets'''.
+
+==Trivia==
+
+==Gallery==
+<gallery>
+Seal.png|The standard sprite of the Seal
+Seal Classic.png|The classic sprite of the Seal
+SealPray.png|The "SealPray" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+{{History
+|0.27:
+*Changed the Seal's ability from: '''"Eats food''': Give two random friends +1/+1, +2/+2, +3/+3." to "'''Eats food''': Give three random friends +1/+2/+3 attack." 
+*Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Food based abilities]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]

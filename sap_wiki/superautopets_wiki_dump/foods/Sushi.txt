@@ -1,0 +1,40 @@
+Title: Sushi
+Category: Food
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Sushi.png
+|tier=5
+|effect=Give three random pets +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Sushi''' is a {{IconSAP|Tier 5}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Buying a Sushi gives 3 random pets +1/+1. If there is only 1 or 2 pet(s) on the team then they gain with +1/+1 with the other 1 or 2 buff(s) being wasted.
+
+
+== Strategy ==
+Sushi has a wide reach over multiple of your pets so using it with multiple {{IconSAP|Seal}}s gives a high amount of stats. Although, even with 1 Seal it is often worth buying as there's a high (if you only have 3 pets then 100%) chance for the seal to get hit.
+
+The Sushi is often not worth buying if you do not have a food build that benefits from wide scaling.
+
+==Trivia==
+
+== Gallery ==
+<gallery>
+Sushi.png|The standard sprite of the Sushi
+File:Sushi Classic.png|The classic sprite of the Sushi
+</gallery>
+
+==History==
+{{History
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Stubs]]

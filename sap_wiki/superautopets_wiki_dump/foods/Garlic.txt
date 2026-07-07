@@ -1,0 +1,40 @@
+Title: Garlic
+Category: Food
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Garlic.png
+|tier=3
+|effect=Give one pet the Garlic [[Food Perks|perk]].
+Take 2 less {{IconSAP|damage|nolink=yes}}. It can't be reduced to less than 2.
+}}
+
+The '''Garlic''' is a {{IconSAP|Tier 3}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a pet Garlic will give it the Garlic [[Food Perks|perk]]. A pet with Garlic perk will take 2 less damage from all sources, although damage can't be reduced below 2. 
+
+==Strategy==
+Garlic is an early game defensive perk that can stay useful until the end of the game. The damage reduction can be crippling against early turn enemies with low attack. Dumping stats onto a single pet then giving it Garlic is a strong strategy that has next to no counters until {{IconSAP|Skunk}} and {{IconSAP|Scorpion}} are available.
+
+Despite falling off in later turns since the damage reduction won't be as substantial, it's still a useful perk even when compared to {{IconSAP|Melon}}. Garlic is still good at reducing repeated chip damage such as {{IconSAP|Blowfish}}, {{IconSAP|Snake}}, or summon teams. Even in end game, it's important to consider that a 50/50 pet with Garlic and a 50/50 with Melon will still trade equally and knock each other out after 2 hits.
+
+==Trivia==
+
+==Gallery==
+<gallery>
+Garlic.png|The standard sprite of the Garlic
+Garlic Classic.png|The classic sprite of the Garlic
+</gallery>
+
+==History==
+{{History
+|0.40:
+*Changed the Garlic's perk ability from "Take 2 less damage." to "Takes 2 less damage. It can't be reduced to less than 2."
+*Removed from '''Puppy pack'''
+}}
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Food Perk]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]

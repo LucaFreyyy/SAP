@@ -1,0 +1,51 @@
+Title: Spider
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=2/2
+|tier=2
+|level_1='''Faint''': Summon one level 1 [[tier 3]] pet as a 2/2. 
+|level_2='''Faint''': Summon one level 2 [[tier 3]] pet as a 4/4. 
+|level_3='''Faint''': Summon one level 3 [[tier 3]] pet as a 6/6. 
+}}
+The '''Spider''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Spider faints, it summons a random tier 3 pet with set stats. Leveling up the Spider will increase the stats and level of the summoned pet.  
+
+==Strategy==
+Spider is a summoner that grants you access to pets from 1 tier higher than Spider itself. During battle, it has 60% chance of spawning a 2/2 with no combat abilities, 20% chance of spawning pets with good abilities ({{IconSAP|Camel}} and {{IconSAP|Sheep}}), and 20% chance of pets with potentially harmful abilities ({{IconSAP|Elephant}} and {{IconSAP|Badger}}). For early summon builds with {{IconSAP|Horse}}, giving {{IconSAP|Honey}} to Spider will spawn the {{IconSAP|Bee}} in front of the tier 3 pet, and if this was a {{IconSAP|Dog}} or {{IconSAP|Ox}}, the Bee would trigger their abilities and improve the battle capability of Spider as a whole. The abilities of Elephant and Badger can also be negated by putting a '''Hurt''' pet behind Spider, such as {{IconSAP|Peacock}}.
+
+It's also commonly used with {{IconSAP|Sleeping Pill}} during shop tier 2 (turn 3 and 4) in order to gain tier 3 pets without requiring level up rewards. Alternatively, Spider can be leveled up first and then Pilled to immediately get a high leveled tier 3. The tradeoff is these pets will have below average stats, though the high level abilities are almost always worth it, and the lower stats can be bypassed by combining them with a copy from the shop.
+
+==Game Sound==
+[[File:Spider.wav]]
+
+==Trivia==
+The spider can be used for the lootbox challenge. The goal of which is to buy and faint 4 spiders by pilling a {{IconSAP|Hedgehog}} and winning with the pets it gives you. An alternative to this type of lootbox challenge is where you can get to sell or faint any of the pets you get out of the Spiders.
+
+==Gallery==
+<gallery>
+Spider.png|The standard sprite of the Spider
+Spider Classic.png|The classic sprite of the Spider
+</gallery>
+
+==History==
+{{History
+|0.27:
+*Removed from the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''.
+|0.22:
+*Changed the Spider's ability from always summoning a 2/2 pet to summon the pet as a 2/2, 4/4, 6/6.
+|0.14:
+*Friend is now summoned with the same level as the Spider.
+*Summoned friend stats no longer scale with the Spider's level (will always be 2/2).
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Summoning based abilities]]
+[[Category:Friend summoning abilities]]

@@ -1,0 +1,55 @@
+Title: Otter
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health= 1/4
+|tier=1
+|ID= 51
+|level_1='''Buy''': Give one random friend +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Buy''': Give two random friends +1 {{IconSAP|health|nolink=yes}}.
+|level_3='''Buy''': Give three random friends +1 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Otter''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When bought, the Otter will increase the stats of a random friend by +1 health. Levelling up the Otter will increase the amount of friends that it gives the +1 health buff to.
+
+Like all Buy pets, the Otter's ability will also activate when an Otter from the shop is merged with an existing Otter, which is the only way to activate the Level 2 and Level 3 effects. If there is only one other pet on the team and the Otter's level 2 or 3 ability is triggered it will still only buff the pet for 1 health once and the extra stats will go to waste. 
+
+==Strategy==
+
+Sadly, Otter is quite bad compared to the other stat-boosting pets in {{IconSAP|Turtle Pack}} {{IconSAP|Tier 1}}. 3 gold for 1 health (only 2 gold if you buy-sell it) is very inefficient compared to {{IconSAP|Beaver}} or {{IconSAP|Duck}} or even {{IconSAP|Apple}}, 3 gold for double the stats of an Otter. On top of this, its mediocre 1/3 statline often loses in the early game, losing 1v1 to 3/2 and 2/3 pets. 
+
+If you see a pair of Otters on turn 1, they are still viable! Using Otter to buff Otter is often its best niche, as a self-scaling buff target, a potential level 2 to be buffed by {{IconSAP|Penguin}} or a potential level 3 to buff {{IconSAP|Bison}}. In either case, the additional stats that the Otter provides itself need to do a lot of heavy lifting to make up for its lack of an ability and weakness to {{IconSAP|Rhino}} !
+
+==Game Sound==
+[[File:Otter.wav]]
+
+==Trivia==
+
+*The otter's classic sprite shows them holding a seashell.
+
+==Gallery==
+<gallery>
+Otter.png|The standard sprite of the Otter
+Otter Classic.png|The classic sprite of the Otter
+</gallery>
+
+==History==
+{{History
+|0.40:
+*Changed the Otter's base stats from 1/3 to 1/4
+|0.27:
+*Changed the Otter's base stats from 1/2 to 1/3.
+*Changed the Otter's ability from: "'''Buy''': Give 1/2/3 random pets +1/+1" to "'''Buy''': Give 1/2/3 random pets +1 health".
+|0.18: Changed the Otter's ability from: "'''Buy''': Give a random pet +1/+1, +2/+2, +3/+3" to: "'''Buy''': Give 1/2/3 random pets +1/+1."
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Buy abilities]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]

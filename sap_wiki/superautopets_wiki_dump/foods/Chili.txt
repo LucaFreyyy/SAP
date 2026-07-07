@@ -1,0 +1,41 @@
+Title: Chili
+Category: Food
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Chili.png
+|tier=5
+|effect=Give one pet the Chili [[Food Perks|perk]]. Attack second enemy for 5 {{IconSAP|damage|nolink=yes}}.
+}}
+'''Chili''' is a {{IconSAP|Tier 5}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|pet]] a Chili will give that pet the Chili [[Food Perks|perk]]. Every time a pet with Chili perk attacks, it will deal an additional 5 damage to the pet in second space of the enemy's team. If there are no enemies in that space, Chili will not deal damage.
+
+== Strategy ==
+Chili acts as chip damage to pets behind the main target. It is useful for countering second position supporters such as {{IconSAP|Snake}} or {{IconSAP|Tiger}}, breaking backline {{IconSAP|Melon}} perks before they become a threat once they're in front, and especially useful against summoners such as {{IconSAP|Rooster}} or {{IconSAP|Fly}} to sweep all the high attack but low health tokens.
+
+When paired with {{IconSAP|Panther}}, Chili becomes even scarier with 2x/3x/4x damage to the second enemy. A level 3 Panther with Chili will deal ''20 damage'' to the second enemy.
+
+==Trivia==
+it is called plash attack before
+
+== Gallery ==
+<gallery>
+Chili.png|The standard sprite of the Chili
+Chili Classic.png|The classic sprite of the Chilli
+</gallery>
+
+==History==
+{{History
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Food Perk]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Stubs]]

@@ -1,0 +1,46 @@
+Title: Cat
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=4/5
+|tier=6
+|level_1=Shop food gives two times more attack and health. Works 2 times per turn.
+|level_2=Shop food gives three times more attack and health. Works 2 times per turn.
+|level_3=Shop food gives four times more attack and health. Works 2 times per turn.
+}}
+The '''Cat''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When Cat is on the team, stat effects from [[Food]] such as {{IconSAP|Pear}} and {{IconSAP|Sushi}} will be multiplied up to two times per turn. This multiplication amount will increase when the Cat is leveled up.
+
+Each level 1 Cat will increase stat effects by 100%, level 2 by 200%, and level 3 by 300%. For example, if there are a level 1 Cat and a level 3 Cat on the team, stat effects will be increased by 400%, and buying an {{IconSAP|Apple}} to one pet will give it 1 + 1*400% = +5 attack and +5 health.
+
+Cat will also affect foods that decrease stats such as {{IconSAP|Broccoli}}. With one level 1 Cat, buying a Broccoli will give -2 attack and +6 health.
+
+Cat does not affect {{IconSAP|Chocolate}} and food perks. For example, it will not increase the extra damage granted from a {{IconSAP|Meat Bone}} food perk.
+
+==Strategy ==
+Cat is a late game scalers that can fit into almost any team. By the time Cat becomes available, your team will most likely be set in stone and all there's left to do is buying foods and leveling up, in which case Cat will make each food more powerful and push the team over the finish line.
+
+It's best hunting for high value foods such as {{IconSAP|Pear}}, {{IconSAP|Sushi}}, and {{IconSAP|Pizza}} to gain the most out of Cat's ability. Due to this, Cat's best enablers are actually gold generators like {{IconSAP|Swan}} that will assist greatly in the food search, or pets that directly put foods into the shop such as {{IconSAP|Worm}} and {{IconSAP|Cow}}. Cat Cow is an evergreen combo since each Cow is at minimum +4/+8 to the team due to the Cats multiplication of its {{IconSAP|Milk}}.
+
+One niche strategy with Cat beside scaling the team is using {{IconSAP|Canned Food}} to scale the shop instead. This can be an unexpected combo with potential to be very strong, but extremely hard to pull off.
+
+==Gallery==
+<gallery>
+Cat.png|The standard sprite of the Cat
+Cat Classic.png|The classic sprite of the Cat
+</gallery>
+
+==Version History ==
+{{History
+|0.36: Changed the Cat's ability from: "Food gives double attack and health. Works 2 times per turn." to "Shop food gives two times more attack and health. Works 2 times per turn."
+|0.27: Changed the Cat's ability from: "Food with health and attack effects are doubled." to: "Food gives double attack and health. Works 2 times per turn."
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]
+[[Category:Food based abilities]]

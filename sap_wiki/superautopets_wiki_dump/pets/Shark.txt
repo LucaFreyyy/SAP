@@ -1,0 +1,51 @@
+Title: Shark
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Shark.png
+|attack/health=2/2
+|tier=5
+|level_1='''Friend faints''': Gain +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''Friend faints''': Gain +4 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''Friend faints''': Gain +6 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Shark''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Each time one of its friends faints, the Shark gains a moderate amount of stats. Leveling up the Shark will increase the amount of stats it gains.  
+
+==Strategy==
+Shark is a pet that gets stronger as the battle progresses, similar to {{IconSAP|Kangaroo}} or {{IconSAP|Camel}} combos from earlier tiers. A back-most Shark will have at minimum 4 faint triggers and gain +8/+8, so it can already be a 10/10 on the turn it's bought. Shark fits nicely in summon teams that can feed it with even more faint triggers. It also gets some extra benefits from {{IconSAP|Sleeping Pill|name=Pilling}} pets during shop phases, and will be very happy to see {{IconSAP|Turtle}} Pill and {{IconSAP|Mammoth}} Pill. 
+
+Shark is a good counter to {{IconSAP|Skunk}}, it can either tank the health reduction then gain them back during battle, or dodge the Skunk completely due to starting out at lower health. However since it's usually placed behind and has low base stats, it's very susceptible to {{IconSAP|Crocodile}} as well as other snipers.
+
+==Trivia==
+
+==Gallery==
+<gallery>
+Shark.png|The standard sprite of the Shark
+Shark Classic.png|The classis sprite of the Shark
+</gallery>
+
+==History==
+{{History
+|0.30:
+* Changed the Shark's base stats from 4/2 to 2/2.
+* Changed the Shark's ability from "'''Friend faints''': Gain +1/+2 , +2/+4, +3/+6. Double outside battle." to "'''Friend faints''': Gain +2/+2 , +4/+4, +6/+6."
+|0.22: 
+*Changed the Shark's base stats from 4/4 to 4/2.
+*Changed the Shark's ability from: "'''Friend faints''': Gain +2/+2, +4/+4, +6/+6." to "'''Friend faints''': Gain +1/+2, +2/+4, +3/+6. Double outside battle" 
+|0.18: Changed the Shark's ability from: "'''Friend faints''': Gain +2/+1, +4/+2, +6/+3." to: “'''Friend faints''': Gain +2/+2, +4/+4, +6/+6.”  
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Friend faints ability]]
+[[Category:Buffing based abilities]]
+[[Category:Self buffing abilities]]
+[[Category:Scaling based abilities]]
+[[Category:Self scaling abilities]]

@@ -1,0 +1,59 @@
+Title: Dodo
+Category: Pet
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=4/2
+|tier=3
+|level_1='''Start of battle''': Give 50% of {{IconSAP|Attack|name=attack|nolink=yes}} to nearest friend ahead.
+|level_2='''Start of battle''': Give 100% of {{IconSAP|Attack|name=attack|nolink=yes}} to nearest friend ahead.
+|level_3='''Start of battle''': Give 150% of {{IconSAP|Attack|name=attack|nolink=yes}} to nearest friend ahead.
+}}
+
+The '''Dodo''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of each battle, the Dodo gives the nearest friend in front of it a buff to its attack, equal to a percentage of the Dodo's attack. The percentage of the Dodo's own attack given is increased when the Dodo is leveled up.
+
+==Strategy==
+Dodo can be thought of as a 2-in-1 pet since any attack stats that go into Dodo also goes to the friend in front of it. It has good combos at almost all stages of the game and is a good target to dump stats onto and kept for later. A level 2 Dodo already gives away 100% of its attack stats, and often doesn't need to be leveled further.
+
+Some Dodo combos include:
+* {{IconSAP|Crab}}: A high stats Dodo will give both its attack and health to Crab and turn it into a stronger copy of Dodo.
+* Dodo itself: Can be chained to pass more and more attack forward.
+* {{IconSAP|Rhino}}: The extra attack can help it knock out enemies and trigger the ability.
+* {{IconSAP|Rooster}}, {{IconSAP|Leopard}}: Their abilities get stronger with higher attacks, which Dodo can provide instantly without having to scale them.
+
+==Game Sound==
+[[File:Dodo.wav]]
+
+==Trivia==
+*The Dodo is tied with the {{IconSAP|Quetzalcoatlus}} as the lowest tier extinct pet, with the next lowest extinct pet being the {{IconSAP|Triceratops}} at Tier 5. 
+*Dodo is likely the pet that has faced the most substantial nerfs, originally it would give 100% of its attack to the friend ahead and upon level up it would give 100% of its attack to the next two friends ahead.
+
+==Gallery==
+<gallery>
+Dodo.png|The standard sprite of the Dodo
+Dodo Classic.png|The classic sprite of the Dodo
+</gallery>
+
+==History==
+{{History
+|0.35:
+*Changed the Dodo's base stats from 4/2 to 3/2
+|0.27:
+*Changed the Dodo's base stats from 3/3 to 4/2.
+*Changed the Dodo's ability from: "'''Start of battle''': Give 33%, 66%, 100% of attack to nearest friend ahead." to "'''Start of battle''': Give 50%, 100%, 150% of attack to nearest friend ahead." 
+*Changed the Dodo's tier from {{IconSAP|Tier 2}} to {{IconSAP|Tier 3}}.
+|0.24:
+* Changed the Dodo's base stats from 2/3 to 3/3.
+* Damage multiplier changed from 0.5x/1x/1.5x to 0.33x/0.66x/1x.
+|0.12: Dodos can now only target 1 minion (pet), but gain a damage multiplier (0.5x/1x/1.5x).
+}}
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:Start of battle abilities]]
+[[Category:Buffing based abilities]]
+[[Category:Friend buffing abilities]]

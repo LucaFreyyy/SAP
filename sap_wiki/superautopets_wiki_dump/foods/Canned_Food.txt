@@ -1,0 +1,40 @@
+Title: Canned Food
+Category: Food
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Canned_Food.png
+|tier=4
+|effect=Give all current and future shop pets +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+}}
+'''Canned Food''' is a {{IconSAP|Tier 4}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. When bought, instead of giving stats to pets currently on the team, it gives permanent +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}} to all current ''and future'' shop pets.
+
+== Strategy ==
+Canned Food, or simply known as "Can", is a food that supports pivoting. It's an {{IconSAP|Apple}} for any pet that you might put on the team later, even ones that haven't shown up yet such as tier 5 and 6 pets, giving them a head start in scaling. Another way to conceptualize its strength is if the entire team will eventually be replaced by high tier pets, then each Can is 3 gold for +5/+5. It pairs well with pivot pets such as {{IconSAP|Turkey}}, {{IconSAP|Lobster}}, and {{IconSAP|Chicken}}.
+
+Since the buffs can accumulate, buying more Cans will make the shop bigger and bigger. The effect works with {{IconSAP|Cat}}'s ability, making Cat Can a hard to pull off, but extremely rewarding strategy that can max out the stats of all shop pets.
+
+==Trivia==
+*The Canned Food is the first food to affect Shop pets.
+
+== Gallery ==
+<gallery>
+Canned_Food.png|The sprite of the Canned Food
+Canned Food Old.png|The old sprite of the Canned Food
+Canned Food Classic.png|The classic sprite of the Canned Food
+</gallery>
+
+==History==
+{{History
+|0.22: Changed the Canned Food from "Give all current and future shop pets +2/+1" to "Give all current and future shop pets +1/+1"
+|0.14: Changed the Canned Food from "Give all current and future shop pets +2/+2" to "Give all current and future shop pets +2/+1"
+}}
+
+
+{{Navbox Food}}
+[[Category:Tier 4]]
+[[Category:Food]]
+[[Category:Turtle Pack]]
+[[Category:Puppy Pack]]

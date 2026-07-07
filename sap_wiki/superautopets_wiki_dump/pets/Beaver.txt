@@ -1,0 +1,56 @@
+Title: Beaver
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|tier= 1
+|attack/health= 3/2
+|ID= 3
+|level_1= Sell: Give two random friends +1 {{IconSAP|attack|nolink=yes}}.
+|level_2= Sell: Give two random friends +2 {{IconSAP|attack|nolink=yes}}.
+|level_3= Sell: Give two random friends +3 {{IconSAP|attack|nolink=yes}}.
+}}
+
+The '''Beaver''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}''' and the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''. When the Beaver is sold, it will give buff the attack of 2 friends. The friends buffed by the Beaver are chosen at random; however, the same friend will never be buffed twice. If there is only one friend left after selling the Beaver, it will buff the remaining friend only once. Levelling up the Beaver increases the amount of attack given to each of the 2 friends. 
+
+== Strategy ==
+The strength of the Beaver lies within its ability to scale by being sold, providing 2 points of permanent attack and an early 3/2 stat-line for the net cost of 2 gold.  While not having an ability that benefits combat, the Beaver is relatively viable round one option due it's high attack allowing it to trade with pets with the 2/3 base stats as well as it's relative safety regarding {{IconSAP|Mosquito}} or {{IconSAP|Tennis Ball}} snipes compared to something like the {{IconSAP|Pig}}. 
+
+Early Tier 1 pets that are intended to be kept for a long time will highly benefit from being paired with the Beavers early scaling, as their abilities are far more relevant in the mid and late game compared to other tier 1 pets.  
+
+Pets that provide benefits from being sold aren't super compatible with the Beaver, as they don't benefit from the permanent attack bonus the Beaver provides. An early example of this is the {{IconSAP|Otter}} as its permanent Health bonus to a random pet would not benefit a Beaver that benefits from being sold. This can be avoided by purchasing the Otter before purchasing the Beaver. 
+
+Beaver is fantastic in conjunction with {{IconSAP|Duck}}, evening out the statlines of pets that were buffed by your duck. Beaver gives a fantastic edge to pets that benefit from attack, and allow them to get off the ground faster - in {{IconSAP|Turtle Pack}}, this typically means {{IconSAP|Ox}}, {{IconSAP|Badger}} and {{IconSAP|Dodo}}
+
+Apart from the early game, the Beaver highly benefits the [[Buy-sell Pets|Buy/Sell]] archetype. Pets such as the {{IconSAP|Dragon}}, {{IconSAP|Buffalo}} and {{IconSAP|Shrimp}} benefit from the Beaver as it being sold enables their abilities, as well as providing 2 extra points of permanent attack across the team. 
+
+== Game Sound ==
+[[File:Beaver.wav]]
+
+== Gallery ==
+<gallery>
+Beaver.png|The standard sprite of the Beaver
+Beaver Classic.png|The classic sprite of the Beaver
+</gallery>
+
+== History ==
+
+{{History
+|0.27: 
+*Changed the Beaver's ability from: "'''Sell''': Give two random friends +1/+2/+3 health" to "'''Sell''': Give two random friends +1/+2/+3 attack" to: "'''Sell''': Give two random friends +1/+2/+3 health."
+|0.18: Changed the Beaver's base stats from 2/2 to 3/2.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Puppy Pack]]
+[[Category:Sell ability]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]

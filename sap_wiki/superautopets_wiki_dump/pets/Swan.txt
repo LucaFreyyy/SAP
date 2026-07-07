@@ -1,0 +1,42 @@
+Title: Swan
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=1/2
+|tier=2
+|level_1='''Start of turn''': Gain +1 {{IconSAP|gold}}.
+|level_2='''Start of turn''': Gain +2 {{IconSAP|gold}}.
+|level_3='''Start of turn''': Gain +3 {{IconSAP|gold}}.
+}}
+The '''Swan''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. The Swan grants the player extra {{IconSAP|Gold}} at the start of every turn. Levelling up the Swan will increase the amount of Gold that it will grant you. It is basically an upgrade for the '''{{IconSAP|Pig|name=Pigs}}'''
+.
+== Strategy ==
+
+* The Swan is a commonly used Pet, as it provides extra {{IconSAP|Gold}}, which is considered a great ability for a Tier 2 Pet. When bought, it is most likely going to be one of the pets that will stay longer than other tier 2s, as extra gold generation is still useful later in the game.
+
+*The Swan is a great pet, but it does have downsides, as it is a 1/2. You can try to buff it with a {{IconSAP|Monkey}} or a {{IconSAP|Penguin}}, but most of the time you would rather have stats on something else. Swan is especially good with {{IconSAP|Dragon}}, as it gives you two extra gold to find your tier 1s.
+
+==Game Sound==
+[[File:Swan.wav]]
+
+== Gallery ==
+<gallery>
+Swan.png|The standard sprite of the Swan 
+Swan Classic.png|The classic sprite of the Swan
+</gallery>
+
+== History ==
+{{History
+|0.16: 
+*Changed stats to 1/3.
+}}
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Start of turn abilities]]
+[[Category:Gold-based ability]]

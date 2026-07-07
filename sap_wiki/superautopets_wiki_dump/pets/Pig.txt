@@ -1,0 +1,53 @@
+Title: Pig
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health= 4/1
+|tier= 1
+|ID= 59
+|level_1='''Sell''': Gain +1 {{IconSAP|Gold}}.
+|level_2='''Sell''': Gain +2 {{IconSAP|Gold}}.
+|level_3='''Sell''': Gain +3 {{IconSAP|Gold}}.
+}}
+The '''Pig''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When sold it will grant the player extra {{IconSAP|Gold}} ''(referring to the piggy bank). Levelling up the Pig increases the amount of gold granted upon being sold.
+
+Selling a level 1 pig will reward you with 1 gold for the pet, and 1 extra from the ability, but a level 2 pet will sell for 4 gold because it is level 2, but 2 extra from the ability, and in the same way, selling a level 3 pet will give you 6 gold in total.
+
+==Strategy==
+
+The Pig is a great example of how the value of your gold increases as your run progresses. If you're able to, levelling up a Pig to level 2 can enable you to hold onto the solid 6/3 body for multiple turns, and sell it to use the gold on higher tier, more powerful pets. Typically you want to save level 2 Pig for an odd turn, like turn 5 or 7, since the new shop tier has just unlocked and the pig gold can now find far more valuable units than it could last turn. 
+
+Thus, Pig is a strong pivoting tool that allows you to bring less useful gold into the future, while still getting value out of its chaotic statline that can often clear the way for one of your bigger pets to sweep through a fight!
+
+==Game Sound==
+[[File:Pig.wav]]
+
+==Trivia==
+*The scientific name for pig is "Sus scrofa domesticus".
+
+==Gallery==
+<gallery>
+Pig.png|The standard sprite of the Pig
+Pig Classic.png|The classic sprite of the Pig
+</gallery>
+
+==History==
+{{History
+|0.27: 
+*Removed from the '''{{IconSAP|Puppy Pack}}'''.
+|0.18: 
+*Changed the Pig's base stats from 3/1 to 4/1.
+|0.14: 
+*Changed the Pig's base stats to 3/1.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Sell ability]]
+[[Category:Gold-based ability]]

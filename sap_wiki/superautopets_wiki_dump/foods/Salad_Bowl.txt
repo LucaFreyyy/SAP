@@ -1,0 +1,33 @@
+Title: Salad Bowl
+Category: Food
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=SaladBowl.png
+|tier=3
+|effect=Give two random pets +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+}}
+The Salad Bowl is a {{IconSAP|Tier 3}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Buying a Salad Bowl gives 2 random pets +1/+1. The {{IconSAP|Sushi}} or the {{IconSAP|Pizza}} could be considered direct upgrades to the Salad Bowl.
+
+
+== Strategy ==
+==Trivia==
+
+== Gallery ==
+<gallery>
+Salad Bowl.png|The standard sprite of the Salad Bowl
+Salad Bowl Classic.png|The classic sprite of the Salad Bowl
+</gallery>
+
+==History==
+{{History
+|0.40: Removed from '''Puppy pack'''
+}}
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:Stubs]]

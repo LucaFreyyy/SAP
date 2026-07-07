@@ -1,0 +1,50 @@
+Title: Gorilla
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=7/10
+|tier=6
+|level_1='''[[Hurt (Trigger)|Hurt]]''': Gain {{IconSAP|Coconut|Coconut perk}}. Works 1 times per turn.
+|level_2='''[[Hurt (Trigger)|Hurt]]''': Gain {{IconSAP|Coconut|Coconut perk}}. Works 2 times per turn.
+|level_3='''[[Hurt (Trigger)|Hurt]]''': Gain {{IconSAP|Coconut|Coconut perk}}. Works 3 times per turn.
+}}
+The '''Gorilla''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the Gorilla [[Hurt (Trigger)|is hurt]], it will gain the {{IconSAP|Coconut}} [[Food Perks|perk]], which completely blocks a single instance of damage. However, this ability only triggers a limited number of times per battle. Levelling up the Gorilla increases the amount of times the Coconut perk can be gained.
+
+
+==Strategy==
+With the Custom and Weekly Packs, the Gorilla can be paired with a {{IconSAP|Pepper}}, meaning that it will always trigger its ability, gaining Coconut, guaranteeing that it will be able to attack at least 3 times without dying. This is opposed to giving it {{IconSAP|Melon}}, which runs the risk of the Gorilla not taking damage or taking enough damage that it dies in one hit ({{IconSAP|Salt}}, {{IconSAP|Fortune Cookie}} or {{IconSAP|Sword Fish}}) and therefore not gaining Coconut safely.
+
+If paired with a {{IconSAP|Leech}}, the Gorilla can get permanent Coconut, and still have triggers in the battle.
+
+One fun yet impractical setup is to put a {{IconSAP|Parrot}} behind the Gorilla, and a Leech behind the Parrot. The Parrot will gain permanent Coconut, regardless of if the Leech triggers before the Parrot.
+
+==Trivia==
+
+*Using a Leech, Parrot, Gorilla, and a couple of [[Seagull|Seagulls]], you can get permanent Coconut perk on any pet you want, detailed in this [https://www.reddit.com/r/superautopets/comments/vq4ij1/full_team_of_5050s_with_coconut_armor_in_shop/ reddit post].
+
+==Gallery==
+<gallery>
+Gorilla.png|The standard sprite of the Gorilla
+Gorilla Classic.png|The classic sprite of the Gorilla
+GorillaFire.png|The "GorillaFire" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+
+==History==
+{{History
+|0.27: 
+*Changed the Gorilla's base stats from 6/9 to 7/10.
+*Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]
+[[Category:Food perk abilities]]
+[[Category:Hurt ability]]

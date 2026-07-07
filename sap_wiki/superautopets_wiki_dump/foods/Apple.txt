@@ -1,0 +1,43 @@
+Title: Apple
+Category: Food
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Apple.png
+|tier=1
+|ID= 0
+|effect=Give one pet +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Apple''' is a {{IconSAP|Tier 1}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''', the '''{{IconSAP|Puppy Pack}}''' and the '''{{IconSAP|Golden Pack}}'''. When a pet is fed an Apple, it receives +1 attack and +1 health. The {{IconSAP|Pear}}, {{IconSAP|Lasagna}} and {{IconSAP|Chicken Leg}} are generally considered to be direct upgrades to it.
+
+The {{IconSAP|Mouse}} and {{IconSAP|Worm}} will stock an Apple when sold/at the start of turn, at level 2 they will stock a {{IconSAP|Better Apple|nolink=yes}} and at level 3 they will stock a {{IconSAP|Best Apple|nolink=yes}} that give +2/+2 and +3/+3 respectively.
+==Strategy==
+Generally, the Apple is worth the 3 {{IconSAP|Gold}} cost during the early rounds since the stat boost is often what dictates a win, especially if it is being fed to a Pet that you plan to have stick around for a while and you do not want or need to buy many Pets from the shop. 
+
+Can be stocked for free by a Mouse when sold and for 2 gold by a {{IconSAP|Worm}} at the start of turn.
+
+If {{IconSAP|Jerboa}} is in the pack, it is beneficial for the Apples to be especially looked out for so the Jerboa can buff the rest of your Pets.
+
+==Trivia==
+*The Apple is one of only 3 foods to have the "Better" and "Best" upgrades to it, the others being {{IconSAP|Chocolate}} and {{IconSAP|Milk}}.
+
+==Gallery==
+<gallery>
+Apple.png|The sprite of the Apple
+Better Apple.png|The sprite of the Better Apple
+Best Apple.png|The sprite of the Best Appple
+Apple Classic.png|The classic sprite of the Apple
+</gallery>
+
+==History==
+
+
+{{Navbox Food}}
+
+[[Category:Foods]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Puppy Pack]]
+[[Category:Golden Pack]]

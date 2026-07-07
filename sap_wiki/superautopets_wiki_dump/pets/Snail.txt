@@ -1,0 +1,55 @@
+Title: Snail
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Snail.png
+|attack/health=2/3
+|tier=2
+|level_1='''End turn''': If you lost last battle, give the three nearest friends ahead +1 {{IconSAP|attack|nolink=yes}}.
+|level_2='''End turn''': If you lost last battle, give the three nearest friends ahead +2 {{IconSAP|attack|nolink=yes}}.
+|level_3='''End turn''': If you lost last battle, give the three nearest friends ahead +3 {{IconSAP|attack|nolink=yes}}.
+}}
+'''Snail''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the end of turn, if the player lost the last battle, Snail will give the three nearest friends ahead {{IconSAP|attack|nolink=yes}}. Leveling up Snail increases the amount of attack it gives.
+
+Snail's ability will only trigger if the player ''lost'' the last battle, not if it was a draw. This is indicated by a sparkling effect on the Snail while it's in the shop.
+
+If Snail is bought on turn 1, the "last battle" will be considered a draw.
+
+==Strategy==
+Snail can be thought of as compensation for losing, or as a passive scaler with a condition. If kept around, Snail can give its buffs for a maximum of 5 times as you progress through the game. It should be placed in the last 2 positions so as to not waste the buffs.
+
+If you lose on turn 2, due to the life regain on turn 3, Snail can trigger the buff without costing a life. Depending on how much you value Snail's buff, you can try to sabotage your team on turn 2 to guarantee Snail trigger.
+
+==Game Sound==
+[[File:Snail.wav]]
+
+==Gallery==
+<gallery>
+Snail.png|The standard sprite of the Snail
+Snail Classic.png|The classic sprite of the Snail
+</gallery>
+
+==History==
+{{History
+|0.42:
+*Changed the Snail's ability from "End turn: If you lost last battle, give friends +1/2/3 health." to "End turn: If you lost last battle, give the three nearest friends ahead +1/2/3 attack."
+|0.27:
+*Changed the Snail's ability  from "Buy: If you lost last battle, give all friends +1/+1, +2/+2, +3/+3." to "End turn: If you lost last battle, give friends +1/+2/+3 health."
+*Changed tier from {{IconSAP|Tier 3}} to {{IconSAP|Tier 2}} .
+*Removed from the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''.
+|0.16:
+*Changed Snail ability from give friends +2/+1 to +1/+1.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:End turn ability]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]
+[[Category:Performance based abilities]]

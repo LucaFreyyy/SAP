@@ -1,0 +1,47 @@
+Title: Snake
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=8/3
+|tier=6
+|level_1='''Friend ahead attacks''': Deal 5 {{IconSAP|damage|nolink=yes|size=20x20px}} to one random enemy. Works 5 times per turn.
+|level_2='''Friend ahead attacks''': Deal 10 {{IconSAP|damage|nolink=yes|size=20x20px}} to one random enemy. Works 5 times per turn.
+|level_3='''Friend ahead attacks''': Deal 15 {{IconSAP|damage|nolink=yes|size=20x20px}} to one random enemy. Works 5 times per turn.
+}}
+{{distinguish|{{IconSAP|Snake (Chimera)}}|a [[Tokens|Token]] summoned by the '''{{IconSAP|Chimera}}'''.}}
+
+The '''Snake''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the nearest friend ahead of the Snake attacks, it will damage a random enemy. Leveling up the Snake will increase the amount of damage it deals. 
+
+==Strategy==
+Snake is a high damaging sniper that wants the nearest "space" ahead to attack as many times as possible, and can fit easily in scaling teams behind a friend with high stats, or in summon teams where it will trigger multiple times with the summoned pets. Depending on where the snipes hit, Snake can provide additional damage to finish off powerful frontline enemies, or knocks out weak summoners and backline pets such as {{IconSAP|Turkey}} and {{IconSAP|Shark}}.
+
+Because the ability relies completely on the friend ahead, Snake doesn't require stats and can provide benefits immediately when put on the team. Although not having stats means it can be easily knocked out by other snipers, and since it's often put in second position, it can also be countered with {{IconSAP|Chili}}.
+
+Snake is often paired with {{IconSAP|Tiger}} to double the amount of snipes per attack, and {{IconSAP|Mushroom}} as protection against snipes. Mushroom also fits in nicely in summon teams and especially with {{IconSAP|Fly}}: When Snake faints, it will be resummoned behind the Zombie Fly, adding some additional damage.
+
+==Trivia==
+The Snake's ability is "Friend ahead attacks" and snipes a random enemy it's counterpart is the {{IconSAP|Cobra}} which had the same ability but the damage is different and the {{IconSAP|Cobra}} is a type of snake.
+
+==Gallery==
+<gallery>
+Snake Classic.png|The classic sprite of the Snake
+Snake.png|The standard sprite of the Snake
+</gallery>
+
+==History==
+{{History
+|0.44: Changed the Snake's ability from "Friend ahead attacks Deal 5/10/15 to one random enemy." to "Friend ahead attacks Deal 5/10/15 to one random enemy. Works 5 times per turn."
+|0.35: Changed the Snake's base stats from 6/6 to 8/3
+|0.12: Fixed Snake + {{IconSAP|Sheep}} bug (whatever that means).
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]
+[[Category:Friend ahead attacks abilities]]
+[[Category:Damage dealing abilities]]

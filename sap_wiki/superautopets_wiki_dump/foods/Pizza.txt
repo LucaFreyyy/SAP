@@ -1,0 +1,35 @@
+Title: Pizza
+Category: Food
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Pizza.png
+|tier=6
+|effect=Give two random pets +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Pizza''' is a {{IconSAP|Tier 6}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Buying a Pizza gives two random pets +2 attack and +2 health permanently. The Pizza can be considered as a direct upgrade to the {{IconSAP|Salad Bowl}}, as it gives twice the stats of it. 
+== Strategy ==
+The Pizza can be quite good with pets like the {{IconSAP|Cat}}  which doubles the already high amount of stats the Pizza gives, it can also be used with the {{IconSAP|Rabbit}}, as it makes the Rabbit trigger twice.
+
+==Trivia==
+
+== Gallery ==
+<gallery>
+Pizza.png|The standard sprite of the Pizza
+Pizza Classic.png|The classic sprite of the Pizza
+</gallery>
+
+==History==
+{{History
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]

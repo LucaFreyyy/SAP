@@ -1,0 +1,131 @@
+# Super Auto Pets — Turtle Pack Versus Mode General Rules Reference
+
+---
+
+## 1. Game Modes & Win/Loss Conditions
+
+- **Versus Mode**: synchronous, 2–8 players, turn timer active. If 2 players, start with **6 lives**, otherwise **5 lives**. Objective: be the last player standing.
+- **Life gain rule**: A player who has lost any lives in the first 2 turns automatically **regains 1 life at the start of turn 3**.
+- **Battle outcomes**:
+  - **Victory** — opponent's team is fully fainted, you have ≥1 pet left → opponent loses a life.
+  - **Defeat** — your team is fully fainted, opponent has ≥1 pet left → lose 1 Life.
+  - **Draw** — both teams fully fainted simultaneously → no trophies or lives change either way.
+- The game ends either if there is only one player standing or after 25 rounds. After 25 rounds the player with most life wins, tiebreak: the one who used less actions, second tiebreak: Draw. 
+
+## 2. Turn Structure
+
+Each round = 1 "turn," consisting of two phases:
+
+1. **Shop Phase**: spend Gold to buy Pets/Food, reposition your team, roll the shop. Ends when you press "End Turn".
+2. **Battle Phase**: your team automatically fights an opponent's team with no further input from you.
+
+After the battle resolves, the game returns to the Shop Phase for the next turn. Any Start-of-Turn abilities fire at the beginning of the new Shop Phase. End-of-Turn abilities fire at the end of the shop phase.
+
+## 3. Gold Economy
+
+- Players start each turn with **10 Gold** by default (does not carry over between turns — unspent gold is lost).
+- **Pets** cost 3 Gold each to buy.
+- **Food** costs 3 Gold each, **except** Sleeping Pill, which costs 1 Gold.
+- **Rolling** the shop (refreshing all unfrozen slots) costs 1 Gold.
+- **Selling** a pet returns Gold equal to its **level** (i.e., sell value = current level, normally 1/2/3), regardless of how much bonus experience it's carrying.
+
+## 4. Shop Mechanics
+
+- The shop has up to **3-5 pet slots and 1-2 food slots** (varies by tier), refreshed on roll. With 5-2 buffer slots in between.
+  - turn 1: 3 pets, 1 food
+  - turn 5: 4 pets, 2 foods
+  - turn 9: 5 pets
+  - always 9-pets-foods many buffer slots
+- **Freezing**: clicking an item and pressing "freeze" keeps it in the shop (left-most slot) across rerolls until you unfreeze or buy it. Frozen items still occupy a shop slot, reducing the number of new options shown.
+- **Tier unlock schedule**: shop pet tier increases every **odd** turn, following tier `X` unlocking on turn `(2X − 1)`:
+  - Tier 1: turn 1
+  - Tier 2: turn 3
+  - Tier 3: turn 5
+  - Tier 4: turn 7
+  - Tier 5: turn 9
+  - Tier 6: turn 11 (shop stays at tier 6 for the rest of the game)
+  - All pets from previously-unlocked tiers remain available at higher turns (shop pool grows, doesn't shift).
+- The shops 9 slots are divided into pet slots, buffer slots and food slots. When extra pets are added to the shop they enter from the left(1st position) and push other pets(and foods, if no empty slots) to the right through the buffer zone. If the shops 9 slots are completely filled and new pets are added, the items on the very right are pushed out. When extra food appears(e.g. through selling a Pigeon) it appears on the very right(9th slot) and pushes everything to the left using the same ruling.
+- If two pets are merged and one had a perk, this perk prevails. If both pets had a perk, the one's perk of the pet that did not move prevails.
+
+## 5. Team Composition
+
+- A team has **5 pet slots**, full stop — there is no separate turn-based cap on team size beyond what your gold allows you to buy.
+- Pets can be:
+  - Bought and placed in any empty slot or on top of a same named pet (merge).
+  - Repositioned freely inside the team.(reodering of all animals as permutation)
+  - Placed on top of each other inside the team (merge).
+  - Sold for Gold = level.
+  - Fed Food.
+- **Stat caps**: Attack and Health are each capped at **50** for all pets always. No exceptions with perks or foods.
+- **Friends** refers to own pets in the team that is not the pet itself.
+
+## 6. Leveling & Experience
+
+- Every pet starts at **Level 1, 0 Experience** when bought.
+- XP thresholds: **2 XP → Level 2**, **+3 XP (5 total) → Level 3**. Level 3 is the max level and experience can't be gained anymore, but Attack and Health benefits still apply on further merges.
+- Ways to gain XP:
+  - **Merging**: dragging a duplicate pet (from team or a new purchase) onto an existing copy on your team adds +1 XP, while also taking the **higher** of the two pets' Attack and the higher of the two Health values, each bumped by +1 (e.g., merging a 3/2 and a 4/2 pet gives 5/3; merging a 1/2 and 4/1 does the same). XP values of the two pets are summed, not just +1 — e.g. combining two Level 2 pets (3 XP each) gives 6 XP, enough for Level 3.
+  - **Feeding Chocolate**: grants +1 XP directly, no merge needed.
+- **Tier-up reward**: the *first* time a pet reaches a new level via merge or Chocolate, you're shown **2 random pet choices from one tier higher** than your current max shop tier, and can buy one of them(then the other one disappears. they can also be rolled away and if one was frozen only the other one gets rolled away.). This reward does **not** trigger when directly merging two already-Level-2 pets into Level 3.
+
+## 7. Food Mechanics
+
+- Food is bought from the shop (3 Gold, except Sleeping Pill at 1 Gold) and fed to a pet to modify its stats or grant a "Food Perk"/ability.
+- **Temporary vs. permanent buffs**: buffs applied during the Shop Phase (e.g. feeding food) are generally **permanent**(exceptions exist); buffs applied *during battle* are always **temporary**, lasting only that battle, shown with a distinct visual indicator (underline) and reset afterward.
+- Food perks (e.g. Melon Armor, Garlic, Honey → Bee on faint) persist with the pet until other perk is given or lost during battle temporarily(regained next start of turn).
+
+## 8. Battle Phase Resolution
+
+1. **Start of Battle** step: 
+   - all pets with Start-of-Battle abilities trigger.
+2. **Combat loop** (until one team has no pets left standing):
+   - Pets move to the back of the team to fill any gaps(X__X_ becomes ___XX, where X's are pets and _'s empty slots)
+   - The players's last pet(team slot 5) attack each other **simultaneously** (both deal their Attack as damage to the other at the same instant).
+   - If a pet's Health drops to 0 (or below), it **faints/is knocked out** and is removed.
+   - Faint-, Hurt- or other triggers might happen.
+3. **Battle ends** in Victory / Defeat / Draw as described in Section 1.
+4. Everything gained or lost purely *during* battle (temporary stat buffs, ailments applied mid-fight) does **not** carry into the next Shop Phase — the team reverts to its pre-battle permanent stats/state. Only life loss of the players themselves is permanent.
+
+## 9. Ability Trigger Types (Glossary)
+
+These are the trigger categories pets' abilities key off of. Exact wording per the community glossary (cross-checked against wiki.gg terminology):
+
+| Trigger | Fires when… |
+|---|---|
+| **Start of Turn** | The Shop Phase begins (player enters the shop). |
+| **Buy** | Fires when this pet is bought. If played on another pet to merge and level-up occurs, directly trigger the higher level ability. |
+| **Eats Food** | This pet itself is fed a Food item. Food bought but fed to another pet does not trigger it. |
+| **End Turn** | The "End Turn" button is pressed, before the battle begins. |
+| **Start of Battle** | The battle begins (before any attacks happen). |
+| **Before Attack** | Just before this pet's attack connects, during the combat loop. |
+| **Hurt** | This pet takes damage (from an attack or a damage-dealing ability). Exceptions: pure health-reduction effects (e.g., Skunk, Wolverine, Pill) reduce Health without counting as "hurting" the pet. |
+| **Faint** | This pet's Health hits 0 or below and it's removed, whether in battle or in the shop (e.g. via Sleeping Pill).
+| **Friend Ahead Faints**: The first pet(first non-empty slot) in front of this pet faints. |
+| **Friend Faints** | A friendly pet elsewhere on the team faints. |
+| **Friend Summoned** | A friendly pet is summoned by any means — bought into an empty slot, or created by another pet's ability (e.g., a Faint-summon). Merging(or directly merging on buy) two owned pets is **not** a summon. |
+| **Knock Out** | This pet's attack or ability causes another pet to faint. |
+| **Levels Up** | This pet itself gains a level. |
+| **Sell** | This pet is sold. |
+
+- **Ordering when multiple pets share the same trigger**: abilities resolve in **descending Attack order** — the pet with the highest current Attack triggers first, random on ties. Abilities are put onto a FIFO queue. If one ability causes another one to trigger, that one gets added onto the queue. Fainted pet's abilites cannot be activated, but stay in the FIFO, so they still resolve if they were added before death.
+- Buffs/abilities from the *Shop Phase* only affect pets/shop currently in view unless stated otherwise (e.g., an ability that "buffs the shop", like Pigeon only affects that turn's current shop inventory).
+
+## 10. Turtle Pack Composition
+
+The Turtle Pack ("Standard Pack") contains **60 pets** across 6 tiers (10 per tier) plus the base food set. (Confirmed via the Turtle Pack tier overview page; I did not re-verify each individual pet's current stat line — that's the part you're planning to go through yourself.)
+
+- 6 tiers of pets, 10 pets per tier = 60 total.
+Tier 1: Duck, Beaver, Pigeon, Otter, Pig, Ant, Mosquito, Fish, Cricket, Horse
+Tier 2: Snail, Crab, Swan, Rat, Hedgehog, Peacock, Flamingo, Worm, Kangaroo, Spider
+Tier 3: Dodo, Badger, Dolphin, Giraffe, Elephant, Camel, Rabbit, Ox, Dog, Sheep
+Tier 4: Skunk, Hippo, Bison, Blowfish, Turtle, Squirrel, Penguin, Deer, Whale, Parrot
+Tier 5: Scorpion, Crocodile, Rhino, Monkey, Armadillo, Cow, Seal, Rooster, Shark, Turkey
+Tier 6: Leopard, Boar, Tiger, Wolverine, Gorilla, Dragon, Mammoth, Cat, Snake, Fly
+- 6 tiers of food, 2-4 foods per tier = 18 total.
+Tier 1: Apple, Honey
+Tier 2: Pill, Meat Bone, Cupcake
+Tier 3: Garlic, Salad, Cake
+Tier 4: Bread, Canned Food, Pear
+Tier 5: Chili, Chocolate, Sushi
+Tier 6: Steak, Melon, Mushroom, Pizza

@@ -1,0 +1,65 @@
+Title: Elephant
+Category: Pet
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=3/7
+|tier=3
+|level_1='''After attack''': Deal 1 {{IconSAP|damage|nolink=yes}} to the nearest friend behind.
+|level_2='''After attack''': Deal 1 {{IconSAP|damage|nolink=yes}} to the nearest friend behind. Triggers 2 times.
+|level_3='''After attack''': Deal 1 {{IconSAP|damage|nolink=yes}} to the nearest friend behind. Triggers 3 times.
+}}
+
+The '''Elephant''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. After the Elephant attacks, it will deal 1 damage to the friend behind it. Levelling up the Elephant will increase the amount of times it hits the friend behind it after attacking.
+
+==Strategy==
+The Elephant can either be very strong or very weak depending on what pets you pair with it. The Elephant pairs best with pets that have a [[Hurt Pets|'''hurt ability''']] due to its ability which deals safe amounts of damage that can trigger but (usually) not knock out the Pet.  
+
+Ignoring all of its synergies, it's sometimes worth buying an Elephant for a turn or two just for the good stat line. You can negate the downside by placing it in the back of your team. 
+
+An easy synergy that Elephant has is the {{IconSAP|Camel}}. This combo can be incredibly strong, especially with a levelled up Elephant. It can give a substantial amount of health and attack to any pet of your choosing, as long as it doesn't die too quickly. Using this strategy, you can give a late tier pet like {{IconSAP|Octopus}} or {{IconSAP|Reindeer}} enough stats to become substantial in battle right out of the shop.  
+
+You can also pair your Elephant with a {{IconSAP|Peacock}}, which can be a fairly strong strategy early game but falls off late game as the Peacock is usually only able to survive one hit. You also run the risk of your Peacock fainting before your Elephant can, gaining no benefit from the synergy. 
+
+Perhaps the '''Elephant's''' strongest synergy is with the {{IconSAP|Triceratops}}. A good Elephant and Triceratops combo can carry an otherwise weak team to victory. Unlike Camel, Triceratops buffs a random friend on hurt, meaning it can sometimes buff the Elephant which can allow it to survive longer and therefore get more hits off on the Triceratops. You can also guarantee that the triceratops always buffs the elephant by simply putting the combo in the back of your team or by giving the Elephant a '''{{IconSAP|Donut}}'''. The Elephant is generally strong when placed in the back because enemies tend to place weaker units there, which is what Elephant excels against. When operating at full capacity (a level 3 Triceratops and level 3 Elephant), your Elephant will be gaining +27/+27 before every attack, which is comparable to gaining a melon. 
+
+Moving away from buffers, Elephant has a very strong, and perhaps notorious, synergy with {{IconSAP|Blowfish}} (dubbed: "Blowphant"). Elephant when paired with Blowfish can mow down strong teams if not dealt with quickly. This combo is enhanced by the existence of {{IconSAP|Pineapple}}, which can essentially work like a level up for your Blowfish. A good Elephant and Blowfish combo can sometimes defeat multiple enemies without taking any damage. However, this synergy can be countered by {{IconSAP|Lemon}}, killing the Elephant ASAP using a unit with '''{{IconSAP|Steak}}'''/'''{{IconSAP|Peanuts}}'''  or simply having more stats. 
+
+Note that all of these synergies can be greatly enhanced using a {{IconSAP|Tiger}} and/or {{IconSAP|White Tiger}}. 
+
+Elephant is a synergistic pet that can be very strong in some situations. The Elephant excels at defeating teams with lower stats, such as [[Summoner Pets|summoner builds]], sniper builds, and teams that are generally just weaker stats or have weaker pets in the front. However, Elephant can be countered simply by killing it quickly, using either peanuts or just a bigger unit. The longer the Elephant is alive, the stronger it gets, so if it's defeated quickly it's fairly useless. Elephant builds are also position dependent, so if a {{IconSAP|Hyena}} or {{IconSAP|Seahorse}} messes up your positioning you may end up with your Elephant pointlessly stomping on a Monkey or other undesirable pet.
+
+Elephant + {{IconSAP|Porcupine}} is a terrible idea.
+
+==Trivia==
+
+==Game Sound==
+[[File:Elephant.wav]]
+
+==Gallery==
+<gallery>
+Elephant.png|The standard sprite of the Elephant
+Elephant Classic.png|The classic sprite of the Elephant
+</gallery>
+
+==History==
+{{History
+|0.27:
+*Changed the Elephant's base stats from 3/5 to 3/7.
+*Changed the Elephant's ability from: '''Before attack''' to trigger '''After attack'''.
+*Changed the Elephant's tier from {{IconSAP|Tier 2}} to {{IconSAP|Tier 3}}.
+|0.18: Changed the Elephant's ability from: "'''Before Attack''': Deal 1 damage to 1/2/3 friends behind." to "'''Before attack''': Deal 1 damage to the friend behind. Repeat 1/2/3 times." 
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:After attack abilities]]
+[[Category:Damage dealing abilities]]
+[[Category:Friend damaging abilities]]

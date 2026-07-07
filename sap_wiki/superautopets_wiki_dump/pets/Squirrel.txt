@@ -1,0 +1,55 @@
+Title: Squirrel
+Category: Pet
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Squirrel.png
+|attack/health=2/5
+|tier=4
+|level_1='''Start of turn''': Discount all shop food by 1 {{IconSAP|gold}}.
+|level_2='''Start of turn''': Discount all shop food by 2 {{IconSAP|gold}}.
+|level_3='''Start of turn''': Discount all shop food by 3 {{IconSAP|gold}}.
+}}
+The '''Squirrel''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of each turn, Squirrel will reduce the {{IconSAP|gold}} cost of all [[Foods]] that are currently in the shop. Leveling up the Squirrel will further reduce the costs of the foods.
+
+==Strategy==
+Squirrel relies on investing in freezing certain foods to purchase them at a discounted price on future turns. Most Foods at {{IconSAP|Tier 4}} and above are worth freezing, with current team synergy having a heavy hand in what should be prioritised. {{IconSAP|Chocolate}} will almost always be valuable to any team and is often worth making use of the Squirrel's ability to purchase more easily.
+
+Squirrel has good synergy with most [[Food Pets]], specifically the Pets that are able to increase the amount of stats gained from purchasing foods like {{IconSAP|Rabbit}}, {{IconSAP|Seal}} and {{IconSAP|Rabbit}}. These pets further increase the value of reducing the cost of shop Foods due to the extra stats they are able to give per gold spent.
+
+The Squirrel also synergises somewhat effectively with {{IconSAP|Worm}}. If the Squirrel has less attack than the Worm then the Worm will stock its 2-gold {{IconSAP|Apple}} and then the Squirrel will discount it in addition to the other shop foods. This is especially effective with early Rabbit(s) and in '''{{IconSAP|Custom Packs}}''' with {{IconSAP|Jerboa}} teams.
+
+At level 1, it affects the {{IconSAP|Sleeping Pill}}, At level 2, it affects the Worm's {{IconSAP|Apple}}, At level 3, it is easy since all food are now 0 gold. However, When you roll the shop, the cost of all food will become normal.
+
+==Trivia==
+Both sprites of the Squirrel is holding an Acorn.
+
+The Squirrel pet is one of three pets based on a squirrel, the others being the {{IconSAP|Albino Squirrel}} and the {{IconSAP|Giant Squirrel}}.
+
+==Gallery==
+<gallery>
+Squirrel.png|The standard sprite of Squirrel
+Squirrel Classic.png|The classic sprite of the Squirrel
+</gallery>
+
+==History==
+{{History
+|0.27: Changed the Squirrel's ability from: "'''Start of turn''': Add one shop food and discount them by 1/2/3 gold." to "'''Start of turn''': Discount all shop food by 1/2/3 gold.".
+|0.18: Changed the Squirrel's ability from: "'''Start of turn''': Discount shop food by 1/2/3 gold." to "'''Start of turn''': Add one shop food and discount them by 1/2/3 gold." .
+|0.14:
+*Changed the Squirrel's ability from: "'''Buy''': Clear and fill shop with food." to "'''Start of turn''': Discount shop food by 1/2/3 gold.".
+*Changed the Squirrel's base stats from 2/2 to 2/5.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:Start of turn abilities]]
+[[Category:Food based abilities]]
+[[Category:Gold-based ability]]

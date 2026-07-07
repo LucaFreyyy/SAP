@@ -1,0 +1,62 @@
+Title: Mammoth
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=4/12
+|tier=6
+|level_1='''Faint''': Give all friends +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''Faint''': Give all friends +4 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''Faint''': Give all friends +6 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Mammoth''' is a [[Tier 6]] [[Pets|Pet]] in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Mammoth faints, it gives all of its friends an increased stat boost. Levelling up the Mammoth will increase the stat boost it provides to all friends.
+
+==Strategy==
+
+Mammoth is an incredibly powerful form of in-battle scaling, often capable of catching up and beating opposing scaling boards in {{IconSAP|Turtle Pack}} before they get too far out of reach. Its large starting base stats and strong utility make it a great buff target, and one of the best things to level up into on turn 9. 
+
+Pilling Mammoth should be a fairly rare play unless you have {{IconSAP|Shark}}, since you often lose a lot of stats on the mammoth itself to make that play. Cycling {{IconSAP|Mushroom}} and {{IconSAP|Sleeping Pill}} can be viable even without shark, especially if you have some form of gold generation or need the stats to survive start of battle snipes!
+
+Mammoth synergizes well with pets and perks that can multiply its effect. With these multipliers you can often gain as many stats as you'd be getting from using a scaler like {{IconSAP|Cat}} or {{IconSAP|Dragon}}. In Turtle Pack, these multipliers include:
+
+- {{IconSAP|Mushroom}} - Doesn't take up any extra board space to double the Mammoth's effect! Can be exploited to get additional triggers on hurt pets or snake.
+
+- {{IconSAP|Whale}} - Fastest way to get Mammoth buffs, arguably Whale's best partner! 
+
+- {{IconSAP|Tiger}} - Unlike Whale and Parrot, Tiger can fully double the effect of a Mushroom'd Mammoth. At level 2 Tiger-Mammoth can potentially give +16/16 to all pets, but make sure to keep the Tiger safe from snipes!
+
+- {{IconSAP|Parrot}} - Probably Mammoth's weakest and slowest multiplier, but can be a great option if you have a level 2 Parrot already! 
+
+
+
+==Trivia==
+
+Mammoth and {{IconSAP|Dodo}} are only the Ice Age pets in the {{IconSAP|Turtle Pack}}.
+
+==Gallery==
+<gallery>
+Mammoth.png|The standard sprite of the Mammoth 
+Mammoth Classic.png|The classic sprite of the Mammoth
+</gallery>
+
+==History==
+{{History
+| Changed the Mammoth's base stats from 3/10 to 4/12.
+
+0.14: Changed the Mammoth's base stats from ?/? to 3/10.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]
+[[Category:Buffing based abilities]]
+[[Category:Friend buffing abilities]]

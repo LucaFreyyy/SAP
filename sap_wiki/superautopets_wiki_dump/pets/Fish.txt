@@ -1,0 +1,61 @@
+Title: Fish
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health= 2/3
+|tier= 1
+|ID= 32
+|level_1='''Level-up''': Give two friends +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Level-up''': Give two friends +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3=No ability.
+}}
+
+The '''Fish''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Upon levelling up the Fish will give 2 random friends a buff to their stats. Levelling up the Fish increases the amount of stats given. 
+
+==Strategy==
+The Fish is a reasonably solid pet in the early game. 
+
+While it may seem like a good idea to level up the Fish into a pet of the next tier on turns 3, 5, 7 and 9, doing this with another pet would be better because then the next tier pet that you buy can then receive the buff from the Fish once you do end up leveling it.
+
+The Fish is a good candidate for getting to level 3 so that it may enable a {{IconSAP|Bison}}, as levelling it up will scale your team while you're waiting for it to become available.
+
+Getting at least 3 Fish within the first 5 or so turns of a game can be of great help in scaling pets that you want to take into the later stages of the game. This is especially true for {{IconSAP|Jellyfish}} that benefits twice as much from a fish level up at level one. Other synergies include in battle level ups from {{IconSAP|Pug}} and {{IconSAP|Blobfish}} that will provide a temporary buff for the rest of the team if the Fish is placed near the front.
+
+==Trivia==
+Fish and {{IconSAP|Lucky Cat}} are only the pets that doesn't have an ability when level 3
+
+fish cant activate its level 1 abillity 
+
+==Game Sound==
+[[File:Fish.wav]]
+
+==Gallery==
+<gallery>
+Fish.png|The standard sprite of the Fish
+Fish Classic.png|The classic sprite of the Fish
+FishPog.png|The "FishPog" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+{{History
+|0.27:
+*Fixed Fish + '''{{IconSAP|Chocolate Cake}}''' not activating Fish's ability.
+*Changed the Fish's base stats from 2/2 to 2/3.
+*Changed the Fish's ability from: "'''Level-up''': Give all friends +1/+1, +2/+2, (No level 3 ability)" to "'''Level-up''': Give two friends +1/+1, +2/+2, (No level 3 ability)." 
+*Removed from the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''.
+|0.18: Changed the Fish's base stats from 2/3 to 2/2.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]
+[[Category:Level-up abilities]]

@@ -1,0 +1,25 @@
+Title: Ram
+Category: Token
+Tier: Token
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Ram.png
+|attack/health=2/2
+|tier=1}}
+The '''Ram''' is a [[Tokens|Token]] [[Pets|Pet]] with no abilities. Up to two of them spawn (depending on available slots) when a {{IconSAP|Sheep}} faints. As with all tokens, it is considered a {{IconSAP|Tier 1}} for the sake of certain abilities like {{IconSAP|Poodle|name=Poodle's}} and {{IconSAP|Rhino|name=Rhino's}}. The Ram's starting stats increase depending on the level of the {{IconSAP|Sheep}} that summoned them.
+
+== Strategy ==
+An easy way to get the hidden sticker [[Achievements|Achievement]] for  the Ram is to level a Sheep to Level 2 and then use a [[Sleeping Pill]] on the Sheep while having an empty slot available. This will spawn two Level 2 Rams into the user's team which can then be combined into a single Level 3 Ram.  This is also particularly useful when trying to acquire a quick Level 3 Pet to activate the [[Bison|Bison's]] ability. As with all tokens, it is considered a {{IconSAP|Tier 1}} for the sake of certain abilities like {{IconSAP|Poodle|name=Poodle's}} and {{IconSAP|Rhino|name=Rhino's}}.
+
+== Version History ==
+== Trivia ==
+== Gallery ==
+<gallery>
+Ram.png|The standard sprite of the Ram
+Ram Classic.png|The classic sprite of the Ram
+</gallery>
+
+[[Category:Token]]
+{{Navbox Pets}}

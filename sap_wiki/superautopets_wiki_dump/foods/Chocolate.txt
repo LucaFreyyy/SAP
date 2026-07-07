@@ -1,0 +1,41 @@
+Title: Chocolate
+Category: Food
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Chocolate.png
+|tier=5
+|effect=Give one pet +1 {{IconSAP|experience|nolink=yes}}.
+}}
+The '''Chocolate''' is a {{IconSAP|Tier 5}} [[Food]] that can be found in '''Any''' pack. When Chocolate is given to a [[Pets|pet]], it will receive +1 {{IconSAP|experience|nolink=yes}}. Similar to when combining duplicate copies, each Chocolate/experience will also add +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+
+In Custom and Weekly pack, {{IconSAP|Crow}} can stock Chocolate upon being sold, and at higher levels will stock {{IconSAP|Better Chocolate|nolink=yes}} and {{IconSAP|Best Chocolate|nolink=yes}} that give +2 and +3 experiences respectively.
+
+== Strategy ==
+Each Chocolate represents a "wild card" duplicate that can be used to level up any pet faster. Almost every pet benefits from leveling up, so Chocolate brings consistency to every team, and it becomes available right when the pet pool becomes big enough that it can be difficult to find the exact duplicate that you need. Due to just how useful Chocolate is, it can often be a good idea not to freeze other foods starting from turn 8 (going into shop tier 5), just to increase the odds of finding more Chocolates.
+
+Generally speaking, if there are duplicate copies in the shop and Chocolate, the duplicates should be bought first, since Chocolate can be used on any pet while the copies can only be combined on specific pets.
+
+==Trivia==
+* As of the Golden Pack update ([[Version 0.24]]), every [[Weekly Pack]] now contains Chocolate.
+
+==Gallery==
+<gallery>
+Chocolate.png|The sprite of the Chocolate
+Better Chocolate.png|The sprite of the Better Chocolate
+Best Chocolate.png|The sprite of the Best Chocolate
+Chocolate Classic.png|The classic sprite of the Chocolate
+</gallery>
+
+==History==
+
+
+{{Navbox Food}}
+[[Category:Tier 5]]
+[[Category:Food]]
+[[Category:Turtle Pack]]
+[[Category:Golden Pack]]
+[[Category:Puppy Pack]]
+[[Category:Stubs]]

@@ -1,0 +1,62 @@
+Title: Monkey
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=1/2
+|tier=5
+|level_1='''End turn''': Give front-most friendly pet +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''End turn''': Give front-most friendly pet +4 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''End turn''': Give front-most friendly pet +6 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Monkey''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the end of turn, the Monkey will provide a big stat buff to the front-most friendly pet. Leveling up the Monkey will increase the amount of stats it gives. 
+
+==Strategy==
+In Turtle pack, Monkey is the highest tier passive scaler, requiring no additional actions while giving a consistent amount of stats each turn. It's much easier to use compared to active scalers like {{IconSAP|Cat}} and {{IconSAP|Dragon}}, which require you to properly balance gold. While it only targets the front-most pet, this is often where you would put your strongest pet, and multiple Monkeys will buff the same pet, so they can easily snowball an already high stats pet or one with powerful ability into a 50/50.
+
+Monkey's biggest weakness is its rigidity. If you want a pet to be buffed by Monkey, that pet ''has'' to stay in front. This makes their positioning predictable and they can be targeted by common counters like {{IconSAP|Scorpion}}. It also limits your team's composition: it can't be used to buff pets that are designed to stay behind like {{IconSAP|Dodo}} or {{IconSAP|Parrot}}, running your own Scorpion with a Monkey on the team often means wasting the Monkey's buff, you can't use Monkey to buff a high level {{IconSAP|Rooster}} since it'd waste the {{IconSAP|Chick|name=Chicks}}, and so on. And after you're satisfied with a pet's stats and want to buff another one, you'll have to push that big pet behind and weaken the team's structure.
+
+In Golden pack, Monkey can be obtained by putting {{IconSAP|Banana}} perk on a {{IconSAP|Manatee}} and allowing it to faint. You can read more about this on [[Manatee|Manatee's page]].
+
+== Game Sound ==
+[[File:Monkey.wav]]
+
+==Trivia==
+
+Monkey can be obtained by fainting a pet with the {{IconSAP|Banana}} perk. The introduction of this mechanic marks the first time an out-of-pack pet with an ability can be obtained via a perk.
+
+==Gallery==
+<gallery>
+Monkey.png|The standard sprite of the Monkey
+Monkey Classic.png|The classic sprite of the Monkey
+MonkeyThumbsUp.png|The "MonkeyThumbsUp" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+{{History
+|0.37:
+*Changed  the wording of the Monkey's ability from "'''End turn''': Give front-most friend +2/+2, +4/+4, +6/+6" to "'''End turn''': Give front-most friendly pet +2/+2, +4/+4, +6/+6".
+|0.35:
+*Changed the Monkey's ability from "'''End turn''': Give right-most friend +2/+3, +4/+6, +6/+9." to "'''End turn''': Give front-most friend +2/+2, +4/+4, +6/+6."
+|0.30:
+*Changed the wording of the Monkey's ability from "'''End turn''': Give right-most friend +2/+3, +4/+6, +6/+9." to "'''End turn''': Give front-most friend +2/+3, +4/+6, +6/+9."
+|0.24:
+*The Banana is added to {{IconSAP|Golden Pack}}, effectively adding Monkey to the pack as a token.
+|0.16:
+*Changed the Monkey's ability from "'''End turn''': Give right-most friend +3/+3, +6/+6, +9/+9." to: "'''End turn''': Give right-most friend +2/+3, +4/+6, +6/+9."
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:End turn ability]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]
+[[Category:Self scaling abilities]]

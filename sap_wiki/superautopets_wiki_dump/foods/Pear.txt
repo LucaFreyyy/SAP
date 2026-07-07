@@ -1,0 +1,37 @@
+Title: Pear
+Category: Food
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Pear.png
+|tier=4
+|effect=Give one pet +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Pear''' is a {{IconSAP|Tier 4}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|Pet]] a Pear increases its stats by +2 attack and +2 health permanently. 
+
+Essentially, it's a better {{IconSAP|Apple}} but a worse {{IconSAP|Lasagna}}/{{IconSAP|Chicken Leg}}.
+
+==Strategy==
+There isn't a lot to be said, feed it to pets when appropriate and generally try to avoid feeding it to pets you don't intend to keep for long. The {{IconSAP|Seal}} and {{IconSAP|Rabbit}} create more stats from feeding pets food and Pears are a solid option to trigger those effects. The Pear's stats can also be multiplied by a {{IconSAP|Cat}}. 
+==Trivia==
+==Gallery==
+<gallery>
+Pear.png|The standard sprite of the Pear
+Pear Classic.png|The classic sprite of the Pear
+</gallery>
+
+==History==
+{{History
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:Stubs]]

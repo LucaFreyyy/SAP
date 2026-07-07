@@ -1,0 +1,59 @@
+Title: Leopard
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=10/4
+|tier=6
+|level_1='''Start of battle''': Deal 50% attack {{IconSAP|damage|nolink=yes}} to one random enemy.
+|level_2='''Start of battle''': Deal 50% attack {{IconSAP|damage|nolink=yes}} to two random enemies.
+|level_3='''Start of battle''': Deal 50% attack {{IconSAP|damage|nolink=yes}} to three random enemies.
+}}
+The '''Leopard''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of battle, the Leopard will deal {{IconSAP|damage|nolink=yes}} to a random enemy, equal to 50% of the Leopard's current {{IconSAP|attack|nolink=yes}}. Leveling up the Leopard will increase the amount of random enemies it will hit with its ability.
+
+==Strategy==
+Leopard has an integral role in Turtle Pack as its strongest late game buff target. In games where you're able to make it to tier 6 with a lot of lives, buffing and supporting a Leopard is often one of the safest ways to close a game out, as its snipes are both neutrally devastating and can deal with utility effects such as summon teams, {{IconSAP|Melon}} or {{IconSAP|Scorpion}}. 
+
+However, you can often be quite vulnerable in the first couple turns of taking a Leopard - its low hp is quite vulnerable and its ability weak for the turn you buy it on. Leopard is often a commitment to use your remaining lives to set up a board with an incredibly high ceiling that will safely win once you've scaled stats and levels enough.
+
+
+Leopard's best friend by far is {{IconSAP|Monkey}}, as its targeted or 'tall' scaling is unmatched. {{IconSAP|Cat}} and {{IconSAP|Dragon}} are both great options too if you can, but since Monkey is available earlier in the game you can often already be set up with multiple copies of monkey and switch from whatever you were buffing before to buffing your Leopard. The value of this linear scaling on Leopard can also be multiplied by {{IconSAP|Tiger}}, as well as finding levels on Leopard, and increasing how many of these high damage snipes you get is just as necessary as stacking buffs onto it - this is another reason why the free passive scaling of monkey can be more useful than cat or dragon, freeing your gold up to be spent on chocolate and tiger. 
+
+
+Leopard's importance is also as a payoff to certain early-midgame strategies that are played with its existence in mind:
+
+- {{IconSAP|Dodo}} is the best example of this, as a rare but solid buff target in the early game its ability to convert games past turn 9 are almost entirely dependent on its synergy with Leopard. It's important to keep your dodo high on attack, so it will always buff the Leopard's attack before it shoots its snipe and massively buff its damage output. 
+
+- Leopard is also one of the best payoffs for buffing a {{IconSAP|Parrot}} during the midgame, allowing you to almost skip that aforementioned stage of vulnerability by already having a high stat, high level pet to take on its ability. 
+
+===End game===
+A level 3 Leopard with 50 attack will deal a total of 75 snipe damage, this makes Leopard one of the simplest yet most effective pets in end game teams. In scenarios with teams full of max stats pets, having multiple Leopards/Tigers can break through any defensive perks and eliminate everything in sight.
+
+Since these teams can knock out through defensive perks, it can be better to go for powerful summoners such as {{IconSAP|Beluga Whale}} to fight the post-snipe battle instead of trying to survive the carpet bomb. Alternatively, {{IconSAP|Humphead Wrasse}} can work as a hard counter against Leopard.
+
+==Game Sound==
+[[File:Leopard.wav]] 
+
+==Trivia==
+*If the Leopard has 1 damage — achievable by giving it {{IconSAP|Mushroom}} and then {{IconSAP|Sleeping Pill}} — then each shot will deal 0 damage. These 0 damage shots do not trigger [[Hurt (Trigger)|Hurt]] abilities, do not interact with defensive food perks and aren't affected by ailments. However, they ''are'' affected by {{IconSAP|Pineapple}}, which will increase the damage to 2.
+
+==Gallery==
+<gallery>
+Leopard Classic.png|The classic sprite of the Leopard
+Leopard.png|The standard sprite of the Leopard
+</gallery>
+
+==History==
+{{History
+|0.14: Changed the Leopard's base stats from 6/4 to 10/4.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]
+[[Category:Start of battle abilities]]
+[[Category:Damage dealing abilities]]

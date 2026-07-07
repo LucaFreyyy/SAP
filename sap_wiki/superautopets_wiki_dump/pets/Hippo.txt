@@ -1,0 +1,51 @@
+Title: Hippo
+Category: Pet
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Hippo.png
+|attack/health=4/7
+|tier=4
+|level_1='''Knock out''': Gain +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}. Works 3 times per battle.
+|level_2='''Knock out''': Gain +6 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}. Works 3 times per battle.
+|level_3='''Knock out''': Gain +9 {{IconSAP|attack|nolink=yes}} and +9 {{IconSAP|health|nolink=yes}}. Works 3 times per battle.
+}}
+
+The '''Hippo''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Whenever Hippo knocks out an enemy, it gains a hefty amount of attack and health, up to 3 times per battle. Leveling up the Hippo will increase the amount of stats it gains upon a successful knock out.
+
+==Strategy==
+Hippo is a counter pet designed to steamroll through summon builds. It will "heal" itself after each knock out, and is best paired with defensive food perks such as {{IconSAP|Garlic}} and {{IconSAP|Melon}} to maximize its chance at surviving and knocking out more pets. {{IconSAP|Chili}} is another good option since it can knock out the second enemy and trigger Hippo's ability. Pairing Hippo with a front {{IconSAP|Rat}} can give it a few additional buffs from knocking out the {{IconSAP|Dirty Rat|name=Dirty Rat(s)}}.
+
+Scaling a front-most Hippo is a common strategy to win rounds in mid game, as it can be quite unstoppable against summoners around the same turns. A backline Hippo can also work to clean up the weak enemies. Even against scaled units, if your Hippo is stronger, it can knock out the enemy's scaled unit and activate its Knock Out ability, steamrolling the usually weaker backline.
+
+The hippo may be an excellent early to mid game option, even being good near the start of Tier 6, but keep in mind that as the game gets further, you will likely face highly scaled units that make it hard for the Hippo's ability to shine, as well as Summon Comps having strong pets such as '''{{IconSAP|Turkey}}''' combined with a '''{{IconSAP|Tiger}}''' or a '''{{IconSAP|Parrot}}''' that can overwhelm your Hippo.
+
+==Gallery==
+<gallery>
+Hippo.png|The standard sprite of the Hippo
+Hippo Classic.png|The classic sprite of the Hippo
+</gallery>
+
+==History==
+{{History
+|0.35:
+*Changed the Hippo's ability from "Knock out: Gain +2/4/6 attack and +2/4/6 health. Gain double against tier 4 pets or higher." to "Knock out: Gain +3/6/9 attack and +3/6/9 health. Works 3 times per battle."
+*Changed the Hippo's base stats from 4/7 to 4/6
+|0.29:
+*Changed the Hippo's base stats from 4/5 to 4/7.
+*Changed the Hippo's ability from "'''Knock-out''': Gain +3/+3, +6/+6, +9/+9." to "'''Knock-out''': Gain +2/+2, +4/+4, +6/+6. Double  against tier 4 or higher."
+|0.22:
+*Changed the Hippo's base stats from 4/7 to 4/5.
+|0.18: 
+*Changed the Hippo's ability from: "'''Knock-out''': Gain +2/+2, +4/+4, +6/+6." to "'''Knock-out''': Gain +3/+3, +6/+6, +9/+9."
+}}
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:Buffing based abilities]]
+[[Category:Self buffing abilities]]
+[[Category:Knock out ability]]

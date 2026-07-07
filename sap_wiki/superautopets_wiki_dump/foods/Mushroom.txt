@@ -1,0 +1,41 @@
+Title: Mushroom
+Category: Food
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Mushroom.png
+|tier=6
+|effect=Give one pet the Mushroom [[Food Perks|perk]]. Come back as a 1/1 after fainting.
+}}
+
+'''Mushroom''' is a {{IconSAP|Tier 6}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|pet]] a Mushroom gives that pet the Mushroom [[Food Perks|perk]]. When a pet with the Mushroom perk faints, it summons a 1/1 copy of itself at the same level.
+
+Summoned copies are considered "new" pets, with almost no memory of their old selves before they faint. For example if a {{IconSAP|Parrot}} faints and comes back, it will not keep the copied abilities. However, Mushroom ''does'' remember the amount of ability triggers the pet has spent.
+
+== Strategy ==
+Mushroom's biggest strength is giving pets an additional, guaranteed chance to trigger their abilities. Some examples include the {{IconSAP|Elephant}}, {{IconSAP|Turtle}}, {{IconSAP|Deer}}, {{IconSAP|Mammoth}}. It combines well with {{IconSAP|Scorpion}}, enabling it to break {{IconSAP|Melon}} on its first attack, then respawn with {{IconSAP|Peanut}} and knock out the exposed enemy.
+
+It can also be used as a defensive perk for support pets that don't care much about their own stats, such as {{IconSAP|Turkey}}, {{IconSAP|Tiger}}, {{IconSAP|Snake}}. Mushroom on these pets is as strong if not stronger than {{IconSAP|Bread}} and {{IconSAP|Melon}}, since the pet is guaranteed to survive any Start of battle snipers.
+
+==Trivia==
+* The '''Mushroom''' effect can be a reference to [https://wikipedia.org/Super_Mario Super Mario]'s [https://www.mariowiki.com/1-Up_Mushroom 1-Up Mushroom].
+
+== Gallery ==
+<gallery>
+Mushroom.png|The standard sprite of the Mushroom
+Mushroom Classic.png|The classic sprite of the Mushroom
+</gallery>
+
+==History==
+
+
+
+{{Navbox Food}}
+
+
+[[Category:Food]]
+[[Category:Food Perk]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]

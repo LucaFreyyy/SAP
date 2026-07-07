@@ -1,0 +1,46 @@
+Title: Cake
+Category: Food
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Cake.png
+|tier=3
+|effect=Give one pet the Cake [[Food Perks|perk]].
+'''End turn''': Increase sell value by 1 {{IconSAP|gold}}.
+}}
+
+''This page details information about the incremental sell value perk. For other cake-related foods, see {{IconSAP|Chocolate Cake}} or {{IconSAP|Eat-Me Cake}}.''
+
+
+The '''Cake''' is a {{IconSAP|Tier 3}} [[Food]], available for free in '''{{IconSAP|Custom Packs}}'''. Feeding a pet the Cake will give them the Cake [[Perk|perk]]. A pet with the Cake perk will increase its sell value by 1 {{IconSAP|gold}} at the end of the turn.
+
+==Strategy==
+With Cake's availability in the early game, it works well on strong pets you plan on selling later. For example, a Level 2 {{IconSAP|Cricket}} at 3/5 can help your team early in the game but will inevitably need to be sold for a stronger replacement. With Cake, you can use the Cricket as an investment so that a burst of gold is earned once it's finally sold.
+
+Beyond '''Turtle Pack''', the sell value buffs synergize with specific pet abilities found in '''{{IconSAP|Custom Packs}}'''. For each gained sell value, {{IconSAP|Trout}} earns more health when that friend is sold. Additionally, holding onto high sell value pets allows {{IconSAP|Pacific Fanfish}} to gain more buffs at the start of battles.
+
+==Trivia==
+* Cake is referred to as <code>BirthdayCake</code> in '''Super Auto Pets's''' files.
+
+==Gallery==
+<gallery>
+Cake.png|The standard sprite of the Cake
+BirthdayCake 2.png|An unused sprite of the Cake
+</gallery>
+
+==History==
+{{History
+|0.44:
+* Changed the Cake's perk ability from "End turn: Eat one slice and gain +2 attack and +2 health until next turn." to "End turn: Increase sell value by 1 gold."
+* Removed from '''{{IconSAP|Custom Packs}}''' and added back to '''{{IconSAP|Turtle Pack}}''' 
+|0.43: Removed from '''{{IconSAP|Turtle Pack}}''' and added to '''{{IconSAP|Custom Packs}}'''
+|0.42: Added to '''{{IconSAP|Turtle Pack}}''' 
+}}
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Food Perk]]
+[[Category:Tier 3]]

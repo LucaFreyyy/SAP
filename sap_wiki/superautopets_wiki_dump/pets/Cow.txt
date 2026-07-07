@@ -1,0 +1,43 @@
+Title: Cow
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=4/6
+|tier=5
+|level_1='''Buy''': Replace shop food with two free {{IconSAP|Milk}}.
+|level_2='''Buy''': Replace shop food with two free {{IconSAP|Better Milk}}.
+|level_3='''Buy''': Replace shop food with two free {{IconSAP|Best Milk}}.
+}}
+
+The '''Cow''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When Cow is bought, it removes all foods from the shop and adds 2 free {{IconSAP|Milk}} that each gives +1 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}. Leveling up the Cow will spawn {{IconSAP|Better Milk}} and then {{IconSAP|Best Milk}}, with increasingly improved stat buffs.
+
+Cow has an additional hidden ability: When given {{IconSAP|Chocolate}}, it will spawn 2 free {{IconSAP|Chocolate Milk}} that only gives +1 {{IconSAP|attack|nolink=yes}} and no health. This ability also improves upon leveling up and spawns Better Chocolate Milk and Best Chocolate Milk.
+
+==Strategy==
+Cow is a versatile scaler with unparalleled efficiency. It brings consistency to the food hunt as each Cow is equal to 2 ''targeted'' foods with stat effects, able to trigger food abilities twice while giving a good amount of stats.
+
+The most common strategy is buy-selling Cows, since it's 2 gold while giving the same amount of stats as {{IconSAP|Sushi}}. Another strategy is keeping a Cow on the team then stacking copies on top, which will continuously give more stats with stronger Milks. Even keeping Cow on the team for one turn can be worthwhile, since it gives more stats on that turn than any other scaler from tier 5 and below while having much higher base stats. Furthermore unlike other '''Buy''' pets, giving Chocolates to Cow isn't a complete waste as it can still give stats through Chocolate Milk, so this can be useful in accelerating Cow's level ups.
+
+Note that Milk will spawn after Level up rewards and replace any pets that might be in the 2 right-most spaces in the food shop. Chocolate Milk on the other hand will spawn ''before'' Level up rewards and can be overridden by pets being pushed to the right.
+
+==Trivia==
+* Chocolate Milk used to give +2/+1 in the September 29th 2022 test build.
+
+==Gallery==
+<gallery>
+Cow.png|The standard sprite of the Cow
+Cow Classic.png|The classic sprite of the Cow
+</gallery>
+
+==History==
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Buy abilities]]
+[[Category:Food based abilities]]

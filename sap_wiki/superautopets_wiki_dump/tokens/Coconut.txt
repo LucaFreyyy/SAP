@@ -1,0 +1,49 @@
+Title: Coconut
+Category: Token
+Tier: Token
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Coconut.png
+|tier=7
+|effect=Block damage, once.}}
+
+The '''Coconut''' is a {{IconSAP|Tier 7}} [[Food]], but isn't normally available in the shop and can only be obtained through abilities. The first time a pet with the Coconut perk takes damage, the damage is reduced to 0.
+
+==Strategy==
+Blocking all damage makes it a hard counter to {{IconSAP|Peanut}} and {{IconSAP|Peanut Butter}} perks, as well as allowing pets to survive high burst of damage regardless of their health. However it's not always better than the more readily available {{IconSAP|Melon}}, since Coconut cannot trigger Hurt abilities.
+
+For example: When a 50/50 {{IconSAP|Gorilla}} with Coconut goes up against another 50/50 enemy with any defensive food perk, they will knock each other out after 2 hits. However if the Gorilla had had Melon or {{IconSAP|Garlic}} instead, it would've knocked the other 50/50 out in 2 hits, but gained Coconut after the first hit, survived, and could get a 3rd hit in against the second enemy.
+
+==Obtaining Coconut outside battle==
+Hurting a {{IconSAP|Gorilla}} in the shop phase will trigger its ability and give it permanent Coconut. This can be done by {{IconSAP|Sleeping Pill|name=Pilling}} a {{IconSAP|Hedgehog}} or {{IconSAP|Badger}}.
+
+In Custom and Weekly packs, {{IconSAP|Coconut Crab}} can be used in the shop phase to gain a temporary Coconut. In order to give permanent Coconut to any pet or potentially the entire team, we'll need to create a Custom pack and follow these steps:
+
+====Step 1: Parrot====
+'''Goal''': At the end of turn, let a {{IconSAP|Parrot}} copy Gorilla's ability, then hurt the Parrot to trigger the copied ability and give itself Coconut.
+
+This can be done by putting a {{IconSAP|Leech}} behind the Parrot, or with {{IconSAP|Deer Lord}} behind a Hedgehog or Badger. Remember that Parrot's copy ability has to go first, so make sure Leech/Deer Lord has lower attack than Parrot.
+
+====Step 2: Transfer====
+'''Goal''': At the end of turn, let the Parrot with Coconut copy a {{IconSAP|Seagull}}, faint a {{IconSAP|Chipmunk}} or {{IconSAP|Toucan}} or Seagull that has {{IconSAP|Mushroom}} perk, when that pet respawns, the Parrot will give it Coconut. Once Coconut is on one of these 3 pets, it can easily be copied to other pets on the team.
+
+An example setup would be: Leech, Seagull with Mushroom, Parrot with Coconut, Seagull. The Seagull in front of the Parrot should not have any food perk, or has run out of triggers already.
+
+Now, we need the Leech to knock out the Seagull in front. This can be guaranteed by putting that it at 1 health: by letting it get hurt by the Leech prior to this turn, feeding it {{IconSAP|Fried Shrimp}} or {{IconSAP|Eat-Me Cake}}, or giving it a Mushroom then Sleeping Pill so it will respawn as 1/1. Alternatively, putting {{IconSAP|Pineapple}} or {{IconSAP|Kiwano}} on the Leech will allow it to knock out a base stats Seagull immediately.
+
+====Step 3: Chipmunk====
+'''Goal''': Stock Coconuts in the shop with Chipmunk. Now we can fully pivot to any pets of our choosing and give them Coconut.
+
+Congratulations! Hopefully that takes less than 20 turns, enjoy the full Coconut team!
+
+== Version History ==
+
+== Gallery ==
+<gallery>
+File:Coconut.png
+</gallery>
+
+== Trivia ==
+{{Navbox Food}}

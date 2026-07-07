@@ -1,0 +1,54 @@
+Title: Whale
+Category: Pet
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Whale.png
+|attack/health=3/7
+|tier=4
+|level_1='''Start of battle''': Swallow the nearest friend ahead and release it as level 1 on faint.
+|level_2='''Start of battle''': Swallow the nearest friend ahead and release it as level 2 on faint.
+|level_3='''Start of battle''': Swallow the nearest friend ahead and release it as level 3 on faint.
+}}
+
+The '''Whale''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the Start of battle, Whale will swallow (knock out) the nearest friend ahead. Then when Whale faints, it will summon that friend at level 1, with identical stats as before it was swallowed, but without any perks. Leveling up the Whale will increase the level of the summoned friend.
+
+Summoned friends are considered "new" pets, with no memory of their old selves before being swallowed. For example if a {{IconSAP|Parrot}} was swallowed, it will not keep the copied abilities when summoned.
+
+Whale is ''not'' considered a '''Faint''' pet, and does not synergize with pets that call for Faint abilities.
+
+==Strategy==
+Whale synergies well with all Faint pets, and effectively triggering their abilities twice. Pairing it with a {{IconSAP|Deer}} to summon the {{IconSAP|Bus}} immediately, then later the Whale will also summon another Deer for another Bus. Pairing it with {{IconSAP|Turtle}} to gain multiple {{IconSAP|Melon|name=Melons}}, {{IconSAP|Flamingo}} and later {{IconSAP|Mammoth}} to get multiple stats buffs. It can also synergize with {{IconSAP|Mushroom}}, for example a unique combo is {{IconSAP|Whale}} + {{IconSAP|Scorpion}} + {{IconSAP|Mushroom}} for 2 instakills.
+
+It can also be used to "protect" friends from damage such as Start of battle snipers: The friend is safe inside Whale until it's released, although this comes at a cost of their perks.
+
+A special interaction is with {{IconSAP|Tiger}}. Putting Tiger behind the Whale will cause it to swallow up to 2 friends ahead, then summon all of them on faint. Tiger will also double the ability of whatever Whale releases.
+
+==Trivia==
+
+==Gallery==
+<gallery>
+Whale.png|The standard sprite of the Whale
+Whale Classic.png|The classic sprite of the Whale
+</gallery>
+
+== History ==
+{{History
+|0.37:
+*Changed Whale's ability from "Start of battle: Swallow the nearest friend ahead and summon a new level 1 after fainting." to "Start of battle: Swallow the nearest friend ahead and release it as level 1 on faint."
+*Changed Whale's stats from 4/10 to 3/7
+|0.29: Changed the Whale's base stats from 3/8 to 4/10.
+|0.16: Changed the Whale's base stats from 2/6 to 3/8.
+|0.14: Changed the Whale's tier from 3 to 4.
+}}
+
+
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:Start of battle abilities]]
+[[Category:Summoning based abilities]]

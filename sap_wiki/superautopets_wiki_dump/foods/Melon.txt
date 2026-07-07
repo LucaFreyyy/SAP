@@ -1,0 +1,39 @@
+Title: Melon
+Category: Food
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Melon.png
+|tier=6
+|effect=Give one pet the Melon [[Food Perks|perk]]. Take 20 less {{IconSAP|damage|nolink=yes}}, once.
+}}
+The '''Melon''' is a {{IconSAP|Tier 6}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. Feeding a [[Pets|Pet]] a Melon gives that pet the Melon [[Food Perks|perk]]. The first time a pet with Melon perk takes damage, the damage is reduced by 20, to a minimum of 0.
+
+==Strategy==
+Melon is a very efficient defensive perk that's used to keep your pets alive longer. If you're not looking for synergy perks like {{IconSAP|Mushroom}}, it's always good to give your pets Melon. 
+
+It can be considered a whopping ''20 health'' food that can exceed the 50 health limit. More health also means more times the pet gets to attack and the more chances it have to trigger its ability. A 35/31 pet with Melon perk can go toe-to-toe against a max stat enemy at 50/50 with common defensive food perks. Melon can also protect your pets against high damaging snipers like {{IconSAP|Leopard}}, or against instant knockouts by {{IconSAP|Scorpion}}.
+
+On the other hand, it also shouldn't be treated as a stronger version of {{IconSAP|Garlic}} or {{IconSAP|Bread}}, as they all have their unique strengths and weaknesses. Melon only blocks damage once so has way too many counters such as: putting a disposable pet front-most to act as a meatshield that breaks the Melon, snipes or piercing abilities like {{IconSAP|Chili}} or {{IconSAP|Rhino}} that break it before the pet gets to attack, summon teams that can afford to waste a token on the Melon then swarm the exposed pet, and so on. Reducing the damage to 0 might not always be ideal, since you can lose out on Hurt triggers from pets like {{IconSAP|Camel}} or {{IconSAP|Gorilla}}.
+
+==Trivia==
+
+*In the early days of Super Auto Pets Melon was instead called a shield and, ignoring visual differences, functioned almost identically to the Melon we have today.
+The upgrade of the Melon is the {{IconSAP|Coconut}} but abilities and attack takes infinite damage. The downgrade of the Melon is the {{IconSAP|Lemon}} or {{IconSAP|Garlic}}
+
+==Gallery==
+<gallery>
+Melon.png|The standard sprite of the Melon
+Melon Classic.png|The classic sprite of the Melon
+File:Screenshot from 2022-06-30 19-09-01.png|The Beta version of the melon/shield.
+</gallery>
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Food Perk]]
+[[Category:Tier 6]]
+[[Category:Puppy Pack]]
+[[Category:Turtle Pack]]

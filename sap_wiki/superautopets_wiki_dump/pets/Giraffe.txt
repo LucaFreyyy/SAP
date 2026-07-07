@@ -1,0 +1,54 @@
+Title: Giraffe
+Category: Pet
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Giraffe.png
+|attack/health=1/2
+|tier=3
+|level_1='''Start of turn''': Give the nearest friend ahead +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Start of turn''': Give the nearest two friends ahead +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+|level_3='''Start of turn''': Give the nearest three friends ahead +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Giraffe''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}''' . At the start of every turn, the Giraffe will buff the stats of the friend(s) ahead of it. Levelling up the Giraffe will increase the amount of friends it can target with its ability. 
+
+==Strategy==
+The Giraffe is respectable scaling for its tier. At Tier 3, you can look to place your giraffe behind a pet you will keep in the future battles, such as an {{IconSAP|Ox}} or a {{IconSAP|Badger}}.
+
+When levelled up, you can buff animals more than one space ahead of it, allowing you to buff animals that require to be placed together without ruining their synergy, {{IconSAP|Camel}} and {{IconSAP|Elephant}}.
+
+Starting from Tier 5 and higher, Giraffe's scaling is very easily outclassed by other scaling pets such as {{IconSAP|Penguin}} or {{IconSAP|Monkey}}. One should opt to a stronger scaling option as soon as possible.
+
+==Trivia==
+*The Giraffe is the only pet that says its name as part of its in game sound. In real life, giraffes are mute.
+BUT WAIT!, scientist discovered that '''{{IconSAP|Giraffe|name=giraffe's}}''' giraffe's are NOT mute, they make some humming sounds, it makes it clear in the night.
+
+==Game Sound==
+[[File:Giraffe.wav]] 
+
+==Gallery==
+<gallery>
+Giraffe.png|The standard sprite of the Giraffe
+Giraffe Classic.png|The classic sprite of the Giraffe
+</gallery>
+
+==History==
+{{History
+|0.35: Changed the Giraffe's ability from "End turn: Give the nearest 1/2/3 friends ahead +1 attack and +1 health." to "Start of turn: Give the nearest 1/2/3 friends ahead +1 attack and +1 health."
+|0.30: Changed the Giraffe's base stats from 1/3 to 1/2.
+|0.22: Changed the Giraffe's base stats from 2/4 to 1/3.
+|0.18: Changed the Giraffe's base stats from 2/5 to 2/4.
+|0.14: Changed the Giraffe's base stats from 2/4 to 2/5.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:End turn ability]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]

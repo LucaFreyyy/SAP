@@ -1,0 +1,54 @@
+Title: Ant
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|tier= 1
+|attack/health= 2/2
+|ID= 0
+|level_1='''[[Faint (Trigger)|Faint]]''': Give a random friend +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''[[Faint (Trigger)|Faint]]''': Give a random friend +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''[[Faint (Trigger)|Faint]]''': Give a random friend +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Ant''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the Ant [[Faint (Trigger)|faints]], it buffs the stats of one random friend. Levelling up the Ant increases the stats given by its ability.
+==Strategy==
+The Ant's stats are mid, but its ability is good for a Tier 1 Pet. Not only does the Ant's good attack mean it can trade with most tier 1 pets, but its buff when fainting often allows one of its friends to get an extra KO, meaning the Ant often trades 2-for-1. 
+
+However, this doesn't always pan out in practice. Firstly, if the Ant's buff hits a 1 health friend, then that friend is unlikely to get an extra KO, wasting the Ant's ability. Secondly, it can't trade with a {{IconSAP|Duck}}, {{IconSAP|Marmoset}} or {{IconSAP|Seahorse}}. Having multiple Ants will simply multiply these weaknesses, so it's usually better not to have multiple Ants in the first round.
+
+As most Tier 1 pets do, the Ant falls off in the mid-game. Though the Ant still has power in that it can be given a {{IconSAP|Sleeping Pill}}, its ability will activate and give one of its friends a nice, permanent buff to their stats. 
+
+Overall, the Ant is a very powerful early game unit that can easily win early rounds, and can be sacrificed for scaling later on.
+
+==Trivia==
+The Ant is the opposite of the {{IconSAP|Strawberry}} but buffs the back-most friend instead of a random friend.
+
+==Game Sound==
+[[File:Ant.wav]]
+
+==Gallery==
+<gallery>
+Ant.png|The standard sprite of the Ant
+Ant Classic.png|The classic sprite of the Ant
+</gallery>
+
+==History==
+{{History
+|0.27
+*Changed the Ant's base stats from 2/1 to 2/2.
+*Changed the Ant's ability from: "'''Faint''': Give a random friend +2/+1, +4/+2, +6/+3" to "'''Faint''': Give a random friend +1/+1, +2/+2, +3/+3." 
+*Removed from the '''{{IconSAP|Puppy Pack}}'''
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Buffing based abilities]]
+[[Category:Friend buffing abilities]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]

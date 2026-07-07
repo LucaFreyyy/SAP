@@ -1,0 +1,51 @@
+Title: Rabbit
+Category: Pet
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=1/2
+|tier=3
+|level_1='''Friendly ate food''': Give them +1 {{IconSAP|health|nolink=yes}}. Works 3 times per turn.
+|level_2='''Friendly ate food''': Give them +2 {{IconSAP|health|nolink=yes}}. Works 3 times per turn.
+|level_3='''Friendly ate food''': Give them +3 {{IconSAP|health|nolink=yes}}. Works 3 times per turn.
+}}
+
+'''Rabbit''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When a friendly pet eats any [[Food]], including Rabbit itself, Rabbit will give that pet additional health, up to three times per turn. Leveling up Rabbit increases the amount of health given.
+
+==Strategy==
+Rabbit gives extra health every time pets on the team receive foods and perks. At level 1, it's effectively multiplying the stats affect of all foods: 2x effect for {{IconSAP|Bread Crumbs}}, 1.5x for {{IconSAP|Apple}} and {{IconSAP|Salad Bowl}}, 1.25x for {{IconSAP|Pear}}, and so on. Multiple Rabbits can be used to give a more and more health.
+
+Being a pure health scaler, it synergizes well with Hurt pets such as {{IconSAP|Peacock}} and {{IconSAP|Camel}} that love to be hit multiple times, but can also work for just building up a beefy tank that will stay until the end of the game. It also has synergies with {{IconSAP|Ox}}, {{IconSAP|Turtle}}, and {{IconSAP|Scorpion}} to give them extra health when they gain/give perks.
+
+Just due to how efficient Rabbit is, it can easily snowball a pet into a 10/20 as early as turn 5, and can quickly be swapped out for something else once you've got yourself enough health scaling. In Turtle pack, a 20/40 will get to 50 health before you know it, but it will take a bit longer until it can reach 50 attack. You'll also be able to find an upgrade to Rabbit at tier 6: {{IconSAP|Cat}}.
+
+==Game Sound==
+[[File:Rabbit.wav]]
+
+== Gallery==
+<gallery>
+Rabbit.png|The standard sprite of the Rabbit
+Rabbit Classic.png|The classic sprite of the Rabbit
+RabbitHeart.png|The "RabbitHeart" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+{{History
+|0.40: Changed Rabbit's ability from "Friendly ate food: Give them +1 health. Works 4 times per turn." to "Friendly ate food: Give them +1 health. Works 3 times per turn."
+|0.37: Changed Rabbit's ability from "Friendly ate food: Give them +1 health." to "Friendly ate food: Give them +1 health. Works 4 times per turn."
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+|0.18: Changed the Rabbit's base stats from 3/2 to 1/2 .
+|0.14: Changed Rabbit to also trigger itself.
+|}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:Food based abilities]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]
+[[Category:Self scaling abilities]]

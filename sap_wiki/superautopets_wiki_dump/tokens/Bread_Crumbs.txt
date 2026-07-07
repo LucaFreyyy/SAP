@@ -1,0 +1,34 @@
+Title: Bread Crumbs
+Category: Token
+Tier: Token
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Bread Crumbs.png
+|tier=1
+|effect=Give one pet +1 {{IconSAP|attack|nolink=yes}}.
+}}
+'''Bread Crumbs''' is a {{IconSAP|Tier 1}} [[Food]] that can only be obtained through the {{IconSAP|Pigeon}}'s ability. Selling the Pigeon stocks up to three (depending on the Pigeons level) free Bread Crumbs in the shop.
+
+== Strategy ==
+You can use the rabbit [https://superautopets.wiki.gg/wiki/Rabbit] to let is be the scale value the same as the apple [https://superautopets.wiki.gg/wiki/Apple]
+
+==Trivia==
+*Bread Crumbs has the opposite effect of {{IconSAP|Seed Pile}} that is also obtainable by a {{IconSAP|Tooth Billed Pigeon|name=Tooth billed Pigeon}}.
+
+== Gallery ==
+<gallery>
+Bread Crumbs.png|The sprite of the Bread Crumbs
+</gallery>
+
+==History== 
+{{History 
+|0.31: The Bread Crumbs is added into the game as part of the Pigeons ability.
+}}
+
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Token]]

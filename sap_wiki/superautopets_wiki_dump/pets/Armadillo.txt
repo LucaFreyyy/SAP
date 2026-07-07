@@ -1,0 +1,55 @@
+Title: Armadillo
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Armadillo.png
+|attack/health=4/8
+|tier=5
+|level_1='''Start of battle''': Give ALL pets +8 {{IconSAP|health|nolink=yes}}.
+|level_2='''Start of battle''': Give ALL pets +16 {{IconSAP|health|nolink=yes}}.
+|level_3='''Start of battle''': Give ALL pets +24 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Armadillo''' is a {{IconSAP|Tier 5}} pet, available in the '''{{IconSAP|Turtle Pack}}'''. At the start of battle, the Armadillo will give a health buff to its friends ''and'' enemies, including itself. Leveling up the Armadillo increases the amount of health it gives.
+
+==Strategy==
+The Armadillo can be used to beefen up a summoning comp, including of pets such as '''{{IconSAP|Turkey}}''' or '''{{IconSAP|Fly}}''', to ensure that they do not die easily to snipers available on Tier 5 onwards, notably Crocodile or Leopard. 
+
+Hurt abilities like '''{{IconSAP|Camel}}''' and '''{{IconSAP|Gorilla}}''' can benefit more off gaining health than other pets.
+
+Attack Buffing pets like '''{{IconSAP|Dodo}}''' , '''{{IconSAP|Seal}}'''  and '''{{IconSAP|Fire Ant}}''' can help balance out stats. However, if a high health pet has '''{{IconSAP|Peanuts}}''' like '''{{IconSAP|Scorpion}}''' or through '''{{IconSAP|Walrus}}''', they can destroy multiple enemies without any additional attack required.
+
+One should be wary of the downside of using Armadillo, as it also buffs the health of the enemy pets. It can be very powerful, but only under circumstances where you know your team will benefit more off of its ability than the enemy.
+
+You can also combo Armadillo with '''{{IconSAP|Skunk}}''' to lower the enemy's HP after Armadillo's health ability goes off. Be sure to increase Armadillo's attack stat and make sure it is higher than the Skunk, so that the Armadillo's ability goes first.
+
+==Gallery==
+<gallery>
+Armadillo.png|The standard sprite of the Armadillo
+Armadillo Classic.png|The Classic sprite of the Armadillo
+</gallery>
+
+== History ==
+{{History
+|0.44: Changed Armadillo's stats from 2/10 to 4/8 
+|0.37: Changed Armadillo's stats from 2/6 to 2/10 
+|0.27:
+*Changed Tier from 4 to 5.
+*Changed ability from "Hurt & Faint: Give friends +1/+2/+3 health." to "Start of battle: Give ALL pets +8/+16/+24 health."
+*Added to the '''Turtle Pack'''.
+*Removed from '''{{IconSAP|Custom Packs}}'''.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Start of battle abilities]]
+[[Category:Buffing based abilities]]
+[[Category:Friend buffing abilities]]

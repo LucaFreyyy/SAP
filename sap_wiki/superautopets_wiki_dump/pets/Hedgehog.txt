@@ -1,0 +1,46 @@
+Title: Hedgehog
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=4/2
+|tier=2
+|level_1='''Faint''': Deal 2 {{IconSAP|damage|nolink=yes}} to ALL pets.
+|level_2='''Faint''': Deal 4 {{IconSAP|damage|nolink=yes}} to ALL pets.
+|level_3='''Faint''': Deal 6 {{IconSAP|damage|nolink=yes}} to ALL pets.
+}}
+The '''Hedgehog''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When the Hedgehog faints, it deals damage to all pets in play, regardless of whether they are on the player's or the enemy's team. When leveled up, the Hedgehog will deal more damage with its ability. 
+
+==Strategy==
+The Hedgehog is the definition of risk-reward. It can deal a LOT of damage to the enemy team, but it can greatly weaken your team, too. It can also serve as an early version of Badger, placed at the back to try and knock out any left over enemies should they have defeated the rest of your team. 
+
+The Hedgehog works best with Pets with Hurt effects, like the {{IconSAP|Blowfish}} and the {{IconSAP|Camel}}. In the '''Puppy Pack''', another notable synergy with the Hedgehog is the {{IconSAP|Microbe}}. Using a {{IconSAP|Skunk}} can help take down the opponent's biggest pet in the late game (since single high health Pets are a big threat to a Hedgehog). In the early game, if you expect both teams to die from your hedgehog, then make sure to include Pets that spawn other units on your team. Ironically, the Hedgehog's biggest weakness is also Pets with Hurt effects. Triggering your opponent's hurt effects for free will most likely result in a loss.
+
+If you plan on using the Hedgehog, make sure to give lots of pets in your team {{IconSAP|Garlic}}, as this can contribute towards negating some of the damage your team takes. Give the Hedgehog itself {{IconSAP|Meat Bone}} and put it in the front. You can use {{IconSAP|Pineapple}} on the hedgehog to greatly increase it's effectiveness, though it is risky. Late game, give it either a {{IconSAP|Mushroom}} or a {{IconSAP|Steak}}. Consider selling the Hedgehog as another late game option, as the 1 {{IconSAP|Gold}} it provides may be more useful than its effect. If you don’t sell it, then in many situations two Hedgehogs are better than one.
+
+==Game Sound==
+[[File:Hedgehog.wav]]
+
+==Gallery==
+<gallery>
+Hedgehog.png|The standard sprite of the Hedgehog
+Hedgehog Classic.png|The classic sprite of the Hedgehog
+</gallery>
+
+==History==
+{{History
+|0.29: Changed the Hedgehog's base stats from 3/2 to 4/2.
+|0.27: Removed from the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''.
+}}
+
+
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Damage dealing abilities]]
+[[Category:Friend damaging abilities]]

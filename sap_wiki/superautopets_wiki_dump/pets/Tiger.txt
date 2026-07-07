@@ -1,0 +1,69 @@
+Title: Tiger
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=6/4
+|tier=6
+|level_1=The friend ahead repeats their ability in battle as if they were level 1.
+|level_2=The friend ahead repeats their ability in battle as if they were level 2.
+|level_3=The friend ahead repeats their ability in battle as if they were level 3.
+}}
+The '''Tiger''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. While in battle, whenever the nearest pet ahead of the Tiger triggers their ability, they will immediately trigger it again but this time at the same level as the Tiger.
+
+That bad boy works with '''bold texts''', say, '''Hurt''', '''Faint''', '''Friend summoned''', yeah you know the deal. It doesn't work with '''End Turn''' or '''Start of turn''' abilities like {{IconSAP|Giraffe}},{{IconSAP|Monkey}}, or, well, another Tiger.
+
+Friends repeating their abilities won't deplete additional triggers. For example: Each time a friend faints, {{IconSAP|Fly}} would summon 2 {{IconSAP|Zombie Fly|name=Zombie Flies}} but only lose 1 trigger.
+
+==Strategy==
+Tiger is a unique supporter that upgrades combat abilities, often making that pet twice as strong. For example, putting a Tiger behind {{IconSAP|Snake}} will make the Snake shoots twice each time it's triggered.
+
+At the moment (08/01/2026), {{IconSAP|Tiger}} has been changed for to deplete triggers, so, you will get faster activations, but they won't last too much!
+
+
+'''{{IconSAP|Tiger}}''' + '''{{IconSAP|Rhino}}''' is a great combo!, it can wipe out pets with a single attack!. '''
+
+{{ARTICLEPAGENAME}}
+
+Tiger's ability is a bit similar to {{IconSAP|Parrot}}. But while they both share a similar audience, they each have their own strengths, use cases, and pets that they work better on. For example, while both {{IconSAP|Tiger}} {{IconSAP|Turkey}} and {{IconSAP|Parrot}} {{IconSAP|Turkey}} serve the same purpose for summon teams, Parrot can be found much earlier and would be higher level than Tiger. An example would be '''Hurt''' combos like with {{IconSAP|Camel}} or {{IconSAP|Blowfish}}, Tiger will make these combos up to twice as powerful, while Parrot cannot.
+
+Being one of the pets with the most synergies in the entire game, there's a whole lot of tiger combos. It's usually put behind pets with strong combat abilities, but there are plenty of different ways to utilize Tiger. Get creative!
+
+Below is some unique interactions that you should know: 
+
+* Tiger will always repeat the ability of whatever that's currently in front, even when it moves out of its original position. This is useful for Custom packs utilizing pets like {{IconSAP|Panda}}, {{IconSAP|Sword Fish}}, or packs with {{IconSAP|Onion}}.
+* It doesn't necessarily ALWAYS make the friend ahead stronger. Since the ability is ''repeated'' at the same level as the Tiger, for certain abilities like {{IconSAP|Crab}} or {{IconSAP|Butterfly}}, a low level Tiger will make them perform their copy abilities again at lower level, and end up copying less stats.
+
+Formerly, if you used tiger on something like {{IconSAP|Egyptian Vulture}}, it could potentially repeat all 3 triggers of the Egyptian Vulture, even at level 1.
+
+==Trivia==
+*Tiger is the only pet to have both their appearance and name drastically changed.
+
+==Gallery==
+<gallery>
+Tiger.png|The standard sprite of the Tiger
+Tiger Classic.png|The classic sprite of the Tiger
+TigerCub.png|The old sprite of the Tiger, previously known as the "Tiger Cub"
+</gallery>
+
+==History==
+{{History
+|0.27
+*Changed the Tiger's base stats from 4/3 to 6/4.
+*Removed from the '''{{IconSAP|Puppy Pack}}'''.
+
+|0.14
+*Now available in the '''{{IconSAP|Puppy Pack}}'''.
+*Ability repeated is based on the Tiger’s level, not its friend's.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]
+[[Category:Ability repeating abilities]]

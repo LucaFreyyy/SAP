@@ -1,0 +1,45 @@
+Title: Sleeping Pill
+Category: Food
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Sleeping_Pill.png
+|tier=2
+|effect=Make one pet faint. Always on sale!
+}}
+The '''Sleeping Pill''' is a {{IconSAP|Tier 2}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. When a [[Pets|pet]] is fed a Sleeping Pill, they're knocked out and are permanently removed from the team. However, this will also activate their '''[[Faint (Trigger)|Faint]]''' abilities.
+
+Sleeping Pill costs 1 gold, instead of the usual 3 for all other Foods.
+
+Sleeping Pill does not trigger '''Eats food''' abilities.
+
+==Strategy==
+Sleeping Pill is a gold efficient food and that's used to extract values out of Faint abilities, often means gaining extra stats, higher tier pets and perks, or that might be otherwise inaccessible.
+
+Most [[Faint Pets]] or food synergize with Pill. Here are some of the most prominent examples:
+
+* '''Stats boosts''': {{IconSAP|Ant}}, {{IconSAP|Flamingo}}, {{IconSAP|Mammoth}} all give nice stat boosts when they faint. At tier 2, Flamingo Pill is 4 gold for a targeted {{IconSAP|Salad Bowl}} (a tier 3 food).
+* '''Higher tier pets''': {{IconSAP|Spider}}, {{IconSAP|Beluga Sturgeon}}, and {{IconSAP|Eagle}} will all summon a pet from 1 tier higher when they faint.
+* '''Higher tier perks''': {{IconSAP|Melon}} is a tier 6 perk that can be obtained as early as ''turn 3'' by pilling something in front of an {{IconSAP|Ox}}, or a bit later by pilling a {{IconSAP|Turtle}}.
+* '''Achievement hunting''': Pilling summoners like {{IconSAP|Sheep}}, {{IconSAP|Deer}}, or {{IconSAP|Rooster}} will summon their tokens during shop phase, leading to their secret achievements and ribbons.
+
+==Trivia==
+*Commonly referred to as just "Pill".
+
+== Gallery ==
+<gallery>
+Sleeping_Pill.png|The sprite of the Sleeping Pill
+Sleeping Pill Old.png|The old sprite of the Sleeping Pill
+Sleeping Pill Classic.png|The classic sprite of the Sleeping Pill
+</gallery>
+
+==History==
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Puppy Pack]]

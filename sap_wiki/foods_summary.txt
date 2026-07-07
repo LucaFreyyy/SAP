@@ -1,0 +1,105 @@
+Apple:Give one pet +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Apple''' is a {{IconSAP|Tier 1}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''', the '''{{IconSAP|Puppy Pack}}''' and the '''{{IconSAP|Golden Pack}}'''. When a pet is fed an Apple, it receives +1 attack and +1 health. The {{IconSAP|Pear}}, {{IconSAP|Lasagna}} and {{IconSAP|Chicken Leg}} are generally considered to be direct upgrades to it.
+
+The {{IconSAP|Mouse}} and {{IconSAP|Worm}} will stock an Apple when sold/at the start of turn, at level 2 they will stock a {{IconSAP|Better Apple|nolink=yes}} and at level 3 they will stock a {{IconSAP|Best Apple|nolink=yes}} that give +2/+2 and +3/+3 respectively.
+
+Honey:Give one pet the Honey [[Food Perks|perk]]. Summon one 1/1 {{IconSAP|Bee
+after fainting.
+}}
+The '''Honey''' is a {{IconSAP|Tier 1}} [[Food]], available in  the'''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|pet]] Honey will give it the Honey [[Food Perks|perk]]. When a pet with Honey perk faints, it summons a level 1 {{IconSAP|Bee}} in its place.
+
+Sleeping Pill:Make one pet faint. Always on sale!
+The '''Sleeping Pill''' is a {{IconSAP|Tier 2}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. When a [[Pets|pet]] is fed a Sleeping Pill, they're knocked out and are permanently removed from the team. However, this will also activate their '''[[Faint (Trigger)|Faint]]''' abilities.
+
+Sleeping Pill costs 1 gold, instead of the usual 3 for all other Foods.
+
+Sleeping Pill does not trigger '''Eats food''' abilities.
+
+Meat Bone:Give one pet the Meat Bone [[Food Perks|perk]].
+.
+}}
+The '''Meat Bone''' is a {{IconSAP|Tier 2}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a pet a Meat Bone will give them the Meat Bone [[Food Perks|perk]]. A pet with the Meat Bone perk attacks with +3 extra damage. 
+
+This attack bonus does not affect abilities that are dependent on attack: Like {{IconSAP|Dodo}} or {{IconSAP|Leopard}}.
+
+Cupcake:Give one pet +3 {{IconSAP|attack|nolink=yes
+and +3 {{IconSAP|health|nolink=yes}} until end of battle.
+}}
+The '''Cupcake''' is a {{IconSAP|Tier 2}} [[Food]].  When a [[Pets|pet]] is fed a Cupcake, it gets +3/+3 until the end of battle.
+
+Garlic:Give one pet the Garlic [[Food Perks|perk]].
+. It can't be reduced to less than 2.
+}}
+
+The '''Garlic''' is a {{IconSAP|Tier 3}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a pet Garlic will give it the Garlic [[Food Perks|perk]]. A pet with Garlic perk will take 2 less damage from all sources, although damage can't be reduced below 2.
+
+Salad Bowl:Give two random pets +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+}}
+The Salad Bowl is a {{IconSAP|Tier 3}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Buying a Salad Bowl gives 2 random pets +1/+1. The {{IconSAP|Sushi}} or the {{IconSAP|Pizza}} could be considered direct upgrades to the Salad Bowl.
+
+Cake:Give one pet the Cake [[Food Perks|perk]].
+.
+}}
+
+''This page details information about the incremental sell value perk. For other cake-related foods, see {{IconSAP|Chocolate Cake}} or {{IconSAP|Eat-Me Cake}}.''
+
+
+The '''Cake''' is a {{IconSAP|Tier 3}} [[Food]], available for free in '''{{IconSAP|Custom Packs}}'''. Feeding a pet the Cake will give them the Cake [[Perk|perk]]. A pet with the Cake perk will increase its sell value by 1 {{IconSAP|gold}} at the end of the turn.
+
+Bread:Give one pet the Bread [[Food Perks|perk]]. '''End turn''': Gain +7 {{IconSAP|health|nolink=yes
+until next turn
+|image=Bread.png}}
+
+'''Bread''' is a {{IconSAP|Tier 4}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|pet]] Bread will give them the Bread [[Food Perks|perk]]. At the end of turn, a pet with the Bread perk will gain +7 {{IconSAP|health|nolink=yes}} until next turn.
+
+Canned Food:Give all current and future shop pets +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+}}
+'''Canned Food''' is a {{IconSAP|Tier 4}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. When bought, instead of giving stats to pets currently on the team, it gives permanent +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}} to all current ''and future'' shop pets.
+
+Pear:Give one pet +2 {{IconSAP|attack|nolink=yes
+and +2 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Pear''' is a {{IconSAP|Tier 4}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|Pet]] a Pear increases its stats by +2 attack and +2 health permanently. 
+
+Essentially, it's a better {{IconSAP|Apple}} but a worse {{IconSAP|Lasagna}}/{{IconSAP|Chicken Leg}}.
+
+Chili:Give one pet the Chili [[Food Perks|perk]]. Attack second enemy for 5 {{IconSAP|damage|nolink=yes
+.
+}}
+'''Chili''' is a {{IconSAP|Tier 5}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|pet]] a Chili will give that pet the Chili [[Food Perks|perk]]. Every time a pet with Chili perk attacks, it will deal an additional 5 damage to the pet in second space of the enemy's team. If there are no enemies in that space, Chili will not deal damage.
+
+Chocolate:Give one pet +1 {{IconSAP|experience|nolink=yes
+.
+}}
+The '''Chocolate''' is a {{IconSAP|Tier 5}} [[Food]] that can be found in '''Any''' pack. When Chocolate is given to a [[Pets|pet]], it will receive +1 {{IconSAP|experience|nolink=yes}}. Similar to when combining duplicate copies, each Chocolate/experience will also add +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+
+In Custom and Weekly pack, {{IconSAP|Crow}} can stock Chocolate upon being sold, and at higher levels will stock {{IconSAP|Better Chocolate|nolink=yes}} and {{IconSAP|Best Chocolate|nolink=yes}} that give +2 and +3 experiences respectively.
+
+Sushi:Give three random pets +1 {{IconSAP|attack|nolink=yes
+and +1 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Sushi''' is a {{IconSAP|Tier 5}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Buying a Sushi gives 3 random pets +1/+1. If there is only 1 or 2 pet(s) on the team then they gain with +1/+1 with the other 1 or 2 buff(s) being wasted.
+
+Steak:Give one pet the Steak [[Food Perks|perk]]. Attack with +20 {{IconSAP|damage|nolink=yes
+, once.
+}}
+The '''Steak''' is a {{IconSAP|Tier 6}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. Feed a [[Pets|pet]] a Steak wil give that pet the Steak [[Food Perks|perk]]. The first time a pet with Steak perk attacks, it will deal an additional 20 damage.
+
+Melon:Give one pet the Melon [[Food Perks|perk]]. Take 20 less {{IconSAP|damage|nolink=yes
+, once.
+}}
+The '''Melon''' is a {{IconSAP|Tier 6}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. Feeding a [[Pets|Pet]] a Melon gives that pet the Melon [[Food Perks|perk]]. The first time a pet with Melon perk takes damage, the damage is reduced by 20, to a minimum of 0.
+
+Mushroom:Give one pet the Mushroom [[Food Perks|perk]]. Come back as a 1/1 after fainting.
+'''Mushroom''' is a {{IconSAP|Tier 6}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|pet]] a Mushroom gives that pet the Mushroom [[Food Perks|perk]]. When a pet with the Mushroom perk faints, it summons a 1/1 copy of itself at the same level.
+
+Summoned copies are considered "new" pets, with almost no memory of their old selves before they faint. For example if a {{IconSAP|Parrot}} faints and comes back, it will not keep the copied abilities. However, Mushroom ''does'' remember the amount of ability triggers the pet has spent.
+
+Pizza:Give two random pets +2 {{IconSAP|attack|nolink=yes
+and +2 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Pizza''' is a {{IconSAP|Tier 6}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}'''. Buying a Pizza gives two random pets +2 attack and +2 health permanently. The Pizza can be considered as a direct upgrade to the {{IconSAP|Salad Bowl}}, as it gives twice the stats of it.

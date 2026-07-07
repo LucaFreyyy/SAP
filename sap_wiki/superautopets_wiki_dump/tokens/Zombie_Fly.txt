@@ -1,0 +1,38 @@
+Title: Zombie Fly
+Category: Token
+Tier: Token
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Zombie_Fly.png
+|attack/health=4/4
+|tier=1}}
+The '''Zombie Fly''' is a [[Tokens|token]] that is summoned by the {{IconSAP|Fly}} when one of its friends faints. It is considered a {{IconSAP|Tier 1}} for the sake of certain abilities like {{IconSAP|Poodle|name=Poodle's}} and {{IconSAP|Rhino|name=Rhino's}}.
+
+When a Zombie Fly faints, it will not trigger Fly's ability.
+
+== Strategy ==
+== Version History ==
+
+=== 12/08/2021 ===
+
+* Zombie Fly buffed to 5/5.
+
+=== 10/05/2022 ===
+
+* Zombie Fly nerfed to 4/4.
+
+=== Initial patch ===
+
+* 2/2
+* A Zombie Fly that faints will not summon another Zombie Fly.
+== Trivia ==
+== Gallery ==
+<gallery>
+Zombie_Fly.png|The standard sprite of the Zombie Fly
+Zombie Fly Classic.png|The classic sprite of the Zombie Fly
+</gallery>
+
+[[Category:Token]]
+{{Navbox Pets}}

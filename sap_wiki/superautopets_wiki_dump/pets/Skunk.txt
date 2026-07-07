@@ -1,0 +1,41 @@
+Title: Skunk
+Category: Pet
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Skunk.png
+|attack/health=3/5
+|tier=4
+|level_1='''Start of battle''': Reduce the highest health enemy by 33% {{IconSAP|health|nolink=yes}}.
+|level_2='''Start of battle''': Reduce the highest health enemy by 66% {{IconSAP|health|nolink=yes}}.
+|level_3='''Start of battle''': Reduce the highest health enemy by 99% {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Skunk''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the start of battle, the Skunk will reduce the health of the highest health enemy by a percentage of its total health, rounded up. Leveling up the Skunk will increase the percentage number that the enemy's health is reduced by.
+
+==Strategy==
+Skunk is an anti-scaling pet that deals percentage-based damage instead of a flat amount of damage, and thus become stronger the more stats the enemy has. The health reduction can be devastating and forces the enemy to build a well rounded team with multiple high stat pets instead of putting all their eggs in one basket. At level 3, Skunk will instantly cripple an enemy down to 1 health for an easy knock out.
+
+It should be noted that Skunk's ability is incapable of directly knocking out an enemy and will always need follow up damage to defeat them. This can be problematic against defensive food perks like {{IconSAP|Melon}} that may allow the Skunked enemy to still get one or multiple attacks off. Pairing Skunk with snipers like {{IconSAP|Dolphin}} can mitigate this issue and eliminate the problematic enemy immediately.
+
+If you're running a scaling focused team, there are next to no counters against Skunk beside just scaling more pets. Though as powerful as it is, Skunk is extremely ineffective against summon teams and pets that gain stats as the battle progresses such as {{IconSAP|Shark}}.
+
+==Trivia==
+
+==Gallery==
+<gallery>
+Skunk.png|The standard sprite of the Skunk
+Skunk Classic.png|The classic sprite of the Skunk
+</gallery>
+
+==History==
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:Start of battle abilities]]
+[[Category:Stat reduction abilities]]

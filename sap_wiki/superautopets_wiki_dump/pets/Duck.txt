@@ -1,0 +1,54 @@
+Title: Duck
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|tier= 1
+|attack/health= 2/2
+|ID= 26
+|level_1='''Sell''': Give shop pets +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Sell''': Give shop pets +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''Sell''': Give shop pets +3 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Duck''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}''' and the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''. When sold, it will increase the health of all pets currently in the shop. When levelled up, the amount of health given is increased. This health buff will not apply to future animals if the shop is rolled.
+
+== Strategy ==
+
+Duck is in contention for the strongest tier 1 in Turtle Pack, if not the entire game. It has a fantastic base statline that will often win or tie the fight on turn 1, and the health it gives is powerful in the early and midgame as a starting point for buffing important pets. Duck can very often be positioned to buff 3-4 relevant targets, an effective +3 or +4 buff!
+
+The most important way to get full value out of Duck involves playing slightly differently than usual. On turn 3, you will often have 3 copies to combine for a tier up reward. With Duck, it's important to roll before levelling up any pets on your board. Once you find a shop with some good tier 2 buff targets, such as {{IconSAP|Swan}}, {{IconSAP|Peacock}} or {{IconSAP|Kangaroo}}, then you can take your level ups. This will add the tier 3 pets to the shop alongside the tier 2s, and you can then sell your Duck(s) onto everything!
+
+A common mistake that people will make with duck is trying to hold onto it for too long - the stats duck provides are not only good in the long term for additional stats, but are amazing tempo, especially on pets like Peacock, Kangaroo and {{IconSAP|Camel}}. You should always be trying to sell Duck onto a mixture of tier 2 and 3 pets on turn 3!
+
+== Trivia ==
+*The Duck's standard sprite depicts a male Mallard Duck with its legs tucked in, suggesting that it is in a sitting or floating position.
+
+== Game Sound ==
+[[File:Duck.wav]]
+
+== Gallery ==
+<gallery>
+File:Duck.png|The standard sprite of the Duck
+File:Duck Classic.png|The classic sprite of the Duck
+</gallery>
+
+== History ==
+{{History
+|0.40: Changed Duck's base stats from 2/3 to 2/2
+|0.18: Changed Duck's base stats from 1/3 to 2/3.
+|0.16: Changed the Duck's base stats from 1/2 to 1/3.
+|0.14: Changed the Duck's ability from "'''Sell''': Give shop pets +1/+1, +2/+2, +3/+3" to "'''Sell''': Give shop pets +1/+2/+3 health."
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Puppy Pack]]
+[[Category:Sell ability]]
+[[Category:Scaling based abilities]]
+[[Category:Shop scaling abilities]]

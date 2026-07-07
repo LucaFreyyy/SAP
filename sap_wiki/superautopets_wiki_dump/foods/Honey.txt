@@ -1,0 +1,40 @@
+Title: Honey
+Category: Food
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Honey.png
+|tier=1
+|effect=Give one pet the Honey [[Food Perks|perk]]. Summon one 1/1 {{IconSAP|Bee}} after fainting.
+}}
+The '''Honey''' is a {{IconSAP|Tier 1}} [[Food]], available in  the'''{{IconSAP|Turtle Pack}}'''. Feeding a [[Pets|pet]] Honey will give it the Honey [[Food Perks|perk]]. When a pet with Honey perk faints, it summons a level 1 {{IconSAP|Bee}} in its place.
+
+== Strategy ==
+The Honey can be placed on pets in front of those who have the Friend ahead attacks ability trigger such as {{IconSAP|Snake}} and {{IconSAP|Kangaroo}} or in teams which benefit from [[Summon Pets]] with abilities such as {{IconSAP|Horse|name=Horse's}} and {{IconSAP|Turkey|name=Turkey's}}. It can also be used in builds with certain [[Faint Pets]] that have abilities like that of the {{IconSAP|Shark|name=Shark's}}.
+
+Whilst the Honey is a somewhat potent food early game, it loses its value quite harshly later on and thus should be swapped for other [[Food Perks]] such as the {{IconSAP|Melon|name=Melon perk}} or the {{IconSAP|Steak|name=Steak perk}}.
+
+Honey can be used as a tiebreaker, as the Bee will spawn after the last 2 Pets fought, allowing you to win.
+
+It is a good early game food, but performs disadvantageously against pets that have the [[Knock Out (Trigger)|Knock Out]] or [[Hurt (Trigger)|Hurt abilities]] (e.g. {{IconSAP|Hippo}}, {{IconSAP|Blowfish}}) as it will give them a safe way to activate their abilities.
+
+==Trivia==
+
+== Gallery ==
+<gallery>
+Honey.png|The standard sprite of the Honey
+Honey Classic.png|The classic sprite of the Honey
+</gallery>
+==History==
+{{History
+|0.41: Removed from Puppy pack
+}}
+{{Navbox Food}}
+
+[[Category:Foods]]
+[[Category:Food Perk]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Puppy Pack]]

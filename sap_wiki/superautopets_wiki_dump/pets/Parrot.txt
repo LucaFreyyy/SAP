@@ -1,0 +1,48 @@
+Title: Parrot
+Category: Pet
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Parrot.png
+|attack/health=4/2
+|tier=4
+|level_1='''End turn''': Copy ability from the nearest pet ahead as level 1 until next turn.
+|level_2='''End turn''': Copy ability from the nearest pet ahead as level 2 until next turn.
+|level_3='''End turn''': Copy ability from the nearest pet ahead as level 3 until next turn.
+}}
+The '''Parrot''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the end of turn, Parrot copies the ability from the nearest friend ahead and reverts back to its original ability when the battle ends. The level of the ability copied is the same as the Parrot's level, regardless of the level of the friend it copied from.
+
+Due to being an '''End turn''' ability, copying another End turn pet will not trigger Parrot again. For example, copying a {{IconSAP|Bison}} won't make the Parrot buff itself.
+
+==Strategy==
+Parrot can be used as a duplicate of any pet in the team during battle, which makes it a unique pivot pet. It can be bought preemptively then later put a higher tier pet in front of the Parrot for their level 2 or 3 abilities. Parrots can also form a chain by putting them in highest to lowest attack, front to back order, then each Parrot will pass its copied ability to the one behind.
+
+It's often used to copy strong in-battle abilities like {{IconSAP|Crocodile}}, {{IconSAP|Leopard}} or summoning pets like {{IconSAP|Turkey}}, {{IconSAP|Shark}}, etc. Keeping a high leveled/high stats Parrot will give you an immense power spike once you pivot into these pets.
+
+==Trivia==
+* The Parrot seems to be based off of the red-crowned amazon.
+
+==Gallery==
+<gallery>
+Parrot.png|The standard sprite of the Parrot
+Parrot Classic.png|The classic sprite of the Parrot
+</gallery>
+
+==History==
+{{History
+|0.18: Changed the Parrot's base stats from 5/3 to 4/2.
+|0.14: 
+*Changed the Parrot's base stats from 3/2 to 5/3.
+*Changed the Parrot's tier from {{IconSAP|Tier 5}} to {{IconSAP|Tier 4}}.
+|0.12: Changed the Parrot's ability: loses copied ability at the start of turn and regains his copy ability.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:End turn ability]]
+[[Category:Ability copying abilities]]

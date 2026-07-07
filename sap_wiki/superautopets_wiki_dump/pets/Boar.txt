@@ -1,0 +1,55 @@
+Title: Boar
+Category: Pet
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=10/6
+|tier=6
+|level_1=Before attack: Gain +4 [[File:Attack.png|20x20px]] attack and +2 [[File:Health.png|20x20px]] health.
+|level_2=Before attack: Gain +8 [[File:Attack.png|20x20px]] attack and +4 [[File:Health.png|20x20px]] health.
+|level_3=Before attack: Gain +12 [[File:Attack.png|20x20px]] attack and +6 [[File:Health.png|20x20px]] health.
+}}
+
+The '''Boar''' is a {{IconSAP|Tier 6}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. Before every attack, the Boar will gain a buff to its stats. Leveling up the Boar will increase the size of the buff.  
+
+The stats the Boar gains through its ability are not permanent, and are not retained outside of battle.
+
+==Strategy==
+While the Boar may appear to be a better {{IconSAP|Hippo}}, it being a Tier 6 means that scaling it to effective stats is harder, as it appears later in the game. At higher levels it can still serve as an effective summon pet counter but due to the general uncertainty of the teams one will face, it isn't a very reliable investment.  
+
+During later turns where 50/50 pets are frequent, the Boar's ability will usually not be enough to avoid being knocked-out in 1 or 2 hits. But due to the Boar's high base stats it is extremely effective when summoned from an {{IconSAP|Eagle}}, especially if leveled due to the way base stats worked when summoned at a higher level. A Boar summoned from a level 3 Eagle will have 30 attack and 18 health and will gain +12/+6 before each attack making it an effective 42/24 and a very lucky summon from the Eagle.   
+
+Following similar logic, giving a level 3 Boar a {{IconSAP|Mushroom}} will enable it to be summoned again as a level 3 1/1 that will buff itself to be a 13/7 and potentially higher if not taken out in one hit. This can be combined with a {{IconSAP|Seagull}} that also has Mushroom to continuously summon 13/7s. This may seem effective but keep in mind that if one has the capability to get a level 3 Tier 6, {{IconSAP|Octopus}} is a much more effective choice and works in a larger range of scenarios.
+
+Like the Hippo, it can function quite effectively with a {{IconSAP|Tiger}}, helping it gain more health and making it more likely to survive an enemy attack. This is further amplified with a {{IconSAP|Lemon}} or {{IconSAP|Garlic}}, allowing for it to better survive - especially against an already ideal enemy team of [[Summon Pets]].
+
+==Trivia==
+*The Boar was the first ever pet to be added into a pack ''after'' the pack's initial release and also the first pet to ever be added on it's own in an update.
+
+==Gallery==
+<gallery>
+Boar.png|The standard sprite of the Boar
+Boar Classic.png|The classic sprite of the Boar
+</gallery>
+
+==History==
+{{History
+|0.27: Removed from the {{IconSAP|Puppy Pack}}. ''(Unlisted)''
+}}
+{{History
+|0.18: Changed Boar's ability from: "'''Before attack''': Gain +2/+2." to: “'''Before attack''': Gain +4/+2." ''(Unlisted)''
+}}
+{{History
+|0.14: Introduced into the {{IconSAP|Turtle Pack}} and {{IconSAP|Puppy Pack}}.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 6]]
+[[Category:Turtle Pack]]
+[[Category:Buffing based abilities]]
+[[Category:Self buffing abilities]]
+[[Category:Before attack abilities]]

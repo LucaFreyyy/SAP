@@ -1,0 +1,51 @@
+Title: Flamingo
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=3/2
+|tier=2
+|level_1='''Faint''': Give the two nearest friends behind +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Faint''': Give the two nearest friends behind +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''Faint''': Give the two nearest friends behind +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Flamingo''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Flamingo faints it buffs the stats of the two friends directly behind it. Leveling up the Flamingo will increase the strength of the buffs given. The Flamingo will never buff itself, nor will it buff any friend twice. If there are less than 2 friends behind it when it faints, its ability will be wasted.
+
+The {{IconSAP|Mammoth}} is a direct upgrade to the Flamingo, targeting all friends with twice the buff amount upon faint. 
+== Strategy==
+The Flamingo is an effective Tier 2 unit, boasting above average attack as well as a useful ability both in battle and for scaling. This Pet is considered to some as a "You see it, you buy it" type of Pet, at least during early game.   
+
+Similar to the {{IconSAP|Ant}}, but with stronger stats and a stronger ability. Giving the Flamingo a {{IconSAP|Sleeping Pill}} is similar to using a {{IconSAP|Salad Bowl}}, except it's available one tier earlier. You can also control which 2 pets get the 1/1 buff at the cost of an extra {{IconSAP|Gold}} (3 to buy the Flamingo and 1 to use the Sleeping Pill).  Flamingo is especially good with {{IconSAP|Ox}}, because pilling a flaming in front of an {{IconSAP|Ox}} is an extra attack, as well as the melon already on board.
+
+It's very easy to fit a Flamingo on any team, and pill it later for a nice buff. Overall, the Flamingo is a nice pick in Tier 2 but is not recomended to be kept on a team for too long.
+
+==Game Sound==
+[[File:Flamingo.wav]]
+
+==Gallery==
+<gallery>
+Flamingo.png|The standard sprite of the Flamingo
+Flamingo Classic.png|The classic sprite of the Flamingo
+</gallery>
+
+==History ==
+{{History
+|0.27:
+*Changed the Flamingo's base stats from 4/2 to 3/2.
+*Removed from the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''.
+|0.18:
+*Changed the Flamingo's base stats from 3/1 to 4/2.
+}}
+
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]
+[[Category:Buffing based abilities]]
+[[Category:Friend buffing abilities]]

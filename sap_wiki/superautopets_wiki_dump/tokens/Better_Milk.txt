@@ -1,0 +1,36 @@
+Title: Milk
+Category: Token
+Tier: Token
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Milk.png
+|tier=1
+|effect=Give one pet +1 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+}}
+'''Milk''' is a {{IconSAP|Tier 1}} [[Food]] that can only be obtained through the {{IconSAP|Cow}}'s ability. Depending on the level of the Cow, it can spawn '''Milk''' which gives +1/+2, '''{{IconSAP|Better Milk|nolink=yes}}''' which gives +2/+4, and finally '''{{IconSAP|Best Milk|nolink=yes}}''' which gives +3/+6.
+
+== Strategy ==
+
+==Trivia==
+* The September 29th 2022 test build added a unique interaction when Cow was fed {{IconSAP|Chocolate}}, doing so would replace shop food with 2 free Chocolate Milk that gave +2 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}. This interaction was removed in the next test build released the very next day.
+
+== Gallery ==
+<gallery>
+Milk.png|The sprite of the Milk
+Better Milk.png|The sprite of the Better Milk
+Best Milk.png|The sprite of the Best Milk
+Milk Classic.png|The classic sprite for all versions of the Milk
+</gallery>
+
+==History== 
+{{History 
+|0.14: Changed the Milk from "Give one pet +2/+2" (did not scale on Cow level up) to "Give one pet +1/+2, +2/+4, +3/+6."
+}}
+
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Token]]

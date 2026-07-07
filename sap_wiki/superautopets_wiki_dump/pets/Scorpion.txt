@@ -1,0 +1,46 @@
+Title: Scorpion
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=1/3
+|tier=5
+|level_1='''Summoned''': Gain {{IconSAP|Peanut}} [[Food Perks|perk]].
+|level_2='''Summoned''': Gain {{IconSAP|Peanut}} [[Food Perks|perk]].
+|level_3='''Summoned''': Gain {{IconSAP|Peanut}} [[Food Perks|perk]].
+}}
+The '''Scorpion''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When summoned, it will gain {{IconSAP|Peanut}} perk, which instantly knocks out any enemy that's hurt by Scorpion. Scorpion's ability does not change on level up.
+
+==Strategy==
+Scorpion is an extremely cheap investment that can instantly take out big enemies with high stats. It's generally put frontmost since this is where high scaled enemies are often positioned. Due to being designed as an anti-scaler, it does not work well against summon teams.
+
+Despite having low stats, it poses a very serious threat and is something most teams have to prepare counterplays for. This often means putting {{IconSAP|Melon}} on the frontmost pet to block the Scorpion, putting a weak pet in front as a meatshield, or bringing along a {{IconSAP|Dolphin}} to snipe it.
+
+However, there are also counters to these counterplays. When paired with {{IconSAP|Whale}} and/or {{IconSAP|Mushroom}}, it can break the Melon/knock out the meatshield/tank the snipe, then revive with Peanut to knock out the big enemy. A Scorpion with 21 attack or higher can also hurt the enemy through Melon and knock them out in a single hit.
+
+Scorpion also has some terrifying synergy with {{IconSAP|Rabbit}} as a buff target, since Scorpion doesn't care about the lack of attack scaling provided by Rabbit! To the same extent, multiple {{IconSAP|Armadillo}} + Scorpion can save you from scaling boards even with your back against the wall. Be careful of start of battle snipes though, your scorpion is very vulnerable before the Armadillo activates!
+
+Overall it's a very simple yet dangerous pet that can fit on almost any team. It can help scaling teams to gain advantage over other scalers, or help summon teams to get rid of the troublesome tanks in the front.
+
+==Trivia==
+
+Scorpion's peanuts are deadly, a play on the common allergy to peanuts! 
+
+==Gallery==
+<gallery>
+Scorpion.png|The standard sprite of the Scorpion
+Scorpion Classic.png|The classic sprite of the Scorpion
+ScorpionCopium.png|The "ScorpionCopium" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Summoning based abilities]]
+[[Category:Summoned abilities]]

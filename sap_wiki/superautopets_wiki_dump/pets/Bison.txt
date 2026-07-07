@@ -1,0 +1,59 @@
+Title: Bison
+Category: Pet
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=4/4
+|tier=4
+|level_1='''End turn''': If this has a level 3 friend, gain +1 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_2='''End turn''': If this has a level 3 friend, gain +2 {{IconSAP|attack|nolink=yes}} and +4 {{IconSAP|health|nolink=yes}}.
+|level_3='''End turn''': If this has a level 3 friend, gain +3 {{IconSAP|attack|nolink=yes}} and +6 {{IconSAP|health|nolink=yes}}.
+}}
+
+The '''Bison''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. At the end of turn, the Bison gains a boost to its stats, but only if there is at least one other level 3 pet on the team. Leveling up the Bison will increase the amount of stats it gains.
+
+A level 3 Bison will '''not''' scale itself.
+
+== Strategy==
+Bison is a mid game self scaler that can carry the team all the way until the game ends. It requires a level 3 friend on the team, which can be achieved early on by hunting for duplicates and leveling up tier 1 and 2 pets. {{IconSAP|Fish}} and {{IconSAP|Otter}} are solid targets to push for level 3, but anything else will also work. By late game, you can either get rid of this level 3 in favor of stronger pets or other forms of scaling, or level up a different pet to level 3 to maintain Bison's scaling.
+
+One common strategy is keeping half leveled pets until turn 5, then leveling all of them up for a chance to spawn an early Bison. This becomes even more effective if the level ups result in a level 3 pet, which means you can have a self scaling Bison immediately on that turn.
+
+Having 2 level 3 Bisons on the team that buff each other is a strong strategy, but hard to come by.
+
+Beware of these common pitfalls while running Bison: 
+*'''Buying Bison before you have a level 3''': This is not inherently bad, but you should be able to reevaluate when it's time to ditch the Bison if the level 3 is taking too long to show up. Bison scaling takes up 2 slots, not 1, ditching both these slots might just be what's necessary to turn the run around.
+*'''Keeping a deadweight level 3 for too long''': Since this level 3 is often a low tier pet, you should not overvalue Bison's buff over a potentially stronger pet.
+*'''Forgetting Bison needs a level 3 friend''':  Newer players can make the mistake of selling their level 3 pet in favor for another pet, forgetting that it is needed for Bison to scale.
+
+==Trivia==
+
+==Gallery==
+<gallery>
+Bison.png|The standard sprite of the Bison
+Bison Classic.png|The classic sprite of the Bison
+All max bison.jpg|A Bison with maxed out level and stats.
+</gallery>
+
+==History==
+{{History
+|0.27:
+*Changed the Bison's ability from: "'''End turn''': If this has a level 3 friend, gain +2/+2, +4/+4, +6/+6." to: "'''End turn''': If this has a level 3 friend, gain +1/+2, +2/+4, +3/+6."
+*Removed from '''{{IconSAP|Puppy Pack}}'''.
+|0.18:
+*Changed the Bison's base stats from 6/6 to 4/4.
+*Changed the Bison's ability to no longer trigger if it is the only level 3 pet on the team.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:End turn ability]]
+[[Category:Scaling based abilities]]
+[[Category:Self scaling abilities]]

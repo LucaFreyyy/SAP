@@ -1,0 +1,51 @@
+Title: Kangaroo
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=2/2
+|tier=2
+|level_1='''Friend ahead attacks''': Gain +1 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Friend ahead attacks''': Gain +2 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''Friend ahead attacks''': Gain +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Kangaroo''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the friend ahead of the Kangaroo attacks, the Kangaroo gains a buff to its stats. Leveling up the Kangaroo increases the buff it receives each time its ability is triggered. 
+
+==Strategy==
+The Kangaroo is best placed behind a beefy friend, such as an '''{{IconSAP|Ox|image=Ox.png}}''' (when it has its Melon ability active) or a {{IconSAP|Peacock|image=Peacock.png}} that can tank many hits to ensure that your Kangaroo will be a formidable pet that will go up next.
+
+Putting the Kangaroo behind a summoning pet such as a {{IconSAP|Spider|image=Spider.png}} or a {{IconSAP|Sheep|image=Sheep.png}} is also very effective, as it guarantees two procs for the Kangaroo, one proc for the main pet and the other for the pet it summons.
+
+==Game Sound==
+[[File:Kangaroo.wav]]
+
+==Gallery==
+<gallery>
+Kangaroo.png|The standard sprite of the Kangaroo
+Kangaroo Classic.png|The classic sprite of the Kangaroo 
+</gallery>
+
+==History==
+{{History
+|0.40:
+*Changed the Kangaroo's base stats from 2/3 to 2/2
+|0.27:
+*The Kangaroo's base stats were changed from 1/2 to 2/3.
+*The Kangaroo's ability was changed from: "'''Friend ahead attacks''': Gain +2/+2, +4/+4, +6/+6." to "'''Friend ahead attacks''': Gain +1/+1, +2/+2, +3/+3."
+* Changed tier from {{IconSAP|Tier 3}} to {{IconSAP|Tier 2}}.
+|0.14:
+*The Kangaroo's stats were changed to 1/2.
+|0.12:
+*Fixed Kangaroo + {{IconSAP|Sheep}} bug.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Friend ahead attacks abilities]]
+[[Category:Buffing based abilities]]
+[[Category:Self buffing abilities]]

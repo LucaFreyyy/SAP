@@ -1,0 +1,277 @@
+1. Overview
+We’ll build a Super Auto Pets clone. The game will have three main phases:
+
+Shop Phase – Buy, sell, and combine pets; apply food; manage team.
+
+Battle Phase – Automatic combat between two teams.
+
+Transition – Handle wins/losses, health, and shop tiers.
+
+The system will support three play modes:
+
+1v1 (same PC) – Two human players take turns in the shop one after another(when one hits "end turn" the other one can take their turn).
+
+Human vs AI – Human plays shop, AI acts automatically (with optional step‑by‑step control).
+
+AI vs AI – Both teams controlled by AI (for training or spectating).
+
+A GPU‑accelerated version (no UI) will be provided for AI evolution (e.g., Genetic Algorithms), where many games run in parallel.
+
+2. Core Components
+2.1 Game State (GameState)
+Central object holding all data for a single match.
+
+Players – Each has:
+
+team (list of Pet objects, max 5 slots)
+
+shop (list of 3/4/5 available pets and foods)
+
+gold (current and max)
+
+health (player lives)
+
+tier (current shop tier, 1–6)
+
+turn (shop turn counter)
+
+wins/losses (optional)
+
+Battle state – temporary data during combat (e.g., attacker/defender order).
+
+Randomness – all random decisions (shop refresh, battle targets) must use a seeded RNG for reproducibility (for AI and GPU).
+
+2.2 Pet & Food Data
+Pet object: name, tier, attack, health, ability (level 1/2/3), triggers (Faint, Sell, Hurt, etc.).
+
+Food object: name, tier, effect (temporary/permanent stat changes).
+
+All data parsed from the wiki summaries (we already have JSON/txt files). Load into a DataRegistry at startup.
+
+2.3 Shop Engine
+Handles the shop phase logic:
+
+Refresh – roll 3/4/5 new pets from current tier pool.
+
+Buy Pet – remove from shop, add to team (if space) or replace.
+
+Buy Food – apply to a chosen pet.
+
+Sell Pet – remove from team, gain gold (1 per tier?).
+
+Combine – when you buy a duplicate, it levels up (gives +1/+1 and ability upgrades).
+
+End Turn – lock in team, move to battle.
+
+Shop UI must support:
+
+Click to select pets/food, drag to team slots.
+
+For AI, we implement a ShopAI that evaluates purchases (we’ll start with simple heuristics; later replace with RL/GA).
+
+2.4 Battle Engine
+Initialisation – place pets in order (front to back) with their stats and abilities.
+
+Combat loop – while both teams alive:
+
+Choose the attacker (frontmost alive pet from current player side).
+
+Choose target (frontmost alive enemy or random depending on ability).
+
+Deal damage = attacker.attack; if target health <= 0, it faints (triggers Faint abilities).
+
+After each attack, check for Hurt abilities and other triggers.
+
+Game speed – for UI, we can animate at variable speeds (auto‑play or step‑by‑step).
+
+2.5 AI Controller
+Shop AI – given the current state, decide actions (buy, sell, combine, refresh, end turn).
+
+Battle AI – not needed, because battle is automatic. However, we need to decide order of attacks? Actually it’s deterministic based on positions, but some abilities have choices (e.g., “attack random enemy”). Those choices are random and can be seeded.
+
+For step‑by‑step AI:
+
+In shop, each “step” performs one action (buy, sell, etc.) until it decides to end turn.
+
+In battle, each step advances one attack.
+
+2.6 UI (CPU version)
+Use Pygame or PySide6 (Qt) for cross‑platform GUI.
+
+Display:
+
+Player’s team (slots with sprites/stats).
+
+Shop items.
+
+Gold counter, tier, health.
+
+Battle animations (simple movement, health bars, damage numbers).
+
+Input handling for clicks. When clicking on a non-empty slot that slot is the first input.
+Clicking it again or anywhere that is not a slot cancels the action. Clicking on another slot then shows the options the
+player can do if there are multiple, otherwise do the only action possible, if any, otherwise also gets cancelled.
+Options are Buy, Buy&Merge, Merge, Move. For foods there are never multiple options for the same slot. On buy(without merge,
+aka putting a bought pet onto a slot occupied by a pet with different name(or same name and choose buy without merge manually))
+if the team is not full(otherwise cancel action) push other pets to the side to make space in the team. Same goes for Move
+without merge.
+
+For 1v1 same PC – display both players’ shops (one at a time) and switch control after each turn.
+
+2.7 GPU‑Accelerated Version (No UI)
+Goal: Run many games in parallel (e.g., 1000+ simultaneous matches) to evolve AI policies.
+
+Design:
+
+Use PyTorch or JAX (preferred for automatic differentiation and GPU support).
+
+Define all game logic as tensor operations on batched states.
+
+Pre‑generate all random numbers (e.g., shop rolls, battle RNG) as large matrices upfront; feed them to the simulator.
+
+No branching inside loops – use vectorised masks and torch.where.
+
+The entire game loop (shop + battle) is a single function that processes a batch of games.
+
+Benefits: Fast simulation for training with Genetic Algorithms (GA) – can evaluate thousands of policies per second.
+
+3. Implementation Roadmap
+Phase 1: Core Data & State (week 1)
+Load pet/food data from JSON and create Pet/Food classes.
+
+Implement GameState – serialisable (pickle or dict) for saving/loading.
+
+Implement seeded RNG – use Python’s random.Random or a custom xorshift.
+
+Phase 2: Shop & Battle Logic (week 2-3)
+Shop Engine – functions for refresh, buy, sell, combine, apply food.
+
+Battle Engine – full combat loop (attack order, triggers, damage).
+
+Write unit tests (pytest) to verify logic (e.g., duplicate combos, ability triggers).
+
+Phase 3: AI Basics (week 4)
+Implement heuristic AI for shop decisions:
+
+Prioritise matching duplicates.
+
+Buy strongest pets.
+
+Use food on highest stat pet.
+
+Decide when to refresh (if nothing good).
+
+Step‑by‑step execution – AI can perform one action per call; we expose ai_step().
+
+Battle auto‑play – already automatic; support step‑by‑step replay for debugging.
+
+Phase 4: CPU UI with Pygame (week 5-6)
+Render team slots, shop cards, gold/tier info.
+
+Mouse events – click to select, drag to team.
+
+Human input – for 1v1, switch active player.
+
+Battle animation – simplified (move sprites, flash health bars).
+
+Settings – speed slider, auto/step toggle.
+
+Phase 5: GPU‑Accelerated Version (week 7-8)
+Design batched game state – tensors of shape (batch, max_pets, features).
+
+Implement shop phase as vectorised ops (roll shop, buy actions).
+
+Implement battle phase – sequential attack loop but with tensor masks.
+
+Pre‑generate randomness – all dice rolls (shop, battle target selection) stored as integer tensors.
+
+Validate – compare outputs with CPU version for same seeds.
+
+Phase 6: AI Evolution Integration (week 9+)
+Wrap GPU simulator for use in GA – evaluate a population of shop AIs (they output action probabilities or heuristics).
+
+Optionally implement simple RL (e.g., Q‑learning) using PyTorch.
+
+4. Key Technical Decisions
+Component	Choice	Rationale
+Language	Python (3.10+)	Fast prototyping; ecosystem for ML and GUI.
+CPU UI	Pygame	Simple, lightweight, good for 2D animations.
+GPU Sim	PyTorch	GPU support, tensor ops, easy integration with neural networks.
+RNG	Custom seeded (e.g., numpy.random or torch.random)	Ensures reproducibility.
+State Storage	dataclass with to_dict/from_dict	Easy serialisation for saving games.
+AI Evolution	Genetic Algorithm with tournament selection	Simple to implement; later we can add RL.
+5. GPU Version Details
+5.1 State Representation
+team_stats: (B, max_pets, 5) where last dim = [attack, health, tier, level, alive]
+
+shop_pets: (B, shop_size, ...) similar.
+
+gold, tier, turn as 1D tensors.
+
+5.2 Randomness Pre‑generation
+Before running a batch of games, generate arrays for:
+
+Shop refresh rolls (which pet IDs appear).
+
+Battle target selections (if ability chooses random enemy).
+
+Any ability randomness (e.g., “deal 1–3 damage”).
+
+These are stored on GPU and consumed sequentially.
+
+5.3 Loop Structure
+Shop loop – for each turn, run a fixed number of “action slots” (e.g., AI makes up to 10 actions per turn). Each action is a tensor of choice (buy index, sell index, etc.). The simulator applies all actions in one vectorised step.
+
+Battle loop – while any game is still ongoing, advance one attack step for all games. Use masks to skip finished games.
+
+5.4 Performance Expectations
+With batch size 1024 and 6 tiers, we can simulate ~5000 games/sec on a RTX 3060.
+
+6. UI Interaction Modes
+6.1 Shop Phase
+Human turn: Click cards to buy, drag to team, click sell button, end turn button.
+
+AI turn:
+
+Auto‑play: AI acts every config.speed seconds (e.g., 0.5s) until it ends turn.
+
+Click‑to‑play: UI shows an “AI step” button; each click advances one shop action.
+
+6.2 Battle Phase
+Always automatic; but we support:
+
+Auto‑play: plays at normal speed (configurable FPS).
+
+Click‑to‑play: UI shows “Next attack” button; each click advances one attack.
+
+6.3 Mode Switching
+A menu to select:
+
+Human vs Human
+
+Human vs AI (AI difficulty level)
+
+AI vs AI (watch)
+
+7. Testing & Validation
+Unit tests for each engine (shop, battle, AI actions).
+
+Integration tests: full game cycles with fixed RNG seeds to ensure deterministic outcomes.
+
+Performance benchmarks for GPU simulator.
+
+8. Future Extensions
+Online multiplayer – currently not planned, but state serialization could support networked play.
+
+Replay system – store action logs to replay games.
+
+Advanced AI – use the GPU simulator to train a policy network via reinforcement learning.
+
+9. Timeline Summary
+Phase	Duration	Deliverables
+1–2	3 weeks	Core logic + unit tests
+3	1 week	Basic heuristic AI
+4	2 weeks	Playable UI (CPU)
+5	2 weeks	GPU simulator
+6+	Ongoing	AI training integration
+Total estimate: 8–10 weeks for a fully functional single‑player/1v1 game with a working AI and a fast simulator for evolution.

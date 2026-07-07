@@ -1,0 +1,36 @@
+Title: Cupcake
+Category: Food
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Cupcake.png
+|tier=2
+|effect=Give one pet +3 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}} until end of battle.
+}}
+The '''Cupcake''' is a {{IconSAP|Tier 2}} [[Food]].  When a [[Pets|pet]] is fed a Cupcake, it gets +3/+3 until the end of battle.
+
+== Strategy ==
+Using the cupcake may be worth it in the very early-game, where most pets don't have high stats, to gain a significant edge. Later on however, where scalers become more prevalent, the Cupcake becomes comparatively inefficient since you can most likely buff your pets permanently and at a larger degree than the cupcake.
+
+==Trivia==
+
+== Gallery ==
+<gallery>
+Cupcake.png|The standard sprite of the Cupcake
+Cupcake Classic.png|The classic sprite of the Cupcake
+</gallery>
+
+==History==
+{{History
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Food}}
+[[Category:Food]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Stubs]]

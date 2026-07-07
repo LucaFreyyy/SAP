@@ -1,0 +1,54 @@
+Title: Rhino
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Rhino.png
+|attack/health=6/7
+|tier=5
+|level_1='''Knock out''': Deal 4 {{IconSAP|damage|nolink=yes}} to the first enemy. Double against Tier 1 Pets.
+|level_2='''Knock out''': Deal 8 {{IconSAP|damage|nolink=yes}} to the first enemy. Double against Tier 1 Pets.
+|level_3='''Knock out''': Deal 12 {{IconSAP|damage|nolink=yes}}e to the first enemy. Double against Tier 1 Pets.
+}}
+
+The '''Rhino''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Rhino Knocks out an opponent, the Rhino will deal damage to the first enemy (dealing double damage to Tier 1 Pets). If an enemy is knocked out by the Rhino's ability, the Rhino's ability will trigger again. Levelling up the Rhino will increase the amount of damage its ability deals.
+
+==Strategy==
+When you see a Lvl 3 Rhino You, know your cooked, Rhino's good. Like. good good. Yknow. It's big as hell, works with {{IconSAP|Monkey}} or {{IconSAP|Tiger}} super well, and yeah it triggers again if it knocks out an enemy via ability. It's good against summoning teams (more often levelled if you need to since the 4 hp threshold from summons can be mitigated with various summons. note that it does double damage to tier 1s and, like, all tokens are Tier 1s man), and it's good against scaling teams since it can pop {{IconSAP|Melon}}s. Against it you should position stuff so it doesn't pop melons, preferably using stuff that's above 4, 8, and (rarely) 12 health.
+
+A rhino with chilli can really work with a level 2 {{IconSAP|Rat}} for the rhino to attack twice if the enemy has 2 empty slots on their team.
+
+Also it procs hurt triggers like {{IconSAP|Blowfish}} or {{IconSAP|Gorilla}}. Maybe you can use that someday against it. Watch out for your own {{IconSAP|Summon Pets|name=summons|image=Cricket_Icon.png}} for the latter.
+
+==Game Sound==
+[[File:Rhino.wav]]
+==Trivia==
+The Rhino also known as Rhinoceros
+
+==Gallery==
+<gallery>
+Rhino.png|The standard sprite of the Rhino
+Rhino Classic.png|The classic sprite of the Rhino
+</gallery>
+
+==History==
+{{History
+|0.35:
+*Changed the Rhino's base stats from 6/9 to 6/7
+|0.27:
+*Changed the Rhino's base stats from 5/8 to 6/9.
+*Removed from the '''{{IconSAP|Puppy Pack}}'''.
+|0.18: Changed the Rhino's ability from: “'''Knock out''': Deal 4/8/12 damage to the first enemy.” to: “'''Knock out''': Deal 4/8/12 damage to the first enemy. Double against Tier 1 Pets.”
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Knock out ability]]
+[[Category:Damage dealing abilities]]

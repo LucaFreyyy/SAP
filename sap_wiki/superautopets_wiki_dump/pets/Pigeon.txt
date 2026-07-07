@@ -1,0 +1,42 @@
+Title: Pigeon
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=3/2
+|tier=1
+|ID= 559
+|level_1='''Sell''': Stock one free {{IconSAP|Bread Crumbs}}. 
+|level_2='''Sell''': Stock two free {{IconSAP|Bread Crumbs}}.
+|level_3='''Sell''': Stock three free {{IconSAP|Bread Crumbs}}.
+}}
+
+The '''Pigeon''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. Selling Pigeon stocks a free {{IconSAP|Bread Crumbs}} in the shop, which when bought will give +1 {{IconSAP|attack|nolink=yes}} to a pet. Leveling up the Pigeon increases the amount of Bread Crumbs stocked when Pigeon is sold.
+
+==Strategy==
+At first glance, it might seem like a worse {{IconSAP|Beaver}} that gives weaker buff. However what's unique about Pigeon is that the Bread Crumbs are ''targeted'' buffs instead of random, can be frozen to be used on later turns, accumulate in the shop, and provide synergies with food pets.
+
+Pigeon's most notable combo is with {{IconSAP|Rabbit}}, which can be found as early as turn 3. With a Rabbit on the team, each Bread Crumbs acts as a free +1/+1 buff. Buy-selling Pigeon can also be worth it as 2 gold for the same amount of stats as an {{IconSAP|Apple}}.
+
+A common strategy is leveling up Pigeons on turn 3 to try to spawn Rabbit, selling the level 2 Pigeon, buying the Rabbit and then the 2 Bread Crumbs for a +2/+2 buff.
+
+==Trivia==
+
+==Gallery==
+<gallery>
+Pigeon.png|The sprite of the Pigeon
+</gallery>
+
+==History==
+{{History
+|0.31: The Pigeon is added into the game as part of the '''Turtle Pack'''.
+}}
+
+{{Navbox Pets}}
+
+[[Category:Turtle Pack]]
+[[Category:Pet]]
+[[Category:Tier 1]]
+[[Category:Sell ability]]

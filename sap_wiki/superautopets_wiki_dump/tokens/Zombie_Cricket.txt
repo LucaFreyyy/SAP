@@ -1,0 +1,23 @@
+Title: Zombie Cricket
+Category: Token
+Tier: Token
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Zombie_Cricket.png
+|attack/health=1/1
+|tier=1}}
+The '''Zombie Cricket''' is a [[Tokens|token]] which is summoned when a {{IconSAP|Cricket}} faints. Its level will be the same as the cricket it is summoned from. As with all tokens, it is considered a {{IconSAP|Tier 1}} for the sake of certain abilities like {{IconSAP|Poodle|name=Poodle's}} and {{IconSAP|Rhino|name=Rhino's}}.
+==Strategy==
+==Version History==
+==Trivia==
+==Gallery==
+<gallery>
+Zombie_Cricket.png|The standard sprite of the Zombie Cricket
+Zombie Cricket Classic.png|The classic sprite of the Zombie Cricket
+Zc-C comparison.jpg|Difference between Zombie Cricket (in Battle area) and normal [[Cricket]] (in Shop).
+</gallery>
+
+[[Category:Token]]
+{{Navbox Pets}}

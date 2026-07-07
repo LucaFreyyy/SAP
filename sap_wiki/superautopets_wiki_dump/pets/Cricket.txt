@@ -1,0 +1,48 @@
+Title: Cricket
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|tier=1
+|attack/health=1/3
+|ID= 17
+|level_1='''[[Faint (Trigger)|Faint]]''': Summon one 1/1 {{IconSAP|Zombie Cricket|name=Cricket}}.
+|level_2='''[[Faint (Trigger)|Faint]]''': Summon one 2/2 {{IconSAP|Zombie Cricket|name=Cricket}}.
+|level_3='''[[Faint (Trigger)|Faint]]''': Summon one 3/3 {{IconSAP|Zombie Cricket|name=Cricket}}.
+}}
+The '''Cricket''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Cricket faints, it summons a weak {{IconSAP|Zombie Cricket}} in its place. Levelling up the Cricket increases the stats and level of the summoned Zombie Cricket.
+
+==Strategy==
+The Cricket, with low stats and a mediocre ability, can typically be most useful in the early game. It fits best in {{IconSAP|Horse}} teams, as it is the only tier one summoner and can additionally work in front of an early {{IconSAP|Ox}}. Most other synergies are better filled using a more versatile long term summon pet like a {{IconSAP|Deer}} or {{IconSAP|Fly}}.
+
+However, if you are going to be going late-game with the cricket for achievement hunting, the best strategy is to put it in the back. This means that if the cricket ties with the other back pet, it will summon a cricket and get you a win instead of a draw. Leveling the cricket, which is normally a bad idea, can allow the Zombie Cricket to survive a summoned {{IconSAP|Bee}}, another very common tie-breaker.
+
+
+
+==Game Sound==
+[[File:Cricket.wav]]
+
+==Gallery==
+<gallery>
+Cricket.png|The standard sprite of the Cricket
+Cricket Classic.png|The classic sprite of the Cricket
+Zombie Cricket.png|The standard sprite of the Zombie Cricket
+Zombie Cricket Classic.png|The classic sprite of the Zombie Cricket
+Honey Cricket.jpg|A Cricket with {{IconSAP|Honey}}.
+</gallery>
+
+==History==
+{{History
+|0.31: Changed the Cricket's base stats from 1/2 to 1/3.
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Summoning based abilities]]
+[[Category:Friend summoning abilities]]

@@ -1,0 +1,61 @@
+Title: Badger
+Category: Pet
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Badger.png
+|attack/health=6/3
+|tier=3
+|level_1='''Faint''': Deal 50% attack {{IconSAP|damage|nolink=yes}} to adjacent pets.
+|level_2='''Faint''': Deal 100% attack {{IconSAP|damage|nolink=yes}} to adjacent pets.
+|level_3='''Faint''': Deal 150% attack {{IconSAP|damage|nolink=yes}} to adjacent pets.
+}}
+
+The '''Badger''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Badger faints, it will deal a percentage of its attack to the pet in front of and behind it, regardless of what team they are on. Levelling up the Badger increases the percentage of attack its ability will deal as damage.
+
+== Strategy==
+The Badger is a guy that damages the pet ahead and the pet behind, and realistically if it's gonna attack in battle and faint like a real MAN, it's gonna be an enemy and a friend. There are ways to mitigate this.
+
+If the Badger is placed at the back, it will only hurt your opponent's pets. This means that the Badger can turn losses into draws, if its ability knocks out the last enemy pet. The Badger synergizes incredibly well with {{IconSAP|Honey}}, dubbed "Honey Badger". The {{IconSAP|Bee}} will win a draw if on the last pet, and the Badger can draw losses if in the last spot. This creates an infamous combo: the Badger faints the last enemy then creates a Bee, turning what would otherwise be a loss into a win. During the late game, {{IconSAP|Mushroom}} works better although the 1 damage probably won't amount too much. Still, it will against other Bees or Mushroom summoned Pets.
+
+Badger shines in front, if you put a punk ass small guy behind it, minimizing the downside of the damage, most preferably a scaler like {{IconSAP|Giraffe}}, {{IconSAP|Cat}}, etc. The main benefit to this strategy is that it has a higher potential to destroy a big enemy unit because players will often put their strongest units near to the front, leading to this guy to trade with one opponent big guy or if scaled enough, two. Make sure to balance your scaling to the former so that it doesn't go overkill.
+
+A strategy that is viable in a good amount of fields is to suck it up with hurt pets. A strategy is to use badgers to trigger hurt abilities of certain friends in combat. That's alright.
+
+To counter the Badger, run {{IconSAP|Chili}}, {{IconSAP|Deer}} or {{IconSAP|Dolphin}}. This forces the Badger player to play differently and to {{IconSAP|Pear}} stuff above the 5 or 4 HP breakpoint. {{IconSAP|Chili}} is most preferable later on since taking one pet slot to counter badger rather than a perk slot feels kinda silly. In Versus you could also position stuff so that some guy of yours trades with it and all its damage goes to your small guy, minimizing damage from an opposing badger.
+
+
+
+==Game Sound==
+[[File:Badger.wav]]
+
+==Trivia==
+*A Badger is one of the few Pets in the game that can one-shot a 50/50 Pet with melon armor. Others include 21+ attack Pets with peanut or a level 2 or higher Swordfish with 35+ attack.
+
+==Gallery==
+<gallery>
+Badger.png|The sprite of the Badger
+Badger Classic.png|The classic sprite of the Badger
+</gallery>
+
+==History==
+{{History
+|0.27:
+*Changed the Badger's base stats from 5/3 to 6/3.
+*Removed from the '''[[Puppy Pack]]'''.
+|0.18:
+*Changed the Badger's base stats from 5/4 to 5/3.
+*Changed the Badger's ability from  "'''Faint''': Deal 100%/200%/300% attack damage to adjacent pets. " to "'''Faint''': Deal 50%/100%/150% attack damage to adjacent pets. 
+}}
+
+
+
+{{Navbox Pets}}
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Damage dealing abilities]]
+[[Category:Friend damaging abilities]]

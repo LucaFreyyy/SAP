@@ -1,0 +1,45 @@
+Title: Deer
+Category: Pet
+Tier: Tier 4
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Deer.png
+|attack/health=2/2
+|tier=4
+|level_1='''Faint''': Summon one 5/3 {{IconSAP|Bus}} with {{IconSAP|Chili}}.
+|level_2='''Faint''': Summon one 10/6 {{IconSAP|Bus}} with {{IconSAP|Chili}}.
+|level_3='''Faint''': Summon one 15/9 {{IconSAP|Bus}} with {{IconSAP|Chili}}.
+}}
+The '''Deer''' is a {{IconSAP|Tier 4}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Deer faints, it summons a {{IconSAP|Bus}} with {{IconSAP|Chili}}. Levelling up the Deer increases the level and stats of the summoned Bus.
+
+==Strategy==
+Since Bus has relatively high stats and comes with a strong tier 5 perk, Deer can be thought of as effectively having 12/5 base stats (2/2 + 5/3 + 5/0). It wants to be knocked out ASAP to get to Bus. Deer and Bus can sweep plenty of low stats pets and can be oppressive if it's found early. It combines well with all summon supporters such as {{IconSAP|Whale}}, {{IconSAP|Turkey}}, {{IconSAP|Tiger}}, {{IconSAP|Mushroom}}, and so on.
+
+==Trivia==
+Deer is one of the few mascots that reference real life, where a hurried driver (probably represented by a chili bus) can end up running over the clueless deer, which will end up fainting (just like in the game).
+
+==Gallery==
+<gallery>
+Deer.png|The standard sprite of the Deer
+Deer Classic.png|The classic sprite of the Deer
+DeerBus.png|The "DeerBus" emoji from the Official Super Auto Pets Discord Server
+DeerThisIsFine.png|The "DeerThisIsFine" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+{{History
+|0.37:
+*Changed Deer's ability from "Faint: Summon one 5/5 Bus with Chili." to "Faint: Summon one 5/3 Bus with Chili."
+*Changed Deer's stats from 1/1 to 2/2
+|}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 4]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Summoning based abilities]]
+[[Category:Friend summoning abilities]]

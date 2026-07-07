@@ -1,0 +1,48 @@
+Title: Mosquito
+Category: Pet
+Tier: Tier 1
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|tier= 1
+|attack/health= 2/2
+|ID= 47
+|level_1='''Start of battle''': Deal 1 {{IconSAP|damage|nolink=yes}} to one random enemy.
+|level_2='''Start of battle''': Deal 1 {{IconSAP|damage|nolink=yes}} to two random enemies.
+|level_3='''Start of battle''': Deal 1 {{IconSAP|damage|nolink=yes}} to three random enemies.
+}}
+The '''Mosquito''' is a {{IconSAP|Tier 1}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. It has subpar stats, and at the start of battle, the Mosquito will deal 1 damage to a random enemy. Levelling up the Mosquito will increase the amount of enemies its ability will target.
+
+
+==Strategy==
+The Mosquito feels mediocre, and only takable if you have atleast 2 or 3 copies of it in the shop during your first turn. It provides the same amount of tempo (value during the turn it is played) as {{IconSAP|Duck}}, {{IconSAP|Beaver}}, and {{IconSAP|Fish}}, except that unlike them, the Mosquito provides no benefit mid-game, and has a possible negative effect of it being able hit Hurt ability pets like {{IconSAP|Peacock}}, more often in versus.
+
+The Mosquito can pop {{IconSAP|Melon}} and harm other cases of perks that reduce damage a limited amount of times. While that is true, it happens lategame. You run the risk of putting it in mid-game, with it being underpowered there. Also, there's better means of popping Melons, such as {{IconSAP|Rhino}}, or simply putting a weak unit up-front.
+
+==Game Sound==
+[[File:Mosquito.wav]]
+
+
+==Gallery==
+<gallery>
+Mosquito.png|The standard sprite of the Mosquito
+Mosquito Classic.png|The classic sprite of the Mosquito
+</gallery>
+
+==History==
+
+{{History
+|0.27: Removed from the '''{{IconSAP|Puppy Pack}}'''.
+|0.14: Changed the Mosquito's ability from "'''Start of battle''': Deal 1/2/3 damage to a random enemy" to "'''Start of battle''': Deal 1 damage to 1/2/3 random enemies.".
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 1]]
+[[Category:Turtle Pack]]
+[[Category:Start of battle abilities]]
+[[Category:Damage dealing abilities]]

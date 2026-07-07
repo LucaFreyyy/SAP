@@ -1,0 +1,57 @@
+Title: Sheep
+Category: Pet
+Tier: Tier 3
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Sheep.png
+|attack/health=2/2
+|tier=3
+|level_1='''Faint''': Summon two 2/2 {{IconSAP|Ram|name=Rams}}.
+|level_2='''Faint''': Summon two 4/4 {{IconSAP|Ram|name=Rams}}.
+|level_3='''Faint''': Summon two 6/6 {{IconSAP|Ram|name=Rams}}.
+}}
+The '''Sheep''' is a {{IconSAP|Tier 3}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Sheep faints, it summons two {{IconSAP|Ram|name=Rams}} with the same level as the Sheep. Levelling up the Sheep increases the stats of the summoned Rams. 
+
+==Strategy ==
+The Sheep synergizes with many Pets which make it a decent choice for early-game, but it does become less useful in the late game.
+
+Being a summoning Pet, the Sheep works with the {{IconSAP|Turkey}}, allowing the Rams to dish out more damage.
+
+Sheep also works with the {{IconSAP|Ox}} and {{IconSAP|Kangaroo}}, as it allows Ox and Kangaroo to trigger their effect '''twice''' if placed behind a Sheep.
+
+When it comes to [[Food]], it is advisable to give it {{IconSAP|Meat Bone}} early on and replace it with {{IconSAP|Steak}} if still used late game. You can use a {{IconSAP|Sleeping Pill}} on a Level 2 Sheep can result in a '''Level 3 Ram''', if the two Level 2 Rams are merged. This allows Sheep to even work with {{IconSAP|Bison}}, as long as the Player doesn't mess up by '''not having enough space''' for the 2 Rams to spawn.
+
+Though, it falls off as soon as stronger summoning pets, such as {{IconSAP|Deer}} and {{IconSAP|Fly}}, and even giving free stats or advantage to the enemies with {{IconSAP|Hippo}} or {{IconSAP|Rhino}} on their team.
+
+Overall, the Sheep is a great early game Pet and is very versatile, and its effect is incredibly useful even without the use of other Pets, however does get outshined by other pets in late-game.
+
+==Game Sound==
+[[File:Sheep.wav]]
+
+==Gallery==
+<gallery>
+Sheep.png|The standard sprite of the Sheep
+Sheep Classic.png|The classic sprite of the Sheep
+SheepBlush.png|The "SheepBlush" emoji from the Official Super Auto Pets Discord Server
+</gallery>
+
+==History==
+{{History
+|0.27:
+*Removed from the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}'''.
+|0.12:
+*Fixed {{IconSAP|Ox}}, {{IconSAP|Kangaroo}}, {{IconSAP|Snake}} + Sheep bug.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 3]]
+[[Category:Turtle Pack]]
+[[Category:Faint ability]]
+[[Category:Summoning based abilities]]
+[[Category:Friend summoning abilities]]

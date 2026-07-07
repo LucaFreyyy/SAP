@@ -1,0 +1,35 @@
+Title: Steak
+Category: Food
+Tier: Tier 6
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{FoodInfoBox
+|image=Steak.png
+|tier=6
+|effect=Give one pet the Steak [[Food Perks|perk]]. Attack with +20 {{IconSAP|damage|nolink=yes}}, once.
+}}
+The '''Steak''' is a {{IconSAP|Tier 6}} [[Food]], available in the '''{{IconSAP|Turtle Pack}}''' and the '''{{IconSAP|Puppy Pack}}'''. Feed a [[Pets|pet]] a Steak wil give that pet the Steak [[Food Perks|perk]]. The first time a pet with Steak perk attacks, it will deal an additional 20 damage.
+
+==Strategy==
+Steak can be thought of as the inverse of {{IconSAP|Melon}}. While Melon is often the more flexible choice that can fit on almost any team since surviving longer will give the pet more chances to attack and activating their abilities. Steak instead fills the niche of eliminating the enemies faster and denying them from activating ''their'' abilities. Against pets that benefit from attacking multiple times such as {{IconSAP|Elephant}} or {{IconSAP|Snake}} combos, it's best to knock them out as soon as possible instead of trading over multiple strikes.
+
+It's often great value to put Steak on pets with low stats that benefit little from the additional survivability that Garlic and Melon can provide. Additionally, since Turtle pack teams tend to have more health than attack, Steak can prove to be more useful than Melon when put on the lobsided 25/50 pets.
+
+==Trivia==
+
+== Gallery ==
+<gallery>
+Steak.png|The standard sprite of the Steak
+Steak Classic.png|The classic sprite of the Steak
+</gallery>
+
+==History==
+
+{{Navbox Food}}
+
+[[Category:Food]]
+[[Category:Food Perk]]
+[[Category:Turtle Pack]]
+[{Category:Puppy Pack]]
+[[Category:Tier 6]]

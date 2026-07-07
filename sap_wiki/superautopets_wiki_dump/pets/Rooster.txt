@@ -1,0 +1,50 @@
+Title: Rooster
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Rooster.png
+|attack/health=6/4
+|tier=5
+|level_1='''Faint''': Summon one {{IconSAP|Chick}} with 1 {{IconSAP|health|nolink=yes}} and 50% {{IconSAP|attack|nolink=yes}} of this.
+|level_2='''Faint''': Summon two {{IconSAP|Chick|name=Chicks}} with 1 {{IconSAP|health|nolink=yes}} and 50% {{IconSAP|attack|nolink=yes}} of this.
+|level_3='''Faint''': Summon three {{IconSAP|Chick|name=Chicks}} with 1 {{IconSAP|health|nolink=yes}} and 50% {{IconSAP|attack|nolink=yes}} of this.
+}}
+The '''Rooster''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Rooster faints, it summons a {{IconSAP|Chick}} with the same level as the Rooster, 1 {{IconSAP|health|nolink=yes}} and half the {{IconSAP|attack|nolink=yes}} that the Rooster had when it fainted. Levelling up the Rooster increases the amount of Chicks summoned.
+
+==Strategy==
+The Roosters power comes from value that giving it attack will yield. Giving the Rooster any number of attack is 50% more effective even at level 1, increasing in 50% intervals as you level it up. This makes the Rooster an excellent candidate for scaling and a perfect duo with the {{IconSAP|Dodo}}.
+
+The maximum amount of attack for the summoned chick(s) is 25 attack but can be paired by a {{IconSAP|German Shepherd}} to reach 50 attack.
+
+==Trivia==
+'''{{IconSAP|Rooster}}''' are the few animals that their gender is known, as a Rooster is always a male.
+
+if it were a female, it would become a chicken, hence theirs already one '''{{IconSAP|Chicken}}'''.
+
+==Gallery==
+<gallery>
+Rooster.png|The standard sprite of the Rooster
+Rooster Classic.png|The classic sprite of the Rooster
+</gallery>
+
+==History==
+{{History
+|0.27: 
+*Changed the Rooster's base stats from 5/3 to 6/4.
+*Changed the Rooster's tier from {{IconSAP|Tier 4}} to {{IconSAP|Tier 5}}.
+*Removed from the '''{{IconSAP|Puppy Pack}}'''.
+}}
+
+
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Summoning based abilities]]
+[[Category:Friend summoning abilities]]
+[[Category:Stubs]]

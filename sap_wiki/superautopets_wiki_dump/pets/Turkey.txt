@@ -1,0 +1,56 @@
+Title: Turkey
+Category: Pet
+Tier: Tier 5
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|image=Turkey.png
+|attack/health=3/4
+|tier=5
+|level_1='''Friend summoned''': Give it +3 {{IconSAP|attack|nolink=yes}} and +1 {{IconSAP|health|nolink=yes}}.
+|level_2='''Friend summoned''': Give it +6 {{IconSAP|attack|nolink=yes}} and +2 {{IconSAP|health|nolink=yes}}.
+|level_3='''Friend summoned''': Give it +9 {{IconSAP|attack|nolink=yes}} and +3 {{IconSAP|health|nolink=yes}}.
+}}
+The '''Turkey''' is a {{IconSAP|Tier 5}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack}}'''. When a friend is summoned, the Turkey gives it a buff to its stats. Leveling up the Turkey increases the amount of stats it gives to the summoned friends.
+
+==Strategy==
+Turkey is one of the cornerstones of summon builds, it is often a must-have and a target that all summon builds want to hard roll for. It's flexible, powerful, and easy to use.
+
+The most obvious usage is giving stats to all summoned pets, allowing them to not only deal more damage, but also potentially survive more attacks. Having multiple Turkeys, or pairing it with {{IconSAP|Parrot}} or {{IconSAP|Tiger}} and you can flood the team with stats, creating unstoppable {{IconSAP|Bus|name=Buses}}, {{IconSAP|Chick|name=Chicks}}, {{IconSAP|Zombie Fly|name=Zombie Flies}}, and so on.
+
+Another use is for pivoting: each pet bought into an empty slot will receive a great amount of stats. Every new Turkey will be buffed by the ones already on the team, and they will continuously get bigger and stronger. If you find an early Turkey, it's often possible to dump whatever you have been running and pivot completely to a summon build. {{IconSAP|Canned Food}} will also help in making these pivots easier.
+
+Due to being crucial to summon builds, should the Turkey be sniped, the entire team can collapse. It's also often placed at the back where it'll be vulnerable to {{IconSAP|Crocodile}}. So even though it doesn't really need it, it's recommended to still give the Turkey some stats and defensive perks such as {{IconSAP|Melon}} or {{IconSAP|Mushroom}}.
+
+==Trivia==
+
+==Gallery==
+<gallery>
+Turkey.png|The standard sprite of the Turkey
+Turkey Classic.png|The classic sprite of the Turkey
+</gallery>
+
+==History==
+{{History
+|0.37: Changed the Turkey's ability from: "'''Friend summoned''': Give it +3/+2, +6/+4, +9/+6." to: "'''Friend summoned''': Give it +3/+1, +6/+2, +9/+3."
+|0.29: Changed the Turkey's ability from: "'''Friend summoned''': Give it +2/+3, +4/+6, +6/+9." to: "'''Friend summoned''': Give it +3/+2, +6/+4, +9/+6."
+|0.27: Changed the Turkey's ability from: "'''Friend summoned''': Give it +3/+3, +6/+6, +9/+9." to: "'''Friend summoned''': Give it +2/+3, +4/+6, +6/+9."
+|0.22: Changed the Turkey's ability from: "'''Friend summoned''': Give it +2/+3, +4/+6, +6/+9." to: "'''Friend summoned''': Give it +3/+3, +6/+6, +9/+9." 
+|0.18: Changed the Turkey's ability from: "'''Friend summoned''': Give it +3/+3, +6/+6, +9/+9." to: "'''Friend summoned''': Give it +2/+3, +4/+6, +6/+9." 
+}}
+
+==Video's==
+
+How to use the Turkey: https://youtu.be/9oQt_5XWXkk?si=vGncjf-Y0wYKj0kz 
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 5]]
+[[Category:Turtle Pack]]
+[[Category:Summoning based abilities]]
+[[Category:Scaling based abilities]]
+[[Category:Friend scaling abilities]]
+[[Category:Buffing based abilities]]
+[[Category:Friend buffing abilities]]

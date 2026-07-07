@@ -1,0 +1,60 @@
+Title: Peacock
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=2/5
+|tier=2
+|level_1='''Hurt''': Gain +3 {{IconSAP|attack|nolink=yes}}.
+|level_2='''Hurt''': Gain +6 {{IconSAP|attack|nolink=yes}}.
+|level_3='''Hurt''': Gain +9 {{IconSAP|attack|nolink=yes}}.
+}}
+The '''Peacock''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. When the Peacock takes damage, it gains attack. Leveling up the Peacock will increase the amount of attack it gains when hurt. 
+
+==Strategy==
+The '''Peacock''' is best paired with the {{IconSAP|Elephant}}, which will deal safe amounts of damage and it will be able to gain lots of attack in battle. Though, early on, it might be a good idea to give it {{IconSAP|Honey}}, as it will become a glass cannon.
+
+Like most Pets with [[Hurt Pets|Hurt Abilities]], the Peacock benefits immensely from {{IconSAP|Garlic}} and later on, {{IconSAP|Lemon}} or {{IconSAP|Pita Bread}} due to their damage reductions or health gained when taking damage - something the Peacock wants to do while still being able to stay alive.
+
+It's also good with {{IconSAP|Leech}} as you can use a {{IconSAP|Lollipop}} on the Peacock, which swaps the attack and health of a pet - allowing the health to increase which lets you continue to buff its attack very quickly with Leech again. Alternatively, you can put Pita Bread on the Peacock to gain a lot of health without sacrificing attack.
+
+Another good combo is with the {{IconSAP|Rat}}. Putting the Rat in front of the Peacock allows at least one easy buff to the unit, albeit with minor health lost and the fact that it’s dependent on your enemy’s board.
+
+==Game Sound==
+[[File:Peacock.wav]]
+
+==Trivia== 
+
+*Peacocks are often depicted as very vain animals, taking great pride in their impressive plumage. Its ability in game could be interpreted as the Peacock becoming more and more enraged after being attacked.
+
+==Gallery==
+<gallery>
+Peacock.png|The standard sprite of the Peacock
+Peacock Classic.png|The classic sprite of the Peacock
+</gallery>
+
+==History==
+{{History
+|0.35:
+*Changed the Peacock's ability from: "'''Hurt''': Gain +4/+8/+12 attack" to "'''Hurt''': Gain +3/+6/+9 attack". 
+|0.27:
+*Removed from the '''{{IconSAP|Puppy Pack|image=Puppy Icon.png}}''' .
+|0.18:
+*Changed the Peacock's ability from: "'''Hurt''': Gain 50% attack (once/twice/thrice per turn). to "'''Hurt''': Gain 4/8/12 attack."
+|0.16:
+*Changed the Peacock's base stats from 1/5 to 2/5.
+*Changed the Peacock's ability to Hurt: Gain 50% attack (once/twice/thrice per turn).
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Hurt ability]]
+[[Category:Scaling based abilities]]
+[[Category:Self scaling abilities]]
+[[Category:Buffing based abilities]]
+[[Category:Self buffing abilities]]

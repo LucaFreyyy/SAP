@@ -1,0 +1,51 @@
+Title: Crab
+Category: Pet
+Tier: Tier 2
+============================================================
+
+CONTENT (plain text or raw wikitext):
+{{AnimalInfoBox
+|attack/health=4/1
+|tier=2
+|level_1='''Start of battle''': Gain {{IconSAP|health|nolink=yes}} equal to 25% of the most healthy friend.
+|level_2='''Start of battle''': Gain {{IconSAP|health|nolink=yes}} equal to 50% of the most healthy friend.
+|level_3='''Start of battle''': Gain {{IconSAP|health|nolink=yes}} equal to 75% of the most healthy friend.
+}}
+The '''Crab''' is a {{IconSAP|Tier 2}} [[Pets|Pet]], available in the '''{{IconSAP|Turtle Pack|image=Turtle Icon.png}}'''. At the start of battle the Crab will gain a percentage of health from the healthiest friend. The percentage of health it gain increases as it levels up.  
+
+==Strategy==
+The Crab is a pet that needs to be at level 2 to be viable. Without a level up copying 50% is negligible, especially so in the early game and a waste of gold later on. If you do manage to get it to level 2 or 3 it does a decent job at a serving as a damage sponge that you don't need to put as much effort into scaling. 
+
+On the topic of scaling, it is highly inefficient to scale a crab due to the fact that it's own health value is irrelevant prior to it's ability activating.  
+
+To make up for a likely low attack value, it is recommended to equip the Crab with a {{IconSAP|Meat Bone}} or even a {{IconSAP|Steak}}. It can synergise nicely with a {{IconSAP|Dodo}}, that will increase it's attack in a similar fashion. Using a Dodo + a high Health Pet makes the Crabs stats entirely dependent on other animals, which isn't necessarily bad and actually enables it to be sold without losing many stats or {{IconSAP|Gold}} efficiency.
+
+==Game Sound==
+[[File:Crab.wav]]
+
+==Gallery==
+
+<gallery>
+Crab.png|The standard sprite of the Crab
+Crab Classic.png|The classic sprite of the Crab
+</gallery>
+
+==History==
+{{History
+|0.40:
+*Changed the Crab's ability from "Start of battle: Copy 50/100/150% of health from the most healthy friend." to "Start of battle: Gain health equal to 25/50/75% of the most healthy friend."
+|0.27:
+*Changed the base stats of the Crab from 3/1 to 4/1.
+|0.18:
+*Changed the Crab's ability from "'''Buy''': Copy the health stat of the friend with the highest health." to "'''Start of battle''': Copy 50%/100%/150% health from the most healthy friend."
+|0.14:
+*Changed the Crab's ability to "'''Buy''': Copy the health stat of the friend with the highest health."
+}}
+
+{{Navbox Pets}}
+
+[[Category:Pets]]
+[[Category:Tier 2]]
+[[Category:Turtle Pack]]
+[[Category:Start of battle abilities]]
+[[Category:Stat copying abilities]]
