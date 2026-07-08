@@ -23,6 +23,7 @@ STEP_LABELS = {
     "friend_faint": "Friend Faints",
     "knock_out": "Knock Out",
     "friend_summoned": "Friend Summoned",
+    "wolverine": "Wolverine",
 }
 
 
@@ -38,6 +39,7 @@ class BattleAbilityEvent:
     fainted_idx: int | None = None
     summoned_pet: PetInstance | None = None
     friend_faint_target_idx: int | None = None
+    triggers_wolverine: bool = False
 
 
 BattleStepCallback = Callable[["BattleAbilityEvent"], None]
@@ -47,7 +49,7 @@ BattleStepCallback = Callable[["BattleAbilityEvent"], None]
 class BattleAbilityQueue:
     rng: SeededRNG
     events: list[BattleAbilityEvent] = field(default_factory=list)
-    pending_hurts: list[tuple[PetInstance, PlayerState, PlayerState]] = field(default_factory=list)
+    pending_hurts: list[BattleAbilityEvent] = field(default_factory=list)
     on_step: BattleStepCallback | None = None
     summon_callback: SummonCallback | None = None
 
@@ -66,17 +68,25 @@ class BattleAbilityQueue:
     def enqueue_chain(self, event: BattleAbilityEvent) -> None:
         self.events.append(event)
 
-    def note_hurt(self, pet: PetInstance, player: PlayerState, opponent: PlayerState) -> None:
-        self.pending_hurts.append((pet, player, opponent))
+    def note_hurt(
+        self,
+        pet: PetInstance,
+        player: PlayerState,
+        opponent: PlayerState,
+        *,
+        triggers_wolverine: bool = False,
+    ) -> None:
+        self.pending_hurts.append(
+            BattleAbilityEvent(
+                "hurt", pet, player, opponent, triggers_wolverine=triggers_wolverine,
+            )
+        )
 
     def flush_hurts_to_queue(self) -> None:
         if not self.pending_hurts:
             return
-        batch = [
-            BattleAbilityEvent("hurt", pet, player, opponent)
-            for pet, player, opponent in self.pending_hurts
-        ]
-        self.pending_hurts.clear()
+        batch = self.pending_hurts
+        self.pending_hurts = []
         self.enqueue_batch(batch)
 
     def drain(self, executor: Callable[[BattleAbilityEvent], None]) -> None:

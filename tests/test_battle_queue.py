@@ -85,6 +85,7 @@ def test_hurt_steps_fire_before_faint_in_replay() -> None:
     p0, p1 = state.players
 
     peacock = make_pet(engine, "Peacock", attack=1, health=1)
+    peacock.perk = "honey"
     p0.team[4] = peacock
     p1.team[4] = make_pet(engine, "Ant", attack=5, health=5)
 
@@ -95,3 +96,46 @@ def test_hurt_steps_fire_before_faint_in_replay() -> None:
     hurt_idx = next(i for i, d in enumerate(descriptions) if d.startswith("Hurt: Peacock"))
     faint_idx = next(i for i, d in enumerate(descriptions) if d.startswith("Faint: Peacock"))
     assert hurt_idx < faint_idx
+
+
+def test_simultaneous_faint_phase_sorted_by_attack_not_type() -> None:
+    """Faint abilities and friend-faint reactions share one attack-desc batch."""
+    engine = make_engine(seed=1)
+    p0 = engine.new_game(["A", "B"]).players[0]
+    opp = engine.new_game(["C", "D"]).players[0]
+
+    ox = make_pet(engine, "Ox", attack=2, health=5)
+    ant = make_pet(engine, "Ant", attack=10, health=1)
+    p0.team[3] = ox
+    p0.team[4] = ant
+
+    queue = BattleAbilityQueue(engine.rng)
+    faint_phase = [
+        BattleAbilityEvent("faint", ant, p0, opp, fainted_pet=ant, fainted_idx=4),
+        BattleAbilityEvent(
+            "friend_faint", ox, p0, opp,
+            fainted_pet=ant, fainted_idx=4, friend_faint_target_idx=3,
+        ),
+    ]
+    queue.enqueue_batch(faint_phase)
+
+    assert [event.pet.name for event in queue.events] == ["Ant", "Ox"]
+    assert [event.kind for event in queue.events] == ["faint", "friend_faint"]
+
+
+def test_no_step_for_pets_without_relevant_ability() -> None:
+    """Pets without a trigger for a phase should not produce ability replay steps."""
+    engine = make_engine(seed=12)
+    state = engine.new_game(["Alpha", "Beta"])
+    p0, p1 = state.players
+
+    p0.team[4] = make_pet(engine, "Duck", attack=2, health=3)
+    p1.team[4] = make_pet(engine, "Fish", attack=2, health=3)
+
+    state.phase = Phase.BATTLE
+    result = engine.battle.resolve(state)
+
+    descriptions = [step["description"] for step in result.snapshot.step_history]
+    assert not any(d.startswith("Before Attack:") for d in descriptions)
+    assert not any(d.startswith("Start of Battle:") for d in descriptions)
+    assert not any(d.startswith("After Attack:") for d in descriptions)

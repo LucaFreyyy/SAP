@@ -113,7 +113,7 @@ class BattleEngine:
                 sob_events = [
                     BattleAbilityEvent("sob", pet, player, opp)
                     for pet, player, opp in all_sob
-                    if _is_alive(pet)
+                    if _is_alive(pet) and self.triggers.should_queue_sob(pet)
                 ]
                 self.triggers.enqueue_battle_batch(sob_events)
                 self.triggers.drain_battle_queue()
@@ -140,16 +140,17 @@ class BattleEngine:
                 # Before-attack triggers (Boar etc.)
                 if self.triggers:
                     before_events: list[BattleAbilityEvent] = []
-                    if _is_alive(left):
+                    if _is_alive(left) and self.triggers.should_queue_before_attack(left, p0):
                         before_events.append(
                             BattleAbilityEvent("before_attack", left, p0, p1)
                         )
-                    if _is_alive(right):
+                    if _is_alive(right) and self.triggers.should_queue_before_attack(right, p1):
                         before_events.append(
                             BattleAbilityEvent("before_attack", right, p1, p0)
                         )
-                    self.triggers.enqueue_battle_batch(before_events)
-                    self.triggers.drain_battle_queue()
+                    if before_events:
+                        self.triggers.enqueue_battle_batch(before_events)
+                        self.triggers.drain_battle_queue()
 
                 # Calculate attack damage (Steak / Meat Bone bonuses)
                 left_deals = self._calc_attack_damage(left)
@@ -217,19 +218,20 @@ class BattleEngine:
                 # After-attack triggers (Elephant, Kangaroo, Snake)
                 if self.triggers:
                     after_events: list[BattleAbilityEvent] = []
-                    if not left_dead and _is_alive(left):
+                    if not left_dead and _is_alive(left) and self.triggers.should_queue_after_attack(left, p0, p1):
                         after_events.append(
                             BattleAbilityEvent("after_attack", left, p0, p1)
                         )
-                    if not right_dead and _is_alive(right):
+                    if not right_dead and _is_alive(right) and self.triggers.should_queue_after_attack(right, p1, p0):
                         after_events.append(
                             BattleAbilityEvent("after_attack", right, p1, p0)
                         )
-                    self.triggers.enqueue_battle_batch(after_events)
-                    self.triggers.drain_battle_queue()
+                    if after_events:
+                        self.triggers.enqueue_battle_batch(after_events)
+                        self.triggers.drain_battle_queue()
 
                 # Faint handling + knock-out triggers
-                faint_events: list[BattleAbilityEvent] = []
+                faint_phase_events: list[BattleAbilityEvent] = []
                 knock_out_events: list[BattleAbilityEvent] = []
 
                 if right_dead:
@@ -237,13 +239,19 @@ class BattleEngine:
                     if right_idx >= 0:
                         p1.team[right_idx] = None
                     if self.triggers and right_idx >= 0:
-                        faint_events.append(
-                            BattleAbilityEvent(
-                                "faint", right, p1, p0,
-                                fainted_pet=right, fainted_idx=right_idx,
+                        if self.triggers.should_queue_faint(right, right_idx, p1):
+                            faint_phase_events.append(
+                                BattleAbilityEvent(
+                                    "faint", right, p1, p0,
+                                    fainted_pet=right, fainted_idx=right_idx,
+                                )
+                            )
+                        faint_phase_events.extend(
+                            self.triggers.collect_friend_faint_reaction_events(
+                                right, right_idx, p1, p0,
                             )
                         )
-                    if self.triggers and _is_alive(left):
+                    if self.triggers and _is_alive(left) and self.triggers.should_queue_knock_out(left):
                         knock_out_events.append(
                             BattleAbilityEvent("knock_out", left, p0, p1)
                         )
@@ -253,22 +261,30 @@ class BattleEngine:
                     if left_idx >= 0:
                         p0.team[left_idx] = None
                     if self.triggers and left_idx >= 0:
-                        faint_events.append(
-                            BattleAbilityEvent(
-                                "faint", left, p0, p1,
-                                fainted_pet=left, fainted_idx=left_idx,
+                        if self.triggers.should_queue_faint(left, left_idx, p0):
+                            faint_phase_events.append(
+                                BattleAbilityEvent(
+                                    "faint", left, p0, p1,
+                                    fainted_pet=left, fainted_idx=left_idx,
+                                )
+                            )
+                        faint_phase_events.extend(
+                            self.triggers.collect_friend_faint_reaction_events(
+                                left, left_idx, p0, p1,
                             )
                         )
-                    if self.triggers and not right_dead and _is_alive(right):
+                    if self.triggers and not right_dead and _is_alive(right) and self.triggers.should_queue_knock_out(right):
                         knock_out_events.append(
                             BattleAbilityEvent("knock_out", right, p1, p0)
                         )
 
                 if self.triggers:
-                    self.triggers.enqueue_battle_batch(faint_events)
-                    self.triggers.drain_battle_queue()
-                    self.triggers.enqueue_battle_batch(knock_out_events)
-                    self.triggers.drain_battle_queue()
+                    if faint_phase_events:
+                        self.triggers.enqueue_battle_batch(faint_phase_events)
+                        self.triggers.drain_battle_queue()
+                    if knock_out_events:
+                        self.triggers.enqueue_battle_batch(knock_out_events)
+                        self.triggers.drain_battle_queue()
 
                 self._drain_pending_battle_effects(p0, p1)
         finally:
@@ -395,7 +411,7 @@ class BattleEngine:
         """Resolve faint chains until no new deaths occur."""
         while True:
             progress = False
-            faint_events: list[BattleAbilityEvent] = []
+            faint_phase_events: list[BattleAbilityEvent] = []
             for player, opp in [(p0, p1), (p1, p0)]:
                 for i in range(len(player.team)):
                     pet = player.team[i]
@@ -403,14 +419,20 @@ class BattleEngine:
                         player.team[i] = None
                         progress = True
                         if self.triggers:
-                            faint_events.append(
-                                BattleAbilityEvent(
-                                    "faint", pet, player, opp,
-                                    fainted_pet=pet, fainted_idx=i,
+                            if self.triggers.should_queue_faint(pet, i, player):
+                                faint_phase_events.append(
+                                    BattleAbilityEvent(
+                                        "faint", pet, player, opp,
+                                        fainted_pet=pet, fainted_idx=i,
+                                    )
+                                )
+                            faint_phase_events.extend(
+                                self.triggers.collect_friend_faint_reaction_events(
+                                    pet, i, player, opp,
                                 )
                             )
-            if self.triggers and faint_events:
-                self.triggers.enqueue_battle_batch(faint_events)
+            if self.triggers and faint_phase_events:
+                self.triggers.enqueue_battle_batch(faint_phase_events)
                 self.triggers.drain_battle_queue()
             if not progress:
                 break
@@ -426,11 +448,12 @@ class BattleEngine:
                 if player is self._battle_players[0]
                 else self._battle_players[0]
             )
-            self.triggers.enqueue_battle_chain(
-                BattleAbilityEvent(
-                    "friend_summoned", pet, player, opp, summoned_pet=pet,
+            if self.triggers.should_queue_friend_summoned(pet, player):
+                self.triggers.enqueue_battle_chain(
+                    BattleAbilityEvent(
+                        "friend_summoned", pet, player, opp, summoned_pet=pet,
+                    )
                 )
-            )
         else:
             self.triggers.apply_friend_summoned(pet, player, self._summon_callback)
 
