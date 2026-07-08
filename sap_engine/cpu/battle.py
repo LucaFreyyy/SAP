@@ -183,12 +183,13 @@ class BattleEngine:
                 left.temporary_health = 0
                 left_dead = True
 
-            # Hurt triggers (only if pet survived)
+            # Hurt triggers (including lethal damage — resolved before faint removal)
             if self.triggers:
-                if not right_dead and right_took > 0:
-                    self.triggers.apply_hurt(right, p1, p0, self._summon_callback)
-                if not left_dead and left_took > 0:
-                    self.triggers.apply_hurt(left, p0, p1, self._summon_callback)
+                if right_took > 0:
+                    self.triggers.enqueue_hurt(right, p1, p0)
+                if left_took > 0:
+                    self.triggers.enqueue_hurt(left, p0, p1)
+                self.triggers.flush_hurt_queue(self._summon_callback)
 
             # After-attack triggers (Elephant, Kangaroo, Snake)
             if self.triggers:

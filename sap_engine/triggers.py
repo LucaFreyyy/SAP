@@ -31,6 +31,13 @@ class TriggerResult:
     message: str = ""
 
 
+@dataclass(slots=True)
+class _QueuedHurt:
+    pet: PetInstance
+    player: PlayerState
+    other: PlayerState
+
+
 SummonCallback = Callable[["PlayerState", int, "PetInstance"], None]
 AbilityListener = Callable[[PetInstance, PlayerState], None]
 
@@ -50,6 +57,37 @@ class TriggerEngine:
         self.registry = registry
         self.rng = rng
         self.ability_listener = ability_listener
+        self._hurt_pending: list[_QueuedHurt] = []
+
+    def enqueue_hurt(
+        self,
+        hurt_pet: PetInstance,
+        hurt_player: PlayerState,
+        other_player: PlayerState,
+    ) -> None:
+        """Queue a Hurt trigger (wiki §9 FIFO ordering)."""
+        self._hurt_pending.append(_QueuedHurt(hurt_pet, hurt_player, other_player))
+
+    def flush_hurt_queue(self, summon_callback: SummonCallback | None = None) -> None:
+        """Resolve queued Hurt triggers in descending attack order (FIFO per batch)."""
+        while self._hurt_pending:
+            batch = self._hurt_pending
+            self._hurt_pending = []
+            batch.sort(key=lambda entry: (-entry.pet.effective_attack, id(entry.pet)))
+            for entry in batch:
+                if entry.pet not in entry.player.team:
+                    continue
+                self.apply_hurt(
+                    entry.pet,
+                    entry.player,
+                    entry.other,
+                    summon_callback,
+                )
+
+    @staticmethod
+    def _reduce_health_min_one(pet: PetInstance, amount: int) -> None:
+        """Skunk/Wolverine health removal: not Hurt damage, cannot drop below 1 HP."""
+        pet.health = max(1, pet.health - amount)
 
     def _notify_ability(self, pet: PetInstance | None, player: PlayerState) -> None:
         if pet is not None and self.ability_listener is not None:
@@ -267,7 +305,8 @@ class TriggerEngine:
         elif ability == "Dodo":
             target = self._friend_ahead(player, pet)
             if target is not None:
-                bonus = max(1, math.ceil(pet.effective_attack * 50 * level / 100))
+                # Dodo buff is always rounded down (wiki §9).
+                bonus = max(1, math.floor(pet.effective_attack * 50 * level / 100))
                 target.attack = min(50, target.attack + bonus)
 
         elif ability == "Dolphin":
@@ -294,8 +333,9 @@ class TriggerEngine:
             if target is not None:
                 pct = 33 * level
                 effective = target.health + target.temporary_health
-                reduction = math.ceil(effective * pct / 100)
-                target.health = max(1, target.health - reduction)
+                # Skunk health removal is rounded down; not Hurt damage; cannot kill (min 1 HP).
+                reduction = math.floor(effective * pct / 100)
+                self._reduce_health_min_one(target, reduction)
 
         elif ability == "Armadillo":
             bonus = 8 * level
@@ -322,8 +362,8 @@ class TriggerEngine:
                     )
 
         elif ability == "Leopard":
-            # Deal 50% of Leopard's attack to N random enemies (N = level)
-            dmg = max(1, math.ceil(pet.effective_attack * 50 / 100))
+            # Leopard damage is rounded down (wiki §9).
+            dmg = math.floor(pet.effective_attack * 50 / 100)
             targets_hit: set[int] = set()
             for _ in range(level):
                 candidates = [p for p in self._living_team(opponent) if id(p) not in targets_hit]
@@ -331,8 +371,9 @@ class TriggerEngine:
                     break
                 target = self.rng.choice(candidates)
                 targets_hit.add(id(target))
-                self._deal_damage_battle(target, dmg, opponent, player,
-                                         is_hurt=True, summon_callback=summon_callback)
+                if dmg > 0:
+                    self._deal_damage_battle(target, dmg, opponent, player,
+                                             is_hurt=True, summon_callback=summon_callback)
 
         sob_abilities = {
             "Mosquito", "Dodo", "Dolphin", "Crab", "Skunk", "Armadillo", "Crocodile", "Whale", "Leopard",
@@ -343,6 +384,8 @@ class TriggerEngine:
         # Tiger repeat for SOB
         if _tiger_level is None:
             self._tiger_repeat_sob(pet, player, opponent, summon_callback)
+
+        self.flush_hurt_queue(summon_callback)
 
     def _tiger_repeat_sob(
         self,
@@ -570,6 +613,8 @@ class TriggerEngine:
                                     friend.level, summon_callback)
                     friend.ability_uses += 1
 
+        self.flush_hurt_queue(summon_callback)
+
     def _tiger_repeat_faint(
         self,
         fainted_pet: PetInstance,
@@ -604,7 +649,11 @@ class TriggerEngine:
         *,
         _tiger_level: int | None = None,
     ) -> None:
-        """Fire Hurt trigger for a pet that just took damage but is still alive."""
+        """Fire Hurt trigger after this pet took damage (including lethal damage).
+
+        Queued via FIFO before faint removal; the pet may already be at 0 HP but
+        is still on the team when its Hurt ability resolves.
+        """
         ability = hurt_pet.copied_ability or hurt_pet.name
         level = _tiger_level if _tiger_level is not None else hurt_pet.level
 
@@ -638,8 +687,8 @@ class TriggerEngine:
                     if (wolverine.copied_ability or wolverine.name) == "Wolverine":
                         removal = 3 * wolverine.level
                         for enemy in self._living_team(other_player):
-                            # Health removal: cannot go below 1; doesn't trigger Hurt
-                            enemy.health = max(1, enemy.health - removal)
+                            # Not Hurt damage; cannot reduce below 1 HP.
+                            self._reduce_health_min_one(enemy, removal)
 
             # Tiger repeat
             for tiger in list(self._living_team(hurt_player)):
@@ -691,6 +740,8 @@ class TriggerEngine:
                     self.apply_knock_out(attacker, attacker_player, defender_player,
                                          summon_callback, _tiger_level=tiger.level)
                     break
+
+        self.flush_hurt_queue(summon_callback)
 
     def apply_friend_summoned(
         self,
@@ -818,6 +869,8 @@ class TriggerEngine:
                                             _tiger_level=tiger.level)
                     break
 
+        self.flush_hurt_queue(summon_callback)
+
     # ------------------------------------------------------------------
     # Damage helper used by the battle engine
     # ------------------------------------------------------------------
@@ -864,9 +917,8 @@ class TriggerEngine:
         else:
             target.health -= actual
 
-        # Trigger Hurt if pet survived
-        if is_hurt and _is_alive(target):
-            self.apply_hurt(target, target_player, other_player, summon_callback)
+        if is_hurt and actual > 0:
+            self.enqueue_hurt(target, target_player, other_player)
 
         return actual
 

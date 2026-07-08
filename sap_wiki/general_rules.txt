@@ -99,7 +99,7 @@ These are the trigger categories pets' abilities key off of. Exact wording per t
 | **End Turn** | The "End Turn" button is pressed, before the battle begins. |
 | **Start of Battle** | The battle begins (before any attacks happen). |
 | **Before Attack** | Just before this pet's attack connects, during the combat loop. |
-| **Hurt** | This pet takes damage (from an attack or a damage-dealing ability). Exceptions: pure health-reduction effects (e.g., Skunk, Wolverine, Pill) reduce Health without counting as "hurting" the pet. |
+| **Hurt** | This pet takes damage (from an attack or a damage-dealing ability). Exceptions: pure health-reduction effects (e.g., Skunk, Wolverine, Sleeping Pill) reduce Health without counting as "hurting" the pet. Skunk and Wolverine cannot reduce Health below 1. |
 | **Faint** | This pet's Health hits 0 or below and it's removed, whether in battle or in the shop (e.g. via Sleeping Pill).
 | **Friend Ahead Faints**: The first pet(first non-empty slot) in front of this pet faints. |
 | **Friend Faints** | A friendly pet elsewhere on the team faints. |
@@ -109,6 +109,7 @@ These are the trigger categories pets' abilities key off of. Exact wording per t
 | **Sell** | This pet is sold. |
 
 - **Ordering when multiple pets share the same trigger**: abilities resolve in **descending Attack order** — the pet with the highest current Attack triggers first, random on ties. Abilities are put onto a FIFO queue. If one ability causes another one to trigger, that one gets added onto the queue. Fainted pet's abilites cannot be activated, but stay in the FIFO, so they still resolve if they were added before death.
+- **Percent rounding**: Skunk health removal, Leopard damage, and Dodo attack buffs always round **down** (floor).
 - Buffs/abilities from the *Shop Phase* only affect pets/shop currently in view unless stated otherwise (e.g., an ability that "buffs the shop", like Pigeon only affects that turn's current shop inventory).
 
 ## 10. Turtle Pack Composition

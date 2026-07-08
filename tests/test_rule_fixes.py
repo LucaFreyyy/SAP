@@ -413,6 +413,49 @@ def test_peacock_gains_attack_when_hurt() -> None:
     assert peacock.attack == 5   # 2 + 3
 
 
+def test_hurt_triggers_on_lethal_damage_before_faint() -> None:
+    """Lethal damage still queues and resolves Hurt before the pet is removed."""
+    engine = make_engine()
+    state = engine.new_game(["Alpha", "Beta"])
+    player = state.players[0]
+    opp = state.players[1]
+
+    peacock = make_pet(engine, "Peacock", attack=2, health=5, level=1)
+    player.team[4] = peacock
+    peacock.health = 0
+
+    engine.triggers.enqueue_hurt(peacock, player, opp)
+    engine.triggers.flush_hurt_queue()
+
+    assert peacock.attack == 5
+
+
+def test_skunk_leopard_dodo_use_floor_rounding() -> None:
+    engine = make_engine()
+    state = engine.new_game(["Alpha", "Beta"])
+    p, opp = state.players
+
+    skunk = make_pet(engine, "Skunk", level=1)
+    target = make_pet(engine, "Hippo", health=10)
+    p.team[4] = skunk
+    opp.team[4] = target
+    engine.triggers.apply_start_of_battle_pet(skunk, p, opp)
+    assert target.health == 7  # floor(3.3)=3 removed
+
+    leopard = make_pet(engine, "Leopard", attack=9, level=1)
+    enemy = make_pet(engine, "Ant", health=10)
+    p.team[4] = leopard
+    opp.team[4] = enemy
+    engine.triggers.apply_start_of_battle_pet(leopard, p, opp)
+    assert enemy.health == 6  # floor(4.5)=4 damage
+
+    friend = make_pet(engine, "Duck", attack=5)
+    dodo = make_pet(engine, "Dodo", attack=7, level=1)
+    p.team = [None, None, None, dodo, friend]
+    engine.triggers.apply_start_of_battle_pet(dodo, p, opp)
+    assert friend.attack == 8  # floor(3.5)=3 bonus
+
+
 # ===========================================================================
 # 15. Honey perk: summon Bee on faint
 # ===========================================================================

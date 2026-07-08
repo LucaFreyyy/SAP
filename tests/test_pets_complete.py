@@ -496,8 +496,8 @@ class TestSkunk:
         opp.team[4] = enemy
 
         engine.triggers.apply_start_of_battle_pet(skunk, p, opp)
-        # 33% of 30 = 10 (ceil), so health drops to max(1, 30-10)=20
-        assert enemy.health == 20
+        # 33% of 30 = 9 (floor), so health drops to max(1, 30-9)=21
+        assert enemy.health == 21
 
     def test_skunk_does_not_trigger_hurt(self):
         """Skunk reduces health without triggering Hurt (per wiki §9)."""
