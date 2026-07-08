@@ -231,6 +231,9 @@ class BattleSnapshot:
     step_index: int = 0
     finished: bool = False
     outcome: BattleOutcome = BattleOutcome.ONGOING
+    # Store snapshots of team states at each step for replay
+    step_history: list[dict] = field(default_factory=list)
+    current_step: int = 0
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -239,6 +242,8 @@ class BattleSnapshot:
             "step_index": self.step_index,
             "finished": self.finished,
             "outcome": self.outcome.value,
+            "step_history": self.step_history,
+            "current_step": self.current_step,
         }
 
 

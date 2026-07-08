@@ -53,6 +53,7 @@ class GameUI:
         self.mode = None
         self.player_modes: list[str] = []
         self.pending_battle_frames = 0
+        self.battle_replay_mode = False
         self.mode_buttons = {
             GameMode.HUMAN_VS_HUMAN: pygame.Rect(440, 300, 520, 56),
             GameMode.HUMAN_VS_AI: pygame.Rect(440, 380, 520, 56),
@@ -65,8 +66,11 @@ class GameUI:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-                elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                    self.handle_click(event.pos)
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        self.handle_click(event.pos)
+                    elif event.button == 3:
+                        self.handle_right_click(event.pos)
 
             self._update_ai_and_battle()
 
@@ -87,6 +91,22 @@ class GameUI:
         if self.pending_battle_frames > 0:
             return
 
+        # Handle battle replay controls
+        if self.battle_replay_mode and self.state.phase == Phase.BATTLE:
+            snapshot = self.state.battle
+            if self._hit_button(position, self._battle_back_rect()):
+                if snapshot.current_step > 0:
+                    snapshot.current_step -= 1
+                return
+            if self._hit_button(position, self._battle_forward_rect()):
+                if snapshot.current_step < len(snapshot.step_history) - 1:
+                    snapshot.current_step += 1
+                return
+            if self._hit_button(position, self._battle_next_turn_rect()):
+                if snapshot.current_step == len(snapshot.step_history) - 1:
+                    self._advance_to_next_turn()
+                return
+
         if self._hit_button(position, self._end_turn_rect()):
             result = self.engine.end_shop_turn(self.state)
             if result.battle_pending:
@@ -98,8 +118,8 @@ class GameUI:
             return
 
         if self._hit_button(position, self._roll_rect()):
-            self.engine.shop.roll(self.state.current_player())
-            self.status = "Shop rolled."
+            result = self.engine.shop.roll_shop(self.state.current_player())
+            self.status = result.message
             return
 
         if self._hit_button(position, self._sell_rect()):
@@ -119,6 +139,23 @@ class GameUI:
             self._handle_team_click(team_index)
             return
 
+        self.selection = Selection()
+
+    def handle_right_click(self, position: tuple[int, int]) -> None:
+        if self.state is None:
+            return
+        if self.pending_battle_frames > 0:
+            return
+        shop_index = self._hit_shop_slot(position)
+        if shop_index is not None:
+            result = self.engine.shop.freeze_slot(self.state.current_player(), shop_index)
+            self.status = result.message
+
+    def _advance_to_next_turn(self) -> None:
+        """Advance to the next shop turn after battle replay."""
+        self.battle_replay_mode = False
+        result = self.engine.start_next_round(self.state)
+        self.status = f"Round {self.state.turn} started."
         self.selection = Selection()
 
     def _start_mode(self, mode: str) -> None:
@@ -216,24 +253,38 @@ class GameUI:
     def _draw_battle_scene(self) -> None:
         title = self.big_font.render("Battle Phase", True, TEXT)
         self.screen.blit(title, (24, 18))
-        subtitle = self.font.render("Battle is resolving. Shop controls are locked.", True, MUTED)
-        self.screen.blit(subtitle, (24, 56))
-
-        pygame.draw.rect(self.screen, PANEL, pygame.Rect(24, 100, 1352, 260), border_radius=18)
-        pygame.draw.rect(self.screen, PANEL, pygame.Rect(24, 390, 1352, 260), border_radius=18)
 
         if self.state is None:
             return
 
-        top_player = self.state.players[0]
-        bottom_player = self.state.players[1]
-        self._draw_battle_team(top_player, 0, 100)
-        self._draw_battle_team(bottom_player, 1, 390)
+        snapshot = self.state.battle
+        if self.battle_replay_mode and snapshot.step_history:
+            current_step_data = snapshot.step_history[snapshot.current_step]
+            subtitle = self.font.render(f"Replay: {current_step_data['description']} | Step {snapshot.current_step + 1}/{len(snapshot.step_history)}", True, MUTED)
+            self.screen.blit(subtitle, (24, 56))
 
-        center = pygame.Rect(540, 682, 320, 64)
-        pygame.draw.rect(self.screen, (46, 59, 85), center, border_radius=16)
-        pygame.draw.rect(self.screen, (80, 100, 140), center, 2, border_radius=16)
-        self._draw_centered_text(center, self.status or "Battle in progress", TEXT)
+            # Draw teams from replay data
+            self._draw_replay_team(snapshot.step_history[snapshot.current_step]['p0_team'], 0, 100, snapshot.step_history[snapshot.current_step]['p0_health'])
+            self._draw_replay_team(snapshot.step_history[snapshot.current_step]['p1_team'], 1, 390, snapshot.step_history[snapshot.current_step]['p1_health'])
+
+            # Draw navigation buttons
+            self._draw_battle_controls()
+        else:
+            subtitle = self.font.render("Battle is resolving. Shop controls are locked.", True, MUTED)
+            self.screen.blit(subtitle, (24, 56))
+
+            pygame.draw.rect(self.screen, PANEL, pygame.Rect(24, 100, 1352, 260), border_radius=18)
+            pygame.draw.rect(self.screen, PANEL, pygame.Rect(24, 390, 1352, 260), border_radius=18)
+
+            top_player = self.state.players[0]
+            bottom_player = self.state.players[1]
+            self._draw_battle_team(top_player, 0, 100)
+            self._draw_battle_team(bottom_player, 1, 390)
+
+            center = pygame.Rect(540, 682, 320, 64)
+            pygame.draw.rect(self.screen, (46, 59, 85), center, border_radius=16)
+            pygame.draw.rect(self.screen, (80, 100, 140), center, 2, border_radius=16)
+            self._draw_centered_text(center, self.status or "Battle in progress", TEXT)
 
     def _draw_battle_team(self, player, player_number: int, top: int) -> None:
         label = self.font.render(f"Player {player_number + 1}: {player.name} | HP {player.health}", True, TEXT)
@@ -242,6 +293,54 @@ class GameUI:
             rect = pygame.Rect(52 + index * 260, top + 48, 220, 170)
             pygame.draw.rect(self.screen, PANEL_ALT if index % 2 == 0 else PANEL, rect, border_radius=14)
             self._draw_pet_or_empty(rect, pet, index + 1)
+
+    def _draw_replay_team(self, team_data: list[dict | None], player_number: int, top: int, health: int) -> None:
+        label = self.font.render(f"Player {player_number + 1} | HP {health}", True, TEXT)
+        self.screen.blit(label, (40, top + 16))
+        for index, pet_data in enumerate(team_data):
+            rect = pygame.Rect(52 + index * 260, top + 48, 220, 170)
+            pygame.draw.rect(self.screen, PANEL_ALT if index % 2 == 0 else PANEL, rect, border_radius=14)
+            if pet_data is None:
+                self._draw_centered_text(rect, "Empty", MUTED)
+            else:
+                self._draw_replay_pet(rect, pet_data, index + 1)
+
+    def _draw_replay_pet(self, rect: pygame.Rect, pet_data: dict, slot_number: int) -> None:
+        slot_label = self.font.render(f"Slot {slot_number}", True, MUTED)
+        self.screen.blit(slot_label, (rect.x + 12, rect.y + 10))
+        icon = self._load_icon("pets", pet_data["name"])
+        if icon is not None:
+            self.screen.blit(icon, icon.get_rect(center=(rect.centerx, rect.y + 76)))
+        name = self.font.render(pet_data["name"], True, TEXT)
+        total_attack = pet_data["attack"] + pet_data["temporary_attack"]
+        total_health = pet_data["health"] + pet_data["temporary_health"]
+        stats = self.font.render(f"{total_attack}/{total_health}  Lv{pet_data['level']}", True, GOLD)
+        self.screen.blit(name, (rect.x + 12, rect.bottom - 56))
+        self.screen.blit(stats, (rect.x + 12, rect.bottom - 30))
+
+    def _draw_battle_controls(self) -> None:
+        snapshot = self.state.battle
+        has_prev = snapshot.current_step > 0
+        has_next = snapshot.current_step < len(snapshot.step_history) - 1
+
+        # Backward button
+        back_rect = self._battle_back_rect()
+        pygame.draw.rect(self.screen, (46, 59, 85) if has_prev else (30, 35, 45), back_rect, border_radius=14)
+        pygame.draw.rect(self.screen, (80, 100, 140) if has_prev else (50, 60, 80), back_rect, 2, border_radius=14)
+        self._draw_centered_text(back_rect, "◀ Back", TEXT if has_prev else MUTED)
+
+        # Forward button
+        forward_rect = self._battle_forward_rect()
+        pygame.draw.rect(self.screen, (46, 59, 85) if has_next else (30, 35, 45), forward_rect, border_radius=14)
+        pygame.draw.rect(self.screen, (80, 100, 140) if has_next else (50, 60, 80), forward_rect, 2, border_radius=14)
+        self._draw_centered_text(forward_rect, "Forward ▶", TEXT if has_next else MUTED)
+
+        # Next Turn button (only shown at the end)
+        if snapshot.current_step == len(snapshot.step_history) - 1:
+            next_turn_rect = self._battle_next_turn_rect()
+            pygame.draw.rect(self.screen, (46, 85, 59), next_turn_rect, border_radius=14)
+            pygame.draw.rect(self.screen, (80, 140, 100), next_turn_rect, 2, border_radius=14)
+            self._draw_centered_text(next_turn_rect, "Next Turn", TEXT)
 
     def _draw_mode_menu(self) -> None:
         title = self.big_font.render("Super Auto Pets CPU Engine", True, TEXT)
@@ -284,7 +383,10 @@ class GameUI:
         for index, offer in enumerate(player.shop.slots):
             rect = self._shop_rect(index)
             pygame.draw.rect(self.screen, PANEL_ALT if index % 2 == 0 else PANEL, rect, border_radius=14)
-            pygame.draw.rect(self.screen, ACCENT if self.selection.kind == "shop" and self.selection.index == index else (60, 70, 92), rect, 2, border_radius=14)
+            border_color = ACCENT if self.selection.kind == "shop" and self.selection.index == index else (60, 70, 92)
+            if offer is not None and offer.frozen:
+                border_color = (100, 200, 255)  # Light blue for frozen items
+            pygame.draw.rect(self.screen, border_color, rect, 2, border_radius=14)
             if offer is None:
                 self._draw_centered_text(rect, "Empty", MUTED)
             else:
@@ -360,6 +462,15 @@ class GameUI:
     def _end_turn_rect(self) -> pygame.Rect:
         return pygame.Rect(1230, 784, 130, 44)
 
+    def _battle_back_rect(self) -> pygame.Rect:
+        return pygame.Rect(440, 682, 200, 44)
+
+    def _battle_forward_rect(self) -> pygame.Rect:
+        return pygame.Rect(660, 682, 200, 44)
+
+    def _battle_next_turn_rect(self) -> pygame.Rect:
+        return pygame.Rect(880, 682, 200, 44)
+
     def _hit_button(self, position: tuple[int, int], rect: pygame.Rect) -> bool:
         return rect.collidepoint(position)
 
@@ -383,6 +494,10 @@ class GameUI:
             if self.pending_battle_frames == 0:
                 result = self.engine.resolve_battle_and_start_next_round(self.state)
                 self.status = f"Battle resolved: {result.battle_result.value}."
+                # Enter replay mode for human players
+                if "human" in self.player_modes:
+                    self.battle_replay_mode = True
+                    self.state.battle.current_step = 0
             return
 
         current_index = self.state.active_player_index

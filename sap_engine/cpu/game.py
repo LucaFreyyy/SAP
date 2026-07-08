@@ -61,6 +61,17 @@ class CpuGameEngine:
         self.start_shop_turn(state, 0)
         return TurnResult(phase=Phase.SHOP, battle_result=result.outcome)
 
+    def start_next_round(self, state: GameState) -> TurnResult:
+        """Start the next shop turn after battle replay (without re-resolving battle)."""
+        if self._maybe_finish_game(state):
+            state.finished = True
+            state.phase = Phase.TRANSITION
+            return TurnResult(phase=Phase.TRANSITION, battle_result=state.last_battle_result)
+
+        state.turn += 1
+        self.start_shop_turn(state, 0)
+        return TurnResult(phase=Phase.SHOP, battle_result=state.last_battle_result)
+
     def start_shop_turn(self, state: GameState, player_index: int) -> None:
         state.active_player_index = player_index
         player = state.players[player_index]

@@ -29,6 +29,8 @@ class BattleStepResult:
 class BattleEngine:
     def __init__(self, triggers: TriggerEngine | None = None) -> None:
         self.triggers = triggers
+        self.step_history: list[dict] = []
+        self.current_step = 0
 
     def resolve(self, state: GameState) -> BattleStepResult:
         """Run the full battle from Start-of-Battle to resolution."""
@@ -36,12 +38,17 @@ class BattleEngine:
         snapshot = state.battle
         snapshot.finished = False
         snapshot.outcome = BattleOutcome.ONGOING
+        self.step_history = []
+        self.current_step = 0
 
         p0, p1 = state.players[0], state.players[1]
 
         # Save pre-battle team state keyed by pet identity
         pre0 = _snapshot_team(p0)
         pre1 = _snapshot_team(p1)
+
+        # Capture initial state (before any battle steps)
+        self._capture_step(state, p0, p1, "Start of Battle")
 
         # Reset per-battle counters
         for player in (p0, p1):
@@ -61,6 +68,9 @@ class BattleEngine:
             for pet, player, opp in all_sob:
                 if _is_alive(pet):
                     self.triggers.apply_start_of_battle_pet(pet, player, opp, self._summon_callback)
+
+        # Capture state after SOB triggers
+        self._capture_step(state, p0, p1, "After Start of Battle")
 
         # --- Combat loop ---
         while True:
@@ -86,6 +96,10 @@ class BattleEngine:
             snapshot.step_index += 1
             snapshot.attacker_name = left.name
             snapshot.defender_name = right.name
+
+            # Capture state before this attack
+            self._capture_step(state, p0, p1, f"Step {snapshot.step_index}: {left.name} vs {right.name}")
+
             if snapshot.step_index > MAX_BATTLE_STEPS:
                 return self._end(state, p0, p1, BattleOutcome.DRAW, snapshot, pre0, pre1)
 
@@ -189,6 +203,10 @@ class BattleEngine:
         snapshot.outcome = outcome
         state.last_battle_result = outcome
 
+        # Save battle history to snapshot
+        snapshot.step_history = self.step_history
+        snapshot.current_step = len(self.step_history) - 1
+
         if outcome == BattleOutcome.WIN:
             p0.last_battle_result = BattleOutcome.WIN
             p1.last_battle_result = BattleOutcome.LOSS
@@ -203,6 +221,37 @@ class BattleEngine:
         _restore_team(p1, pre1)
 
         return BattleStepResult(True, outcome, snapshot)
+
+    def _capture_step(self, state: GameState, p0: PlayerState, p1: PlayerState, description: str) -> None:
+        """Capture the current state of both teams for battle replay."""
+        step_data = {
+            "description": description,
+            "p0_team": self._serialize_team(p0),
+            "p1_team": self._serialize_team(p1),
+            "p0_health": p0.health,
+            "p1_health": p1.health,
+        }
+        self.step_history.append(step_data)
+
+    def _serialize_team(self, player: PlayerState) -> list[dict]:
+        """Serialize a team to a dict for replay."""
+        team_data = []
+        for pet in player.team:
+            if pet is None:
+                team_data.append(None)
+            else:
+                team_data.append({
+                    "name": pet.name,
+                    "attack": pet.attack,
+                    "health": pet.health,
+                    "temporary_attack": pet.temporary_attack,
+                    "temporary_health": pet.temporary_health,
+                    "level": pet.level,
+                    "experience": pet.experience,
+                    "perk": pet.perk,
+                    "perk_uses": pet.perk_uses,
+                })
+        return team_data
 
     def _calc_attack_damage(self, attacker: PetInstance) -> int:
         dmg = attacker.effective_attack
@@ -291,6 +340,8 @@ def _snapshot_team(player: PlayerState) -> list[tuple[PetInstance | None, dict |
                     "level": pet.level,
                     "experience": pet.experience,
                     "copied_ability": pet.copied_ability,
+                    "temporary_attack": pet.temporary_attack,
+                    "temporary_health": pet.temporary_health,
                 },
             )
         )

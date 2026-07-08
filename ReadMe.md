@@ -47,5 +47,5 @@ No secrets or external services required. Dependencies: `pygame>=2.5` (already i
 
 ## User preferences
 
-- Correct game rules come from `sap_wiki/` (General rules.txt, pets_summary.txt, foods_summary.txt, tokens_summary.txt).
+- Correct game rules come from `sap_wiki/` (general_rules.txt, pets_summary.txt, foods_summary.txt, tokens_summary.txt).
 - Keep existing project structure; do not migrate or restructure.
