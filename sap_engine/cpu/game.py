@@ -59,5 +59,11 @@ class CpuGameEngine:
         player = state.players[player_index]
         player.turn = state.turn
         player.gold = 10
+
+        # Life-gain rule (wiki §1): a player who lost any lives in the first 2 turns
+        # automatically regains 1 life at the start of turn 3.
+        if state.turn == 3 and player.losses > 0:
+            player.health += 1
+
         self.shop.refresh(player)
         self.triggers.apply_start_of_turn(player)

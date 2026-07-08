@@ -25,6 +25,8 @@ class TriggerType(str, Enum):
     END_TURN = "end_turn"
     START_OF_BATTLE = "start_of_battle"
     BEFORE_ATTACK = "before_attack"
+    AFTER_ATTACK = "after_attack"
+    FRIEND_AHEAD_ATTACKS = "friend_ahead_attacks"
     HURT = "hurt"
     FAINT = "faint"
     FRIEND_AHEAD_FAINTS = "friend_ahead_faints"
@@ -64,6 +66,22 @@ class TokenDefinition:
     icon_file: str | None = None
 
 
+# Valid perk names
+PERK_NAMES = frozenset({
+    "honey",       # summon 1/1 Bee on faint
+    "melon",       # block 20 damage once
+    "garlic",      # take 2 less damage (min 2)
+    "meat_bone",   # attack with +3 bonus damage
+    "steak",       # attack with +20 bonus once
+    "chili",       # deal 5 damage to 2nd enemy after attacking
+    "mushroom",    # come back as 1/1 on faint
+    "cake",        # sell value +1 at end of turn
+    "bread",       # gain +7 health until next turn (end turn)
+    "peanut",      # instantly knock out any enemy this pet hurts
+    "coconut",     # block any damage once (token perk)
+})
+
+
 @dataclass(slots=True)
 class PetInstance:
     definition: PetDefinition
@@ -73,6 +91,11 @@ class PetInstance:
     experience: int = 0
     temporary_attack: int = 0
     temporary_health: int = 0
+    perk: str | None = None            # active food perk (see PERK_NAMES)
+    perk_uses: int = 0                 # how many times perk has been consumed (for one-time perks)
+    copied_ability: str | None = None  # Parrot: copied pet name until next turn
+    knock_out_count: int = 0           # for Hippo's 3x/battle limit
+    ability_uses: int = 0              # per-battle use counter (Snake 5/turn, Fly 3/turn, Gorilla N/turn)
 
     def __post_init__(self) -> None:
         if self.attack is None:
@@ -84,6 +107,20 @@ class PetInstance:
     def name(self) -> str:
         return self.definition.name
 
+    @property
+    def tier(self) -> int:
+        return self.definition.tier
+
+    @property
+    def effective_attack(self) -> int:
+        """Base attack plus temporary attack buffs."""
+        return self.attack + self.temporary_attack
+
+    @property
+    def effective_health(self) -> int:
+        """Base health plus temporary health buffs."""
+        return self.health + self.temporary_health
+
     def to_dict(self) -> dict[str, Any]:
         return {
             "definition": self.definition.name,
@@ -93,16 +130,22 @@ class PetInstance:
             "experience": self.experience,
             "temporary_attack": self.temporary_attack,
             "temporary_health": self.temporary_health,
+            "perk": self.perk,
+            "perk_uses": self.perk_uses,
+            "copied_ability": self.copied_ability,
         }
 
 
 @dataclass(slots=True)
 class ShopOffer:
-    kind: str
+    kind: str           # "pet", "food", or "buffer"
     name: str
     tier: int
     frozen: bool = False
     icon_file: str | None = None
+    bonus_attack: int = 0   # extra attack applied when this pet is bought (Duck sell, Canned Food)
+    bonus_health: int = 0   # extra health applied when this pet is bought (Duck sell, Canned Food, Worm)
+    cost_override: int | None = None  # override the standard 3-gold cost (e.g., Worm Apple at 2 gold)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -111,11 +154,15 @@ class ShopOffer:
             "tier": self.tier,
             "frozen": self.frozen,
             "icon_file": self.icon_file,
+            "bonus_attack": self.bonus_attack,
+            "bonus_health": self.bonus_health,
+            "cost_override": self.cost_override,
         }
 
 
 @dataclass(slots=True)
 class ShopState:
+    # 9 slots: pets | buffers | foods (layout varies by turn)
     slots: list[ShopOffer | None] = field(default_factory=lambda: [None] * 9)
     tier: int = 1
 
@@ -134,6 +181,21 @@ class PlayerState:
     turn: int = 1
     wins: int = 0
     losses: int = 0
+    # Permanent shop buffs from Canned Food (applied to all current & future shop pets)
+    shop_attack_bonus: int = 0
+    shop_health_bonus: int = 0
+    # Squirrel food cost discount this turn
+    food_cost_discount: int = 0
+    # Rabbit's "eats food" trigger works 3 times per turn
+    rabbit_count_this_turn: int = 0
+    # Action counter for tiebreaker (25-round game)
+    actions: int = 0
+    # Wolverine: cumulative hurt events this battle (fires every 4)
+    hurt_count_this_battle: int = 0
+    # Dragon: tier-1 pet buy trigger, max 4 fires per shop turn
+    dragon_buys_this_turn: int = 0
+    # Cat: food stat multiplier remaining uses this shop turn
+    cat_food_uses_this_turn: int = 0
 
     def compact_team(self) -> list[PetInstance]:
         return [pet for pet in self.team if pet is not None]
@@ -155,6 +217,10 @@ class PlayerState:
             "turn": self.turn,
             "wins": self.wins,
             "losses": self.losses,
+            "shop_attack_bonus": self.shop_attack_bonus,
+            "shop_health_bonus": self.shop_health_bonus,
+            "food_cost_discount": self.food_cost_discount,
+            "actions": self.actions,
         }
 
 
