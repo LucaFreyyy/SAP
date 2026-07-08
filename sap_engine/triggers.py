@@ -18,6 +18,7 @@ from .paths import PETS_BY_TIER
 from .registry import DataRegistry
 from .rng import SeededRNG
 from .cpu.shop_slots import insert_shop_offer_from_right
+from .cpu.battle_queue import BattleAbilityEvent, BattleAbilityQueue, STEP_LABELS
 
 # Faint-summon token stats indexed by level (1-based)
 ZOMBIE_CRICKET_STATS = {1: (1, 1), 2: (2, 2), 3: (3, 3)}
@@ -58,6 +59,326 @@ class TriggerEngine:
         self.rng = rng
         self.ability_listener = ability_listener
         self._hurt_pending: list[_QueuedHurt] = []
+        self._battle_queue = BattleAbilityQueue(rng)
+        self._battle_mode = False
+        self._executing_battle_event = False
+
+    def enter_battle_mode(
+        self,
+        on_step,
+        summon_callback: SummonCallback | None,
+    ) -> None:
+        self._battle_mode = True
+        self._battle_queue.clear()
+        self._battle_queue.on_step = on_step
+        self._battle_queue.summon_callback = summon_callback
+
+    def exit_battle_mode(self) -> None:
+        self._battle_mode = False
+        self._battle_queue.clear()
+
+    def enqueue_battle_batch(self, events: list[BattleAbilityEvent]) -> None:
+        self._battle_queue.enqueue_batch(events)
+
+    def enqueue_battle_chain(self, event: BattleAbilityEvent) -> None:
+        self._battle_queue.enqueue_chain(event)
+
+    def drain_battle_queue(self) -> None:
+        self._battle_queue.drain(self._execute_battle_event)
+
+    def _execute_battle_event(self, event: BattleAbilityEvent) -> None:
+        summon_callback = self._battle_queue.summon_callback
+        self._executing_battle_event = True
+        try:
+            if event.kind == "sob":
+                self.apply_start_of_battle_pet(
+                    event.pet, event.player, event.opponent, summon_callback,
+                    _tiger_level=event.tiger_level,
+                )
+            elif event.kind == "before_attack":
+                self.apply_before_attack(
+                    event.pet, event.player, event.opponent,
+                    _tiger_level=event.tiger_level,
+                )
+            elif event.kind == "hurt":
+                self.apply_hurt(
+                    event.pet, event.player, event.opponent, summon_callback,
+                    _tiger_level=event.tiger_level,
+                )
+            elif event.kind == "after_attack":
+                self.apply_after_attack(
+                    event.pet, event.player, event.opponent, summon_callback,
+                    _tiger_level=event.tiger_level,
+                )
+            elif event.kind == "faint":
+                fainted = event.fainted_pet or event.pet
+                self.apply_faint(
+                    fainted,
+                    event.fainted_idx if event.fainted_idx is not None else -1,
+                    event.player,
+                    event.opponent,
+                    summon_callback,
+                    _tiger_level=event.tiger_level,
+                )
+            elif event.kind == "friend_faint":
+                self._apply_friend_faint_reaction(
+                    event.pet,
+                    event.fainted_pet,
+                    event.fainted_idx if event.fainted_idx is not None else -1,
+                    event.player,
+                    event.opponent,
+                    summon_callback,
+                    friend_idx=event.friend_faint_target_idx,
+                )
+            elif event.kind == "knock_out":
+                self.apply_knock_out(
+                    event.pet, event.player, event.opponent, summon_callback,
+                    _tiger_level=event.tiger_level,
+                )
+            elif event.kind == "friend_summoned":
+                summoned = event.summoned_pet or event.pet
+                self.apply_friend_summoned(
+                    summoned, event.player, summon_callback,
+                    _tiger_level=event.tiger_level,
+                )
+        finally:
+            self._executing_battle_event = False
+
+    def _queue_tiger_sob(
+        self,
+        pet: PetInstance,
+        player: PlayerState,
+        opponent: PlayerState,
+    ) -> None:
+        for tiger in list(self._living_team(player)):
+            if (tiger.copied_ability or tiger.name) != "Tiger":
+                continue
+            if self._friend_ahead(player, tiger) is pet:
+                self.enqueue_battle_chain(
+                    BattleAbilityEvent("sob", pet, player, opponent, tiger_level=tiger.level)
+                )
+                break
+
+    def _queue_tiger_before_attack(
+        self,
+        attacker: PetInstance,
+        player: PlayerState,
+        opponent: PlayerState,
+    ) -> None:
+        for tiger in list(self._living_team(player)):
+            if (tiger.copied_ability or tiger.name) != "Tiger":
+                continue
+            if self._friend_ahead(player, tiger) is attacker:
+                self.enqueue_battle_chain(
+                    BattleAbilityEvent(
+                        "before_attack", attacker, player, opponent, tiger_level=tiger.level
+                    )
+                )
+                break
+
+    def _queue_tiger_hurt(
+        self,
+        hurt_pet: PetInstance,
+        hurt_player: PlayerState,
+        other_player: PlayerState,
+    ) -> None:
+        for tiger in list(self._living_team(hurt_player)):
+            if (tiger.copied_ability or tiger.name) != "Tiger":
+                continue
+            if self._friend_ahead(hurt_player, tiger) is hurt_pet:
+                self.enqueue_battle_chain(
+                    BattleAbilityEvent(
+                        "hurt", hurt_pet, hurt_player, other_player, tiger_level=tiger.level
+                    )
+                )
+                break
+
+    def _queue_tiger_faint(
+        self,
+        fainted_pet: PetInstance,
+        fainted_idx: int,
+        player: PlayerState,
+        opponent: PlayerState,
+    ) -> None:
+        for tiger in list(self._living_team(player)):
+            if (tiger.copied_ability or tiger.name) != "Tiger":
+                continue
+            tiger_idx = next((i for i, p in enumerate(player.team) if p is tiger), -1)
+            if tiger_idx >= 0 and fainted_idx > tiger_idx:
+                has_living_between = any(
+                    player.team[j] is not None and _is_alive(player.team[j])
+                    for j in range(tiger_idx + 1, fainted_idx)
+                )
+                if not has_living_between:
+                    self.enqueue_battle_chain(
+                        BattleAbilityEvent(
+                            "faint",
+                            fainted_pet,
+                            player,
+                            opponent,
+                            fainted_idx=fainted_idx,
+                            tiger_level=tiger.level,
+                        )
+                    )
+                    break
+
+    def _queue_tiger_knock_out(
+        self,
+        attacker: PetInstance,
+        attacker_player: PlayerState,
+        defender_player: PlayerState,
+    ) -> None:
+        for tiger in list(self._living_team(attacker_player)):
+            if (tiger.copied_ability or tiger.name) != "Tiger":
+                continue
+            if self._friend_ahead(attacker_player, tiger) is attacker:
+                self.enqueue_battle_chain(
+                    BattleAbilityEvent(
+                        "knock_out",
+                        attacker,
+                        attacker_player,
+                        defender_player,
+                        tiger_level=tiger.level,
+                    )
+                )
+                break
+
+    def _queue_tiger_after_attack(
+        self,
+        attacker: PetInstance,
+        player: PlayerState,
+        opponent: PlayerState,
+    ) -> None:
+        for tiger in list(self._living_team(player)):
+            if (tiger.copied_ability or tiger.name) != "Tiger":
+                continue
+            if self._friend_ahead(player, tiger) is attacker:
+                self.enqueue_battle_chain(
+                    BattleAbilityEvent(
+                        "after_attack", attacker, player, opponent, tiger_level=tiger.level
+                    )
+                )
+                break
+
+    def _queue_tiger_friend_summoned(
+        self,
+        summoned_pet: PetInstance,
+        player: PlayerState,
+    ) -> None:
+        for tiger in list(self._living_team(player)):
+            if (tiger.copied_ability or tiger.name) != "Tiger":
+                continue
+            if self._friend_ahead(player, tiger) is summoned_pet:
+                self.enqueue_battle_chain(
+                    BattleAbilityEvent(
+                        "friend_summoned",
+                        summoned_pet,
+                        player,
+                        player,
+                        summoned_pet=summoned_pet,
+                        tiger_level=tiger.level,
+                    )
+                )
+                break
+
+    def _enqueue_friend_faint_reactions(
+        self,
+        fainted_pet: PetInstance,
+        fainted_idx: int,
+        player: PlayerState,
+        opponent: PlayerState,
+    ) -> None:
+        batch: list[BattleAbilityEvent] = []
+        for i, friend in enumerate(player.team):
+            if friend is None or friend is fainted_pet or not _is_alive(friend):
+                continue
+            friend_ability = friend.copied_ability or friend.name
+            reacts = False
+
+            if fainted_idx > i:
+                nearest_ahead_alive = next(
+                    (
+                        j
+                        for j in range(i + 1, fainted_idx)
+                        if player.team[j] is not None and _is_alive(player.team[j])
+                    ),
+                    None,
+                )
+                if nearest_ahead_alive is None and friend_ability == "Ox":
+                    reacts = True
+
+            if friend_ability in {"Shark", "Fly"}:
+                reacts = True
+
+            if reacts:
+                batch.append(
+                    BattleAbilityEvent(
+                        "friend_faint",
+                        friend,
+                        player,
+                        opponent,
+                        fainted_pet=fainted_pet,
+                        fainted_idx=fainted_idx,
+                        friend_faint_target_idx=i,
+                    )
+                )
+        self.enqueue_battle_batch(batch)
+
+    def _apply_friend_faint_reaction(
+        self,
+        friend: PetInstance,
+        fainted_pet: PetInstance,
+        fainted_idx: int,
+        player: PlayerState,
+        opponent: PlayerState,
+        summon_callback: SummonCallback | None,
+        *,
+        friend_idx: int | None = None,
+    ) -> None:
+        i = friend_idx if friend_idx is not None else (
+            player.team.index(friend) if friend in player.team else -1
+        )
+        friend_ability = friend.copied_ability or friend.name
+
+        if fainted_idx > i:
+            nearest_ahead_alive = next(
+                (
+                    j
+                    for j in range(i + 1, fainted_idx)
+                    if player.team[j] is not None and _is_alive(player.team[j])
+                ),
+                None,
+            )
+            if nearest_ahead_alive is None and friend_ability == "Ox":
+                if friend.knock_out_count < friend.level:
+                    friend.perk = "melon"
+                    friend.perk_uses = 0
+                    friend.attack = min(50, friend.attack + 1)
+                    friend.knock_out_count += 1
+
+        if friend_ability == "Shark":
+            gain = 2 * friend.level
+            friend.attack = min(50, friend.attack + gain)
+            friend.health = min(50, friend.health + gain)
+
+        elif friend_ability == "Fly":
+            if friend.ability_uses < 3 and fainted_pet.name != "Zombie Fly":
+                fly_stats = 4 * friend.level
+                self._summon_at(
+                    player,
+                    fainted_idx,
+                    "Zombie Fly",
+                    fly_stats,
+                    fly_stats,
+                    friend.level,
+                    summon_callback,
+                )
+                friend.ability_uses += 1
+
+    def flush_battle_hurts(self) -> None:
+        """Move pending Hurt triggers into the battle FIFO queue."""
+        if self._battle_mode:
+            self._battle_queue.flush_hurts_to_queue()
 
     def enqueue_hurt(
         self,
@@ -66,14 +387,19 @@ class TriggerEngine:
         other_player: PlayerState,
     ) -> None:
         """Queue a Hurt trigger (wiki §9 FIFO ordering)."""
+        if self._battle_mode:
+            self._battle_queue.note_hurt(hurt_pet, hurt_player, other_player)
+            return
         self._hurt_pending.append(_QueuedHurt(hurt_pet, hurt_player, other_player))
 
     def flush_hurt_queue(self, summon_callback: SummonCallback | None = None) -> None:
         """Resolve queued Hurt triggers in descending attack order (FIFO per batch)."""
+        if self._battle_mode:
+            return
         while self._hurt_pending:
             batch = self._hurt_pending
             self._hurt_pending = []
-            batch.sort(key=lambda entry: (-entry.pet.effective_attack, id(entry.pet)))
+            batch.sort(key=lambda entry: (-entry.pet.effective_attack, self.rng.random()))
             for entry in batch:
                 if entry.pet not in entry.player.team:
                     continue
@@ -87,7 +413,14 @@ class TriggerEngine:
     @staticmethod
     def _reduce_health_min_one(pet: PetInstance, amount: int) -> None:
         """Skunk/Wolverine health removal: not Hurt damage, cannot drop below 1 HP."""
-        pet.health = max(1, pet.health - amount)
+        remaining = amount
+        if pet.temporary_health > 0:
+            if remaining <= pet.temporary_health:
+                pet.temporary_health -= remaining
+                return
+            remaining -= pet.temporary_health
+            pet.temporary_health = 0
+        pet.health = max(1, pet.health - remaining)
 
     def _notify_ability(self, pet: PetInstance | None, player: PlayerState) -> None:
         if pet is not None and self.ability_listener is not None:
@@ -383,9 +716,13 @@ class TriggerEngine:
 
         # Tiger repeat for SOB
         if _tiger_level is None:
-            self._tiger_repeat_sob(pet, player, opponent, summon_callback)
+            if self._battle_mode:
+                self._queue_tiger_sob(pet, player, opponent)
+            else:
+                self._tiger_repeat_sob(pet, player, opponent, summon_callback)
 
-        self.flush_hurt_queue(summon_callback)
+        if not self._battle_mode:
+            self.flush_hurt_queue(summon_callback)
 
     def _tiger_repeat_sob(
         self,
@@ -434,12 +771,15 @@ class TriggerEngine:
 
         # Tiger repeat
         if _tiger_level is None:
-            for tiger in list(self._living_team(player)):
-                if (tiger.copied_ability or tiger.name) != "Tiger":
-                    continue
-                if self._friend_ahead(player, tiger) is attacker:
-                    self.apply_before_attack(attacker, player, opponent, _tiger_level=tiger.level)
-                    break
+            if self._battle_mode:
+                self._queue_tiger_before_attack(attacker, player, opponent)
+            else:
+                for tiger in list(self._living_team(player)):
+                    if (tiger.copied_ability or tiger.name) != "Tiger":
+                        continue
+                    if self._friend_ahead(player, tiger) is attacker:
+                        self.apply_before_attack(attacker, player, opponent, _tiger_level=tiger.level)
+                        break
 
     def apply_faint(
         self,
@@ -562,7 +902,10 @@ class TriggerEngine:
 
         # Tiger repeat for Faint ability (only ability, not perks/notifications)
         if _tiger_level is None:
-            self._tiger_repeat_faint(fainted_pet, fainted_idx, player, opponent, summon_callback)
+            if self._battle_mode:
+                self._queue_tiger_faint(fainted_pet, fainted_idx, player, opponent)
+            else:
+                self._tiger_repeat_faint(fainted_pet, fainted_idx, player, opponent, summon_callback)
 
         # Skip perks and friend notifications when called from Tiger repeat
         if _tiger_level is not None:
@@ -578,42 +921,47 @@ class TriggerEngine:
                                       fainted_pet.level, summon_callback)
             if revived is not None:
                 revived.perk = None
+                revived.ability_uses = fainted_pet.ability_uses
 
         # --- Notify surviving friends ---
-        for i, friend in enumerate(player.team):
-            if friend is None or friend is fainted_pet or not _is_alive(friend):
-                continue
-            friend_ability = friend.copied_ability or friend.name
+        if self._battle_mode and self._executing_battle_event:
+            self._enqueue_friend_faint_reactions(fainted_pet, fainted_idx, player, opponent)
+        else:
+            for i, friend in enumerate(player.team):
+                if friend is None or friend is fainted_pet or not _is_alive(friend):
+                    continue
+                friend_ability = friend.copied_ability or friend.name
 
-            # Friend Ahead Faints
-            if fainted_idx > i:
-                nearest_ahead_alive = next(
-                    (j for j in range(i + 1, fainted_idx)
-                     if player.team[j] is not None and _is_alive(player.team[j])),
-                    None,
-                )
-                if nearest_ahead_alive is None:
-                    if friend_ability == "Ox":
-                        if friend.knock_out_count < friend.level:
-                            friend.perk = "melon"
-                            friend.perk_uses = 0
-                            friend.attack = min(50, friend.attack + 1)
-                            friend.knock_out_count += 1
+                # Friend Ahead Faints
+                if fainted_idx > i:
+                    nearest_ahead_alive = next(
+                        (j for j in range(i + 1, fainted_idx)
+                         if player.team[j] is not None and _is_alive(player.team[j])),
+                        None,
+                    )
+                    if nearest_ahead_alive is None:
+                        if friend_ability == "Ox":
+                            if friend.knock_out_count < friend.level:
+                                friend.perk = "melon"
+                                friend.perk_uses = 0
+                                friend.attack = min(50, friend.attack + 1)
+                                friend.knock_out_count += 1
 
-            # Friend Faints
-            if friend_ability == "Shark":
-                gain = 2 * friend.level
-                friend.attack = min(50, friend.attack + gain)
-                friend.health = min(50, friend.health + gain)
+                # Friend Faints
+                if friend_ability == "Shark":
+                    gain = 2 * friend.level
+                    friend.attack = min(50, friend.attack + gain)
+                    friend.health = min(50, friend.health + gain)
 
-            elif friend_ability == "Fly":
-                if friend.ability_uses < 3 and fainted_pet.name != "Zombie Fly":
-                    fly_stats = 4 * friend.level
-                    self._summon_at(player, fainted_idx, "Zombie Fly", fly_stats, fly_stats,
-                                    friend.level, summon_callback)
-                    friend.ability_uses += 1
+                elif friend_ability == "Fly":
+                    if friend.ability_uses < 3 and fainted_pet.name != "Zombie Fly":
+                        fly_stats = 4 * friend.level
+                        self._summon_at(player, fainted_idx, "Zombie Fly", fly_stats, fly_stats,
+                                        friend.level, summon_callback)
+                        friend.ability_uses += 1
 
-        self.flush_hurt_queue(summon_callback)
+        if not self._battle_mode:
+            self.flush_hurt_queue(summon_callback)
 
     def _tiger_repeat_faint(
         self,
@@ -691,13 +1039,16 @@ class TriggerEngine:
                             self._reduce_health_min_one(enemy, removal)
 
             # Tiger repeat
-            for tiger in list(self._living_team(hurt_player)):
-                if (tiger.copied_ability or tiger.name) != "Tiger":
-                    continue
-                if self._friend_ahead(hurt_player, tiger) is hurt_pet:
-                    self.apply_hurt(hurt_pet, hurt_player, other_player, summon_callback,
-                                    _tiger_level=tiger.level)
-                    break
+            if self._battle_mode:
+                self._queue_tiger_hurt(hurt_pet, hurt_player, other_player)
+            else:
+                for tiger in list(self._living_team(hurt_player)):
+                    if (tiger.copied_ability or tiger.name) != "Tiger":
+                        continue
+                    if self._friend_ahead(hurt_player, tiger) is hurt_pet:
+                        self.apply_hurt(hurt_pet, hurt_player, other_player, summon_callback,
+                                        _tiger_level=tiger.level)
+                        break
 
     def apply_knock_out(
         self,
@@ -733,15 +1084,19 @@ class TriggerEngine:
 
         # Tiger repeat
         if _tiger_level is None:
-            for tiger in list(self._living_team(attacker_player)):
-                if (tiger.copied_ability or tiger.name) != "Tiger":
-                    continue
-                if self._friend_ahead(attacker_player, tiger) is attacker:
-                    self.apply_knock_out(attacker, attacker_player, defender_player,
-                                         summon_callback, _tiger_level=tiger.level)
-                    break
+            if self._battle_mode:
+                self._queue_tiger_knock_out(attacker, attacker_player, defender_player)
+            else:
+                for tiger in list(self._living_team(attacker_player)):
+                    if (tiger.copied_ability or tiger.name) != "Tiger":
+                        continue
+                    if self._friend_ahead(attacker_player, tiger) is attacker:
+                        self.apply_knock_out(attacker, attacker_player, defender_player,
+                                             summon_callback, _tiger_level=tiger.level)
+                        break
 
-        self.flush_hurt_queue(summon_callback)
+        if not self._battle_mode:
+            self.flush_hurt_queue(summon_callback)
 
     def apply_friend_summoned(
         self,
@@ -781,13 +1136,16 @@ class TriggerEngine:
 
         # Tiger repeat (Tiger causes its friend ahead's Friend Summoned to repeat)
         if _tiger_level is None:
-            for tiger in list(self._living_team(player)):
-                if (tiger.copied_ability or tiger.name) != "Tiger":
-                    continue
-                if self._friend_ahead(player, tiger) is summoned_pet:
-                    self.apply_friend_summoned(summoned_pet, player, summon_callback,
-                                               _tiger_level=tiger.level)
-                    break
+            if self._battle_mode:
+                self._queue_tiger_friend_summoned(summoned_pet, player)
+            else:
+                for tiger in list(self._living_team(player)):
+                    if (tiger.copied_ability or tiger.name) != "Tiger":
+                        continue
+                    if self._friend_ahead(player, tiger) is summoned_pet:
+                        self.apply_friend_summoned(summoned_pet, player, summon_callback,
+                                                   _tiger_level=tiger.level)
+                        break
 
     def apply_after_attack(
         self,
@@ -861,15 +1219,19 @@ class TriggerEngine:
 
         # Tiger repeat for the attacker's own after-attack ability (e.g. Elephant)
         if _tiger_level is None:
-            for tiger in list(self._living_team(player)):
-                if (tiger.copied_ability or tiger.name) != "Tiger":
-                    continue
-                if self._friend_ahead(player, tiger) is attacker:
-                    self.apply_after_attack(attacker, player, opponent, summon_callback,
-                                            _tiger_level=tiger.level)
-                    break
+            if self._battle_mode:
+                self._queue_tiger_after_attack(attacker, player, opponent)
+            else:
+                for tiger in list(self._living_team(player)):
+                    if (tiger.copied_ability or tiger.name) != "Tiger":
+                        continue
+                    if self._friend_ahead(player, tiger) is attacker:
+                        self.apply_after_attack(attacker, player, opponent, summon_callback,
+                                                _tiger_level=tiger.level)
+                        break
 
-        self.flush_hurt_queue(summon_callback)
+        if not self._battle_mode:
+            self.flush_hurt_queue(summon_callback)
 
     # ------------------------------------------------------------------
     # Damage helper used by the battle engine

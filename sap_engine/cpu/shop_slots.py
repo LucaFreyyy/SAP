@@ -26,6 +26,7 @@ def _insert_offer(player: PlayerState, offer: ShopOffer, *, from_left: bool) -> 
     if not slots:
         return False
 
+    original = list(slots)
     full = all(slot is not None for slot in slots)
     if full and not _can_evict(slots, from_left=from_left):
         return False
@@ -46,9 +47,11 @@ def _insert_offer(player: PlayerState, offer: ShopOffer, *, from_left: bool) -> 
             carry = current
 
     if carry is not None and full:
-        # Evicted offer from the far end (or the rightmost movable slot).
         return True
-    return carry is None
+    if carry is None:
+        return True
+    player.shop.slots[:] = original
+    return False
 
 
 def _can_evict(slots: list[ShopOffer | None], *, from_left: bool) -> bool:

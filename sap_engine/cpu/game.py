@@ -93,14 +93,20 @@ class CpuGameEngine:
         self.triggers.apply_start_of_turn(player)
 
     def _maybe_finish_game(self, state: GameState) -> bool:
+        alive_players = [
+            index for index, player in enumerate(state.players) if player.health > 0
+        ]
+        if len(alive_players) <= 1:
+            if len(alive_players) == 1:
+                state.winner_index = alive_players[0]
+                state.finish_reason = "last_player_standing"
+            else:
+                state.winner_index = None
+                state.finish_reason = "draw"
+            return True
+
         if state.turn < 25:
             return False
-
-        alive_players = [index for index, player in enumerate(state.players) if player.health > 0]
-        if len(alive_players) == 1:
-            state.winner_index = alive_players[0]
-            state.finish_reason = "last_player_standing"
-            return True
 
         best_health = max(player.health for player in state.players)
         health_leaders = [index for index, player in enumerate(state.players) if player.health == best_health]

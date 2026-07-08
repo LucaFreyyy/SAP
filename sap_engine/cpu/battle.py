@@ -15,6 +15,7 @@ from dataclasses import dataclass
 
 from ..models import BattleOutcome, BattleSnapshot, GameState, PetInstance, PlayerState
 from ..triggers import TriggerEngine, _is_alive
+from .battle_queue import BattleAbilityEvent, STEP_LABELS
 
 MAX_BATTLE_STEPS = 200
 
@@ -94,132 +95,185 @@ class BattleEngine:
                     pet.knock_out_count = 0
                     pet.ability_uses = 0
 
-        # --- Start-of-Battle step ---
         if self.triggers is not None:
-            all_sob = sorted(
-                [(pet, p0, p1) for pet in _living(p0)]
-                + [(pet, p1, p0) for pet in _living(p1)],
-                key=lambda t: -t[0].effective_attack,
-            )
-            for pet, player, opp in all_sob:
-                if _is_alive(pet):
-                    self.triggers.apply_start_of_battle_pet(pet, player, opp, self._summon_callback)
+            def on_battle_step(event: BattleAbilityEvent) -> None:
+                label = STEP_LABELS.get(event.kind, event.kind)
+                self._capture_step(state, p0, p1, f"{label}: {event.pet.name}")
 
-        # Capture state after SOB triggers
-        self._capture_step(state, p0, p1, "After Start of Battle")
+            self.triggers.enter_battle_mode(on_battle_step, self._summon_callback)
 
-        # --- Combat loop ---
-        while True:
-            end_result = self._check_battle_end(state, p0, p1, snapshot, pre0, pre1)
-            if end_result is not None:
-                return end_result
-
-            left = _last_alive(p0)
-            right = _last_alive(p1)
-
-            snapshot.step_index += 1
-            snapshot.attacker_name = left.name
-            snapshot.defender_name = right.name
-
-            # Capture state before this attack
-            self._capture_step(state, p0, p1, f"Step {snapshot.step_index}: {left.name} vs {right.name}")
-
-            if snapshot.step_index > MAX_BATTLE_STEPS:
-                return self._end(state, p0, p1, BattleOutcome.DRAW, snapshot, pre0, pre1)
-
-            # Before-attack triggers (Boar etc.)
-            if self.triggers:
-                self.triggers.apply_before_attack(left, p0, p1)
-                self.triggers.apply_before_attack(right, p1, p0)
-
-            # Calculate attack damage (Steak / Meat Bone bonuses)
-            left_deals = self._calc_attack_damage(left)
-            right_deals = self._calc_attack_damage(right)
-
-            # Apply damage simultaneously
-            if self.triggers:
-                right_took = self.triggers._deal_damage_battle(
-                    right, left_deals, p1, p0, is_hurt=False
+        try:
+            # --- Start-of-Battle step ---
+            if self.triggers is not None:
+                all_sob = sorted(
+                    [(pet, p0, p1) for pet in _living(p0)]
+                    + [(pet, p1, p0) for pet in _living(p1)],
+                    key=lambda t: -t[0].effective_attack,
                 )
-                left_took = self.triggers._deal_damage_battle(
-                    left, right_deals, p0, p1, is_hurt=False
-                )
-            else:
-                right_took = _raw_damage(right, left_deals)
-                left_took = _raw_damage(left, right_deals)
+                sob_events = [
+                    BattleAbilityEvent("sob", pet, player, opp)
+                    for pet, player, opp in all_sob
+                    if _is_alive(pet)
+                ]
+                self.triggers.enqueue_battle_batch(sob_events)
+                self.triggers.drain_battle_queue()
 
-            # Chili: deal 5 damage to the second enemy
-            if left.perk == "chili":
-                second = _second_alive(p1)
-                if second is not None:
-                    if self.triggers:
-                        self.triggers._deal_damage_battle(second, 5, p1, p0,
-                                                          is_hurt=True,
-                                                          summon_callback=self._summon_callback)
-                    else:
-                        _raw_damage(second, 5)
+            # --- Combat loop ---
+            while True:
+                end_result = self._check_battle_end(state, p0, p1, snapshot, pre0, pre1)
+                if end_result is not None:
+                    return end_result
 
-            if right.perk == "chili":
-                second = _second_alive(p0)
-                if second is not None:
-                    if self.triggers:
-                        self.triggers._deal_damage_battle(second, 5, p0, p1,
-                                                          is_hurt=True,
-                                                          summon_callback=self._summon_callback)
-                    else:
-                        _raw_damage(second, 5)
+                left = _last_alive(p0)
+                right = _last_alive(p1)
 
-            right_dead = not _is_alive(right)
-            left_dead = not _is_alive(left)
+                snapshot.step_index += 1
+                snapshot.attacker_name = left.name
+                snapshot.defender_name = right.name
 
-            # Peanut: one-shot any enemy this pet hurts
-            if not right_dead and left.perk == "peanut" and right_took > 0:
-                right.health = -(right.temporary_health + 1)
-                right.temporary_health = 0
-                right_dead = True
+                # Capture state before this attack
+                self._capture_step(state, p0, p1, f"Step {snapshot.step_index}: {left.name} vs {right.name}")
 
-            if not left_dead and right.perk == "peanut" and left_took > 0:
-                left.health = -(left.temporary_health + 1)
-                left.temporary_health = 0
-                left_dead = True
+                if snapshot.step_index > MAX_BATTLE_STEPS:
+                    return self._end(state, p0, p1, BattleOutcome.DRAW, snapshot, pre0, pre1)
 
-            # Hurt triggers (including lethal damage — resolved before faint removal)
-            if self.triggers:
-                if right_took > 0:
-                    self.triggers.enqueue_hurt(right, p1, p0)
-                if left_took > 0:
-                    self.triggers.enqueue_hurt(left, p0, p1)
-                self.triggers.flush_hurt_queue(self._summon_callback)
-
-            # After-attack triggers (Elephant, Kangaroo, Snake)
-            if self.triggers:
-                if not left_dead:
-                    self.triggers.apply_after_attack(left, p0, p1, self._summon_callback)
-                if not right_dead:
-                    self.triggers.apply_after_attack(right, p1, p0, self._summon_callback)
-
-            # Faint handling + knock-out triggers
-            if right_dead:
-                right_idx = next((i for i, p in enumerate(p1.team) if p is right), -1)
-                if right_idx >= 0:
-                    p1.team[right_idx] = None
+                # Before-attack triggers (Boar etc.)
                 if self.triggers:
-                    if right_idx >= 0:
-                        self.triggers.apply_faint(right, right_idx, p1, p0, self._summon_callback)
+                    before_events: list[BattleAbilityEvent] = []
                     if _is_alive(left):
-                        self.triggers.apply_knock_out(left, p0, p1, self._summon_callback)
+                        before_events.append(
+                            BattleAbilityEvent("before_attack", left, p0, p1)
+                        )
+                    if _is_alive(right):
+                        before_events.append(
+                            BattleAbilityEvent("before_attack", right, p1, p0)
+                        )
+                    self.triggers.enqueue_battle_batch(before_events)
+                    self.triggers.drain_battle_queue()
 
-            if left_dead:
-                left_idx = next((i for i, p in enumerate(p0.team) if p is left), -1)
-                if left_idx >= 0:
-                    p0.team[left_idx] = None
+                # Calculate attack damage (Steak / Meat Bone bonuses)
+                left_deals = self._calc_attack_damage(left)
+                right_deals = self._calc_attack_damage(right)
+
+                # Apply damage simultaneously
                 if self.triggers:
-                    if left_idx >= 0:
-                        self.triggers.apply_faint(left, left_idx, p0, p1, self._summon_callback)
-                    if not right_dead and _is_alive(right):
-                        self.triggers.apply_knock_out(right, p1, p0, self._summon_callback)
+                    right_took = self.triggers._deal_damage_battle(
+                        right, left_deals, p1, p0, is_hurt=False
+                    )
+                    left_took = self.triggers._deal_damage_battle(
+                        left, right_deals, p0, p1, is_hurt=False
+                    )
+                else:
+                    right_took = _raw_damage(right, left_deals)
+                    left_took = _raw_damage(left, right_deals)
 
-            self._drain_pending_battle_effects(p0, p1)
+                self._consume_steak_if_hit(left, right_took)
+                self._consume_steak_if_hit(right, left_took)
+
+                # Chili: deal 5 damage to the second enemy
+                if left.perk == "chili":
+                    second = _second_alive(p1)
+                    if second is not None:
+                        if self.triggers:
+                            self.triggers._deal_damage_battle(second, 5, p1, p0,
+                                                              is_hurt=True,
+                                                              summon_callback=self._summon_callback)
+                        else:
+                            _raw_damage(second, 5)
+
+                if right.perk == "chili":
+                    second = _second_alive(p0)
+                    if second is not None:
+                        if self.triggers:
+                            self.triggers._deal_damage_battle(second, 5, p0, p1,
+                                                              is_hurt=True,
+                                                              summon_callback=self._summon_callback)
+                        else:
+                            _raw_damage(second, 5)
+
+                right_dead = not _is_alive(right)
+                left_dead = not _is_alive(left)
+
+                # Peanut: one-shot any enemy this pet hurts
+                if not right_dead and left.perk == "peanut" and right_took > 0:
+                    right.health = -(right.temporary_health + 1)
+                    right.temporary_health = 0
+                    right_dead = True
+
+                if not left_dead and right.perk == "peanut" and left_took > 0:
+                    left.health = -(left.temporary_health + 1)
+                    left.temporary_health = 0
+                    left_dead = True
+
+                # Hurt triggers (including lethal damage — resolved before faint removal)
+                if self.triggers:
+                    if right_took > 0:
+                        self.triggers.enqueue_hurt(right, p1, p0)
+                    if left_took > 0:
+                        self.triggers.enqueue_hurt(left, p0, p1)
+                    self.triggers.flush_battle_hurts()
+                    self.triggers.drain_battle_queue()
+
+                # After-attack triggers (Elephant, Kangaroo, Snake)
+                if self.triggers:
+                    after_events: list[BattleAbilityEvent] = []
+                    if not left_dead and _is_alive(left):
+                        after_events.append(
+                            BattleAbilityEvent("after_attack", left, p0, p1)
+                        )
+                    if not right_dead and _is_alive(right):
+                        after_events.append(
+                            BattleAbilityEvent("after_attack", right, p1, p0)
+                        )
+                    self.triggers.enqueue_battle_batch(after_events)
+                    self.triggers.drain_battle_queue()
+
+                # Faint handling + knock-out triggers
+                faint_events: list[BattleAbilityEvent] = []
+                knock_out_events: list[BattleAbilityEvent] = []
+
+                if right_dead:
+                    right_idx = next((i for i, p in enumerate(p1.team) if p is right), -1)
+                    if right_idx >= 0:
+                        p1.team[right_idx] = None
+                    if self.triggers and right_idx >= 0:
+                        faint_events.append(
+                            BattleAbilityEvent(
+                                "faint", right, p1, p0,
+                                fainted_pet=right, fainted_idx=right_idx,
+                            )
+                        )
+                    if self.triggers and _is_alive(left):
+                        knock_out_events.append(
+                            BattleAbilityEvent("knock_out", left, p0, p1)
+                        )
+
+                if left_dead:
+                    left_idx = next((i for i, p in enumerate(p0.team) if p is left), -1)
+                    if left_idx >= 0:
+                        p0.team[left_idx] = None
+                    if self.triggers and left_idx >= 0:
+                        faint_events.append(
+                            BattleAbilityEvent(
+                                "faint", left, p0, p1,
+                                fainted_pet=left, fainted_idx=left_idx,
+                            )
+                        )
+                    if self.triggers and not right_dead and _is_alive(right):
+                        knock_out_events.append(
+                            BattleAbilityEvent("knock_out", right, p1, p0)
+                        )
+
+                if self.triggers:
+                    self.triggers.enqueue_battle_batch(faint_events)
+                    self.triggers.drain_battle_queue()
+                    self.triggers.enqueue_battle_batch(knock_out_events)
+                    self.triggers.drain_battle_queue()
+
+                self._drain_pending_battle_effects(p0, p1)
+        finally:
+            if self.triggers is not None:
+                self.triggers.exit_battle_mode()
 
     # ------------------------------------------------------------------
 
@@ -330,13 +384,18 @@ class BattleEngine:
             dmg += 3
         if attacker.perk == "steak" and attacker.perk_uses == 0:
             dmg += 20
-            attacker.perk_uses = 1
         return dmg
+
+    @staticmethod
+    def _consume_steak_if_hit(attacker: PetInstance, damage_dealt: int) -> None:
+        if damage_dealt > 0 and attacker.perk == "steak" and attacker.perk_uses == 0:
+            attacker.perk_uses = 1
 
     def _drain_pending_battle_effects(self, p0: PlayerState, p1: PlayerState) -> None:
         """Resolve faint chains until no new deaths occur."""
         while True:
             progress = False
+            faint_events: list[BattleAbilityEvent] = []
             for player, opp in [(p0, p1), (p1, p0)]:
                 for i in range(len(player.team)):
                     pet = player.team[i]
@@ -344,14 +403,35 @@ class BattleEngine:
                         player.team[i] = None
                         progress = True
                         if self.triggers:
-                            self.triggers.apply_faint(pet, i, player, opp, self._summon_callback)
+                            faint_events.append(
+                                BattleAbilityEvent(
+                                    "faint", pet, player, opp,
+                                    fainted_pet=pet, fainted_idx=i,
+                                )
+                            )
+            if self.triggers and faint_events:
+                self.triggers.enqueue_battle_batch(faint_events)
+                self.triggers.drain_battle_queue()
             if not progress:
                 break
             _compact(p0)
             _compact(p1)
 
     def _summon_callback(self, player: PlayerState, slot_idx: int, pet: PetInstance) -> None:
-        if self.triggers:
+        if self.triggers is None:
+            return
+        if self.triggers._battle_mode and self._battle_players is not None:
+            opp = (
+                self._battle_players[1]
+                if player is self._battle_players[0]
+                else self._battle_players[0]
+            )
+            self.triggers.enqueue_battle_chain(
+                BattleAbilityEvent(
+                    "friend_summoned", pet, player, opp, summoned_pet=pet,
+                )
+            )
+        else:
             self.triggers.apply_friend_summoned(pet, player, self._summon_callback)
 
     @staticmethod

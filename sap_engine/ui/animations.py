@@ -20,6 +20,9 @@ class PetVisualFX:
     highlight_attack: int = 0
     highlight_health: int = 0
     highlight_xp: int = 0
+    highlight_perk: int = 0
+    perk_lost: str | None = None
+    perk_lost_frames: int = 0
     golden_border: int = 0
 
 
@@ -31,6 +34,8 @@ class PetSnapshot:
     temporary_health: int
     experience: int
     level: int
+    perk: str | None = None
+    perk_uses: int = 0
 
 
 ReplayKey = tuple[str, int, int]
@@ -101,7 +106,11 @@ class AnimationTracker:
                     pet_data.get("experience", 0) != prev_data.get("experience", 0)
                     or pet_data.get("level", 0) != prev_data.get("level", 0)
                 )
-                if not (atk_changed or hp_changed or xp_changed):
+                perk_changed = (
+                    pet_data.get("perk") != prev_data.get("perk")
+                    or pet_data.get("perk_uses", 0) != prev_data.get("perk_uses", 0)
+                )
+                if not (atk_changed or hp_changed or xp_changed or perk_changed):
                     continue
                 key = ("replay", player_idx, uid)
                 fx = self._replay_fx.setdefault(key, PetVisualFX())
@@ -112,6 +121,12 @@ class AnimationTracker:
                 if xp_changed:
                     fx.highlight_xp = GOLDEN_BORDER_FRAMES
                     fx.golden_border = GOLDEN_BORDER_FRAMES
+                if perk_changed:
+                    self._note_perk_change(
+                        fx,
+                        prev_data.get("perk"),
+                        pet_data.get("perk"),
+                    )
 
     def on_replay_step_change(
         self,
@@ -130,6 +145,17 @@ class AnimationTracker:
 
     def on_ability_trigger(self, pet: PetInstance, _player: PlayerState) -> None:
         self._start_rotation(self._fx_for(pet))
+
+    @staticmethod
+    def _note_perk_change(
+        fx: PetVisualFX,
+        old_perk: str | None,
+        new_perk: str | None,
+    ) -> None:
+        fx.highlight_perk = HIGHLIGHT_FRAMES
+        if old_perk and old_perk != new_perk:
+            fx.perk_lost = old_perk
+            fx.perk_lost_frames = HIGHLIGHT_FRAMES
 
     def note_xp_gain(self, pet: PetInstance, *, leveled_up: bool = False) -> None:
         fx = self._fx_for(pet)
@@ -151,6 +177,8 @@ class AnimationTracker:
                 temporary_health=pet.temporary_health,
                 experience=pet.experience,
                 level=pet.level,
+                perk=pet.perk,
+                perk_uses=pet.perk_uses,
             )
         return snaps
 
@@ -187,6 +215,8 @@ class AnimationTracker:
                 if new_snap.level > old_snap.level:
                     fx.highlight_attack = max(fx.highlight_attack, HIGHLIGHT_FRAMES)
                     fx.highlight_health = max(fx.highlight_health, HIGHLIGHT_FRAMES)
+            if new_snap.perk != old_snap.perk or new_snap.perk_uses != old_snap.perk_uses:
+                self._note_perk_change(fx, old_snap.perk, new_snap.perk)
         for pet_id in xp_pet_ids:
             if pet_id in after:
                 self._fx.setdefault(pet_id, PetVisualFX())
@@ -206,6 +236,12 @@ class AnimationTracker:
                 fx.highlight_health -= 1
             if fx.highlight_xp > 0:
                 fx.highlight_xp -= 1
+            if fx.highlight_perk > 0:
+                fx.highlight_perk -= 1
+            if fx.perk_lost_frames > 0:
+                fx.perk_lost_frames -= 1
+                if fx.perk_lost_frames == 0:
+                    fx.perk_lost = None
             if fx.golden_border > 0:
                 fx.golden_border -= 1
 
@@ -230,6 +266,8 @@ class AnimationTracker:
                 and fx.highlight_attack == 0
                 and fx.highlight_health == 0
                 and fx.highlight_xp == 0
+                and fx.highlight_perk == 0
+                and fx.perk_lost_frames == 0
                 and fx.golden_border == 0
             ):
                 dead.append(key)

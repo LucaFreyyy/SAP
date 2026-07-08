@@ -1048,3 +1048,69 @@ def test_buying_tier_up_pet_only_removes_other_choice_from_same_grant() -> None:
     remaining = [slot for slot in player.shop.slots if slot is not None and slot.tier_up_reward]
     assert len(remaining) == 2
     assert all(slot.tier_up_group != chosen_group for slot in remaining)
+
+
+def test_game_ends_when_one_player_has_no_lives() -> None:
+    engine = make_engine()
+    state = engine.new_game(["Alpha", "Beta"])
+    state.players[1].health = 0
+
+    finished = engine._maybe_finish_game(state)
+
+    assert finished
+    assert state.winner_index == 0
+    assert state.finish_reason == "last_player_standing"
+
+
+def test_steak_not_consumed_when_attack_blocked() -> None:
+    engine = make_engine()
+    state = engine.new_game(["Alpha", "Beta"])
+    p0, p1 = state.players
+
+    attacker = make_pet(engine, "Ant", attack=5, health=5)
+    attacker.perk = "steak"
+    attacker.perk_uses = 0
+    defender = make_pet(engine, "Duck", health=5)
+    defender.perk = "coconut"
+    defender.perk_uses = 0
+    p0.team[4] = attacker
+    p1.team[4] = defender
+
+    state.phase = Phase.BATTLE
+    engine.battle.resolve(state)
+
+    assert attacker.perk_uses == 0
+
+
+def test_skunk_reduces_temporary_health_first() -> None:
+    engine = make_engine()
+    state = engine.new_game(["Alpha", "Beta"])
+    p, opp = state.players
+
+    skunk = make_pet(engine, "Skunk", level=1)
+    target = make_pet(engine, "Hippo", health=1)
+    target.temporary_health = 10
+    p.team[4] = skunk
+    opp.team[4] = target
+
+    engine.triggers.apply_start_of_battle_pet(skunk, p, opp)
+
+    assert target.health == 1
+    assert target.temporary_health == 7
+
+
+def test_merge_keeps_stationary_pet_perk() -> None:
+    engine = make_engine()
+    player = make_player(engine)
+    melon = make_pet(engine, "Ant")
+    melon.perk = "melon"
+    garlic = make_pet(engine, "Ant")
+    garlic.perk = "garlic"
+    player.team[3] = melon
+    player.team[4] = garlic
+
+    engine.shop.move_pet(player, 4, 3)
+
+    assert player.team[3].perk == "melon"
+    assert player.team[4] is None
+

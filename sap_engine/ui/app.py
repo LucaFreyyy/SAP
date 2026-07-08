@@ -30,6 +30,8 @@ STAT_HIGHLIGHT = (255, 255, 80)
 STAT_HIGHLIGHT_BG = (255, 200, 40)
 GOLDEN_BORDER = (255, 210, 60)
 PANEL_BORDER = (60, 70, 92)
+PERK_HIGHLIGHT = (255, 255, 80)
+PERK_LOST = (255, 90, 90)
 
 # Maps perk id -> (icon kind, display name)
 PERK_ICON_MAP: dict[str, tuple[str, str]] = {
@@ -631,7 +633,7 @@ class GameUI:
         fx = self.animations.fx(pet)
         icon = self._load_icon("pets", pet.name)
         self._draw_rotated_icon(icon, rect, fx)
-        self._draw_perk_badge(rect, pet.perk)
+        self._draw_perk_badge(rect, pet.perk, fx)
         name = self.font.render(pet.name, True, TEXT)
         self.screen.blit(name, (rect.x + 12, rect.bottom - 56))
         self._draw_live_pet_stats(rect, pet, fx)
@@ -702,7 +704,7 @@ class GameUI:
         fx = self.animations.replay_fx(player_idx, pet_data.get("uid"))
         icon = self._load_icon("pets", pet_data["name"])
         self._draw_rotated_icon(icon, rect, fx)
-        self._draw_perk_badge(rect, pet_data.get("perk"))
+        self._draw_perk_badge(rect, pet_data.get("perk"), fx)
         name = self.font.render(pet_data["name"], True, TEXT)
         self.screen.blit(name, (rect.x + 12, rect.bottom - 56))
         self._draw_replay_pet_stats(rect, pet_data, fx)
@@ -798,19 +800,56 @@ class GameUI:
             layers.append((GOLDEN_BORDER, 3))
         return layers
 
-    def _draw_perk_badge(self, rect: pygame.Rect, perk: str | None) -> None:
-        if not perk or perk not in PERK_ICON_MAP:
-            return
-        kind, name = PERK_ICON_MAP[perk]
-        icon = self._load_icon(kind, name, size=32)
-        if icon is None:
-            return
+    def _draw_perk_badge(
+        self,
+        rect: pygame.Rect,
+        perk: str | None,
+        fx: PetVisualFX | None = None,
+    ) -> None:
         badge_size = 36
         badge_x = rect.right - badge_size - 8
         badge_y = rect.y + 8
         badge_rect = pygame.Rect(badge_x, badge_y, badge_size, badge_size)
+
+        if fx is not None and fx.perk_lost and fx.perk_lost_frames > 0 and fx.perk_lost in PERK_ICON_MAP:
+            lost_kind, lost_name = PERK_ICON_MAP[fx.perk_lost]
+            lost_icon = self._load_icon(lost_kind, lost_name, size=32)
+            if lost_icon is not None:
+                alpha = int(180 * fx.perk_lost_frames / HIGHLIGHT_FRAMES)
+                ghost = lost_icon.copy()
+                ghost.set_alpha(max(40, alpha))
+                pygame.draw.rect(self.screen, PANEL, badge_rect, border_radius=8)
+                pygame.draw.rect(self.screen, PERK_LOST, badge_rect, 2, border_radius=8)
+                self.screen.blit(ghost, ghost.get_rect(center=badge_rect.center))
+                x_color = PERK_LOST if fx.perk_lost_frames > HIGHLIGHT_FRAMES // 3 else MUTED
+                x_surf = self.font.render("×", True, x_color)
+                self.screen.blit(x_surf, x_surf.get_rect(center=badge_rect.center))
+
+        if not perk or perk not in PERK_ICON_MAP:
+            return
+
+        kind, name = PERK_ICON_MAP[perk]
+        icon = self._load_icon(kind, name, size=32)
+        if icon is None:
+            return
+
+        highlighted = fx is not None and fx.highlight_perk > 0
+        if highlighted:
+            pad = 3
+            glow_rect = pygame.Rect(
+                badge_rect.x - pad,
+                badge_rect.y - pad,
+                badge_rect.width + pad * 2,
+                badge_rect.height + pad * 2,
+            )
+            glow = pygame.Surface(glow_rect.size, pygame.SRCALPHA)
+            intensity = min(1.0, fx.highlight_perk / HIGHLIGHT_FRAMES)
+            glow.fill((*PERK_HIGHLIGHT, int(100 + 120 * intensity)))
+            self.screen.blit(glow, glow_rect.topleft)
+
         pygame.draw.rect(self.screen, PANEL, badge_rect, border_radius=8)
-        pygame.draw.rect(self.screen, GOLD, badge_rect, 2, border_radius=8)
+        border_color = PERK_HIGHLIGHT if highlighted else GOLD
+        pygame.draw.rect(self.screen, border_color, badge_rect, 2, border_radius=8)
         self.screen.blit(icon, icon.get_rect(center=badge_rect.center))
 
     def _draw_offer(self, rect: pygame.Rect, offer: ShopOffer, slot_number: int) -> None:
