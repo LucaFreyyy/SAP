@@ -1,9 +1,10 @@
 """Shop slot insertion helpers (wiki §4).
 
 Pets enter from the left, food from the right.
-Uses the next free slot when available. When the shop is full, cascades toward
-the opposite end and evicts the last movable item. Frozen slots are never moved.
-If every slot is occupied and frozen, insertion is skipped.
+Always cascades from the entry side: new items push existing offers toward
+the opposite end. Frozen slots never move. When the shop is full, the offer
+at the opposite end is evicted; if that slot is frozen, walk inward until an
+unfrozen offer can be removed. If every slot is occupied and frozen, skip.
 """
 from __future__ import annotations
 
@@ -25,16 +26,11 @@ def _insert_offer(player: PlayerState, offer: ShopOffer, *, from_left: bool) -> 
     if not slots:
         return False
 
-    indices = range(len(slots)) if from_left else range(len(slots) - 1, -1, -1)
-
-    for index in indices:
-        if slots[index] is None:
-            slots[index] = offer
-            return True
-
-    if all(slot is not None and slot.frozen for slot in slots):
+    full = all(slot is not None for slot in slots)
+    if full and not _can_evict(slots, from_left=from_left):
         return False
 
+    indices = range(len(slots)) if from_left else range(len(slots) - 1, -1, -1)
     carry: ShopOffer | None = offer
     for index in indices:
         if carry is None:
@@ -49,4 +45,53 @@ def _insert_offer(player: PlayerState, offer: ShopOffer, *, from_left: bool) -> 
             slots[index] = carry
             carry = current
 
-    return True
+    if carry is not None and full:
+        # Evicted offer from the far end (or the rightmost movable slot).
+        return True
+    return carry is None
+
+
+def _can_evict(slots: list[ShopOffer | None], *, from_left: bool) -> bool:
+    indices = range(len(slots) - 1, -1, -1) if from_left else range(len(slots))
+    return any(slots[index] is not None and not slots[index].frozen for index in indices)
+
+
+def reposition_frozen_offers_for_roll(
+    slots: list[ShopOffer | None],
+    layout: tuple[str, ...],
+) -> None:
+    """Remove unfrozen offers, then pack frozen pets left and frozen foods right."""
+    frozen_pets: list[ShopOffer] = []
+    frozen_foods: list[ShopOffer] = []
+
+    for index, offer in enumerate(slots):
+        if offer is None:
+            continue
+        if offer.frozen:
+            if offer.kind == "pet":
+                frozen_pets.append(offer)
+            elif offer.kind == "food":
+                frozen_foods.append(offer)
+            slots[index] = None
+        else:
+            slots[index] = None
+
+    pet_indices = [index for index, kind in enumerate(layout) if kind == "pet"]
+    food_indices = [index for index, kind in enumerate(layout) if kind == "food"]
+    buffer_indices = [index for index, kind in enumerate(layout) if kind == "buffer"]
+
+    for index, offer in zip(pet_indices, frozen_pets):
+        slots[index] = offer
+
+    remaining_pets = frozen_pets[len(pet_indices):]
+    for index, offer in zip(reversed(food_indices), frozen_foods):
+        slots[index] = offer
+
+    remaining_foods = frozen_foods[len(food_indices):]
+    free_buffers = [index for index in buffer_indices if slots[index] is None]
+    for index, offer in zip(free_buffers, remaining_pets):
+        slots[index] = offer
+    free_buffers = [index for index in buffer_indices if slots[index] is None]
+    for index, offer in zip(reversed(free_buffers), remaining_foods):
+        slots[index] = offer
+

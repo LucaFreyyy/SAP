@@ -8,7 +8,7 @@ from ..paths import shop_slot_layout_for_turn, unlock_tier_for_turn
 from ..registry import DataRegistry
 from ..rng import SeededRNG
 from ..triggers import TriggerEngine
-from .shop_slots import insert_shop_offer_from_left
+from .shop_slots import insert_shop_offer_from_left, reposition_frozen_offers_for_roll
 
 
 @dataclass(slots=True)
@@ -75,12 +75,15 @@ class ShopEngine:
         if len(player.shop.slots) != len(layout):
             player.shop.slots = [None] * len(layout)
 
+        if keep_frozen:
+            reposition_frozen_offers_for_roll(player.shop.slots, layout)
+        else:
+            player.shop.slots = [None] * len(layout)
+
         for index, slot_kind in enumerate(layout):
-            current = player.shop.slots[index]
-            if keep_frozen and current is not None and current.frozen:
+            if player.shop.slots[index] is not None:
                 continue
             if slot_kind == "buffer":
-                player.shop.slots[index] = None
                 continue
             pool = (
                 self.registry.pet_pool(player.shop.tier)

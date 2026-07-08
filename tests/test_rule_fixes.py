@@ -11,6 +11,7 @@ from sap_engine.cpu.game import CpuGameEngine
 from sap_engine.cpu.shop import ShopEngine, _merge_instances
 from sap_engine.cpu.battle import BattleEngine, _compact, _last_alive, _is_alive
 from sap_engine.models import BattleOutcome, Phase, PetInstance, PlayerState, ShopOffer, ShopState
+from sap_engine.paths import shop_slot_layout_for_turn
 from sap_engine.registry import load_registry
 from sap_engine.rng import SeededRNG
 from sap_engine.triggers import TriggerEngine
@@ -451,7 +452,24 @@ def test_roll_shop_costs_1_gold() -> None:
     assert player.gold == 4
 
 
-def test_roll_shop_fails_with_no_gold() -> None:
+def test_roll_shop_repositions_misplaced_frozen_pet() -> None:
+    engine = make_engine(seed=21)
+    state = engine.new_game(["Alpha", "Beta"])
+    player = state.players[0]
+    player.gold = 5
+    player.turn = 1
+    layout = shop_slot_layout_for_turn(player.turn)
+    player.shop.slots = [None] * len(layout)
+    player.shop.slots[5] = ShopOffer(kind="pet", name="Ant", tier=1, frozen=True)
+    player.shop.slots[8] = ShopOffer(kind="food", name="Apple", tier=1)
+
+    engine.shop.roll(player)
+
+    pet_indices = [index for index, kind in enumerate(layout) if kind == "pet"]
+    assert player.shop.slots[pet_indices[0]].name == "Ant"
+    assert player.shop.slots[pet_indices[0]].frozen is True
+    assert player.shop.slots[5] is None
+
     engine = make_engine()
     state = engine.new_game(["Alpha", "Beta"])
     player = state.players[0]
@@ -933,6 +951,7 @@ def test_two_level_ups_in_one_turn_stack_tier_up_rewards() -> None:
     state = engine.new_game(["Alpha", "Beta"])
     player = state.players[0]
     player.gold = 20
+    player.shop.slots = [None] * 9
 
     ant = make_pet(engine, "Ant", experience=1, level=1)
     beaver = make_pet(engine, "Beaver", experience=1, level=1)
@@ -949,8 +968,8 @@ def test_two_level_ups_in_one_turn_stack_tier_up_rewards() -> None:
     }
     assert len(first_reward_names) == 2
 
-    player.shop.slots[1] = ShopOffer(kind="pet", name="Beaver", tier=1)
-    second = engine.shop.buy_pet(player, 1, 1)
+    player.shop.slots[8] = ShopOffer(kind="pet", name="Beaver", tier=1)
+    second = engine.shop.buy_pet(player, 8, 1)
     assert second.tier_up_offered
     tier_up_rewards = [slot for slot in player.shop.slots if slot is not None and slot.tier_up_reward]
     assert len(tier_up_rewards) == 4
@@ -964,6 +983,7 @@ def test_buying_tier_up_pet_only_removes_other_choice_from_same_grant() -> None:
     state = engine.new_game(["Alpha", "Beta"])
     player = state.players[0]
     player.gold = 20
+    player.shop.slots = [None] * 9
 
     ant = make_pet(engine, "Ant", experience=1, level=1)
     beaver = make_pet(engine, "Beaver", experience=1, level=1)
@@ -972,8 +992,8 @@ def test_buying_tier_up_pet_only_removes_other_choice_from_same_grant() -> None:
     player.shop.slots[0] = ShopOffer(kind="pet", name="Ant", tier=1)
     engine.shop.buy_pet(player, 0, 0)
 
-    player.shop.slots[1] = ShopOffer(kind="pet", name="Beaver", tier=1)
-    engine.shop.buy_pet(player, 1, 1)
+    player.shop.slots[8] = ShopOffer(kind="pet", name="Beaver", tier=1)
+    engine.shop.buy_pet(player, 8, 1)
 
     tier_up_indices = [i for i, slot in enumerate(player.shop.slots) if slot is not None and slot.tier_up_reward]
     assert len(tier_up_indices) == 4
