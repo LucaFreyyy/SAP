@@ -49,3 +49,25 @@ def test_mosquito_hits_enemy_at_start_of_battle() -> None:
     assert result.finished is True
     assert result.outcome == BattleOutcome.WIN
     assert state.players[0].last_battle_result == BattleOutcome.WIN
+
+
+def test_battle_state_is_restored_after_resolution() -> None:
+    registry = load_registry()
+    engine = CpuGameEngine(registry, SeededRNG(8))
+    state = engine.new_game(["Alpha", "Beta"])
+
+    boar = PetInstance(definition=registry.pets["Boar"])
+    duck = PetInstance(definition=registry.pets["Duck"])
+    duck.health = 1
+    state.players[0].team[0] = boar
+    state.players[1].team[0] = duck
+
+    result = engine.battle.resolve(state)
+
+    assert result.finished is True
+    assert state.players[0].team[0] is not None
+    assert state.players[0].team[0].temporary_attack == 0
+    assert state.players[0].team[0].temporary_health == 0
+    assert state.players[0].team[0].attack == registry.pets["Boar"].attack
+    assert state.players[1].team[0] is not None
+    assert state.players[1].team[0].health == 1

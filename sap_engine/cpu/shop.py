@@ -28,7 +28,7 @@ class ShopEngine:
     # Shop management
     # ------------------------------------------------------------------
 
-    def refresh(self, player: PlayerState, *, keep_frozen: bool = True) -> None:
+    def roll(self, player: PlayerState, *, keep_frozen: bool = True) -> None:
         """Roll the shop — replace all unfrozen slots with fresh offers."""
         player.shop.tier = unlock_tier_for_turn(player.turn)
         layout = shop_slot_layout_for_turn(player.turn)
@@ -68,7 +68,7 @@ class ShopEngine:
             return ShopActionResult(False, "Not enough gold to roll (costs 1).")
         player.gold -= 1
         player.actions += 1
-        self.refresh(player)
+        self.roll(player)
         return ShopActionResult(True, "Shop rolled.")
 
     def freeze_slot(self, player: PlayerState, shop_index: int) -> ShopActionResult:

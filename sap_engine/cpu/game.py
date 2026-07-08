@@ -34,6 +34,8 @@ class CpuGameEngine:
         return state
 
     def end_shop_turn(self, state: GameState) -> TurnResult:
+        if state.finished:
+            return TurnResult(phase=state.phase)
         current_index = state.active_player_index
         current_player = state.players[current_index]
         self.shop.end_turn(current_player)
@@ -50,6 +52,11 @@ class CpuGameEngine:
         state.battle_pending = False
         state.phase = Phase.BATTLE
         result = self.battle.resolve(state)
+        if self._maybe_finish_game(state):
+            state.finished = True
+            state.phase = Phase.TRANSITION
+            return TurnResult(phase=Phase.TRANSITION, battle_result=result.outcome)
+
         state.turn += 1
         self.start_shop_turn(state, 0)
         return TurnResult(phase=Phase.SHOP, battle_result=result.outcome)
@@ -65,5 +72,32 @@ class CpuGameEngine:
         if state.turn == 3 and player.losses > 0:
             player.health += 1
 
-        self.shop.refresh(player)
+        self.shop.roll(player)
         self.triggers.apply_start_of_turn(player)
+
+    def _maybe_finish_game(self, state: GameState) -> bool:
+        if state.turn < 25:
+            return False
+
+        alive_players = [index for index, player in enumerate(state.players) if player.health > 0]
+        if len(alive_players) == 1:
+            state.winner_index = alive_players[0]
+            state.finish_reason = "last_player_standing"
+            return True
+
+        best_health = max(player.health for player in state.players)
+        health_leaders = [index for index, player in enumerate(state.players) if player.health == best_health]
+        if len(health_leaders) == 1:
+            state.winner_index = health_leaders[0]
+            state.finish_reason = "health_tiebreak"
+            return True
+
+        best_actions = min(state.players[index].actions for index in health_leaders)
+        action_leaders = [index for index in health_leaders if state.players[index].actions == best_actions]
+        if len(action_leaders) == 1:
+            state.winner_index = action_leaders[0]
+            state.finish_reason = "actions_tiebreak"
+        else:
+            state.winner_index = None
+            state.finish_reason = "draw"
+        return True

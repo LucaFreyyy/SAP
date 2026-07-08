@@ -97,9 +97,9 @@ class GameUI:
             self.selection = Selection()
             return
 
-        if self._hit_button(position, self._refresh_rect()):
-            self.engine.shop.refresh(self.state.current_player())
-            self.status = "Shop refreshed."
+        if self._hit_button(position, self._roll_rect()):
+            self.engine.shop.roll(self.state.current_player())
+            self.status = "Shop rolled."
             return
 
         if self._hit_button(position, self._sell_rect()):
@@ -159,7 +159,14 @@ class GameUI:
         current_player = self.state.current_player()
         team_pet = current_player.team[team_index]
         if self.selection.kind == "shop" and self.selection.index is not None:
-            result = self.engine.shop.buy_pet(current_player, self.selection.index, team_index)
+            offer = current_player.shop.slots[self.selection.index]
+            if offer is None:
+                self.selection = Selection()
+                return
+            if offer.kind == "food":
+                result = self.engine.shop.buy_food(current_player, self.selection.index, team_index)
+            else:
+                result = self.engine.shop.buy_pet(current_player, self.selection.index, team_index)
             self.status = result.message
             self.selection = Selection()
             return
@@ -182,11 +189,59 @@ class GameUI:
         self.screen.fill(BACKGROUND)
         if self.state is None:
             self._draw_mode_menu()
+        elif self.state.finished:
+            self._draw_game_over()
+        elif self.state.phase == Phase.BATTLE or self.pending_battle_frames > 0:
+            self._draw_battle_scene()
         else:
             self._draw_header()
             self._draw_team_panel()
             self._draw_shop_panel()
             self._draw_footer()
+
+    def _draw_game_over(self) -> None:
+        title = self.big_font.render("Game Over", True, TEXT)
+        self.screen.blit(title, (24, 18))
+        if self.state is None:
+            return
+        if self.state.winner_index is None:
+            message = "Result: Draw"
+        else:
+            message = f"Winner: {self.state.players[self.state.winner_index].name}"
+        reason = self.state.finish_reason or "finished"
+        status = self.font.render(f"{message} | Reason: {reason} | Round limit reached.", True, GOLD)
+        self.screen.blit(status, (24, 60))
+        self._draw_mode_menu()
+
+    def _draw_battle_scene(self) -> None:
+        title = self.big_font.render("Battle Phase", True, TEXT)
+        self.screen.blit(title, (24, 18))
+        subtitle = self.font.render("Battle is resolving. Shop controls are locked.", True, MUTED)
+        self.screen.blit(subtitle, (24, 56))
+
+        pygame.draw.rect(self.screen, PANEL, pygame.Rect(24, 100, 1352, 260), border_radius=18)
+        pygame.draw.rect(self.screen, PANEL, pygame.Rect(24, 390, 1352, 260), border_radius=18)
+
+        if self.state is None:
+            return
+
+        top_player = self.state.players[0]
+        bottom_player = self.state.players[1]
+        self._draw_battle_team(top_player, 0, 100)
+        self._draw_battle_team(bottom_player, 1, 390)
+
+        center = pygame.Rect(540, 682, 320, 64)
+        pygame.draw.rect(self.screen, (46, 59, 85), center, border_radius=16)
+        pygame.draw.rect(self.screen, (80, 100, 140), center, 2, border_radius=16)
+        self._draw_centered_text(center, self.status or "Battle in progress", TEXT)
+
+    def _draw_battle_team(self, player, player_number: int, top: int) -> None:
+        label = self.font.render(f"Player {player_number + 1}: {player.name} | HP {player.health}", True, TEXT)
+        self.screen.blit(label, (40, top + 16))
+        for index, pet in enumerate(player.team):
+            rect = pygame.Rect(52 + index * 260, top + 48, 220, 170)
+            pygame.draw.rect(self.screen, PANEL_ALT if index % 2 == 0 else PANEL, rect, border_radius=14)
+            self._draw_pet_or_empty(rect, pet, index + 1)
 
     def _draw_mode_menu(self) -> None:
         title = self.big_font.render("Super Auto Pets CPU Engine", True, TEXT)
@@ -238,7 +293,7 @@ class GameUI:
     def _draw_footer(self) -> None:
         status = self.font.render(self.status, True, GOLD)
         self.screen.blit(status, (24, 820))
-        for rect, text in ((self._refresh_rect(), "Refresh"), (self._sell_rect(), "Sell"), (self._end_turn_rect(), "End Turn")):
+        for rect, text in ((self._roll_rect(), "Roll"), (self._sell_rect(), "Sell"), (self._end_turn_rect(), "End Turn")):
             pygame.draw.rect(self.screen, (46, 59, 85), rect, border_radius=14)
             pygame.draw.rect(self.screen, (80, 100, 140), rect, 2, border_radius=14)
             self._draw_centered_text(rect, text, TEXT)
@@ -269,7 +324,9 @@ class GameUI:
         self.screen.blit(kind, (rect.x + 12, rect.bottom - 30))
         if offer.kind == "pet" and offer.name in self.registry.pets:
             pet_stats = self.registry.pets[offer.name]
-            stat_line = self.font.render(f"{pet_stats.attack}/{pet_stats.health}", True, MUTED)
+            effective_attack = pet_stats.attack + offer.bonus_attack
+            effective_health = pet_stats.health + offer.bonus_health
+            stat_line = self.font.render(f"{effective_attack}/{effective_health}", True, MUTED)
             self.screen.blit(stat_line, (rect.x + 12, rect.y + 40))
 
     def _draw_centered_text(self, rect: pygame.Rect, text: str, color: tuple[int, int, int]) -> None:
@@ -294,7 +351,7 @@ class GameUI:
     def _shop_rect(self, index: int) -> pygame.Rect:
         return pygame.Rect(52 + index * 155, 430, 136, 260)
 
-    def _refresh_rect(self) -> pygame.Rect:
+    def _roll_rect(self) -> pygame.Rect:
         return pygame.Rect(930, 784, 130, 44)
 
     def _sell_rect(self) -> pygame.Rect:

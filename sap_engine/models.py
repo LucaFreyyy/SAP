@@ -249,6 +249,9 @@ class GameState:
     turn: int = 1
     active_player_index: int = 0
     battle_pending: bool = False
+    finished: bool = False
+    winner_index: int | None = None
+    finish_reason: str | None = None
     last_battle_result: BattleOutcome = BattleOutcome.ONGOING
     battle: BattleSnapshot = field(default_factory=BattleSnapshot)
     rng_seed: int | None = None
@@ -262,6 +265,9 @@ class GameState:
             "turn": self.turn,
             "active_player_index": self.active_player_index,
             "battle_pending": self.battle_pending,
+            "finished": self.finished,
+            "winner_index": self.winner_index,
+            "finish_reason": self.finish_reason,
             "last_battle_result": self.last_battle_result.value,
             "battle": self.battle.to_dict(),
             "rng_seed": self.rng_seed,

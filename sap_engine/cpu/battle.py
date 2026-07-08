@@ -40,8 +40,8 @@ class BattleEngine:
         p0, p1 = state.players[0], state.players[1]
 
         # Save pre-battle team state keyed by pet identity
-        pre0 = _snapshot_team_by_id(p0)
-        pre1 = _snapshot_team_by_id(p1)
+        pre0 = _snapshot_team(p0)
+        pre1 = _snapshot_team(p1)
 
         # Reset per-battle counters
         for player in (p0, p1):
@@ -274,32 +274,35 @@ def _raw_damage(target: PetInstance, amount: int) -> int:
     return amount
 
 
-def _snapshot_team_by_id(player: PlayerState) -> dict[int, dict]:
-    snap: dict[int, dict] = {}
+def _snapshot_team(player: PlayerState) -> list[tuple[PetInstance | None, dict | None]]:
+    snap: list[tuple[PetInstance | None, dict | None]] = []
     for pet in player.team:
-        if pet is not None:
-            snap[id(pet)] = {
-                "attack": pet.attack,
-                "health": pet.health,
-                "perk": pet.perk,
-                "perk_uses": pet.perk_uses,
-                "level": pet.level,
-                "experience": pet.experience,
-                "copied_ability": pet.copied_ability,
-            }
+        if pet is None:
+            snap.append((None, None))
+            continue
+        snap.append(
+            (
+                pet,
+                {
+                    "attack": pet.attack,
+                    "health": pet.health,
+                    "perk": pet.perk,
+                    "perk_uses": pet.perk_uses,
+                    "level": pet.level,
+                    "experience": pet.experience,
+                    "copied_ability": pet.copied_ability,
+                },
+            )
+        )
     return snap
 
 
-def _restore_team(player: PlayerState, snap: dict[int, dict]) -> None:
-    for i in range(len(player.team)):
-        pet = player.team[i]
-        if pet is None:
+def _restore_team(player: PlayerState, snap: list[tuple[PetInstance | None, dict | None]]) -> None:
+    for index, (pet, saved) in enumerate(snap):
+        if pet is None or saved is None:
+            player.team[index] = None
             continue
-        pet_id = id(pet)
-        if pet_id not in snap:
-            player.team[i] = None
-            continue
-        saved = snap[pet_id]
+        player.team[index] = pet
         pet.attack = saved["attack"]
         pet.health = saved["health"]
         pet.perk = saved["perk"]

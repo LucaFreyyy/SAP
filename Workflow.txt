@@ -39,7 +39,7 @@ wins/losses (optional)
 
 Battle state – temporary data during combat (e.g., attacker/defender order).
 
-Randomness – all random decisions (shop refresh, battle targets) must use a seeded RNG for reproducibility (for AI and GPU).
+Randomness – all random decisions (shop roll, battle targets) must use a seeded RNG for reproducibility (for AI and GPU).
 
 2.2 Pet & Food Data
 Pet object: name, tier, attack, health, ability (level 1/2/3), triggers (Faint, Sell, Hurt, etc.).
@@ -51,7 +51,7 @@ All data parsed from the wiki summaries (we already have JSON/txt files). Load i
 2.3 Shop Engine
 Handles the shop phase logic:
 
-Refresh – roll 3/4/5 new pets from current tier pool.
+Roll – roll 3/4/5 new pets from current tier pool.
 
 Buy Pet – remove from shop, add to team (if space) or replace.
 
@@ -85,7 +85,7 @@ After each attack, check for Hurt abilities and other triggers.
 Game speed – for UI, we can animate at variable speeds (auto‑play or step‑by‑step).
 
 2.5 AI Controller
-Shop AI – given the current state, decide actions (buy, sell, combine, refresh, end turn).
+Shop AI – given the current state, decide actions (buy, sell, combine, roll, end turn).
 
 Battle AI – not needed, because battle is automatic. However, we need to decide order of attacks? Actually it’s deterministic based on positions, but some abilities have choices (e.g., “attack random enemy”). Those choices are random and can be seeded.
 
@@ -144,7 +144,7 @@ Implement GameState – serialisable (pickle or dict) for saving/loading.
 Implement seeded RNG – use Python’s random.Random or a custom xorshift.
 
 Phase 2: Shop & Battle Logic (week 2-3)
-Shop Engine – functions for refresh, buy, sell, combine, apply food.
+Shop Engine – functions for roll, buy, sell, combine, apply food.
 
 Battle Engine – full combat loop (attack order, triggers, damage).
 
@@ -159,7 +159,7 @@ Buy strongest pets.
 
 Use food on highest stat pet.
 
-Decide when to refresh (if nothing good).
+Decide when to roll (if nothing good).
 
 Step‑by‑step execution – AI can perform one action per call; we expose ai_step().
 
@@ -211,7 +211,7 @@ gold, tier, turn as 1D tensors.
 5.2 Randomness Pre‑generation
 Before running a batch of games, generate arrays for:
 
-Shop refresh rolls (which pet IDs appear).
+Shop rolls (which pet IDs appear).
 
 Battle target selections (if ability chooses random enemy).
 
