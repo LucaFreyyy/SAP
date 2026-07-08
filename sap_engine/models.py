@@ -146,6 +146,8 @@ class ShopOffer:
     bonus_attack: int = 0   # extra attack applied when this pet is bought (Duck sell, Canned Food)
     bonus_health: int = 0   # extra health applied when this pet is bought (Duck sell, Canned Food, Worm)
     cost_override: int | None = None  # override the standard 3-gold cost (e.g., Worm Apple at 2 gold)
+    tier_up_reward: bool = False  # level-up bonus pet choice (wiki §6)
+    tier_up_group: int | None = None  # pairs the two choices from one level-up grant
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -157,6 +159,8 @@ class ShopOffer:
             "bonus_attack": self.bonus_attack,
             "bonus_health": self.bonus_health,
             "cost_override": self.cost_override,
+            "tier_up_reward": self.tier_up_reward,
+            "tier_up_group": self.tier_up_group,
         }
 
 
@@ -196,6 +200,8 @@ class PlayerState:
     dragon_buys_this_turn: int = 0
     # Cat: food stat multiplier remaining uses this shop turn
     cat_food_uses_this_turn: int = 0
+    # Incremented each time tier-up reward pets are granted; pairs the two choices
+    tier_up_group_counter: int = 0
 
     def compact_team(self) -> list[PetInstance]:
         return [pet for pet in self.team if pet is not None]

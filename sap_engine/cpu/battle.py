@@ -31,6 +31,8 @@ class BattleEngine:
         self.triggers = triggers
         self.step_history: list[dict] = []
         self.current_step = 0
+        self.current_step_abilities: list[dict] = []
+        self._battle_players: tuple[PlayerState, PlayerState] | None = None
 
     def resolve(self, state: GameState) -> BattleStepResult:
         """Run the full battle from Start-of-Battle to resolution."""
@@ -42,10 +44,44 @@ class BattleEngine:
         self.current_step = 0
 
         p0, p1 = state.players[0], state.players[1]
+        self._battle_players = (p0, p1)
+        self.current_step_abilities = []
+        previous_listener = self.triggers.ability_listener if self.triggers else None
 
-        # Save pre-battle team state keyed by pet identity
+        def battle_ability_listener(pet: PetInstance, player: PlayerState) -> None:
+            if self._battle_players is None:
+                return
+            player_idx = 0 if player is self._battle_players[0] else 1
+            slot_idx = next((i for i, p in enumerate(player.team) if p is pet), -1)
+            self.current_step_abilities.append(
+                {"player": player_idx, "slot": slot_idx, "name": pet.name, "uid": id(pet)}
+            )
+            if previous_listener is not None:
+                previous_listener(pet, player)
+
+        if self.triggers is not None:
+            self.triggers.ability_listener = battle_ability_listener
+
         pre0 = _snapshot_team(p0)
         pre1 = _snapshot_team(p1)
+
+        try:
+            return self._resolve_battle(state, p0, p1, snapshot, pre0, pre1)
+        finally:
+            if self.triggers is not None:
+                self.triggers.ability_listener = previous_listener
+            self._battle_players = None
+
+    def _resolve_battle(
+        self,
+        state: GameState,
+        p0: PlayerState,
+        p1: PlayerState,
+        snapshot: BattleSnapshot,
+        pre0: list,
+        pre1: list,
+    ) -> BattleStepResult:
+        # Save pre-battle team state keyed by pet identity — already saved; pre0/pre1 passed in
 
         # Capture initial state (before any battle steps)
         self._capture_step(state, p0, p1, "Start of Battle")
@@ -74,24 +110,12 @@ class BattleEngine:
 
         # --- Combat loop ---
         while True:
-            _compact(p0)
-            _compact(p1)
+            end_result = self._check_battle_end(state, p0, p1, snapshot, pre0, pre1)
+            if end_result is not None:
+                return end_result
 
             left = _last_alive(p0)
             right = _last_alive(p1)
-
-            if left is None and right is None:
-                return self._end(state, p0, p1, BattleOutcome.DRAW, snapshot, pre0, pre1)
-            if left is None:
-                p0.health -= 1
-                p0.losses += 1
-                p1.wins += 1
-                return self._end(state, p0, p1, BattleOutcome.LOSS, snapshot, pre0, pre1)
-            if right is None:
-                p1.health -= 1
-                p1.losses += 1
-                p0.wins += 1
-                return self._end(state, p0, p1, BattleOutcome.WIN, snapshot, pre0, pre1)
 
             snapshot.step_index += 1
             snapshot.attacker_name = left.name
@@ -194,9 +218,52 @@ class BattleEngine:
                     if not right_dead and _is_alive(right):
                         self.triggers.apply_knock_out(right, p1, p0, self._summon_callback)
 
-            self._process_pending_deaths(p0, p1)
+            self._drain_pending_battle_effects(p0, p1)
 
     # ------------------------------------------------------------------
+
+    def _check_battle_end(
+        self,
+        state: GameState,
+        p0: PlayerState,
+        p1: PlayerState,
+        snapshot: BattleSnapshot,
+        pre0: list,
+        pre1: list,
+    ) -> BattleStepResult | None:
+        """End only after faint chains are drained and at least one team is fully gone."""
+        while True:
+            self._drain_pending_battle_effects(p0, p1)
+            _compact(p0)
+            _compact(p1)
+
+            left = _last_alive(p0)
+            right = _last_alive(p1)
+            if left is not None and right is not None:
+                return None
+
+            self._drain_pending_battle_effects(p0, p1)
+            _compact(p0)
+            _compact(p1)
+            left = _last_alive(p0)
+            right = _last_alive(p1)
+            if left is not None and right is not None:
+                continue
+
+            if left is None and right is None:
+                self._capture_step(state, p0, p1, "Battle End (Draw)")
+                return self._end(state, p0, p1, BattleOutcome.DRAW, snapshot, pre0, pre1)
+            if left is None:
+                self._capture_step(state, p0, p1, "Battle End (Defeat)")
+                p0.health -= 1
+                p0.losses += 1
+                p1.wins += 1
+                return self._end(state, p0, p1, BattleOutcome.LOSS, snapshot, pre0, pre1)
+            self._capture_step(state, p0, p1, "Battle End (Victory)")
+            p1.health -= 1
+            p1.losses += 1
+            p0.wins += 1
+            return self._end(state, p0, p1, BattleOutcome.WIN, snapshot, pre0, pre1)
 
     def _end(self, state, p0, p1, outcome, snapshot, pre0, pre1):
         snapshot.finished = True
@@ -230,7 +297,9 @@ class BattleEngine:
             "p1_team": self._serialize_team(p1),
             "p0_health": p0.health,
             "p1_health": p1.health,
+            "ability_triggers": list(self.current_step_abilities),
         }
+        self.current_step_abilities.clear()
         self.step_history.append(step_data)
 
     def _serialize_team(self, player: PlayerState) -> list[dict]:
@@ -241,6 +310,7 @@ class BattleEngine:
                 team_data.append(None)
             else:
                 team_data.append({
+                    "uid": id(pet),
                     "name": pet.name,
                     "attack": pet.attack,
                     "health": pet.health,
@@ -262,14 +332,22 @@ class BattleEngine:
             attacker.perk_uses = 1
         return dmg
 
-    def _process_pending_deaths(self, p0: PlayerState, p1: PlayerState) -> None:
-        for player, opp in [(p0, p1), (p1, p0)]:
-            for i in range(len(player.team)):
-                pet = player.team[i]
-                if pet is not None and not _is_alive(pet):
-                    player.team[i] = None
-                    if self.triggers:
-                        self.triggers.apply_faint(pet, i, player, opp, self._summon_callback)
+    def _drain_pending_battle_effects(self, p0: PlayerState, p1: PlayerState) -> None:
+        """Resolve faint chains until no new deaths occur."""
+        while True:
+            progress = False
+            for player, opp in [(p0, p1), (p1, p0)]:
+                for i in range(len(player.team)):
+                    pet = player.team[i]
+                    if pet is not None and not _is_alive(pet):
+                        player.team[i] = None
+                        progress = True
+                        if self.triggers:
+                            self.triggers.apply_faint(pet, i, player, opp, self._summon_callback)
+            if not progress:
+                break
+            _compact(p0)
+            _compact(p1)
 
     def _summon_callback(self, player: PlayerState, slot_idx: int, pet: PetInstance) -> None:
         if self.triggers:

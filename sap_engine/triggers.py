@@ -17,6 +17,7 @@ from .models import BattleOutcome, PetDefinition, PetInstance, PlayerState, Shop
 from .paths import PETS_BY_TIER
 from .registry import DataRegistry
 from .rng import SeededRNG
+from .cpu.shop_slots import insert_shop_offer_from_right
 
 # Faint-summon token stats indexed by level (1-based)
 ZOMBIE_CRICKET_STATS = {1: (1, 1), 2: (2, 2), 3: (3, 3)}
@@ -31,6 +32,7 @@ class TriggerResult:
 
 
 SummonCallback = Callable[["PlayerState", int, "PetInstance"], None]
+AbilityListener = Callable[[PetInstance, PlayerState], None]
 
 
 def _is_alive(pet: PetInstance) -> bool:
@@ -39,9 +41,19 @@ def _is_alive(pet: PetInstance) -> bool:
 
 
 class TriggerEngine:
-    def __init__(self, registry: DataRegistry, rng: SeededRNG) -> None:
+    def __init__(
+        self,
+        registry: DataRegistry,
+        rng: SeededRNG,
+        ability_listener: AbilityListener | None = None,
+    ) -> None:
         self.registry = registry
         self.rng = rng
+        self.ability_listener = ability_listener
+
+    def _notify_ability(self, pet: PetInstance | None, player: PlayerState) -> None:
+        if pet is not None and self.ability_listener is not None:
+            self.ability_listener(pet, player)
 
     # ------------------------------------------------------------------
     # Shop-phase triggers
@@ -65,21 +77,26 @@ class TriggerEngine:
 
             if ability == "Swan":
                 player.gold = min(player.gold + pet.level, 999)
+                self._notify_ability(pet, player)
 
             elif ability == "Worm":
                 apple_name = ["Apple", "Better Apple", "Best Apple"][pet.level - 1]
                 self._insert_shop_food_right(
                     player, name=apple_name, tier=1, cost_override=2,
                 )
+                self._notify_ability(pet, player)
 
             elif ability == "Giraffe":
                 ahead = self._friends_ahead(player, pet)
                 for friend in ahead[: pet.level]:
                     friend.attack = min(50, friend.attack + 1)
                     friend.health = min(50, friend.health + 1)
+                if ahead[: pet.level]:
+                    self._notify_ability(pet, player)
 
             elif ability == "Squirrel":
                 player.food_cost_discount = pet.level
+                self._notify_ability(pet, player)
 
             elif ability == "Penguin":
                 eligible = [p for p in self._living_team(player) if p is not pet and p.level >= 2]
@@ -88,6 +105,7 @@ class TriggerEngine:
                     for friend in chosen:
                         friend.attack = min(50, friend.attack + pet.level)
                         friend.health = min(50, friend.health + pet.level)
+                    self._notify_ability(pet, player)
 
     def apply_end_turn(self, player: PlayerState) -> None:
         """Fire all End-Turn abilities."""
@@ -99,6 +117,8 @@ class TriggerEngine:
                     ahead = self._friends_ahead(player, pet)
                     for friend in ahead[:3]:
                         friend.attack = min(50, friend.attack + pet.level)
+                    if ahead[:3]:
+                        self._notify_ability(pet, player)
 
             elif ability == "Bison":
                 has_level3_friend = any(
@@ -107,12 +127,14 @@ class TriggerEngine:
                 if has_level3_friend:
                     pet.attack = min(50, pet.attack + pet.level)
                     pet.health = min(50, pet.health + pet.level * 2)
+                    self._notify_ability(pet, player)
 
             elif ability == "Monkey":
                 front = self._friend_at_front(player, exclude=pet)
                 if front is not None:
                     front.attack = min(50, front.attack + pet.level * 2)
                     front.health = min(50, front.health + pet.level * 2)
+                    self._notify_ability(pet, player)
 
             # Parrot always refreshes its copied ability regardless of what it's currently copying
             if pet.name == "Parrot":
@@ -121,6 +143,7 @@ class TriggerEngine:
                     pet.copied_ability = target.name
                 else:
                     pet.copied_ability = None
+                self._notify_ability(pet, player)
 
         # Bread perk: give +7 health until next battle
         for pet in self._living_team(player):
@@ -138,6 +161,7 @@ class TriggerEngine:
 
         if ability == "Otter":
             self._buff_random_friends(player, amount=bought_pet.level, attack=0, health=1, exclude=bought_pet)
+            self._notify_ability(bought_pet, player)
 
         elif ability == "Cow":
             for i, slot in enumerate(player.shop.slots):
@@ -146,6 +170,7 @@ class TriggerEngine:
             milk_name = ["Milk", "Better Milk", "Best Milk"][bought_pet.level - 1]
             for _ in range(2):
                 self._insert_shop_food_right(player, name=milk_name, tier=5, cost_override=0)
+            self._notify_ability(bought_pet, player)
 
         # Dragon: fires when ANY tier-1 pet is bought (including Dragon itself if tier 1,
         # but Dragon is tier 6 so in practice only fires for tier-1 friends)
@@ -158,6 +183,7 @@ class TriggerEngine:
                             if friend is not dragon:
                                 friend.attack = min(50, friend.attack + dragon.level)
                                 friend.health = min(50, friend.health + dragon.level)
+                        self._notify_ability(dragon, player)
 
     def apply_fish_level_up(self, player: PlayerState, fish: PetInstance) -> None:
         """Fire Fish level-up: give 2 random friends +level/+level.
@@ -168,6 +194,7 @@ class TriggerEngine:
             return
         bonus = fish.level
         self._buff_random_friends(player, amount=2, attack=bonus, health=bonus, exclude=fish)
+        self._notify_ability(fish, player)
 
     def apply_sell(self, player: PlayerState, sold_pet: PetInstance) -> None:
         """Fire Sell trigger."""
@@ -175,18 +202,22 @@ class TriggerEngine:
 
         if ability == "Pig":
             player.gold = min(player.gold + sold_pet.level, 999)
+            self._notify_ability(sold_pet, player)
 
         elif ability == "Beaver":
             self._buff_random_friends(player, amount=2, attack=sold_pet.level, health=0)
+            self._notify_ability(sold_pet, player)
 
         elif ability == "Duck":
             for offer in player.shop.slots:
                 if offer is not None and offer.kind == "pet":
                     offer.bonus_health += sold_pet.level
+            self._notify_ability(sold_pet, player)
 
         elif ability == "Pigeon":
             for _ in range(sold_pet.level):
                 self._insert_shop_food_right(player, name="Bread Crumbs", tier=1, cost_override=0)
+            self._notify_ability(sold_pet, player)
 
     def apply_eats_food(self, player: PlayerState, eating_pet: PetInstance) -> None:
         """Fire Eats-Food-related triggers (Rabbit reacts; Seal fires when it eats)."""
@@ -198,11 +229,13 @@ class TriggerEngine:
                 if player.rabbit_count_this_turn < 3:
                     eating_pet.health = min(50, eating_pet.health + pet.level)
                     player.rabbit_count_this_turn += 1
+                    self._notify_ability(pet, player)
 
         # Seal: when it eats food, give 3 random friends +level attack
         ability = eating_pet.copied_ability or eating_pet.name
         if ability == "Seal":
             self._buff_random_friends(player, amount=3, attack=eating_pet.level, health=0, exclude=eating_pet)
+            self._notify_ability(eating_pet, player)
 
     # ------------------------------------------------------------------
     # Battle-phase triggers
@@ -301,6 +334,12 @@ class TriggerEngine:
                 self._deal_damage_battle(target, dmg, opponent, player,
                                          is_hurt=True, summon_callback=summon_callback)
 
+        sob_abilities = {
+            "Mosquito", "Dodo", "Dolphin", "Crab", "Skunk", "Armadillo", "Crocodile", "Whale", "Leopard",
+        }
+        if ability in sob_abilities:
+            self._notify_ability(pet, player)
+
         # Tiger repeat for SOB
         if _tiger_level is None:
             self._tiger_repeat_sob(pet, player, opponent, summon_callback)
@@ -348,6 +387,7 @@ class TriggerEngine:
             # Gains are temporary (not retained outside battle per wiki)
             attacker.temporary_attack = min(50 - attacker.attack, attacker.temporary_attack + 4 * level)
             attacker.temporary_health = min(50 - attacker.health, attacker.temporary_health + 2 * level)
+            self._notify_ability(attacker, player)
 
         # Tiger repeat
         if _tiger_level is None:
@@ -676,14 +716,17 @@ class TriggerEngine:
                     50 - summoned_pet.attack,
                     summoned_pet.temporary_attack + level,
                 )
+                self._notify_ability(pet, player)
 
             elif ability == "Turkey":
                 summoned_pet.attack = min(50, summoned_pet.attack + 3 * level)
                 summoned_pet.health = min(50, summoned_pet.health + level)
+                self._notify_ability(pet, player)
 
             elif ability == "Dog":
                 pet.temporary_attack = min(50 - pet.attack, pet.temporary_attack + 2 * level)
                 pet.temporary_health = min(50 - pet.health, pet.temporary_health + level)
+                self._notify_ability(pet, player)
 
         # Tiger repeat (Tiger causes its friend ahead's Friend Summoned to repeat)
         if _tiger_level is None:
@@ -958,16 +1001,13 @@ class TriggerEngine:
         bonus_attack: int = 0,
         bonus_health: int = 0,
     ) -> None:
-        """Insert food at the rightmost slot, pushing everything left."""
-        slots = player.shop.slots
+        """Insert food at the right side of the shop."""
         icon = f"{name.replace(' ', '_')}.png"
         new_offer = ShopOffer(
             kind="food", name=name, tier=tier, frozen=False, icon_file=icon,
             bonus_attack=bonus_attack, bonus_health=bonus_health, cost_override=cost_override,
         )
-        for i in range(len(slots) - 1):
-            slots[i] = slots[i + 1]
-        slots[-1] = new_offer
+        insert_shop_offer_from_right(player, new_offer)
 
     # ------------------------------------------------------------------
     # Summon helpers

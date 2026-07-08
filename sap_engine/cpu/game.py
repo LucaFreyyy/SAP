@@ -23,7 +23,7 @@ class CpuGameEngine:
         self.registry = registry
         self.rng = rng or SeededRNG()
         self.triggers = TriggerEngine(registry, self.rng)
-        self.shop = ShopEngine(registry, self.rng)
+        self.shop = ShopEngine(registry, self.rng, self.triggers)
         self.battle = BattleEngine(self.triggers)
 
     def new_game(self, player_names: list[str]) -> GameState:
@@ -48,18 +48,23 @@ class CpuGameEngine:
         state.battle_pending = True
         return TurnResult(phase=Phase.BATTLE, battle_pending=True)
 
-    def resolve_battle_and_start_next_round(self, state: GameState) -> TurnResult:
+    def resolve_battle_only(self, state: GameState) -> TurnResult:
+        """Resolve the battle without advancing to the next shop turn."""
         state.battle_pending = False
         state.phase = Phase.BATTLE
         result = self.battle.resolve(state)
+        return TurnResult(phase=Phase.BATTLE, battle_result=result.outcome)
+
+    def resolve_battle_and_start_next_round(self, state: GameState) -> TurnResult:
+        result = self.resolve_battle_only(state)
         if self._maybe_finish_game(state):
             state.finished = True
             state.phase = Phase.TRANSITION
-            return TurnResult(phase=Phase.TRANSITION, battle_result=result.outcome)
+            return TurnResult(phase=Phase.TRANSITION, battle_result=result.battle_result)
 
         state.turn += 1
         self.start_shop_turn(state, 0)
-        return TurnResult(phase=Phase.SHOP, battle_result=result.outcome)
+        return TurnResult(phase=Phase.SHOP, battle_result=result.battle_result)
 
     def start_next_round(self, state: GameState) -> TurnResult:
         """Start the next shop turn after battle replay (without re-resolving battle)."""
@@ -73,6 +78,7 @@ class CpuGameEngine:
         return TurnResult(phase=Phase.SHOP, battle_result=state.last_battle_result)
 
     def start_shop_turn(self, state: GameState, player_index: int) -> None:
+        state.phase = Phase.SHOP
         state.active_player_index = player_index
         player = state.players[player_index]
         player.turn = state.turn

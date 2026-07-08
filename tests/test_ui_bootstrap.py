@@ -29,3 +29,10 @@ def test_ui_routes_team_click_for_food_to_buy_food() -> None:
     assert player.team[0].health == 3
     assert ui.status.startswith("Fed Apple")
 
+
+def test_perk_icon_map_covers_all_perks() -> None:
+    from sap_engine.models import PERK_NAMES
+    from sap_engine.ui.app import PERK_ICON_MAP
+
+    assert PERK_NAMES == set(PERK_ICON_MAP.keys())
+

@@ -823,3 +823,165 @@ def test_battle_tracks_player_losses() -> None:
     assert result.outcome == BattleOutcome.LOSS
     assert p0.losses == 1
     assert p1.wins == 1
+
+
+# ===========================================================================
+# 27. Battle continues until a team is fully gone (post-faint triggers)
+# ===========================================================================
+
+def test_battle_continues_after_mushroom_revive() -> None:
+    """Wiki §8: combat continues until one team has no pets left standing."""
+    engine = make_engine(seed=5)
+    state = engine.new_game(["Alpha", "Beta"])
+    p0, p1 = state.players
+
+    ant = make_pet(engine, "Ant", attack=1, health=1)
+    ant.perk = "mushroom"
+    p0.team[4] = ant
+    p1.team[4] = make_pet(engine, "Duck", attack=1, health=3)
+
+    state.phase = Phase.BATTLE
+    result = engine.battle.resolve(state)
+
+    assert result.outcome == BattleOutcome.LOSS
+    assert len(result.snapshot.step_history) >= 4
+    assert result.snapshot.step_history[-1]["description"].startswith("Battle End")
+
+
+def test_battle_continues_after_honey_bee_summon() -> None:
+    engine = make_engine(seed=9)
+    state = engine.new_game(["Alpha", "Beta"])
+    p0, p1 = state.players
+
+    ant = make_pet(engine, "Ant", attack=1, health=1)
+    ant.perk = "honey"
+    p0.team[4] = ant
+    p1.team[4] = make_pet(engine, "Duck", attack=1, health=3)
+
+    state.phase = Phase.BATTLE
+    result = engine.battle.resolve(state)
+
+    assert result.outcome == BattleOutcome.LOSS
+    assert len(result.snapshot.step_history) >= 4
+
+
+# ===========================================================================
+# 28. Tier-up reward on level-up (wiki §6)
+# ===========================================================================
+
+def test_merge_to_level_2_offers_tier_up_pets() -> None:
+    engine = make_engine(seed=21)
+    state = engine.new_game(["Alpha", "Beta"])
+    player = state.players[0]
+
+    ant = make_pet(engine, "Ant", experience=1, level=1)
+    player.team[0] = ant
+    player.gold = 10
+    player.shop.slots[0] = ShopOffer(kind="pet", name="Ant", tier=1)
+
+    result = engine.shop.buy_pet(player, 0, 0)
+
+    assert result.success
+    assert result.levelled_up
+    assert result.tier_up_offered
+    tier_up_names = [slot.name for slot in player.shop.slots if slot is not None and slot.tier_up_reward]
+    assert len(tier_up_names) == 2
+    assert all(engine.registry.pets[name].tier == 2 for name in tier_up_names)
+
+
+def test_l2_l2_merge_to_l3_does_not_offer_tier_up() -> None:
+    engine = make_engine(seed=21)
+    state = engine.new_game(["Alpha", "Beta"])
+    player = state.players[0]
+
+    defn = engine.registry.pets["Ant"]
+    ant1 = PetInstance(definition=defn, experience=3, level=2)
+    ant2 = PetInstance(definition=defn, experience=3, level=2)
+    player.team = [None, None, None, ant1, ant2]
+
+    result = engine.shop.move_pet(player, 4, 3)
+
+    assert result.success
+    assert ant1.level == 3
+    assert not result.tier_up_offered
+    assert not any(slot is not None and slot.tier_up_reward for slot in player.shop.slots)
+
+
+def test_buying_tier_up_pet_removes_the_other_choice() -> None:
+    engine = make_engine(seed=21)
+    state = engine.new_game(["Alpha", "Beta"])
+    player = state.players[0]
+    player.gold = 10
+
+    ant = make_pet(engine, "Ant", experience=1, level=1)
+    player.team[0] = ant
+    player.shop.slots[0] = ShopOffer(kind="pet", name="Ant", tier=1)
+    engine.shop.buy_pet(player, 0, 0)
+
+    tier_up_indices = [i for i, slot in enumerate(player.shop.slots) if slot is not None and slot.tier_up_reward]
+    assert len(tier_up_indices) == 2
+
+    chosen = tier_up_indices[0]
+    result = engine.shop.buy_pet(player, chosen, 1)
+    assert result.success
+    remaining = [slot for slot in player.shop.slots if slot is not None and slot.tier_up_reward]
+    assert remaining == []
+
+
+def test_two_level_ups_in_one_turn_stack_tier_up_rewards() -> None:
+    engine = make_engine(seed=21)
+    state = engine.new_game(["Alpha", "Beta"])
+    player = state.players[0]
+    player.gold = 20
+
+    ant = make_pet(engine, "Ant", experience=1, level=1)
+    beaver = make_pet(engine, "Beaver", experience=1, level=1)
+    player.team[0] = ant
+    player.team[1] = beaver
+    player.shop.slots[0] = ShopOffer(kind="pet", name="Ant", tier=1)
+    first = engine.shop.buy_pet(player, 0, 0)
+    assert first.tier_up_offered
+    first_group = player.tier_up_group_counter - 1
+    first_reward_names = {
+        slot.name
+        for slot in player.shop.slots
+        if slot is not None and slot.tier_up_reward and slot.tier_up_group == first_group
+    }
+    assert len(first_reward_names) == 2
+
+    player.shop.slots[1] = ShopOffer(kind="pet", name="Beaver", tier=1)
+    second = engine.shop.buy_pet(player, 1, 1)
+    assert second.tier_up_offered
+    tier_up_rewards = [slot for slot in player.shop.slots if slot is not None and slot.tier_up_reward]
+    assert len(tier_up_rewards) == 4
+    groups = {slot.tier_up_group for slot in tier_up_rewards}
+    assert groups == {first_group, first_group + 1}
+    assert first_reward_names.issubset({slot.name for slot in tier_up_rewards})
+
+
+def test_buying_tier_up_pet_only_removes_other_choice_from_same_grant() -> None:
+    engine = make_engine(seed=21)
+    state = engine.new_game(["Alpha", "Beta"])
+    player = state.players[0]
+    player.gold = 20
+
+    ant = make_pet(engine, "Ant", experience=1, level=1)
+    beaver = make_pet(engine, "Beaver", experience=1, level=1)
+    player.team[0] = ant
+    player.team[1] = beaver
+    player.shop.slots[0] = ShopOffer(kind="pet", name="Ant", tier=1)
+    engine.shop.buy_pet(player, 0, 0)
+
+    player.shop.slots[1] = ShopOffer(kind="pet", name="Beaver", tier=1)
+    engine.shop.buy_pet(player, 1, 1)
+
+    tier_up_indices = [i for i, slot in enumerate(player.shop.slots) if slot is not None and slot.tier_up_reward]
+    assert len(tier_up_indices) == 4
+
+    chosen = tier_up_indices[0]
+    chosen_group = player.shop.slots[chosen].tier_up_group
+    result = engine.shop.buy_pet(player, chosen, 2)
+    assert result.success
+    remaining = [slot for slot in player.shop.slots if slot is not None and slot.tier_up_reward]
+    assert len(remaining) == 2
+    assert all(slot.tier_up_group != chosen_group for slot in remaining)

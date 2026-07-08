@@ -8,6 +8,7 @@ from ..paths import shop_slot_layout_for_turn, unlock_tier_for_turn
 from ..registry import DataRegistry
 from ..rng import SeededRNG
 from ..triggers import TriggerEngine
+from .shop_slots import insert_shop_offer_from_left
 
 
 @dataclass(slots=True)
@@ -16,13 +17,51 @@ class ShopActionResult:
     message: str = ""
     levelled_up: bool = False    # True if a pet just reached a new level
     level_up_pet: str = ""       # Name of the pet that levelled up
+    tier_up_offered: bool = False  # True if tier-up reward pets were added to shop
+
+
+def _xp_label(pet: PetInstance) -> str:
+    return f"Lv{pet.level} ({pet.experience} XP)"
+
+
+def _qualifies_for_tier_up_reward(old_level: int, new_level: int, *, merge_source_level: int | None = None) -> bool:
+    """Wiki §6: tier-up reward on first reach of a new level, except L2+L2 merge → L3."""
+    if new_level <= old_level:
+        return False
+    if old_level == 2 and new_level == 3 and merge_source_level == 2:
+        return False
+    return True
+
+
+def _clear_other_tier_up_rewards(
+    player: PlayerState,
+    group_id: int | None,
+    *,
+    keep_index: int | None = None,
+) -> None:
+    """Remove unchosen tier-up pets from the same level-up grant only."""
+    if group_id is None:
+        return
+    for index, offer in enumerate(player.shop.slots):
+        if offer is None or not offer.tier_up_reward:
+            continue
+        if offer.tier_up_group != group_id:
+            continue
+        if keep_index is not None and index == keep_index:
+            continue
+        player.shop.slots[index] = None
 
 
 class ShopEngine:
-    def __init__(self, registry: DataRegistry, rng: SeededRNG) -> None:
+    def __init__(
+        self,
+        registry: DataRegistry,
+        rng: SeededRNG,
+        triggers: TriggerEngine | None = None,
+    ) -> None:
         self.registry = registry
         self.rng = rng
-        self.triggers = TriggerEngine(registry, rng)
+        self.triggers = triggers or TriggerEngine(registry, rng)
 
     # ------------------------------------------------------------------
     # Shop management
@@ -82,6 +121,47 @@ class ShopEngine:
         state = "frozen" if offer.frozen else "unfrozen"
         return ShopActionResult(True, f"{offer.name} {state}.")
 
+    def grant_tier_up_reward(self, player: PlayerState) -> bool:
+        """Offer 2 random pets from one tier above the current max shop tier (wiki §6)."""
+        reward_tier = min(6, player.shop.tier + 1)
+        pool = [pet for pet in self.registry.pets.values() if pet.tier == reward_tier]
+        if len(pool) < 2:
+            return False
+
+        group_id = player.tier_up_group_counter
+        player.tier_up_group_counter += 1
+        chosen = self.rng.sample(pool, 2)
+        for pet_def in reversed(chosen):
+            insert_shop_offer_from_left(
+                player,
+                ShopOffer(
+                    kind="pet",
+                    name=pet_def.name,
+                    tier=pet_def.tier,
+                    frozen=False,
+                    icon_file=pet_def.icon_file,
+                    bonus_attack=player.shop_attack_bonus,
+                    bonus_health=player.shop_health_bonus,
+                    tier_up_reward=True,
+                    tier_up_group=group_id,
+                ),
+            )
+        return True
+
+    def _maybe_apply_level_up(
+        self,
+        player: PlayerState,
+        pet: PetInstance,
+        old_level: int,
+        *,
+        merge_source_level: int | None = None,
+    ) -> tuple[bool, bool]:
+        if pet.level <= old_level:
+            return False, False
+        self.triggers.apply_fish_level_up(player, pet)
+        qualifies = _qualifies_for_tier_up_reward(old_level, pet.level, merge_source_level=merge_source_level)
+        return True, qualifies
+
     # ------------------------------------------------------------------
     # Buying pets
     # ------------------------------------------------------------------
@@ -123,10 +203,17 @@ class ShopEngine:
         current = player.team[team_index]
         levelled_up = False
         level_up_pet_name = ""
+        tier_up_offered = False
+        tier_up_qualifies = False
+        was_tier_up_offer = offer.tier_up_reward
+        merged = False
+        pre_experience = 0
 
         if current is not None and current.name == definition.name:
             # --- Merge ---
+            merged = True
             old_level = current.level
+            pre_experience = current.experience
             source = PetInstance(
                 definition=definition,
                 attack=min(50, definition.attack + offer.bonus_attack),
@@ -134,10 +221,11 @@ class ShopEngine:
             )
             _merge_instances(current, source)
             bought = current
-            if current.level > old_level:
-                levelled_up = True
+            levelled_up, tier_up_qualifies = self._maybe_apply_level_up(
+                player, current, old_level, merge_source_level=source.level
+            )
+            if levelled_up:
                 level_up_pet_name = current.name
-                self.triggers.apply_fish_level_up(player, current)
 
         elif current is None:
             # --- Place in empty slot ---
@@ -160,9 +248,22 @@ class ShopEngine:
 
         player.gold -= 3
         player.shop.slots[shop_index] = None
+        if was_tier_up_offer:
+            _clear_other_tier_up_rewards(player, offer.tier_up_group)
+        if tier_up_qualifies:
+            tier_up_offered = self.grant_tier_up_reward(player)
         player.actions += 1
         self.triggers.apply_buy(player, bought)
-        return ShopActionResult(True, f"Bought {definition.name}.", levelled_up, level_up_pet_name)
+
+        if merged:
+            xp_gain = bought.experience - pre_experience
+            message = f"Merged {definition.name}. +{xp_gain} XP → {_xp_label(bought)}."
+            if levelled_up:
+                message += " Level up!"
+            if tier_up_offered:
+                message += " Tier-up reward available in shop!"
+            return ShopActionResult(True, message, levelled_up, level_up_pet_name, tier_up_offered)
+        return ShopActionResult(True, f"Bought {definition.name}.", levelled_up, level_up_pet_name, tier_up_offered)
 
     def move_pet(self, player: PlayerState, from_index: int, to_index: int) -> ShopActionResult:
         """Reposition or merge a team pet."""
@@ -175,12 +276,24 @@ class ShopEngine:
 
         if dst is not None and dst.name == src.name:
             old_level = dst.level
+            pre_experience = dst.experience
             _merge_instances(dst, src)
             player.team[from_index] = None
-            if dst.level > old_level:
-                self.triggers.apply_fish_level_up(player, dst)
+            levelled_up, tier_up_qualifies = self._maybe_apply_level_up(
+                player, dst, old_level, merge_source_level=src.level
+            )
             player.actions += 1
-            return ShopActionResult(True, f"Merged {src.name}.", dst.level > old_level, src.name)
+            if tier_up_qualifies:
+                tier_up = self.grant_tier_up_reward(player)
+            else:
+                tier_up = False
+            xp_gain = dst.experience - pre_experience
+            message = f"Merged {src.name}. +{xp_gain} XP → {_xp_label(dst)}."
+            if levelled_up:
+                message += " Level up!"
+            if tier_up:
+                message += " Tier-up reward available in shop!"
+            return ShopActionResult(True, message, levelled_up, src.name, tier_up)
         else:
             player.team[from_index], player.team[to_index] = player.team[to_index], player.team[from_index]
             player.actions += 1
@@ -262,6 +375,7 @@ class ShopEngine:
 
         levelled_up = False
         level_up_pet_name = ""
+        tier_up_offered = False
 
         # ------- Apply effect -------
         # Cat multiplier: foods that give stat bonuses are multiplied
@@ -346,15 +460,24 @@ class ShopEngine:
         elif name == "Chocolate":
             # Cat does NOT affect Chocolate (per wiki)
             old_level = target.level
+            pre_experience = target.experience
             target.experience = min(5, target.experience + 1)
             target.attack = min(50, target.attack + 1)
             target.health = min(50, target.health + 1)
             _update_level(target)
-            if target.level > old_level:
-                levelled_up = True
+            levelled_up, tier_up_qualifies = self._maybe_apply_level_up(player, target, old_level)
+            if levelled_up:
                 level_up_pet_name = target.name
-                self.triggers.apply_fish_level_up(player, target)
+            if tier_up_qualifies:
+                tier_up_offered = self.grant_tier_up_reward(player)
             self.triggers.apply_eats_food(player, target)
+            xp_gain = target.experience - pre_experience
+            message = f"Fed Chocolate. +{xp_gain} XP → {_xp_label(target)}."
+            if levelled_up:
+                message += " Level up!"
+            if tier_up_offered:
+                message += " Tier-up reward available in shop!"
+            return ShopActionResult(True, message, levelled_up, level_up_pet_name, tier_up_offered)
 
         elif name == "Sushi":
             _buff_random_team(player, self.rng, amount=3, attack=1 * cat_mult, health=1 * cat_mult)
@@ -386,7 +509,7 @@ class ShopEngine:
                 # In shop phase the "opponent" is the same player (no enemy present)
                 self.triggers.apply_faint(target, idx, player, player)
 
-        return ShopActionResult(True, f"Fed {name}.", levelled_up, level_up_pet_name)
+        return ShopActionResult(True, f"Fed {name}.", levelled_up, level_up_pet_name, tier_up_offered)
 
     # ------------------------------------------------------------------
     # End turn

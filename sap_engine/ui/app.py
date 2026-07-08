@@ -11,6 +11,7 @@ from ..cpu.game import CpuGameEngine
 from ..models import GameState, Phase, PlayerState, ShopOffer
 from ..registry import load_registry
 from ..rng import SeededRNG
+from .animations import AnimationTracker, HIGHLIGHT_FRAMES, PetVisualFX
 
 
 WINDOW_WIDTH = 1400
@@ -22,12 +23,42 @@ TEXT = (235, 240, 255)
 MUTED = (150, 160, 185)
 ACCENT = (100, 200, 255)
 GOLD = (235, 198, 77)
+SELECT = (80, 220, 120)
+FREEZE = (100, 200, 255)
+TIER_UP = (255, 180, 80)
+STAT_HIGHLIGHT = (255, 255, 80)
+STAT_HIGHLIGHT_BG = (255, 200, 40)
+GOLDEN_BORDER = (255, 210, 60)
+PANEL_BORDER = (60, 70, 92)
+
+# Maps perk id -> (icon kind, display name)
+PERK_ICON_MAP: dict[str, tuple[str, str]] = {
+    "honey": ("foods", "Honey"),
+    "melon": ("foods", "Melon"),
+    "garlic": ("foods", "Garlic"),
+    "meat_bone": ("foods", "Meat Bone"),
+    "steak": ("foods", "Steak"),
+    "chili": ("foods", "Chili"),
+    "mushroom": ("foods", "Mushroom"),
+    "cake": ("foods", "Cake"),
+    "bread": ("foods", "Bread"),
+    "peanut": ("tokens", "Peanut"),
+    "coconut": ("tokens", "Coconut"),
+}
 
 
 @dataclass(slots=True)
 class Selection:
     kind: str | None = None
     index: int | None = None
+
+
+@dataclass(slots=True)
+class PendingMergeChoice:
+    team_index: int
+    source: str = "team"  # "team" or "shop"
+    from_index: int | None = None
+    shop_index: int | None = None
 
 
 class GameMode:
@@ -46,6 +77,7 @@ class GameUI:
         self.big_font = pygame.font.SysFont("arial", 30, bold=True)
         self.registry = load_registry()
         self.engine = CpuGameEngine(self.registry, SeededRNG(42))
+        self._wire_ability_listener()
         self.state: GameState | None = None
         self.selection = Selection()
         self.status = "Select a mode to start."
@@ -54,6 +86,9 @@ class GameUI:
         self.player_modes: list[str] = []
         self.pending_battle_frames = 0
         self.battle_replay_mode = False
+        self.pending_merge: PendingMergeChoice | None = None
+        self.animations = AnimationTracker()
+        self._last_replay_step: int | None = None
         self.mode_buttons = {
             GameMode.HUMAN_VS_HUMAN: pygame.Rect(440, 300, 520, 56),
             GameMode.HUMAN_VS_AI: pygame.Rect(440, 380, 520, 56),
@@ -73,6 +108,7 @@ class GameUI:
                         self.handle_right_click(event.pos)
 
             self._update_ai_and_battle()
+            self.animations.tick()
 
             self.draw()
             pygame.display.flip()
@@ -91,21 +127,28 @@ class GameUI:
         if self.pending_battle_frames > 0:
             return
 
+        if self.pending_merge is not None:
+            if self._handle_merge_dialog_click(position):
+                return
+
         # Handle battle replay controls
         if self.battle_replay_mode and self.state.phase == Phase.BATTLE:
             snapshot = self.state.battle
             if self._hit_button(position, self._battle_back_rect()):
                 if snapshot.current_step > 0:
                     snapshot.current_step -= 1
+                    self._last_replay_step = None
                 return
             if self._hit_button(position, self._battle_forward_rect()):
                 if snapshot.current_step < len(snapshot.step_history) - 1:
                     snapshot.current_step += 1
+                    self._last_replay_step = None
                 return
             if self._hit_button(position, self._battle_next_turn_rect()):
                 if snapshot.current_step == len(snapshot.step_history) - 1:
                     self._advance_to_next_turn()
                 return
+            return
 
         if self._hit_button(position, self._end_turn_rect()):
             result = self.engine.end_shop_turn(self.state)
@@ -118,13 +161,19 @@ class GameUI:
             return
 
         if self._hit_button(position, self._roll_rect()):
+            before = self.animations.snapshot_player(self.state.current_player())
             result = self.engine.shop.roll_shop(self.state.current_player())
+            after = self.animations.snapshot_player(self.state.current_player())
+            self.animations.record_changes(before, after)
             self.status = result.message
             return
 
         if self._hit_button(position, self._sell_rect()):
             if self.selection.kind == "team" and self.selection.index is not None:
+                before = self.animations.snapshot_player(self.state.current_player())
                 result = self.engine.shop.sell_pet(self.state.current_player(), self.selection.index)
+                after = self.animations.snapshot_player(self.state.current_player())
+                self.animations.record_changes(before, after)
                 self.status = result.message
             self.selection = Selection()
             return
@@ -158,6 +207,139 @@ class GameUI:
         self.status = f"Round {self.state.turn} started."
         self.selection = Selection()
 
+    def _wire_ability_listener(self) -> None:
+        def listener(pet, player):
+            self.animations.on_ability_trigger(pet, player)
+
+        self.engine.triggers.ability_listener = listener
+
+    def _record_shop_result(self, before, after, result) -> None:
+        self.animations.record_changes(before, after)
+        if result.levelled_up and self.state is not None:
+            player = self.state.current_player()
+            for pet in player.team:
+                if pet is not None and pet.name == result.level_up_pet:
+                    self.animations.note_xp_gain(pet, leveled_up=True)
+                    break
+
+    def _merge_dialog_rect(self) -> pygame.Rect:
+        return pygame.Rect(420, 330, 560, 220)
+
+    def _merge_button_rect(self) -> pygame.Rect:
+        return pygame.Rect(470, 470, 180, 48)
+
+    def _swap_button_rect(self) -> pygame.Rect:
+        return pygame.Rect(670, 470, 180, 48)
+
+    def _cancel_merge_rect(self) -> pygame.Rect:
+        return pygame.Rect(870, 470, 80, 48)
+
+    def _draw_merge_dialog(self) -> None:
+        if self.pending_merge is None or self.state is None:
+            return
+        overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT), pygame.SRCALPHA)
+        overlay.fill((0, 0, 0, 140))
+        self.screen.blit(overlay, (0, 0))
+        dialog = self._merge_dialog_rect()
+        pygame.draw.rect(self.screen, PANEL, dialog, border_radius=18)
+        pygame.draw.rect(self.screen, SELECT, dialog, 2, border_radius=18)
+        player = self.state.current_player()
+        if self.pending_merge.source == "shop":
+            offer = player.shop.slots[self.pending_merge.shop_index or 0]
+            pet_name = offer.name if offer is not None else "pet"
+            title = self.big_font.render("Buy Same Pet", True, TEXT)
+            self.screen.blit(title, (dialog.x + 24, dialog.y + 24))
+            message = self.font.render(
+                f"Merge {pet_name} onto slot {self.pending_merge.team_index + 1}, or place in an empty slot?",
+                True,
+                MUTED,
+            )
+            self.screen.blit(message, (dialog.x + 24, dialog.y + 78))
+            action_labels = (
+                (self._merge_button_rect(), "Merge"),
+                (self._swap_button_rect(), "Place"),
+                (self._cancel_merge_rect(), "Cancel"),
+            )
+        else:
+            src = player.team[self.pending_merge.from_index or 0]
+            title = self.big_font.render("Same Pet Selected", True, TEXT)
+            self.screen.blit(title, (dialog.x + 24, dialog.y + 24))
+            if src is not None:
+                message = self.font.render(
+                    f"Merge {src.name} into slot {self.pending_merge.team_index + 1}, or swap positions?",
+                    True,
+                    MUTED,
+                )
+                self.screen.blit(message, (dialog.x + 24, dialog.y + 78))
+            action_labels = (
+                (self._merge_button_rect(), "Merge"),
+                (self._swap_button_rect(), "Swap"),
+                (self._cancel_merge_rect(), "Cancel"),
+            )
+        for rect, label in action_labels:
+            pygame.draw.rect(self.screen, (46, 59, 85), rect, border_radius=12)
+            pygame.draw.rect(self.screen, (80, 100, 140), rect, 2, border_radius=12)
+            self._draw_centered_text(rect, label, TEXT)
+
+    def _handle_merge_dialog_click(self, position: tuple[int, int]) -> bool:
+        if self.pending_merge is None or self.state is None:
+            return False
+        if self._hit_button(position, self._cancel_merge_rect()):
+            self.pending_merge = None
+            self.selection = Selection()
+            self.status = "Merge cancelled."
+            return True
+        player = self.state.current_player()
+        merge = self.pending_merge
+        if self._hit_button(position, self._merge_button_rect()):
+            before = self.animations.snapshot_player(player)
+            if merge.source == "shop":
+                result = self.engine.shop.buy_pet(player, merge.shop_index, merge.team_index)
+            else:
+                result = self.engine.shop.move_pet(player, merge.from_index, merge.team_index)
+            after = self.animations.snapshot_player(player)
+            self._record_shop_result(before, after, result)
+            self.status = result.message
+            self.pending_merge = None
+            self.selection = Selection()
+            return True
+        if self._hit_button(position, self._swap_button_rect()):
+            if merge.source == "shop":
+                empty = player.first_empty_team_slot()
+                if empty is None:
+                    self.status = "No empty team slot available."
+                else:
+                    before = self.animations.snapshot_player(player)
+                    result = self.engine.shop.buy_pet(player, merge.shop_index, empty)
+                    after = self.animations.snapshot_player(player)
+                    self._record_shop_result(before, after, result)
+                    self.status = result.message
+            else:
+                player.team[merge.from_index], player.team[merge.team_index] = (
+                    player.team[merge.team_index],
+                    player.team[merge.from_index],
+                )
+                self.status = "Pets swapped."
+            self.pending_merge = None
+            self.selection = Selection()
+            return True
+        if self._merge_dialog_rect().collidepoint(position):
+            return True
+        self.pending_merge = None
+        self.selection = Selection()
+        return True
+
+    def _update_replay_animations(self, snapshot) -> None:
+        step = snapshot.current_step
+        if step == self._last_replay_step:
+            return
+        history = snapshot.step_history
+        current = history[step]
+        previous = history[step - 1] if step > 0 else None
+        self.animations.on_replay_step_changed(current, previous)
+        self.animations.trigger_replay_abilities(current.get("ability_triggers", []), current)
+        self._last_replay_step = step
+
     def _start_mode(self, mode: str) -> None:
         if mode == GameMode.HUMAN_VS_HUMAN:
             self.player_modes = ["human", "human"]
@@ -173,6 +355,10 @@ class GameUI:
         self.selection = Selection()
         self.status = f"Mode selected: {mode}."
         self.pending_battle_frames = 0
+        self.battle_replay_mode = False
+        self.pending_merge = None
+        self.animations.clear()
+        self._last_replay_step = None
 
     def _handle_shop_click(self, shop_index: int) -> None:
         if self.state is None:
@@ -183,7 +369,10 @@ class GameUI:
             self.selection = Selection()
             return
         if self.selection.kind == "team" and self.selection.index is not None:
+            before = self.animations.snapshot_player(current_player)
             result = self.engine.shop.buy_pet(current_player, shop_index, self.selection.index)
+            after = self.animations.snapshot_player(current_player)
+            self._record_shop_result(before, after, result)
             self.status = result.message
             self.selection = Selection()
             return
@@ -200,10 +389,30 @@ class GameUI:
             if offer is None:
                 self.selection = Selection()
                 return
+            before = self.animations.snapshot_player(current_player)
             if offer.kind == "food":
                 result = self.engine.shop.buy_food(current_player, self.selection.index, team_index)
-            else:
-                result = self.engine.shop.buy_pet(current_player, self.selection.index, team_index)
+                after = self.animations.snapshot_player(current_player)
+                self._record_shop_result(before, after, result)
+                self.status = result.message
+                self.selection = Selection()
+                return
+            team_pet_at_target = current_player.team[team_index]
+            if (
+                team_pet_at_target is not None
+                and team_pet_at_target.name == offer.name
+                and current_player.first_empty_team_slot() is not None
+            ):
+                self.pending_merge = PendingMergeChoice(
+                    team_index=team_index,
+                    source="shop",
+                    shop_index=self.selection.index,
+                )
+                self.status = f"Merge {offer.name} or place in an empty slot?"
+                return
+            result = self.engine.shop.buy_pet(current_player, self.selection.index, team_index)
+            after = self.animations.snapshot_player(current_player)
+            self._record_shop_result(before, after, result)
             self.status = result.message
             self.selection = Selection()
             return
@@ -212,7 +421,20 @@ class GameUI:
                 self.selection = Selection()
                 self.status = "Selection cleared."
                 return
-            current_player.team[self.selection.index], current_player.team[team_index] = current_player.team[team_index], current_player.team[self.selection.index]
+            src = current_player.team[self.selection.index]
+            dst = current_player.team[team_index]
+            if src is not None and dst is not None and src.name == dst.name:
+                self.pending_merge = PendingMergeChoice(
+                    team_index=team_index,
+                    source="team",
+                    from_index=self.selection.index,
+                )
+                self.status = f"Merge or swap {src.name}?"
+                return
+            current_player.team[self.selection.index], current_player.team[team_index] = (
+                current_player.team[team_index],
+                current_player.team[self.selection.index],
+            )
             self.selection = Selection()
             self.status = "Pets moved."
             return
@@ -228,13 +450,15 @@ class GameUI:
             self._draw_mode_menu()
         elif self.state.finished:
             self._draw_game_over()
-        elif self.state.phase == Phase.BATTLE or self.pending_battle_frames > 0:
+        elif self.state.phase == Phase.BATTLE or self.pending_battle_frames > 0 or self.battle_replay_mode:
             self._draw_battle_scene()
         else:
             self._draw_header()
             self._draw_team_panel()
             self._draw_shop_panel()
             self._draw_footer()
+        if self.pending_merge is not None:
+            self._draw_merge_dialog()
 
     def _draw_game_over(self) -> None:
         title = self.big_font.render("Game Over", True, TEXT)
@@ -264,8 +488,10 @@ class GameUI:
             self.screen.blit(subtitle, (24, 56))
 
             # Draw teams from replay data
-            self._draw_replay_team(snapshot.step_history[snapshot.current_step]['p0_team'], 0, 100, snapshot.step_history[snapshot.current_step]['p0_health'])
-            self._draw_replay_team(snapshot.step_history[snapshot.current_step]['p1_team'], 1, 390, snapshot.step_history[snapshot.current_step]['p1_health'])
+            step_data = snapshot.step_history[snapshot.current_step]
+            self._update_replay_animations(snapshot)
+            self._draw_replay_team(step_data["p0_team"], 0, 100, step_data["p0_health"])
+            self._draw_replay_team(step_data["p1_team"], 1, 390, step_data["p1_health"])
 
             # Draw navigation buttons
             self._draw_battle_controls()
@@ -292,7 +518,9 @@ class GameUI:
         for index, pet in enumerate(player.team):
             rect = pygame.Rect(52 + index * 260, top + 48, 220, 170)
             pygame.draw.rect(self.screen, PANEL_ALT if index % 2 == 0 else PANEL, rect, border_radius=14)
-            self._draw_pet_or_empty(rect, pet, index + 1)
+            fx = self.animations.fx(pet) if pet is not None else None
+            self._draw_layered_borders(rect, self._replay_border_layers(fx))
+            self._draw_pet_or_empty(rect, pet, index + 1, player_idx=player_number, slot_idx=index)
 
     def _draw_replay_team(self, team_data: list[dict | None], player_number: int, top: int, health: int) -> None:
         label = self.font.render(f"Player {player_number + 1} | HP {health}", True, TEXT)
@@ -300,23 +528,12 @@ class GameUI:
         for index, pet_data in enumerate(team_data):
             rect = pygame.Rect(52 + index * 260, top + 48, 220, 170)
             pygame.draw.rect(self.screen, PANEL_ALT if index % 2 == 0 else PANEL, rect, border_radius=14)
+            fx = self.animations.replay_fx(player_number, pet_data.get("uid")) if pet_data is not None else None
+            self._draw_layered_borders(rect, self._replay_border_layers(fx))
             if pet_data is None:
                 self._draw_centered_text(rect, "Empty", MUTED)
             else:
-                self._draw_replay_pet(rect, pet_data, index + 1)
-
-    def _draw_replay_pet(self, rect: pygame.Rect, pet_data: dict, slot_number: int) -> None:
-        slot_label = self.font.render(f"Slot {slot_number}", True, MUTED)
-        self.screen.blit(slot_label, (rect.x + 12, rect.y + 10))
-        icon = self._load_icon("pets", pet_data["name"])
-        if icon is not None:
-            self.screen.blit(icon, icon.get_rect(center=(rect.centerx, rect.y + 76)))
-        name = self.font.render(pet_data["name"], True, TEXT)
-        total_attack = pet_data["attack"] + pet_data["temporary_attack"]
-        total_health = pet_data["health"] + pet_data["temporary_health"]
-        stats = self.font.render(f"{total_attack}/{total_health}  Lv{pet_data['level']}", True, GOLD)
-        self.screen.blit(name, (rect.x + 12, rect.bottom - 56))
-        self.screen.blit(stats, (rect.x + 12, rect.bottom - 30))
+                self._draw_replay_pet(rect, pet_data, index + 1, player_number, index)
 
     def _draw_battle_controls(self) -> None:
         snapshot = self.state.battle
@@ -340,7 +557,7 @@ class GameUI:
             next_turn_rect = self._battle_next_turn_rect()
             pygame.draw.rect(self.screen, (46, 85, 59), next_turn_rect, border_radius=14)
             pygame.draw.rect(self.screen, (80, 140, 100), next_turn_rect, 2, border_radius=14)
-            self._draw_centered_text(next_turn_rect, "Next Turn", TEXT)
+            self._draw_centered_text(next_turn_rect, f"Start Turn {self.state.turn + 1}", TEXT)
 
     def _draw_mode_menu(self) -> None:
         title = self.big_font.render("Super Auto Pets CPU Engine", True, TEXT)
@@ -372,21 +589,18 @@ class GameUI:
         for index, pet in enumerate(player.team):
             rect = self._team_rect(index)
             pygame.draw.rect(self.screen, PANEL_ALT if index % 2 == 0 else PANEL, rect, border_radius=14)
-            pygame.draw.rect(self.screen, ACCENT if self.selection.kind == "team" and self.selection.index == index else (60, 70, 92), rect, 2, border_radius=14)
+            self._draw_layered_borders(rect, self._team_border_layers(index, pet))
             self._draw_pet_or_empty(rect, pet, index + 1)
 
     def _draw_shop_panel(self) -> None:
-        pygame.draw.rect(self.screen, PANEL, pygame.Rect(24, 380, 1352, 370), border_radius=18)
+        pygame.draw.rect(self.screen, PANEL, pygame.Rect(24, 380, 1312, 370), border_radius=18)
         label = self.font.render("Shop", True, TEXT)
         self.screen.blit(label, (40, 396))
         player = self.state.current_player()
         for index, offer in enumerate(player.shop.slots):
             rect = self._shop_rect(index)
             pygame.draw.rect(self.screen, PANEL_ALT if index % 2 == 0 else PANEL, rect, border_radius=14)
-            border_color = ACCENT if self.selection.kind == "shop" and self.selection.index == index else (60, 70, 92)
-            if offer is not None and offer.frozen:
-                border_color = (100, 200, 255)  # Light blue for frozen items
-            pygame.draw.rect(self.screen, border_color, rect, 2, border_radius=14)
+            self._draw_layered_borders(rect, self._shop_border_layers(index, offer))
             if offer is None:
                 self._draw_centered_text(rect, "Empty", MUTED)
             else:
@@ -400,19 +614,204 @@ class GameUI:
             pygame.draw.rect(self.screen, (80, 100, 140), rect, 2, border_radius=14)
             self._draw_centered_text(rect, text, TEXT)
 
-    def _draw_pet_or_empty(self, rect: pygame.Rect, pet, slot_number: int) -> None:
+    def _draw_pet_or_empty(
+        self,
+        rect: pygame.Rect,
+        pet,
+        slot_number: int,
+        *,
+        player_idx: int | None = None,
+        slot_idx: int | None = None,
+    ) -> None:
         slot_label = self.font.render(f"Slot {slot_number}", True, MUTED)
         self.screen.blit(slot_label, (rect.x + 12, rect.y + 10))
         if pet is None:
             self._draw_centered_text(rect, "Empty", MUTED)
             return
+        fx = self.animations.fx(pet)
         icon = self._load_icon("pets", pet.name)
-        if icon is not None:
-            self.screen.blit(icon, icon.get_rect(center=(rect.centerx, rect.y + 76)))
+        self._draw_rotated_icon(icon, rect, fx)
+        self._draw_perk_badge(rect, pet.perk)
         name = self.font.render(pet.name, True, TEXT)
-        stats = self.font.render(f"{pet.attack}/{pet.health}  Lv{pet.level}", True, GOLD)
         self.screen.blit(name, (rect.x + 12, rect.bottom - 56))
-        self.screen.blit(stats, (rect.x + 12, rect.bottom - 30))
+        self._draw_live_pet_stats(rect, pet, fx)
+
+    def _draw_stat_value(self, text: str, x: int, y: int, highlighted: bool, intensity: float = 1.0) -> int:
+        surface = self.font.render(text, True, (255, 255, 255) if highlighted else GOLD)
+        width = surface.get_width()
+        if highlighted:
+            pad_x = 6
+            pad_y = 3
+            glow_rect = pygame.Rect(x - pad_x, y - pad_y, width + pad_x * 2, surface.get_height() + pad_y * 2)
+            glow = pygame.Surface(glow_rect.size, pygame.SRCALPHA)
+            alpha = int(100 + 155 * intensity)
+            glow.fill((*STAT_HIGHLIGHT_BG, alpha))
+            self.screen.blit(glow, glow_rect.topleft)
+            pygame.draw.rect(self.screen, STAT_HIGHLIGHT, glow_rect, 2, border_radius=5)
+            inner = pygame.Surface(glow_rect.size, pygame.SRCALPHA)
+            inner_alpha = int(60 + 80 * intensity)
+            inner.fill((255, 255, 255, inner_alpha))
+            self.screen.blit(inner, glow_rect.topleft)
+        self.screen.blit(surface, (x, y))
+        return width
+
+    def _highlight_intensity(self, fx: PetVisualFX | None, frames: int) -> float:
+        if fx is None or frames <= 0:
+            return 0.0
+        return min(1.0, frames / HIGHLIGHT_FRAMES)
+
+    def _draw_live_pet_stats(self, rect: pygame.Rect, pet, fx: PetVisualFX | None) -> None:
+        eff_atk = pet.effective_attack
+        eff_hp = pet.effective_health
+        x = rect.x + 12
+        y = rect.bottom - 30
+        atk_hi = fx is not None and fx.highlight_attack > 0
+        hp_hi = fx is not None and fx.highlight_health > 0
+        xp_hi = fx is not None and fx.highlight_xp > 0
+        atk_int = self._highlight_intensity(fx, fx.highlight_attack if fx else 0)
+        hp_int = self._highlight_intensity(fx, fx.highlight_health if fx else 0)
+        xp_int = self._highlight_intensity(fx, fx.highlight_xp if fx else 0)
+
+        if pet.temporary_attack > 0:
+            x += self._draw_stat_value(str(eff_atk), x, y, atk_hi, atk_int)
+            underline_y = y + self.font.get_height() - 1
+            pygame.draw.line(self.screen, STAT_HIGHLIGHT if atk_hi else GOLD, (rect.x + 12, underline_y), (x, underline_y), 2)
+        else:
+            x += self._draw_stat_value(str(eff_atk), x, y, atk_hi, atk_int)
+
+        slash = self.font.render("/", True, GOLD if not (atk_hi or hp_hi) else STAT_HIGHLIGHT)
+        self.screen.blit(slash, (x, y))
+        x += slash.get_width()
+        x += self._draw_stat_value(str(eff_hp), x, y, hp_hi, hp_int)
+        xp_text = f"  Lv{pet.level} ({pet.experience} XP)"
+        if xp_hi:
+            x += self._draw_stat_value(xp_text, x, y, True, xp_int)
+        else:
+            self.screen.blit(self.font.render(xp_text, True, GOLD), (x, y))
+
+    def _draw_replay_pet(
+        self,
+        rect: pygame.Rect,
+        pet_data: dict,
+        slot_number: int,
+        player_idx: int,
+        slot_idx: int,
+    ) -> None:
+        slot_label = self.font.render(f"Slot {slot_number}", True, MUTED)
+        self.screen.blit(slot_label, (rect.x + 12, rect.y + 10))
+        fx = self.animations.replay_fx(player_idx, pet_data.get("uid"))
+        icon = self._load_icon("pets", pet_data["name"])
+        self._draw_rotated_icon(icon, rect, fx)
+        self._draw_perk_badge(rect, pet_data.get("perk"))
+        name = self.font.render(pet_data["name"], True, TEXT)
+        self.screen.blit(name, (rect.x + 12, rect.bottom - 56))
+        self._draw_replay_pet_stats(rect, pet_data, fx)
+
+    def _draw_replay_pet_stats(self, rect: pygame.Rect, pet_data: dict, fx: PetVisualFX | None) -> None:
+        total_attack = pet_data["attack"] + pet_data.get("temporary_attack", 0)
+        total_health = pet_data["health"] + pet_data.get("temporary_health", 0)
+        temp_atk = pet_data.get("temporary_attack", 0)
+        x = rect.x + 12
+        y = rect.bottom - 30
+        atk_hi = fx is not None and fx.highlight_attack > 0
+        hp_hi = fx is not None and fx.highlight_health > 0
+        xp_hi = fx is not None and fx.highlight_xp > 0
+        atk_int = self._highlight_intensity(fx, fx.highlight_attack if fx else 0)
+        hp_int = self._highlight_intensity(fx, fx.highlight_health if fx else 0)
+        xp_int = self._highlight_intensity(fx, fx.highlight_xp if fx else 0)
+
+        if temp_atk > 0:
+            x += self._draw_stat_value(str(total_attack), x, y, atk_hi, atk_int)
+            underline_y = y + self.font.get_height() - 1
+            pygame.draw.line(self.screen, STAT_HIGHLIGHT if atk_hi else GOLD, (rect.x + 12, underline_y), (x, underline_y), 2)
+        else:
+            x += self._draw_stat_value(str(total_attack), x, y, atk_hi, atk_int)
+
+        slash = self.font.render("/", True, GOLD if not (atk_hi or hp_hi) else STAT_HIGHLIGHT)
+        self.screen.blit(slash, (x, y))
+        x += slash.get_width()
+        x += self._draw_stat_value(str(total_health), x, y, hp_hi, hp_int)
+        xp_text = f"  Lv{pet_data['level']} ({pet_data['experience']} XP)"
+        if xp_hi:
+            x += self._draw_stat_value(xp_text, x, y, True, xp_int)
+        else:
+            self.screen.blit(self.font.render(xp_text, True, GOLD), (x, y))
+
+    def _draw_rotated_icon(
+        self,
+        icon: pygame.Surface | None,
+        rect: pygame.Rect,
+        fx: PetVisualFX | None,
+    ) -> None:
+        if icon is None:
+            return
+        angle = fx.rotation_deg if fx is not None else 0.0
+        if angle:
+            icon = pygame.transform.rotate(icon, -angle)
+        self.screen.blit(icon, icon.get_rect(center=(rect.centerx, rect.y + 76)))
+
+    def _draw_layered_borders(
+        self,
+        rect: pygame.Rect,
+        layers: list[tuple[tuple[int, int, int], int]],
+    ) -> None:
+        inset = 0
+        for color, width in layers:
+            border_rect = pygame.Rect(
+                rect.x + inset,
+                rect.y + inset,
+                rect.width - inset * 2,
+                rect.height - inset * 2,
+            )
+            if border_rect.width <= width * 2 or border_rect.height <= width * 2:
+                break
+            radius = max(4, 14 - inset)
+            pygame.draw.rect(self.screen, color, border_rect, width, border_radius=radius)
+            inset += width
+
+    def _team_border_layers(self, index: int, pet) -> list[tuple[tuple[int, int, int], int]]:
+        layers: list[tuple[tuple[int, int, int], int]] = [(PANEL_BORDER, 2)]
+        if self.selection.kind == "team" and self.selection.index == index:
+            layers.append((SELECT, 2))
+        fx = self.animations.fx(pet) if pet is not None else None
+        if fx is not None and fx.golden_border > 0:
+            layers.append((GOLDEN_BORDER, 3))
+        return layers
+
+    def _shop_border_layers(
+        self,
+        index: int,
+        offer: ShopOffer | None,
+    ) -> list[tuple[tuple[int, int, int], int]]:
+        layers: list[tuple[tuple[int, int, int], int]] = [(PANEL_BORDER, 2)]
+        if offer is not None and offer.frozen:
+            layers.append((FREEZE, 2))
+        if offer is not None and offer.tier_up_reward:
+            layers.append((TIER_UP, 2))
+        if self.selection.kind == "shop" and self.selection.index == index:
+            layers.append((SELECT, 2))
+        return layers
+
+    def _replay_border_layers(self, fx: PetVisualFX | None) -> list[tuple[tuple[int, int, int], int]]:
+        layers: list[tuple[tuple[int, int, int], int]] = [(PANEL_BORDER, 2)]
+        if fx is not None and fx.golden_border > 0:
+            layers.append((GOLDEN_BORDER, 3))
+        return layers
+
+    def _draw_perk_badge(self, rect: pygame.Rect, perk: str | None) -> None:
+        if not perk or perk not in PERK_ICON_MAP:
+            return
+        kind, name = PERK_ICON_MAP[perk]
+        icon = self._load_icon(kind, name, size=32)
+        if icon is None:
+            return
+        badge_size = 36
+        badge_x = rect.right - badge_size - 8
+        badge_y = rect.y + 8
+        badge_rect = pygame.Rect(badge_x, badge_y, badge_size, badge_size)
+        pygame.draw.rect(self.screen, PANEL, badge_rect, border_radius=8)
+        pygame.draw.rect(self.screen, GOLD, badge_rect, 2, border_radius=8)
+        self.screen.blit(icon, icon.get_rect(center=badge_rect.center))
 
     def _draw_offer(self, rect: pygame.Rect, offer: ShopOffer, slot_number: int) -> None:
         slot_label = self.font.render(f"Slot {slot_number}", True, MUTED)
@@ -421,7 +820,10 @@ class GameUI:
         if icon is not None:
             self.screen.blit(icon, icon.get_rect(center=(rect.centerx, rect.y + 76)))
         name = self.font.render(offer.name, True, TEXT)
-        kind = self.font.render(f"{offer.kind.title()} T{offer.tier}", True, GOLD)
+        if offer.tier_up_reward:
+            kind = self.font.render(f"Tier-Up T{offer.tier}", True, ACCENT)
+        else:
+            kind = self.font.render(f"{offer.kind.title()} T{offer.tier}", True, GOLD)
         self.screen.blit(name, (rect.x + 12, rect.bottom - 56))
         self.screen.blit(kind, (rect.x + 12, rect.bottom - 30))
         if offer.kind == "pet" and offer.name in self.registry.pets:
@@ -435,15 +837,15 @@ class GameUI:
         surface = self.font.render(text, True, color)
         self.screen.blit(surface, surface.get_rect(center=rect.center))
 
-    def _load_icon(self, kind: str, name: str) -> pygame.Surface | None:
-        key = (kind, name)
+    def _load_icon(self, kind: str, name: str, *, size: int = 60) -> pygame.Surface | None:
+        key = (kind, name, size)
         if key in self.icon_cache:
             return self.icon_cache[key]
         path = self.registry.pet_icon(name) if kind == "pets" else self.registry.food_icon(name) if kind == "foods" else self.registry.token_icon(name)
         if not path.exists():
             return None
         image = pygame.image.load(path.as_posix()).convert_alpha()
-        image = pygame.transform.smoothscale(image, (60, 60))
+        image = pygame.transform.smoothscale(image, (size, size))
         self.icon_cache[key] = image
         return image
 
@@ -451,7 +853,7 @@ class GameUI:
         return pygame.Rect(52 + index * 260, 148, 220, 170)
 
     def _shop_rect(self, index: int) -> pygame.Rect:
-        return pygame.Rect(52 + index * 155, 430, 136, 260)
+        return pygame.Rect(40 + index * 142, 430, 128, 260)
 
     def _roll_rect(self) -> pygame.Rect:
         return pygame.Rect(930, 784, 130, 44)
@@ -469,7 +871,7 @@ class GameUI:
         return pygame.Rect(660, 682, 200, 44)
 
     def _battle_next_turn_rect(self) -> pygame.Rect:
-        return pygame.Rect(880, 682, 200, 44)
+        return pygame.Rect(880, 682, 260, 44)
 
     def _hit_button(self, position: tuple[int, int], rect: pygame.Rect) -> bool:
         return rect.collidepoint(position)
@@ -492,12 +894,20 @@ class GameUI:
         if self.pending_battle_frames > 0:
             self.pending_battle_frames -= 1
             if self.pending_battle_frames == 0:
-                result = self.engine.resolve_battle_and_start_next_round(self.state)
-                self.status = f"Battle resolved: {result.battle_result.value}."
-                # Enter replay mode for human players
-                if "human" in self.player_modes:
+                has_human = "human" in self.player_modes
+                if has_human:
+                    result = self.engine.resolve_battle_only(self.state)
                     self.battle_replay_mode = True
                     self.state.battle.current_step = 0
+                    self._last_replay_step = None
+                    self.animations.clear()
+                    self.status = f"Battle resolved: {result.battle_result.value}. Review the replay, then start turn {self.state.turn + 1}."
+                else:
+                    result = self.engine.resolve_battle_and_start_next_round(self.state)
+                    self.status = f"Battle resolved: {result.battle_result.value}. Round {self.state.turn} started."
+            return
+
+        if self.battle_replay_mode:
             return
 
         current_index = self.state.active_player_index
